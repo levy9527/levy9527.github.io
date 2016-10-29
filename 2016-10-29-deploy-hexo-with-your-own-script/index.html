@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="levy">
 <meta property="og:description" content="hexo g会解析md文件, 生成html等静态文件, hexo d就可以发布静态文件, 这两个命令可以使用hexo g --deploy来代替
 但使用一段时间后, 我发现hexo自带的发布命令并不好用, 于是我自己写了个发布脚本">
-<meta property="og:updated_time" content="2016-10-29T13:56:59.000Z">
+<meta property="og:updated_time" content="2016-10-29T15:16:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自己编写Hexo发布脚本">
 <meta name="twitter:description" content="hexo g会解析md文件, 生成html等静态文件, hexo d就可以发布静态文件, 这两个命令可以使用hexo g --deploy来代替
@@ -101,19 +101,36 @@
 <li>推送用了–force选项, 这样会把远程仓库的内容覆盖掉, 比如我在Github上建立README.md及CNAME文件, 则本地推送后这两个文件就没有了</li>
 </ol>
 <p>那么, 其实我要做的, 就是少了清空及拷贝的动作, 以及推送时不覆盖远程的修改</p>
-<h2 id="自定义脚本"><a href="#自定义脚本" class="headerlink" title="自定义脚本"></a>自定义脚本</h2><p>根目录下先建deploy.sh文件</p>
+<h2 id="自定义脚本"><a href="#自定义脚本" class="headerlink" title="自定义脚本"></a>自定义脚本</h2><p>根目录下执行以下命令新建deploy.sh文件</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">touch deploy.sh</div><div class="line">chmod +x deploy.sh</div></pre></td></tr></table></figure>
 <p>以下是脚本内容</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line">msg=`git <span class="built_in">log</span> -1 --pretty=oneline | awk <span class="string">'&#123;print $2&#125;'</span>`</div><div class="line">hexo g</div><div class="line"><span class="built_in">cd</span> public</div><div class="line">rmdir *-*</div><div class="line">git add .</div><div class="line">git commit -am <span class="variable">$msg</span></div><div class="line">git push</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line">msg=`git <span class="built_in">log</span> -1 --pretty=oneline | awk <span class="string">'&#123;print $2&#125;'</span>`</div><div class="line">hexo g</div><div class="line"><span class="built_in">cd</span> public</div><div class="line"><span class="comment">#rmdir * # 删除空文件夹, 已解析的md文件重命名时, 原来生成的文件夹会为空, 但其实git自动会忽略空文件夹的, 所以这句话并非必要</span></div><div class="line">git add .</div><div class="line">git commit -am <span class="variable">$msg</span></div><div class="line">git push</div></pre></td></tr></table></figure>
 <p>cd 到 public目录下, 执行以下命令</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rm -fr * </div><div class="line">git <span class="built_in">clone</span> your_git_repo_url</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rm -fr * </div><div class="line">git <span class="built_in">clone</span> your_git_repo_url . <span class="comment"># 别忘了后面的点</span></div></pre></td></tr></table></figure>
 <p>这样就可以在根目录下使用<code>./deploy.sh</code>命令来发布Hexo博客啦</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>其实上述方法有一个bug:</p>
+<p><code>hexo clean</code>清除缓存时, 会把public目录删除掉的, 因此再次发布时, 需要重新到public目录下克隆远程仓库</p>
+<p>虽说清理缓存并不常见, 但因为有这么个bug, 这折腾了半天, 好像效果并不咋滴呀😰</p>
+<h2 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h2><h4 id="取消推送时的force选项"><a href="#取消推送时的force选项" class="headerlink" title="取消推送时的force选项"></a>取消推送时的force选项</h4><p>可以使用修改源码的方式</p>
+<p>找到node_modules/hexo-deployer-git/lib/deployer.js这个文件, 找到如下行</p>
+<pre><code>return git(&apos;push&apos;, &apos;-u&apos;, repo.url, &apos;HEAD:&apos; + repo.branch, &apos;--force&apos;);
+</code></pre><p>把后面的<code>, &#39;--force&#39;</code>删掉即可</p>
+<pre><code>return git(&apos;push&apos;, &apos;-u&apos;, repo.url, &apos;HEAD:&apos; + repo.branch);
+</code></pre><h4 id="发布静态文件时-使用md所在的git的提交信息"><a href="#发布静态文件时-使用md所在的git的提交信息" class="headerlink" title="发布静态文件时, 使用md所在的git的提交信息"></a>发布静态文件时, 使用md所在的git的提交信息</h4><blockquote>
+<p>注: 写博客我一共用到了两个git仓库<br>md等源文件在一个git仓库内<br>public目录下的静态文件在另一个git仓库内</p>
+</blockquote>
+<p>默认发布时的提交信息是根据_config.yml文件的<code>deploy</code>配置下<code>msg</code>选项而来的, 如果_config.yml文件里没配置<code>msg</code>选项, 就会是<code>Site updated: YYYY-MM-DD HH:mm:ss</code>, 可以写个脚本每次发布动态编辑_config.yml文件, 提交信息与博客源码所在git的最新提交信息一致</p>
+<p>根目录下执行以下命令新建deploy.sh文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">touch deploy.sh</div><div class="line">chmod +x deploy.sh</div></pre></td></tr></table></figure>
+<p>以下是脚本内容</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">msg=`git <span class="built_in">log</span> -1 --pretty=oneline | awk <span class="string">'&#123;print $2&#125;'</span>`</div><div class="line">sed -i <span class="_">-e</span> <span class="string">"s/msg: [^\]*/msg: <span class="variable">$msg</span>/"</span> _config.yml</div><div class="line">hexo d</div></pre></td></tr></table></figure>
+<p>发布时使用根目录下使用<code>./deploy.sh</code>命令即可</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-10-29-deploy-hexo-with-your-own-script/" data-id="ciuv8zzlt000l8hrre4r3vhjr" class="article-share-link" data-share="baidu" data-title="自己编写Hexo发布脚本">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-10-29-deploy-hexo-with-your-own-script/" data-id="ciuv7m29a0007tfrrgzslbvrp" class="article-share-link" data-share="baidu" data-title="自己编写Hexo发布脚本">分享到</a>
       
 
       
