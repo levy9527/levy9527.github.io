@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS权威指南拾遗 | levy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言最近发现有些CSS知识是很基础的, 而CSS权威指南也有讲到的, 但我却遗漏掉了, 今天就做个补习, 把这些知识捡回来.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS权威指南拾遗">
+<meta property="og:url" content="https://levy9527.github.io/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/index.html">
+<meta property="og:site_name" content="levy">
+<meta property="og:description" content="前言最近发现有些CSS知识是很基础的, 而CSS权威指南也有讲到的, 但我却遗漏掉了, 今天就做个补习, 把这些知识捡回来.">
+<meta property="og:updated_time" content="2016-09-06T10:24:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS权威指南拾遗">
+<meta name="twitter:description" content="前言最近发现有些CSS知识是很基础的, 而CSS权威指南也有讲到的, 但我却遗漏掉了, 今天就做个补习, 把这些知识捡回来.">
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      
+          <h1 id="logo-wrap">
+            <a href="/" id="logo">CODE THE WEB</a>
+          </h1>
+      
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about.html">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="Search"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="javascript:;" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" class="search-form-input st-default-search-input" placeholder="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-css-make-up-for-omissions-in-the-definitive-guide" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-09-04T08:19:35.000Z" itemprop="datePublished" class="article-date">2016-09-04</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/">CSS权威指南拾遗</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近发现有些CSS知识是很基础的, 而<strong>CSS权威指南</strong>也有讲到的, 但我却遗漏掉了, 今天就做个补习, 把这些知识捡回来.</p>
+<a id="more"></a>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="1-list-style"><a href="#1-list-style" class="headerlink" title="1.list-style"></a>1.list-style</h3><p>对于列表样式, 我以前只知道<code>list-style: none</code>把列表默认的圆点去掉. </p>
+<p>其实<code>list-style</code>是以下三个属性的简写:</p>
+<ul>
+<li>list-style-type</li>
+<li>list-style-image</li>
+<li>list-style-position</li>
+</ul>
+<p><code>list-style-type</code>现在可以支持的值有很多, 我发现比较有意思的是, 它支持中国计数中的”天干”与”地支”, 它们的值分别是:<code>cjk-heavenly-stem</code>/<code>cjk-earthly-branch</code>. 经测试, Chrome/Safari/Firefox都可正常显示. </p>
+<p><code>list-style-image</code>可以指定图片来自定义列表标志. 通常, 可以用<code>list-style-type</code>来提供一个后路, 预防出现图片加载失败的情况.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span> &#123;</div><div class="line">  <span class="attribute">list-style-image</span>: <span class="built_in">url</span>(//your-image.jpg);</div><div class="line">  <span class="attribute">list-style-type</span>: square;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>list-style-position</code> 用来确定标志是出现列表项内容之内还是之外. 默认值是<code>outside</code>. 此时如何使用大图片作为列表标志, 图片很可能看不见, 则需调整为<code>inside</code></p>
+<h3 id="2-缩进"><a href="#2-缩进" class="headerlink" title="2.缩进"></a>2.缩进</h3><p>由于规范中并未指出列表内容应该如何缩进, 因此不同的浏览器实现的方式不同.</p>
+<p>IE与Opera使用的是<code>margin</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span>, </div><div class="line"><span class="selector-tag">ol</span> &#123;</div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">40px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>而大多数基于Gecko(如Firefox)以及基于Webkit的浏览器使用的是<code>padding</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span>, </div><div class="line"><span class="selector-tag">ol</span> &#123;</div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">40px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因此, 如果开发时想改变列表默认的缩进距离, 强烈建议同时指定<code>padding</code>与<code>margin</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span>, </div><div class="line"><span class="selector-tag">ol</span> &#123;</div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">1em</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="光标"><a href="#光标" class="headerlink" title="光标"></a>光标</h2><p><code>cursor</code>属性的值除了<code>auto</code>与<code>pointer</code>, 还有很多有趣的值:</p>
+<ul>
+<li><code>help</code> 指示用户可以得到某种形式的帮助</li>
+<li><code>wait</code>和<code>progress</code> 都指示程序正忙, 而且图标极有可能是一样的. 不同处在于: 前者表示用户要等待直到程序不忙, 后者表示用户可以继续与程序交互, 尽管它很忙</li>
+<li><code>grab</code>与<code>grabbing</code> 指示抓取及抓取中, 可以结合h5的拖动功能来使用. <code>webkit</code>的浏览器使用时需要带前缀</li>
+<li><code>no-drop</code>与<code>not-allowed</code> 前者表示不能放东西, 后者表示禁止触摸. 不过二者图标极有可能是一样的</li>
+<li><code>copy</code> 在可以放东西的区域可以使用它, 比如文件拖拽上传的区域</li>
+</ul>
+<blockquote>
+<p>同一个属性值, 在不同浏览器中显示的样式可能有所不同</p>
+</blockquote>
+<h2 id="轮廓"><a href="#轮廓" class="headerlink" title="轮廓"></a>轮廓</h2><h3 id="1-属性"><a href="#1-属性" class="headerlink" title="1.属性"></a>1.属性</h3><p><code>outline</code>其实是三个属性值的缩写, 与<code>border</code>类似:</p>
+<ul>
+<li>outline-width</li>
+<li>outline-style</li>
+<li>outline-color</li>
+</ul>
+<blockquote>
+<p><code>outline-color</code>可以有值为<code>invert</code>, 这是<code>border-color</code>没有的. 它表示对屏幕上的像素反色. 不过, 我在Chrome与Firefox上测试过, 都没有效果, 只有在Safari有效, 也就是黑色而且, 感觉没多大用.</p>
+</blockquote>
+<h3 id="2-与border的区别"><a href="#2-与border的区别" class="headerlink" title="2.与border的区别"></a>2.与border的区别</h3><p><code>outline</code>与<code>border</code>属性值很像, 但它们并不是同一样东西, 有着很重要的区别是:</p>
+<ol>
+<li><code>outline</code>不在文档流之内, 这表明它有可能会覆盖其他元素</li>
+<li><code>outline</code>可能不是矩形, 但却一定是有棱角的, 即不可能是圆形的.</li>
+<li>一个元素四条边的<code>outline</code>是相同的, 即不能可能像<code>border</code>一样, 只设置一条边.</li>
+<li><code>outline-color</code>可以是<code>invert</code></li>
+</ol>
+<blockquote>
+<p>因为<code>outline</code>与<code>border</code>并不是同一个东西, 所以它们可以同时出现.</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/" data-id="ciuv6el2h0009mtrrxelhk2qt" class="article-share-link" data-share="baidu" data-title="CSS权威指南拾遗">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+<!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
+  
+    <a href="/2016-09-05-css-make-up-for-omissions-of-user-interface/" id="article-nav-newer" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          CSS拾遗之用户界面样式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016-09-01-why-got-options-request-via-ajax/" id="article-nav-older" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">AJAX中出现OPTIONS请求</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/" data-title="CSS权威指南拾遗" data-url="https://levy9527.github.io/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/"></div>
+  </section>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+          </li>
+        
+          <li>
+            <a href="http://coolshell.cn/" target="_blank">左耳朵耗子</a>
+          </li>
+        
+          <li>
+            <a href="http://www.barretlee.com/entry/" target="_blank">阿里郎小胡子哥</a>
+          </li>
+        
+          <li>
+            <a href="http://pinggod.com/" target="_blank">大漠弟子pinggod</a>
+          </li>
+        
+          <li>
+            <a href="http://ieclipse.cn/" target="_blank">Jamling(参考样式)</a>
+          </li>
+        
+          <li>
+            <a href="https://www.haomwei.com/" target="_blank">屠城(参考字体)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 levy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/levy9527/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about.html" class="mobile-nav-link">关于</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+	<a href="https://github.com/levy9527"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+
+<!-- 百度统计start -->
+
+    <script type="text/javascript">
+      var key = '7595a86aeed3cfd93d5621d3ec858dce';       
+      if(!key) 
+          key = '';
+          
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + key;
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+<!-- 百度统计end -->
+
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"levy9527github"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<!-- swiftype搜索 start -->
+
+<!-- swiftype搜索 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

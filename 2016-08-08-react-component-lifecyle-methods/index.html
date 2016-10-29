@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Component LifeCycle Methods | levy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="React Component 常用生命周期函数： getInitialState -&amp;gt; WillMount -&amp;gt; render -&amp;gt; DidMount -&amp;gt; DidUpdate(WillReceiveProps)-&amp;gt;WillUnMount
+挂载(mount)：React的特点是先生成Virtual DOM，再把这个Virtual DOM在真实的DOM上画出来，这个行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Component LifeCycle Methods">
+<meta property="og:url" content="https://levy9527.github.io/2016-08-08-react-component-lifecyle-methods/index.html">
+<meta property="og:site_name" content="levy">
+<meta property="og:description" content="React Component 常用生命周期函数： getInitialState -&amp;gt; WillMount -&amp;gt; render -&amp;gt; DidMount -&amp;gt; DidUpdate(WillReceiveProps)-&amp;gt;WillUnMount
+挂载(mount)：React的特点是先生成Virtual DOM，再把这个Virtual DOM在真实的DOM上画出来，这个行">
+<meta property="og:updated_time" content="2016-09-08T03:15:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Component LifeCycle Methods">
+<meta name="twitter:description" content="React Component 常用生命周期函数： getInitialState -&amp;gt; WillMount -&amp;gt; render -&amp;gt; DidMount -&amp;gt; DidUpdate(WillReceiveProps)-&amp;gt;WillUnMount
+挂载(mount)：React的特点是先生成Virtual DOM，再把这个Virtual DOM在真实的DOM上画出来，这个行">
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      
+          <h1 id="logo-wrap">
+            <a href="/" id="logo">CODE THE WEB</a>
+          </h1>
+      
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about.html">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="Search"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="javascript:;" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" class="search-form-input st-default-search-input" placeholder="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-react-component-lifecyle-methods" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-08-08T07:04:45.000Z" itemprop="datePublished" class="article-date">2016-08-08</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-08-08-react-component-lifecyle-methods/">Component LifeCycle Methods</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>React Component 常用生命周期函数： getInitialState -&gt; WillMount -&gt; render -&gt; DidMount -&gt; DidUpdate(WillReceiveProps)-&gt;WillUnMount</p>
+<p>挂载(mount)：React的特点是先生成Virtual DOM，再把这个Virtual DOM在真实的DOM上画出来，这个行为就叫挂载。只有挂载后，React元素才可以在真实的DOM(也即浏览器的doument)中找到。</p>
+<a id="more"></a>
+<hr>
+<h2 id="实际应用："><a href="#实际应用：" class="headerlink" title="实际应用："></a>实际应用：</h2><h3 id="getInitialState"><a href="#getInitialState" class="headerlink" title="getInitialState"></a>getInitialState</h3><p>在组件初始化时调用一次，<strong>仅调用一次</strong><br>示例代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">getInitialState() &#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    itemList: []</div><div class="line">  &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>则在别的组件函数中，可以通过<code>this.state.itemList</code>来引用变量。</p>
+<p>注意事项：<br>1.如果要改变<code>state</code>，请使用React的<code>setState</code>方法。 在本例中为:<br><code>this.setState({itemList: newList})</code>,不要直接对<code>state</code>赋值，如：<code>this.state.itemList = newList</code>. 因为前者会触发一次<code>render</code>的调用(即组件重新渲染)，而后者却不会，这不是正确的使用方式。</p>
+<p>2.React并不保证<code>setState</code>调用后立即改变<code>state</code>的状态。<br>3.<code>setState</code>其实还有回调。如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.setState(&#123;</div><div class="line">  itemList: newList,</div><div class="line">  &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="compoentWillMount"><a href="#compoentWillMount" class="headerlink" title="compoentWillMount"></a>compoentWillMount</h3><p>在组件挂载前调用一次，<strong>仅调用一次</strong></p>
+<p>我一般在这里用<code>ajax</code>获取数据，之后再通过<code>setState</code>引起组件的重新渲染。</p>
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取商品详情信息</span></div><div class="line">getItemDetail() &#123;</div><div class="line">  ajax(&#123;</div><div class="line">    url: shopping.api.prefix + shopping.api.itemDetail,</div><div class="line">    data: &#123;</div><div class="line">      goodsId: goodsId</div><div class="line">    &#125;,</div><div class="line">    success: (data) =&gt; &#123;</div><div class="line">      <span class="keyword">if</span>(data.code != <span class="number">200</span>) alert(<span class="string">'没有商品数据'</span>);</div><div class="line">      <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">//这里设　setState　引起组件重新render</span></div><div class="line">        <span class="keyword">this</span>.setState(&#123;itemDetail: data.data&#125;);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;,</div><div class="line"></div><div class="line"><span class="comment">//在WillMount里调用上面的方法</span></div><div class="line">componentWillMount() &#123;</div><div class="line">  <span class="keyword">this</span>.getItemDetail();</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>提示：<br>组件在<code>getInitialState</code>后<code>render</code>一次，如果<code>WillMount</code>里调用了<code>setState</code>, 则又会组件引起<code>render</code>一次。则组件一共调用<code>render</code>了两次。</p>
+<hr>
+<h3 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h3><p>在组件挂载后调用一次，<strong>仅调用一次</strong><br>此时元素节点已经在真实的DOM中生成了，可以绑定事件了。</p>
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">componentDidMount() &#123;</div><div class="line">  <span class="comment">//查看购物车</span></div><div class="line">  $btns.find(<span class="string">'.shopping-cart'</span>).on(<span class="string">'tap'</span>, () =&gt; &#123;</div><div class="line">    lf.appJs.doAction(<span class="string">`shopping-cart.html`</span>, <span class="string">'购物车'</span>);</div><div class="line">  &#125;); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意：<br>1.<code>React.findDOMNode(this.refs.xxx)</code> 是React自带的查找节点的方法，它查找的是虚拟DOM里的节点，也即无论组件挂载前后，它都可以查找到节点</p>
+<p>2.用第三方类库如Zepto, 使用<code>$(selector)</code>来查询，它查找的是真实的DOM节点，只有在节点挂载后才可以查找到, 也只有此时添加监听事件才生效</p>
+<p>3.虚拟DOM的节点可以被$查询包装起来，如 <code>let $btns = $(R.findDOMNode(this.refs.btns));</code>, 同样的，也只节点挂载后这样才有用，不然查询出来的只是个空集合。</p>
+<p>4.注意上面的用词是<strong>节点</strong>挂载后，不是<strong>组件</strong>挂载后，组件里包含了节点，但组件<code>DidMount</code>了不一定节点就挂载了，这在复杂的一点的业务场景下是可能的(比如组件在<code>DidMount</code>利用<code>ajax</code>获取数据，之后再<code>setState</code>，则由此生成的节点要等组件触发<code>DidUpdate</code>事件时才算挂载成功)。</p>
+<h4 id="componentDidMount的陷阱"><a href="#componentDidMount的陷阱" class="headerlink" title="componentDidMount的陷阱"></a>componentDidMount的陷阱</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">getInitialState() &#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    goodsIdAndNumList: [],</div><div class="line">  &#125;</div><div class="line">&#125;,</div><div class="line">    </div><div class="line">componentWillMount() &#123;</div><div class="line">  ajax(&#123;</div><div class="line">    url: shopping.api.prefix + shopping.api.itemDetail,</div><div class="line">    data: &#123;</div><div class="line">      goodsId: goodsId</div><div class="line">    &#125;,</div><div class="line">    success: (data) =&gt; &#123;</div><div class="line">      <span class="comment">//ajax成功返回时setState</span></div><div class="line">      <span class="keyword">this</span>.setState(&#123;</div><div class="line">        goodsIdAndNumList: [&#123;goodsId: goodsId, num: <span class="number">1</span>&#125;]</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">componentDidMount() &#123;</div><div class="line">  <span class="comment">//code1: 在触发DidMount时使用state</span></div><div class="line">  <span class="keyword">let</span> st = <span class="keyword">this</span>.state;</div><div class="line">  <span class="built_in">console</span>.log(st.goodsIdAndNumList);</div><div class="line">  </div><div class="line">  R.findDOMNode(<span class="keyword">this</span>.refs.createOrder).addEventListener(<span class="string">'touchend'</span>, () =&gt; &#123;</div><div class="line">    <span class="comment">//code2: 在绑定的事件中使用state</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.goodsIdAndNumList);</div><div class="line">    </div><div class="line">    <span class="comment">//再次使用st</span></div><div class="line">    <span class="built_in">console</span>.log(st.goodsIdAndNumList);</div><div class="line">  &#125;);</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>实践过程中发现，在<code>code1</code>及<code>code2</code>中<code>st.goodsIdAndNumList</code>是个空数组，而在<code>code2</code>中<code>this.state.goodsIdAndNumList</code>才有值。这表明：</p>
+<p>1.<code>WillMount</code>虽然先于<code>DidMount</code>执行，但它们默认是异步的，即后者不会因为前者未执行完成就等待。因此<code>WillMount</code>里使用<code>ajax</code>获取数据期间，<code>DidMount</code>就已经执行完毕了，故此时<code>code1</code>中<code>st</code>并未得到更新。</p>
+<p>2.<code>code2</code>中<code>st.goodsIdAndNumList</code>仍为空数组。按道理来说<code>st</code>应该是引用，但事实表明，它是只是值。<br>对此我猜测，<code>DidMount</code>的时候通过<code>this.state</code>获取的只是组件的<code>state</code>的值的一个副本，当之后<code>state</code>再改变时，<code>DidMount</code>里的<code>this.state</code>并不会改变，因为<code>state</code>的改变已经反应在<code>DidUpate</code>函数中了。</p>
+<hr>
+<h3 id="componentDidUpdate-prevProps-prevState"><a href="#componentDidUpdate-prevProps-prevState" class="headerlink" title="componentDidUpdate(prevProps, prevState)"></a>componentDidUpdate(prevProps, prevState)</h3><p>新的props或state已经同步到真实的DOM后立即调用，在初始化渲染的时候，该方法不会调用。</p>
+<p>注意：<br>新的<code>props</code>和<code>state</code>都会触发该方法，也即在子组件中该方法通常会被频繁触发。如果要在该方法中做绑定事件，最好判断清楚此次<code>update</code>究竟是来自<code>props</code>还是来自<code>state</code>，否则会绑定多次。不过，有一个偷懒的方法，那就是在绑定事件前先解绑，例子如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">componentDidUpdate: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> $links = $(React.findDOMNode(<span class="keyword">this</span>.refs.list)).find(<span class="string">'a'</span>);</div><div class="line">  </div><div class="line">  $links.off();</div><div class="line">  $links.on(<span class="string">'tap'</span>, (e) =&gt; <span class="keyword">this</span>.toDetail(e));</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<h3 id="componentWillReceiveProps-nextProps"><a href="#componentWillReceiveProps-nextProps" class="headerlink" title="componentWillReceiveProps(nextProps)"></a>componentWillReceiveProps(nextProps)</h3><p>接收到新的<code>props</code>时触发；对于子组件而言，是父组件重新渲染时触发。在初始化渲染的时候，该方法不会调用。</p>
+<p>注意：<br>对于子组件而言，触发该函数时，父组件传来的<code>props</code>有可能与上一次的<code>props</code>是一样的。更详细的说明，请看<a href="https://facebook.github.io/react/blog/2016/01/08/A-implies-B-does-not-imply-B-implies-A.html" target="_blank" rel="external">官方博客</a></p>
+<p>死循环的经历：<br>父组件传了一个方法给子组件，该方法调用了<code>setState</code>,会引起父组件的重新渲染，也会触发<code>componentWillReceiveProps</code>方法。<br>而我在<code>componentWillReceiveProps</code>方法中未做<code>nextProps</code>与<code>this.props</code>的判断，直接就调用父组件传过来的方法，引起父组重新渲染，重新触发子组件的<code>componentWillReceiveProps</code>，再次调用父组件传过来的方法，于是就死循环了。</p>
+<hr>
+<h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><p>通过<code>React.createClass()</code>或<code>extends React.Component</code>创建的组件必须包含<code>render</code>方法。</p>
+<p><code>render</code>方法里一般根据<code>state</code>或<code>props</code>来渲染组件。<code>render</code>里面可以传变量，如要做一些逻辑判断，你会发现<strong>三元表达式</strong>大有用场，更多的例子，请看<a href="https://facebook.github.io/react/tips/if-else-in-JSX.html" target="_blank" rel="external">官方文档</a></p>
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">render() &#123;</div><div class="line">  <span class="keyword">return</span> (</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">className</span>=<span class="string">&#123;</span>"<span class="attr">order-list</span> " + <span class="attr">this.state.class</span>&#125;&gt;</span></span></div><div class="line">      &#123;this.state.orderList&#125;</div><div class="line">      &#123;</div><div class="line">        this.state.noData ?</div><div class="line">        <span class="tag">&lt;<span class="name">NoData</span> <span class="attr">data</span>=<span class="string">&#123;&#123;span_text:</span></span></div><div class="line">            <span class="attr">flag</span> == <span class="string">ORDER_LIST.PENDING</span> ? '还没有待支付订单噢~' <span class="attr">:</span> '还没有订单噢~'&#125;&#125;/&gt; : ''</div><div class="line">      &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">  )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意：<br>1.<code>render</code> 方法里不允许<code>setState</code>，原因很简单，<code>setState</code>会触发新的<code>render</code>，允许你<code>setState</code>，那就死循环啦。<br>2.父组件重新<code>render</code>一次，会引起下面的全部子组件重新<code>render</code>一次。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-08-08-react-component-lifecyle-methods/" data-id="ciuv6el3r001dmtrrztvorf42" class="article-share-link" data-share="baidu" data-title="Component LifeCycle Methods">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2016-08-08-react-component-lifecyle-methods/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+<!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
+  
+    <a href="/2016-08-13-hexo/" id="article-nav-newer" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Hexo折腾记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016-04-06-css-selector-basics/" id="article-nav-older" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">CSS 选择器基础</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016-08-08-react-component-lifecyle-methods/" data-title="Component LifeCycle Methods" data-url="https://levy9527.github.io/2016-08-08-react-component-lifecyle-methods/"></div>
+  </section>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+          </li>
+        
+          <li>
+            <a href="http://coolshell.cn/" target="_blank">左耳朵耗子</a>
+          </li>
+        
+          <li>
+            <a href="http://www.barretlee.com/entry/" target="_blank">阿里郎小胡子哥</a>
+          </li>
+        
+          <li>
+            <a href="http://pinggod.com/" target="_blank">大漠弟子pinggod</a>
+          </li>
+        
+          <li>
+            <a href="http://ieclipse.cn/" target="_blank">Jamling(参考样式)</a>
+          </li>
+        
+          <li>
+            <a href="https://www.haomwei.com/" target="_blank">屠城(参考字体)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 levy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/levy9527/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about.html" class="mobile-nav-link">关于</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+	<a href="https://github.com/levy9527"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+
+<!-- 百度统计start -->
+
+    <script type="text/javascript">
+      var key = '7595a86aeed3cfd93d5621d3ec858dce';       
+      if(!key) 
+          key = '';
+          
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + key;
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+<!-- 百度统计end -->
+
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"levy9527github"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<!-- swiftype搜索 start -->
+
+<!-- swiftype搜索 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

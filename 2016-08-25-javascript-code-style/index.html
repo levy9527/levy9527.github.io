@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Javascript Code Style | levy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言个人认为编码规范是很重要的,它可以达到提高代码质量,增强团队的开发协作的目的.
+作为强迫症患者,如果看到不符规范的代码,我会十分难受.
+以下规范主要根据书籍 Maintainable Javscript 翻译而来, 结合其他资料,根据个人喜好,有改动.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript Code Style">
+<meta property="og:url" content="https://levy9527.github.io/2016-08-25-javascript-code-style/index.html">
+<meta property="og:site_name" content="levy">
+<meta property="og:description" content="前言个人认为编码规范是很重要的,它可以达到提高代码质量,增强团队的开发协作的目的.
+作为强迫症患者,如果看到不符规范的代码,我会十分难受.
+以下规范主要根据书籍 Maintainable Javscript 翻译而来, 结合其他资料,根据个人喜好,有改动.">
+<meta property="og:updated_time" content="2016-09-07T06:46:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript Code Style">
+<meta name="twitter:description" content="前言个人认为编码规范是很重要的,它可以达到提高代码质量,增强团队的开发协作的目的.
+作为强迫症患者,如果看到不符规范的代码,我会十分难受.
+以下规范主要根据书籍 Maintainable Javscript 翻译而来, 结合其他资料,根据个人喜好,有改动.">
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      
+          <h1 id="logo-wrap">
+            <a href="/" id="logo">CODE THE WEB</a>
+          </h1>
+      
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about.html">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="Search"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="javascript:;" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" class="search-form-input st-default-search-input" placeholder="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-javascript-code-style" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-08-25T12:29:26.000Z" itemprop="datePublished" class="article-date">2016-08-25</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-08-25-javascript-code-style/">Javascript Code Style</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>个人认为编码规范是很重要的,它可以达到提高代码质量,增强团队的开发协作的目的.</p>
+<p>作为强迫症患者,如果看到不符规范的代码,我会十分难受.</p>
+<p>以下规范主要根据书籍 <strong>Maintainable Javscript</strong> 翻译而来, 结合其他资料,根据个人喜好,有改动.</p>
+<a id="more"></a>
+<h2 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h2><p>缩进使用2个或4个空格, 具体选哪个, 与团队约定好即可.</p>
+<p><strong>本文的缩进是4个空格的</strong></p>
+<p>不要使用<code>tab</code>, 更不要空格与<code>tab</code>混合使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">    doSomething(); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>不使用<code>tab</code>的原因是,目前还没有确定的规范说<code>tab</code>代表了几个空格,你当然可以设置,但该设置也许换个编辑器就失效了(我就吃过这种苦头), 更别说换一台电脑打开了.</p>
+</blockquote>
+<h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>单行最好不超过80个字符,当然也不用真的去数,当编辑器出现横向的滚动条时,就果然换行吧.</p>
+<p>操作符放在行尾,如逗号,加号等.</p>
+<p>续行要比正常的代码多一个级别的缩进</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good 两次缩进,共8个空格</span></div><div class="line">doSomething(argument1, argument2, argument3, argument4,</div><div class="line">        argument5);</div><div class="line"></div><div class="line"><span class="comment">// Bad 一次缩进,共4个空格</span></div><div class="line">doSomething(argument1, argument2, argument3, argument4,</div><div class="line">    argument5);</div><div class="line"></div><div class="line"><span class="comment">// Bad 逗号没放在第一行的行尾</span></div><div class="line">doSomething(argument1, argument2, argument3, argument4</div><div class="line">        , argument5);</div></pre></td></tr></table></figure>
+<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><blockquote>
+<p>命名是机算机界两大难题之一</p>
+</blockquote>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量应该遵循以下规则:</p>
+<ul>
+<li>驼峰命名</li>
+<li>名词开头</li>
+<li>尽量不要带$, 除非是类似<code>jQuery</code>查询返回的对象</li>
+<li>尽量不要用下划线, 除非你在用<code>underscore</code>或<code>loadash</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">var</span> accountNumber = <span class="string">"8401-1"</span>;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 首字母大写了</span></div><div class="line"><span class="keyword">var</span> AccountNumber = <span class="string">"8401-1"</span>;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 动词开头</span></div><div class="line"><span class="keyword">var</span> getAccountNumber = <span class="string">"8401-1"</span>;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 使用了下划线</span></div><div class="line"><span class="keyword">var</span> account_number = <span class="string">"8401-1"</span>;</div></pre></td></tr></table></figure>
+<p>函数的名字以动词开头, 其余规则同变量命名规则</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// code </span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 首字母大写了</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">DoSomething</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// code </span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 以名词开头</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">car</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// code </span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 使用了下划线 </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">do_something</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// code </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>常量使用<code>const</code>关键字,字母全部大写,单词之前使用下划线分割</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">var</span> TOTAL_COUNT = <span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 驼峰命名 </span></div><div class="line"><span class="keyword">var</span> totalCount = <span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 大小写混合使用 </span></div><div class="line"><span class="keyword">var</span> total_COUNT = <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<p>对象的私有属性/私有方法,以下划线开头</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">var</span> object = &#123;</div><div class="line">    _count: <span class="number">10</span>,</div><div class="line">    </div><div class="line">    _getCount: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    	<span class="keyword">return</span> <span class="keyword">this</span>._count; </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><ul>
+<li><p>一般文件名 推荐单词全部小写, 多个单词以中划线分割</p>
+</li>
+<li><p><code>JSX</code>文件名则使用首字母也大写的驼峰命名规则,不使用分割符</p>
+</li>
+<li><p>文件夹命名规则 推荐同一般文件名</p>
+</li>
+</ul>
+<h3 id="路径-url"><a href="#路径-url" class="headerlink" title="路径(url)"></a>路径(url)</h3><p>有时需要js来定制路由规则, 则此时就涉及到url的命名</p>
+<p>参考<br>google</p>
+<p><a href="https://developer.chrome.com/multidevice/webview/gettingstarted" target="_blank" rel="external">https://developer.chrome.com/multidevice/webview/gettingstarted</a></p>
+<p>以及facebook</p>
+<p><a href="https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html" target="_blank" rel="external">https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html</a></p>
+<p>我推荐url命名也全部单词小写, 多个单词以中划线分割</p>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>操作符两边要有一个空格</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">var</span> found = (values[i] === item);</div><div class="line"></div><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">if</span> (found &amp;&amp; (count &gt; <span class="number">10</span>)) &#123;</div><div class="line">    doSomething(); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; count; i++) &#123; </div><div class="line">    process(i);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 缺少空格</span></div><div class="line"><span class="keyword">var</span> found = (values[i]===item);</div><div class="line"></div><div class="line"><span class="comment">// Bad: 缺少空格</span></div><div class="line"><span class="keyword">if</span> (found&amp;&amp;(count&gt;<span class="number">10</span>)) &#123;</div><div class="line">    doSomething(); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 缺少空格</span></div><div class="line"><span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;count; i++) &#123;</div><div class="line">    process(i); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="判断相等"><a href="#判断相等" class="headerlink" title="判断相等"></a>判断相等</h3><p>尽量使用 === and !== 替代 == and != 避免发生类型转换</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">var</span> same = (a === b);</div><div class="line"></div><div class="line"><span class="comment">// Bad: 使用 ==</span></div><div class="line"><span class="keyword">var</span> same = (a == b);</div></pre></td></tr></table></figure>
+<h3 id="三元表达式"><a href="#三元表达式" class="headerlink" title="三元表达式"></a>三元表达式</h3><p>一般而言, 三元素表达式用来简化赋值操作, 而不是为了简化if-else</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">var</span> value = condition ? value1 : value2;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 没有赋值操作,应该使用if-else</span></div><div class="line">condition ? doSomething() : doSomethingElse();</div><div class="line"></div><div class="line"><span class="comment">// Good: 在return中, 是特殊情况</span></div><div class="line"><span class="keyword">return</span> (size &gt; <span class="number">0</span> ? size : defaultSize);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>特殊情况:</p>
+<p>在<code>JSX</code>中, 为了方便, 我经常会用第二种写法, 我觉得也是可以接受的, 但也仅限于<code>JSX</code></p>
+</blockquote>
+<h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>字符串变量建议使用<strong>单引号</strong>,考虑到html的元素的属性是双引号的,使用单绰号可以方便写出下面的代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.body.innerHTML = <span class="string">'&lt;div class="alert" role="alert"&gt;你的浏览器实在&lt;strong&gt;太太太太太太旧了&lt;/strong&gt;&lt;/div&gt;'</span>;</div></pre></td></tr></table></figure>
+<p>字符串最好用一行来表示,不要使用反斜杠在新的一行创建字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Bad: 使用反斜杠形成两行</span></div><div class="line"><span class="keyword">var</span> longString = <span class="string">'Here'</span>s the story, <span class="keyword">of</span> a man \ </div><div class="line">    named Brady.<span class="string">';</span></div></pre></td></tr></table></figure>
+<p>如果真的要多行, 请使用ES6的<a href="http://es6.ruanyifeng.com/#docs/string#模板字符串" target="_blank" rel="external">模板字符串</a></p>
+<p>模板字符串的另一个好处是, 字符串里可以使用变量, 因此也不再需要使用加号来拼接字符串.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 字符串中嵌入变量</span></div><div class="line"><span class="keyword">var</span> name = <span class="string">'Bob'</span>, time = <span class="string">'today'</span>;</div><div class="line"></div><div class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></div></pre></td></tr></table></figure>
+<h3 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h3><p>整数不要使用八进制(这个应该没人用吧)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good 10进制</span></div><div class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="comment">// Good 16进制</span></div><div class="line"><span class="keyword">var</span> num = <span class="number">0xA2</span>;</div><div class="line"></div><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">var</span> num = <span class="number">1e23</span>;</div></pre></td></tr></table></figure>
+<p>浮点数至少带有一个小数位(以js的机制而言,js里的数字全是浮点数,这里是指某一变量会存储带小数的数值)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">var</span> price = <span class="number">10.0</span>; </div><div class="line"><span class="keyword">var</span> price = <span class="number">10.00</span>;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 只有小数点,后面没有数字</span></div><div class="line"><span class="keyword">var</span> price = <span class="number">10.</span>;</div></pre></td></tr></table></figure>
+<p>下面是有争议的例子:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Bad or Good ?</span></div><div class="line"><span class="keyword">var</span> price = <span class="number">.1</span>;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>书中认为这种写法并不好. </p>
+<p>但这种写法在CSS中是属于精简的/值得鼓励的.</p>
+<p>考虑到写js的人也会写CSS, 我认为这种写法是可以接受的, 反正我喜欢这样写😁</p>
+</blockquote>
+<h3 id="null"><a href="#null" class="headerlink" title="null"></a>null</h3><p><code>null</code>值只用在以下四种情况中:</p>
+<ol>
+<li>初始化一个将会存放对象的变量</li>
+<li>检测一个变量是否在初始化时, 以对象赋值</li>
+<li>检测函数的参数是否是对象</li>
+<li>函数返回值期望是对象时</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">var</span> person = <span class="literal">null</span>;</div><div class="line"></div><div class="line"><span class="comment">// Good 函数期望返回的是对象</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPerson</span>(<span class="params"></span>) </span>&#123; </div><div class="line">    <span class="keyword">if</span> (condition) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person(<span class="string">"Nicholas"</span>); </div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">null</span>; </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">var</span> person = getPerson();</div><div class="line"><span class="keyword">if</span> (person !== <span class="literal">null</span>)&#123;</div><div class="line">    doSomething(); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 检测一个未初始化的变量</span></div><div class="line"><span class="keyword">var</span> person;</div><div class="line"><span class="keyword">if</span> (person != <span class="literal">null</span>)&#123;</div><div class="line">    doSomething(); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 检测是否有传参 arg4 </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">arg1, arg2, arg3, arg4</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (arg4 != <span class="literal">null</span>)&#123;</div><div class="line">        doSomethingElse(); </div><div class="line">    &#125;</div><div class="line">    <span class="comment">//注: 本例中,对于检测是否有传参, if(arg4) 即可</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>不要直接使用<code>undefined</code></p>
+<p>若要查看变量是否已定义, 可以使用<code>typeof</code>关键字</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> variable === <span class="string">'undefined'</span>) &#123;</div><div class="line">    <span class="comment">// do something </span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 直接使用undefined</span></div><div class="line"><span class="keyword">if</span> (variable == <span class="literal">undefined</span>) &#123;</div><div class="line">    <span class="comment">// do something </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>typeof 后面不要加括号 </p>
+</blockquote>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象应该遵循以下规则:</p>
+<ul>
+<li>张开的大括号应该与声明同行</li>
+<li>闭合的大括号应该单独一行</li>
+<li>每一对属性-值都应该在单独一行,且有一个级别的缩进</li>
+<li>属性不用带引号, 后面紧跟着冒号, 冒号与值之前有一个空格</li>
+<li>方法前后要有一行空行</li>
+<li>相关的属性放到一起, 且后面添加额外的空行,以提高可读性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="keyword">var</span> object = &#123;</div><div class="line">    key1: value1,</div><div class="line">    key2: value2,</div><div class="line"></div><div class="line">    func: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">        <span class="comment">// do something</span></div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    key3: value3 </div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 不正确的缩进</span></div><div class="line"><span class="keyword">var</span> object = &#123;</div><div class="line">	    key1: value1,</div><div class="line">	    key2: value2 </div><div class="line">    &#125;;</div><div class="line">    </div><div class="line"><span class="comment">// Bad: 函数前后少了空行</span></div><div class="line"><span class="keyword">var</span> object = &#123;</div><div class="line">    key1: value1, </div><div class="line">    key2: value2, </div><div class="line">    func: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// do something </span></div><div class="line">    &#125;,</div><div class="line">    key3: value3 </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>参考<a href="http://es6.ruanyifeng.com/#docs/style#对象" target="_blank" rel="external">ES6编程风格</a></p>
+<p>多行定义的对象，最后一个成员以逗号结尾。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">const</span> b = &#123;</div><div class="line">      k1: v1,</div><div class="line">      k2: v2,	</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>虽然编译器报警告, 但使用<code>babel</code>(我使用的是6.3.17 (babel-core 6.3.26)版本)编译后, 最后的一个逗号是会去掉的.</p>
+</blockquote>
+<p>函数传参为对象时:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good </span></div><div class="line">doSomething(&#123;</div><div class="line">	key1: value1,</div><div class="line">	key2: value2 </div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// Bad: 所有都放在一行</span></div><div class="line">doSomething(&#123;key1: value1, key2: value2&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果对象只有一个键值对, 写在一行可以接受:</p>
+<p><code>doSomething({key: value1});</code></p>
+</blockquote>
+<h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><p>所有变量应该声明后使用</p>
+<p>同时对多个变量声明,只使用一个var, 一行一个变量; 除了第一行,均使用一个级别的缩进</p>
+<p>有初始化的的变量在无初始化的前面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good </span></div><div class="line"><span class="keyword">var</span> count = <span class="number">10</span>,</div><div class="line">    name = <span class="string">"Nicholas"</span>,</div><div class="line">    found = <span class="literal">false</span>,</div><div class="line">    empty;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 一行里出现多个声明</span></div><div class="line"><span class="keyword">var</span> count = <span class="number">10</span>, name = <span class="string">"Nicholas"</span>, found = <span class="literal">false</span>, empty;</div><div class="line">    </div><div class="line"><span class="comment">// Bad: 未初化的变量在前面 </span></div><div class="line"><span class="keyword">var</span> empty,</div><div class="line">    count = <span class="number">10</span>,</div><div class="line">	name = <span class="string">"Nicholas"</span>,</div><div class="line">    found = <span class="literal">false</span>;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 出现多个声明</span></div><div class="line"><span class="keyword">var</span> count = <span class="number">10</span>,</div><div class="line">	name = <span class="string">"Nicholas"</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> found = <span class="literal">false</span>, </div><div class="line">    empty;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注:<br>ES6的<a href="http://es6.ruanyifeng.com/#docs/style#块级作用域" target="_blank" rel="external">let与const</a>的出现,完全可以取代<code>var</code>. 不是直接在浏览器里写js的话,尽量避免<code>var</code>的使用</p>
+<p>原文中认为 = 要对齐, 我认为没必要,因为这样极有可能要填充许多空格:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 实践中我不会这样写,虽然这样真的很好看 </span></div><div class="line"><span class="keyword">var</span> count     = <span class="number">10</span>,</div><div class="line">    longName  = <span class="string">"Nicholas"</span>,</div><div class="line">    found     = <span class="literal">false</span>,</div></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><p>函数先声明后使用</p>
+<p>使用函数声明,而不是函数表达式,也不要使用函数构造器</p>
+<p>函数体的大括号应该与<code>function</code>关键字同一行; 与包含参数的右括号有一个空格</p>
+<p>多个参数时,后一个参数与前面的逗号要有一个空格</p>
+<p>函数体的代码要有一个级别的缩进</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good 函数声明, 且空格/缩进正确</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> arg1 + arg2; </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 不正确的空格 </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span> (<span class="params">arg1, arg2</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> arg1 + arg2; </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 大括号换行了, 目测这里会引起程序员的战争 </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">arg1, arg2</span>) </span></div><div class="line">&#123;    <span class="keyword">return</span> arg1 + arg2; </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 函数表达式</span></div><div class="line"><span class="keyword">var</span> doSomething = <span class="function"><span class="keyword">function</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> arg1 + arg2; </div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 使用函数构造器</span></div><div class="line"><span class="keyword">var</span> doSomething = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"arg1"</span>, <span class="string">"arg2"</span>, <span class="string">"return arg1 + arg2"</span>);</div></pre></td></tr></table></figure>
+<p>函数里面既有变量声明又有函数声明时, 内部函数的声明应在变量之后. </p>
+<p>内部变量的声明最好与外部函数的声明有一行空行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> count = <span class="number">10</span>,</div><div class="line">        name = <span class="string">"Nicholas"</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>) </span>&#123;	    </div><div class="line">    	<span class="comment">// code </span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// code that uses inner() </span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 内部函数声明在内部变量声明之前</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>) </span>&#123;	    </div><div class="line">    	<span class="comment">// code </span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> count = <span class="number">10</span>,</div><div class="line">    	name = <span class="string">"Nicholas"</span>;</div><div class="line"></div><div class="line">    <span class="comment">// code that uses inner() </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>匿名函数赋值为对象的方法时,<code>fuction</code>关键字与左括号不应该有空格</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good</span></div><div class="line">object.method = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="comment">// code </span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// Bad: 多余的空格 </span></div><div class="line">object.method = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="comment">// code </span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>立即执行函数应该用括号把整个函数的调用包起来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Good </span></div><div class="line"><span class="keyword">var</span> value = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// function body</span></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        message: <span class="string">"Hi"</span></div><div class="line">    &#125;</div><div class="line">&#125;());</div><div class="line"></div><div class="line"><span class="comment">// Bad: 没有用括号包起来</span></div><div class="line"><span class="keyword">var</span> value = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// function body</span></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        message: <span class="string">"Hi"</span></div><div class="line">    &#125;</div><div class="line">&#125;();</div><div class="line"></div><div class="line"><span class="comment">// Bad: 括号放错位置,没把调用包起来</span></div><div class="line"><span class="keyword">var</span> value = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// function body</span></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        message: <span class="string">"Hi"</span></div><div class="line">    &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>在写React组件时, 推荐组件生命周期函数在前, 事件处理等helper函数在后</p>
+<p>如果是<code>ES6</code>写法, 定义函数时推荐使用箭头函数, 不要手动绑定<code>this</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">clss Component extends React.Component &#123;</div><div class="line">  <span class="keyword">static</span> defaultProps = &#123;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props)</div><div class="line">    </div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">    </div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  componentWillMount() &#123;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  componentDidMount() &#123;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  componentWillReceiveProps(props) &#123;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  componentDidUpdate() &#123;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">// render 放在所有lifecycle方法之后</span></div><div class="line">  render() &#123;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">// 事件处理等helper函数放在render后面</span></div><div class="line">  <span class="comment">// 使用箭头函数, 自动绑定this</span></div><div class="line">  onClick = e =&gt; &#123;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  helpRender = () =&gt; &#123;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-08-25-javascript-code-style/" data-id="ciuv6el36000vmtrrxd6zwtqy" class="article-share-link" data-share="baidu" data-title="Javascript Code Style">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2016-08-25-javascript-code-style/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+<!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
+  
+    <a href="/2016-08-27-add-a-line-through-text/" id="article-nav-newer" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          给文字加一条中划线
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016-08-13-hexo/" id="article-nav-older" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Hexo折腾记</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016-08-25-javascript-code-style/" data-title="Javascript Code Style" data-url="https://levy9527.github.io/2016-08-25-javascript-code-style/"></div>
+  </section>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+          </li>
+        
+          <li>
+            <a href="http://coolshell.cn/" target="_blank">左耳朵耗子</a>
+          </li>
+        
+          <li>
+            <a href="http://www.barretlee.com/entry/" target="_blank">阿里郎小胡子哥</a>
+          </li>
+        
+          <li>
+            <a href="http://pinggod.com/" target="_blank">大漠弟子pinggod</a>
+          </li>
+        
+          <li>
+            <a href="http://ieclipse.cn/" target="_blank">Jamling(参考样式)</a>
+          </li>
+        
+          <li>
+            <a href="https://www.haomwei.com/" target="_blank">屠城(参考字体)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 levy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/levy9527/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about.html" class="mobile-nav-link">关于</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+	<a href="https://github.com/levy9527"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+
+<!-- 百度统计start -->
+
+    <script type="text/javascript">
+      var key = '7595a86aeed3cfd93d5621d3ec858dce';       
+      if(!key) 
+          key = '';
+          
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + key;
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+<!-- 百度统计end -->
+
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"levy9527github"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<!-- swiftype搜索 start -->
+
+<!-- swiftype搜索 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

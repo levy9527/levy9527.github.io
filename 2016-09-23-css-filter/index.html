@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS3滤镜--从乔任梁的百度百科说起 | levy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="之前看到大家都在讨论乔任梁的死, 我不知道他是谁, 因此百度百科了一下
+我注意到为表示悼念, 百度百科界面是灰色的, 连图片也是. 但审查元素的时候, 可以发现图片原本是彩色的, 这么说来一定是被CSS处理后才显示为灰的. 
+究竟是怎么回事呢, 最终我找到了如下代码:
+12345678910body &amp;#123;  filter: grayscale(100%);  -webkit-filter:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3滤镜--从乔任梁的百度百科说起">
+<meta property="og:url" content="https://levy9527.github.io/2016-09-23-css-filter/index.html">
+<meta property="og:site_name" content="levy">
+<meta property="og:description" content="之前看到大家都在讨论乔任梁的死, 我不知道他是谁, 因此百度百科了一下
+我注意到为表示悼念, 百度百科界面是灰色的, 连图片也是. 但审查元素的时候, 可以发现图片原本是彩色的, 这么说来一定是被CSS处理后才显示为灰的. 
+究竟是怎么回事呢, 最终我找到了如下代码:
+12345678910body &amp;#123;  filter: grayscale(100%);  -webkit-filter:">
+<meta property="og:updated_time" content="2016-09-23T08:37:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3滤镜--从乔任梁的百度百科说起">
+<meta name="twitter:description" content="之前看到大家都在讨论乔任梁的死, 我不知道他是谁, 因此百度百科了一下
+我注意到为表示悼念, 百度百科界面是灰色的, 连图片也是. 但审查元素的时候, 可以发现图片原本是彩色的, 这么说来一定是被CSS处理后才显示为灰的. 
+究竟是怎么回事呢, 最终我找到了如下代码:
+12345678910body &amp;#123;  filter: grayscale(100%);  -webkit-filter:">
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      
+          <h1 id="logo-wrap">
+            <a href="/" id="logo">CODE THE WEB</a>
+          </h1>
+      
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about.html">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="Search"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="javascript:;" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" class="search-form-input st-default-search-input" placeholder="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-css-filter" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-09-23T08:32:58.000Z" itemprop="datePublished" class="article-date">2016-09-23</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-09-23-css-filter/">CSS3滤镜--从乔任梁的百度百科说起</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前看到大家都在讨论乔任梁的死, 我不知道他是谁, 因此<a href="http://baike.baidu.com/link?url=kKcHS3cYcO6TZuDATDSjajfKF3IuO9OH-f9jr_PepAn_quhh3XcaA9gdp9mpVwixNOvdaFf3a5kKJsgb5-9fUK" target="_blank" rel="external">百度百科</a>了一下</p>
+<p>我注意到为表示悼念, 百度百科界面是灰色的, 连图片也是. 但审查元素的时候, 可以发现图片原本是彩色的, 这么说来一定是被CSS处理后才显示为灰的. </p>
+<p>究竟是怎么回事呢, 最终我找到了如下代码:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  filter: grayscale(100%);</div><div class="line">  -webkit-filter: grayscale(100%);</div><div class="line">  -moz-filter: grayscale(100%);</div><div class="line">  -ms-filter: grayscale(100%);</div><div class="line">  -o-filter: grayscale(100%);</div><div class="line">  filter: url(data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter i…0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale);</div><div class="line">  filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);</div><div class="line">  filter: gray;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>把它注释掉, 页面就还原成彩色的了. <code>filter</code>就是今天的主角, CSS3滤镜</p>
+<a id="more"></a>
+<p>想直接看效果的, 可以看<a href="http://www.w3cplus.com/css3/ten-effects-with-css3-filter" target="_blank" rel="external">w3cPlus的文章</a>.</p>
+<p>不过该文章是2012的了, 因此我自己再实践了一遍, 代码在<a href="http://git.oschina.net/levy9527/practice/blob/master/css_practice/filter.html?dir=0&amp;filepath=css_practice%2Ffilter.html&amp;oid=01f873f38adc6a9f810a76cfecf74a38d26752a9&amp;sha=c9790d448a3587c9192ea4c38b2873e432d119b2" target="_blank" rel="external">码云</a>, 但不能在线预览.</p>
+<p>实践后的总结如下:</p>
+<ul>
+<li>grayscale 灰度</li>
+<li>sepia 褐色. 看起来就像老照片</li>
+<li>saturate 饱和度</li>
+<li>hue-rotate 色相旋转. 0~360deg, 超出后重新计算</li>
+<li>invert 反色. 看起来像相片底片, 50% 是分界线</li>
+<li>opacity 透明度. 这个特效跟<code>opacity</code>属性没差别, 建议直接使用<code>opacity</code></li>
+<li>brightness 亮度. 我不知道上限是多少. 我试过1000都有效果的</li>
+<li>contrast 对比度. 大于1才有意思</li>
+<li>blur 模糊. 0~100px, 注意调试效果的时候保护眼睛😁</li>
+<li>drop-shadow 阴影. 增加立体感, 用法同box-shadow(5px 5px 5px #ccc), 但效果有区别, box-shadow的阴影比较深/多, 可以二者同时使用</li>
+<li>url 这个不好用, 一般用于svg. 如果使用在线图片, 则遵循同源策略, 麻烦得很, 不建议使用.</li>
+</ul>
+<blockquote>
+<p>上面的大多数函数值为可以填数字或百分比, 数字会转换成百分比. 如0~1会转换成0~100%; 负值是无效的. </p>
+<p>少数函数值超过100%还是有效果的. 实践中多尝试吧.</p>
+</blockquote>
+<p>其实我在今年初的时候, 就有接触到<code>filter</code>了, 当时用到了<code>blur</code>特效. 不过当时是别人写的代码, 没深入研究. 因为那时我CSS还很菜😂 </p>
+<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><ul>
+<li>低版本的Chrome或Safari需要带-webkit前缀</li>
+<li>Firefox没有前缀的, 也即支持就支持, 不支持就是不支持, 因而前面百度的CSS是有些多余的. 当然它可能是通过autoprefixer处理的, 不是人手写的</li>
+<li>IE一直不支持filter. 它那自己的一套滤镜规则, 也叫filter. 一直都没有面向过IE开发, 我就没往这方面研究了</li>
+</ul>
+<p>经测试, 以下浏览器不带前缀是没问题的</p>
+<ul>
+<li>Chrome 53</li>
+<li>Safari 9</li>
+<li>Firefox 48</li>
+</ul>
+<p>更多详情可以点击<a href="http://caniuse.com/#feat=css-filters" target="_blank" rel="external">CanIUse</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://www.w3.org/TR/filter-effects-1/" target="_blank" rel="external">w3c-filter</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-09-23-css-filter/" data-id="ciuv6el2e0005mtrrq7ft2kfx" class="article-share-link" data-share="baidu" data-title="CSS3滤镜--从乔任梁的百度百科说起">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2016-09-23-css-filter/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+<!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
+  
+    <a href="/2016-09-24-some-tools-problem-on-mac/" id="article-nav-newer" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Mac的一些软件问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016-09-22-type-emoji-on-mac/" id="article-nav-older" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Mac使用输入法打出特殊字符</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-23-css-filter/" data-title="CSS3滤镜--从乔任梁的百度百科说起" data-url="https://levy9527.github.io/2016-09-23-css-filter/"></div>
+  </section>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+          </li>
+        
+          <li>
+            <a href="http://coolshell.cn/" target="_blank">左耳朵耗子</a>
+          </li>
+        
+          <li>
+            <a href="http://www.barretlee.com/entry/" target="_blank">阿里郎小胡子哥</a>
+          </li>
+        
+          <li>
+            <a href="http://pinggod.com/" target="_blank">大漠弟子pinggod</a>
+          </li>
+        
+          <li>
+            <a href="http://ieclipse.cn/" target="_blank">Jamling(参考样式)</a>
+          </li>
+        
+          <li>
+            <a href="https://www.haomwei.com/" target="_blank">屠城(参考字体)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 levy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/levy9527/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about.html" class="mobile-nav-link">关于</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+	<a href="https://github.com/levy9527"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+
+<!-- 百度统计start -->
+
+    <script type="text/javascript">
+      var key = '7595a86aeed3cfd93d5621d3ec858dce';       
+      if(!key) 
+          key = '';
+          
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + key;
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+<!-- 百度统计end -->
+
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"levy9527github"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<!-- swiftype搜索 start -->
+
+<!-- swiftype搜索 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
