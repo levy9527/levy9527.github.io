@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="levy">
 <meta property="og:description" content="React Component 常用生命周期函数： getInitialState -&amp;gt; WillMount -&amp;gt; render -&amp;gt; DidMount -&amp;gt; DidUpdate(WillReceiveProps)-&amp;gt;WillUnMount
 挂载(mount)：React的特点是先生成Virtual DOM，再把这个Virtual DOM在真实的DOM上画出来，这个行">
-<meta property="og:updated_time" content="2016-09-08T03:15:21.000Z">
+<meta property="og:updated_time" content="2016-12-01T01:18:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Component LifeCycle Methods">
 <meta name="twitter:description" content="React Component 常用生命周期函数： getInitialState -&amp;gt; WillMount -&amp;gt; render -&amp;gt; DidMount -&amp;gt; DidUpdate(WillReceiveProps)-&amp;gt;WillUnMount
@@ -124,12 +124,14 @@
 <p>例子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">render() &#123;</div><div class="line">  <span class="keyword">return</span> (</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">className</span>=<span class="string">&#123;</span>"<span class="attr">order-list</span> " + <span class="attr">this.state.class</span>&#125;&gt;</span></span></div><div class="line">      &#123;this.state.orderList&#125;</div><div class="line">      &#123;</div><div class="line">        this.state.noData ?</div><div class="line">        <span class="tag">&lt;<span class="name">NoData</span> <span class="attr">data</span>=<span class="string">&#123;&#123;span_text:</span></span></div><div class="line">            <span class="attr">flag</span> == <span class="string">ORDER_LIST.PENDING</span> ? '还没有待支付订单噢~' <span class="attr">:</span> '还没有订单噢~'&#125;&#125;/&gt; : ''</div><div class="line">      &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">  )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>注意：<br>1.<code>render</code> 方法里不允许<code>setState</code>，原因很简单，<code>setState</code>会触发新的<code>render</code>，允许你<code>setState</code>，那就死循环啦。<br>2.父组件重新<code>render</code>一次，会引起下面的全部子组件重新<code>render</code>一次。</p>
+<h3 id="shouldComponentUpdate-nextProps-nextState"><a href="#shouldComponentUpdate-nextProps-nextState" class="headerlink" title="shouldComponentUpdate(nextProps, nextState)"></a>shouldComponentUpdate(nextProps, nextState)</h3><p>该方法执行于render之前, 必须要有一个返回值. 返回true, 则会执行render, 返回false则不执行render.<br>如果没有返回值, 则相当于返回undefined, 会报错</p>
+<p>不想每次state的改变都引起组件的重新渲染时, 可以自定义此方法</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-08-08-react-component-lifecyle-methods/" data-id="civuodse8001nsorrlsztzc95" class="article-share-link" data-share="baidu" data-title="Component LifeCycle Methods">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-08-08-react-component-lifecyle-methods/" data-id="ciw78a5i8001o3nrrc6linol2" class="article-share-link" data-share="baidu" data-title="Component LifeCycle Methods">分享到</a>
       
 
       
@@ -182,7 +184,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -191,7 +193,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

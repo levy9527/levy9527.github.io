@@ -4,20 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Git Cherry-Pick | levy</title>
+  <title>JS禁止浏览器后退 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="场景你本地有一个feature分支. 假设完成开发需要10次commit, 当前你commit了8次. 此时有需求要你把前5次commit的结果合并到master上, 这个时候就可以使用git cherry-pick">
+  <meta name="description" content="浏览器默认的历史记录, 有时不能符合场景需求. 比如说, 场景要求后退到某个页面后, 不能再后退. 最初的想法是删除浏览器历史, 那么, 可以做到吗?">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git Cherry-Pick">
-<meta property="og:url" content="https://levy9527.github.io/2016-10-21-git-cherry-pick/index.html">
+<meta property="og:title" content="JS禁止浏览器后退">
+<meta property="og:url" content="https://levy9527.github.io/2016-12-02-how-to-disable-browser-go-back-with-javascript/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="场景你本地有一个feature分支. 假设完成开发需要10次commit, 当前你commit了8次. 此时有需求要你把前5次commit的结果合并到master上, 这个时候就可以使用git cherry-pick">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-10-21/32985855.jpg">
-<meta property="og:updated_time" content="2016-10-21T07:13:40.000Z">
+<meta property="og:description" content="浏览器默认的历史记录, 有时不能符合场景需求. 比如说, 场景要求后退到某个页面后, 不能再后退. 最初的想法是删除浏览器历史, 那么, 可以做到吗?">
+<meta property="og:updated_time" content="2016-12-02T03:08:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git Cherry-Pick">
-<meta name="twitter:description" content="场景你本地有一个feature分支. 假设完成开发需要10次commit, 当前你commit了8次. 此时有需求要你把前5次commit的结果合并到master上, 这个时候就可以使用git cherry-pick">
-<meta name="twitter:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-10-21/32985855.jpg">
+<meta name="twitter:title" content="JS禁止浏览器后退">
+<meta name="twitter:description" content="浏览器默认的历史记录, 有时不能符合场景需求. 比如说, 场景要求后退到某个页面后, 不能再后退. 最初的想法是删除浏览器历史, 那么, 可以做到吗?">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -65,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-git-cherry-pick" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-how-to-disable-browser-go-back-with-javascript" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-10-21T06:12:39.000Z" itemprop="datePublished" class="article-date">2016-10-21</time>
+    <time datetime="2016-12-02T02:04:01.000Z" itemprop="datePublished" class="article-date">2016-12-02</time>
     
   </div>
   <div class="article-inner">
@@ -76,49 +74,44 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-10-21-git-cherry-pick/">Git Cherry-Pick</a>
+    <a itemprop="name" class="article-title" href="/2016-12-02-how-to-disable-browser-go-back-with-javascript/">JS禁止浏览器后退</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>你本地有一个feature分支. 假设完成开发需要10次commit, 当前你commit了8次. 此时有需求要你把前5次commit的结果合并到master上, 这个时候就可以使用<code>git cherry-pick</code></p>
+        <p>浏览器默认的历史记录, 有时不能符合场景需求. 比如说, 场景要求后退到某个页面后, 不能再后退. 最初的想法是删除浏览器历史, 那么, 可以做到吗?</p>
 <a id="more"></a>
-<h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><ul>
-<li><code>git log</code> 查找并复制第5次commit的hash码</li>
-<li><code>git stash save</code> 把本地未暂存的修改藏起来(如果有的话)</li>
-<li><code>git checkout master</code> 切换回master分支</li>
-<li><code>git cherry-pick hash码</code><br>-e 选项可以编辑commit信息, 如果为空, 则取消提交, 但feature分支中前5次commit修改的文件会被暂存, 等待重新提交; -x 选项会使用提交信息后面出现(cherry picked from commit xxx)等文字, 场景中feature只是本地的分支, Git手册不建议添加这些信息</li>
-<li><code>git checkout feature</code> 回到feature分支</li>
-<li><code>git stash pop</code> 释放之前的被藏起来的修改, 继续开发</li>
+<h2 id="修改history-length"><a href="#修改history-length" class="headerlink" title="修改history.length"></a>修改history.length</h2><p>用浏览器打开网页, 浏览2个页面后, 打开控制台</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">history.length <span class="comment">// 输出为3</span></div><div class="line">history.length = <span class="number">0</span> <span class="comment">// 试图修改历史记录</span></div><div class="line">history.length <span class="comment">// 输出仍为3</span></div></pre></td></tr></table></figure>
+<p>怎么回事? 查看W3C文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">interface History &#123;</div><div class="line">  readonly attribute long length; </div><div class="line">  readonly attribute any state;</div><div class="line">  void go(optional long delta);</div><div class="line">  void back();</div><div class="line">  void forward();</div><div class="line">  void pushState(any data, DOMString title, optional DOMString? url = null);</div><div class="line">  void replaceState(any data, DOMString title, optional DOMString? url = null);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>history.length的长度是只读的; 从文档也可知, 并未提供删除浏览器历史记录的接口, 因此, 思路应该变一下</p>
+<h2 id="location-replace"><a href="#location-replace" class="headerlink" title="location.replace"></a>location.replace</h2><p>浏览器新打开一个页面, history.length就是1(因此就算能修改history的length属性,也不应该修改为0的),再打开别的页面, 或通过location.href跳转页面,则history.length就会大于1, 此时浏览器的后退按钮就会变得可点击, 移动端也可实现硬件返回.</p>
+<p>如果要禁止返回, 则可以让history.length始终为1, 使用location.replace(url)是可以做到的, 因为该方法不会增加history.length. 这种方法可以有效的阻止移动端的硬件返回, 缺点是完全舍弃了浏览器历史记录</p>
+<h2 id="自己管理历史记录"><a href="#自己管理历史记录" class="headerlink" title="自己管理历史记录"></a>自己管理历史记录</h2><p>由于location.replace()的不足, 需要自己定义一个数组, 记录访问过的url, 再对外提供接口, 模拟History接口, 提供forward(), back()等方法, 以便在应用内前进/后退.</p>
+<p>需要注意的是, 如果H5应用的全部跳转都是使用location.replace(), 则浏览器的按钮返回/移动端的硬件返回都是无效的, 因此需要在H5页面内呈现返回按钮. </p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.w3.org/TR/2014/REC-html5-20141028/browsers.html#history-1" target="_blank" rel="external">W3C history interface</a></li>
+<li><a href="http://caniuse.com/#search=history" target="_blank" rel="external">Can I Use history</a></li>
+<li><a href="http://www.cnblogs.com/accordion/p/5699372.html" target="_blank" rel="external">History API与浏览器历史堆栈管理</a></li>
+<li><a href="http://stackoverflow.com/questions/28028297/js-window-history-delete-a-state" target="_blank" rel="external">stackoverflow high level control history</a></li>
 </ul>
-<h2 id="图形界面"><a href="#图形界面" class="headerlink" title="图形界面"></a>图形界面</h2><p>以WebStorm为例, 图形界面操作如下(<a href="https://www.jetbrains.com/" target="_blank" rel="external">JetBrains</a>系列的产品通用):</p>
-<p><img src="http://oc9l6hs7x.bkt.clouddn.com/16-10-21/32985855.jpg" alt="图形界面操作"></p>
-<ol>
-<li>切换到master分支</li>
-<li>打开版本控制界面(快捷键⌘+9)</li>
-<li>左键点击需要合并的commit</li>
-<li>点击樱桃图标</li>
-</ol>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>cherry-pick名字好听, 方便好用. </p>
-<blockquote>
-<p>注: 跟<code>git cherry</code>不是同一回事</p>
-</blockquote>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-10-21-git-cherry-pick/" data-id="ciw78a5bk000w3nrr8vrki746" class="article-share-link" data-share="baidu" data-title="Git Cherry-Pick">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-12-02-how-to-disable-browser-go-back-with-javascript/" data-id="ciw78a5e800163nrrrfpd20om" class="article-share-link" data-share="baidu" data-title="JS禁止浏览器后退">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-10-21-git-cherry-pick/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2016-12-02-how-to-disable-browser-go-back-with-javascript/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Browser/">Browser</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
 
     </footer>
   </div>
@@ -127,19 +120,10 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-10-26-the-problem-of-host-your-blog-with-github-pages/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          Github Pages的问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016-10-16-EdgeHTML-the-new-web-rendering-engine/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016-11-23-github-forking-workflow/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Edge浏览器</div>
+      <div class="article-nav-title">GitHub协作开发流程</div>
     </a>
   
 </nav>
@@ -150,7 +134,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-10-21-git-cherry-pick/" data-title="Git Cherry-Pick" data-url="https://levy9527.github.io/2016-10-21-git-cherry-pick/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016-12-02-how-to-disable-browser-go-back-with-javascript/" data-title="JS禁止浏览器后退" data-url="https://levy9527.github.io/2016-12-02-how-to-disable-browser-go-back-with-javascript/"></div>
   </section>
 
 </section>
