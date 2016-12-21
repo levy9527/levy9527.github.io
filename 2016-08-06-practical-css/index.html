@@ -4,26 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>在GitHub搜索AlphaGo | levy</title>
+  <title>CSS实践总结 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="昨夜里睡到一半爬了起来, 脑子里突然想到围棋, 于是上GitHub搜索AlphaGo, 因为当初人机大战之后, 我曾在GitHub发现过这么一个项目.
-但事与愿违, 我找不到那个项目了! 虽然我印象有点模糊了, 不太记得那个项目具体”长什么样”, 但我知道项目的星星数量有1000+的, 而我搜出来结果, 最高不到200, 这到底是怎么回事呢?">
+  <meta name="description" content="本文总结了一些使用CSS的实践经验.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在GitHub搜索AlphaGo">
-<meta property="og:url" content="https://levy9527.github.io/2016-09-08-search-alphago-in-github/index.html">
+<meta property="og:title" content="CSS实践总结">
+<meta property="og:url" content="https://levy9527.github.io/2016-08-06-practical-css/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="昨夜里睡到一半爬了起来, 脑子里突然想到围棋, 于是上GitHub搜索AlphaGo, 因为当初人机大战之后, 我曾在GitHub发现过这么一个项目.
-但事与愿违, 我找不到那个项目了! 虽然我印象有点模糊了, 不太记得那个项目具体”长什么样”, 但我知道项目的星星数量有1000+的, 而我搜出来结果, 最高不到200, 这到底是怎么回事呢?">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-8/81136388.jpg">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-8/13111059.jpg">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-8/56900051.jpg">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-8/26063366.jpg">
-<meta property="og:updated_time" content="2016-10-26T08:12:19.000Z">
+<meta property="og:description" content="本文总结了一些使用CSS的实践经验.">
+<meta property="og:updated_time" content="2016-12-21T08:52:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在GitHub搜索AlphaGo">
-<meta name="twitter:description" content="昨夜里睡到一半爬了起来, 脑子里突然想到围棋, 于是上GitHub搜索AlphaGo, 因为当初人机大战之后, 我曾在GitHub发现过这么一个项目.
-但事与愿违, 我找不到那个项目了! 虽然我印象有点模糊了, 不太记得那个项目具体”长什么样”, 但我知道项目的星星数量有1000+的, 而我搜出来结果, 最高不到200, 这到底是怎么回事呢?">
-<meta name="twitter:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-8/81136388.jpg">
+<meta name="twitter:title" content="CSS实践总结">
+<meta name="twitter:description" content="本文总结了一些使用CSS的实践经验.">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -71,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-search-alphago-in-github" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-practical-css" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-09-08T09:09:18.000Z" itemprop="datePublished" class="article-date">2016-09-08</time>
+    <time datetime="2016-08-06T06:12:00.000Z" itemprop="datePublished" class="article-date">2016-08-06</time>
     
   </div>
   <div class="article-inner">
@@ -82,51 +74,64 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-09-08-search-alphago-in-github/">在GitHub搜索AlphaGo</a>
+    <a itemprop="name" class="article-title" href="/2016-08-06-practical-css/">CSS实践总结</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>昨夜里睡到一半爬了起来, 脑子里突然想到围棋, 于是上GitHub搜索AlphaGo, 因为当初人机大战之后, 我曾在GitHub发现过这么一个项目.</p>
-<p>但事与愿违, 我找不到那个项目了! 虽然我印象有点模糊了, 不太记得那个项目具体”长什么样”, 但我知道项目的星星数量有1000+的, 而我搜出来结果, 最高不到200, 这到底是怎么回事呢? </p>
+        <p>本文总结了一些使用CSS的实践经验.</p>
 <a id="more"></a>
-<hr>
-<p>先来看搜索截图<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-8/81136388.jpg" alt=""></p>
-<p>注意到我搜索的关键字是<code>alphago</code>, 根据结果分析如下:</p>
+<h2 id="元素显示与隐藏方法"><a href="#元素显示与隐藏方法" class="headerlink" title="元素显示与隐藏方法"></a>元素显示与隐藏方法</h2><h3 id="1-display-none"><a href="#1-display-none" class="headerlink" title="1. display:none;"></a>1. display:none;</h3><blockquote>
 <ul>
-<li>搜索是忽略大小写的, 因为包含<code>AlphaGo</code>的结果也高亮了</li>
-<li>结果与关键字必须是首字母匹配的. 观察两个红色的圈内的高亮情况,<code>RocAlphaGo</code>没有高亮, <code>alphagov</code>高亮了</li>
+<li>常用相应的显示方法为 display:block; 或 display:inline;等</li>
+<li>这种方法会把元素从文档流中删除掉，即空出的位置会由后面的元素填补 </li>
+<li>不能使用transition</li>
 </ul>
-<p>那么, 很可能我要找的项目名字里包含了<code>AlphaGo</code>, 但却有别的字母在开头, 比如说这样子<code>XXXAlphaGo</code></p>
-<hr>
-<p>此时我想起了搜索<code>facebook</code>的经历. 当时我想看看Facebook除了React外还有哪些值得关注的项目, 于是我在搜索框里输入<code>facebook</code>, 结果如下:</p>
-<p><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-8/13111059.jpg" alt=""></p>
-<p>一看星星的数量就不对, React早就破万了, 怎么这里的结果最高才7000+?</p>
-<p>注意到左下角的箭头, 那里有高级搜索. 因为Facebook是一个组织, 而不是一个项目, 所以我应该在高级搜索里的所属者选项里输入<code>facebook</code>才对</p>
-<p><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-8/56900051.jpg" alt=""></p>
-<hr>
-<p>回到搜索AlphaGo的问题, 我使用高级搜索选项, 输入星星数量大于1000选项, 再次搜索, 结果让我抓狂了…</p>
-<p><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-8/26063366.jpg" alt=""></p>
-<p>好吧, 真的是谜之搜索. </p>
-<p>万万没想到, 最后我还是找到了当初的那个项目. 它果然是重命名了, 它现在叫做<a href="https://github.com/Rochester-NRT/RocAlphaGo" target="_blank" rel="external">RocAlphaGo</a></p>
-<p>那我是怎么找到的呢? 因为我记得我曾在QQ上发过这个项目的链接, 于是我先查到人机大战结束日期为3/15日, 然后就翻阅QQ聊天记录, 一条一条地看, 这才把它给找到. 囧…</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://help.github.com/articles/searching-code/#considerations-for-code-search" target="_blank" rel="external">considerations-for-code-search</a></p>
+</blockquote>
+<h3 id="2-opacity-0"><a href="#2-opacity-0" class="headerlink" title="2. opacity:0;"></a>2. opacity:0;</h3><blockquote>
+<ul>
+<li>其显示方法为 opacity:1(大于0就行);</li>
+<li>存在文档中</li>
+<li>可以使用transition</li>
+</ul>
+</blockquote>
+<h3 id="3-height-0-overflow-hidden"><a href="#3-height-0-overflow-hidden" class="headerlink" title="3. height:0; overflow:hidden;"></a>3. height:0; overflow:hidden;</h3><blockquote>
+<ul>
+<li>这是作为父元素隐藏其相应的子元素. 如果没有子元素，则不用overflow属性;</li>
+<li>再设置其height即可显示</li>
+<li>存在文档中</li>
+<li>可以使用transition<br>注意：如果使用height: auto; 来显示，则不会有动画效果。<br>除了用目测法计算高度以外(这真是个笨方法);较好的办法是使用js来获取元素的高度，存到一个变量里, 需要显示时再用js设置其height为该变量值</li>
+</ul>
+</blockquote>
+<h3 id="4-visibility-hidden"><a href="#4-visibility-hidden" class="headerlink" title="4. visibility:hidden;"></a>4. visibility:hidden;</h3><blockquote>
+<ul>
+<li>显示方法为 visibility: visible;</li>
+<li>存在文档中</li>
+<li>transition效果不理想，相当于延迟</li>
+</ul>
+</blockquote>
+<p>一般而言，前三种更常用：</p>
+<ul>
+<li>第一种用来显示或隐藏，</li>
+<li>第二种定义动画，形成淡入淡出效果， </li>
+<li>第三种则用来展开/闭合下拉列表</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-08-search-alphago-in-github/" data-id="ciwypb9s1001xg3rr2neobiit" class="article-share-link" data-share="baidu" data-title="在GitHub搜索AlphaGo">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-08-06-practical-css/" data-id="ciwypb9rp001og3rrj3bqy87p" class="article-share-link" data-share="baidu" data-title="CSS实践总结">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-09-08-search-alphago-in-github/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2016-08-06-practical-css/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
 
     </footer>
   </div>
@@ -135,19 +140,19 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-09-09-design-confusion-comes-from-links-in-blog/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016-08-08-react-component-lifecyle-methods/" id="article-nav-newer" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          纠结于博客中的链接样式
+          Component LifeCycle Methods
         
       </div>
     </a>
   
   
-    <a href="/2016-09-07-learn-react-context/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016-04-06-css-selector-basics/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">认识React Context</div>
+      <div class="article-nav-title">CSS 选择器基础</div>
     </a>
   
 </nav>
@@ -158,7 +163,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-08-search-alphago-in-github/" data-title="在GitHub搜索AlphaGo" data-url="https://levy9527.github.io/2016-09-08-search-alphago-in-github/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016-08-06-practical-css/" data-title="CSS实践总结" data-url="https://levy9527.github.io/2016-08-06-practical-css/"></div>
   </section>
 
 </section>
