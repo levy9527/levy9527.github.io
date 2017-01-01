@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Edge浏览器 | levy</title>
+  <title>js修改样式方法总结 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="微软出了Edge浏览器, 但我一直不知道其内核是啥. 是完全不同于IE的全新内核呢, 还是基于Webkit的内核?">
+  <meta name="description" content="如题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Edge浏览器">
-<meta property="og:url" content="https://levy9527.github.io/2016-10-16-EdgeHTML-the-new-web-rendering-engine/index.html">
+<meta property="og:title" content="js修改样式方法总结">
+<meta property="og:url" content="https://levy9527.github.io/2016-12-31-change-style-with-js/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="微软出了Edge浏览器, 但我一直不知道其内核是啥. 是完全不同于IE的全新内核呢, 还是基于Webkit的内核?">
-<meta property="og:updated_time" content="2016-11-09T08:54:26.000Z">
+<meta property="og:description" content="如题">
+<meta property="og:updated_time" content="2017-01-01T04:48:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Edge浏览器">
-<meta name="twitter:description" content="微软出了Edge浏览器, 但我一直不知道其内核是啥. 是完全不同于IE的全新内核呢, 还是基于Webkit的内核?">
+<meta name="twitter:title" content="js修改样式方法总结">
+<meta name="twitter:description" content="如题">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -63,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-EdgeHTML-the-new-web-rendering-engine" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-change-style-with-js" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-10-15T17:03:32.000Z" itemprop="datePublished" class="article-date">2016-10-16</time>
+    <time datetime="2016-12-31T08:39:11.000Z" itemprop="datePublished" class="article-date">2016-12-31</time>
     
   </div>
   <div class="article-inner">
@@ -74,44 +74,80 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-10-16-EdgeHTML-the-new-web-rendering-engine/">Edge浏览器</a>
+    <a itemprop="name" class="article-title" href="/2016-12-31-change-style-with-js/">js修改样式方法总结</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>微软出了Edge浏览器, 但我一直不知道其内核是啥. 是完全不同于IE的全新内核呢, 还是基于Webkit的内核?</p>
+        <p>如题</p>
 <a id="more"></a>
-<p>以下引用段落摘自官方博客</p>
-<blockquote>
-<p>As detailed in Jacob Rossi’s <a href="http://www.smashingmagazine.com/2015/01/26/inside-microsofts-new-rendering-engine-project-spartan/" target="_blank" rel="external">article for Smashing Magazine</a>,the new engine began as a fork of MSHTML.dll but has since diverged very quickly. By making this split, we were able to keep the major subsystem investments made over the last several years, while allowing us to remove document modes and other legacy IE behaviors from the new engine</p>
-</blockquote>
-<p>则可知, Edge浏览器使用的是EdgeHTML内核, 它是从 MSHTML(也即Trident) fork 而来，删掉了几乎所有的 IE 私有特性.</p>
-<blockquote>
-<p>A clean break also necessitates a new user-agent string to ensure that no IE-specific code was being sent:<br><code>Mozilla/5.0 (Windows NT 10.0; &lt;64-bit tags&gt;) AppleWebKit/&lt;WebKit Rev&gt; (KHTML, like Gecko) Chrome/&lt;Chrome Rev&gt; Safari/&lt;WebKit Rev&gt; Edge/&lt;EdgeHTML Rev&gt;.&lt;Windows Build&gt;</code></p>
-</blockquote>
-<p>另外需要注意的是, Edge浏览器使用了新的用户代理字符串, 前面一大段跟Safari一样, 但这是为了不让服务端发送IE特定的内容, 并非浏览器真的是基于Webkit内核. 从这里也可看出, user-agent其实是很不靠谱的东西, 带有”欺骗”的味道, 要使用user-agent来作判断时, 请三思而后行</p>
-<p>因此由上可知, Edge浏览器使用的是新内核EdgeHTML, 它是基于IE内核MSHTML(Trident)的, 但跟Webkit内核却没有任何关系</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://www.zhihu.com/question/29985708" target="_blank" rel="external">知乎 如何评价Edge</a></li>
-<li><a href="https://blogs.windows.com/msedgedev/2015/02/26/a-break-from-the-past-the-birth-of-microsofts-new-web-rendering-engine/" target="_blank" rel="external">windwos blog a-break-from-the-past-the-birth-of-microsofts-new-web-rendering-engine</a></li>
-<li><a href="https://msdn.microsoft.com/library/hh869301" target="_blank" rel="external">windows doc new user-agent string</a></li>
+<h2 id="元素属性"><a href="#元素属性" class="headerlink" title="元素属性"></a>元素属性</h2><h3 id="类名"><a href="#类名" class="headerlink" title="类名"></a>类名</h3><ul>
+<li><p>className</p>
+<p>  var ele = document.getElementById(‘id’) // 后面的代码都用这个ele变量<br>  ele.className = ‘one-class’<br>  // ele.setAttribute(‘class’, ‘another-class’)</p>
+</li>
 </ul>
+<p>这种方法比较简陋, 不推荐使用</p>
+<ul>
+<li><p>classList</p>
+<p>  var classList = ele.classList<br>  classList.add(‘active’) // 添加一个类<br>  classList.remove(‘active’) // 删除一个类<br>  classList.toggle(‘active’) // 切换一个类<br>  classList.forEach(class =&gt; console.log(class)) // 遍历</p>
+</li>
+</ul>
+<p>classList内置操作类名的方法, 非常适用动态添加/删除类名, 推荐使用</p>
+<h3 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h3><ul>
+<li><p>style.cssText</p>
+<p>  ele.style.cssText = ‘width: 100px; height: 100px;’<br>  ele.style.cssText = ‘-webkit-transform: translateY(50px)’ // 前面的width/height设置丢失了, 并且-webkit前缀无效</p>
+</li>
+</ul>
+<p>就像在写css一样, 缺点是这样写会覆盖之前所有的内联样式, 因此只想修改一个css属性时, 推荐使用下面的方法</p>
+<ul>
+<li><p>style.<code>${attribute}</code> </p>
+<p>  ele.style.position = ‘relative’<br>  ele.style.left = ‘100px’ // position属性仍在</p>
+</li>
+</ul>
+<p>注意这种写法每次赋值都会触发reflow, 对渲染性能会造成很大的负面影响, 因此不可滥用, 能用classList解决的就不要用style</p>
+<!--
+另外, 从结果来看, 内联样式的写法是无法对浏览器兼容的. 固然在书写的时候
+好像有标准的,显示的是标准的. 没有时才显示带前缀的. 有待测试
+-->
+<h2 id="样式表"><a href="#样式表" class="headerlink" title="样式表"></a>样式表</h2><h3 id="styleSheets"><a href="#styleSheets" class="headerlink" title="styleSheets"></a>styleSheets</h3><pre><code>var sheet = document.styleSheets[0]
+st.addRule(&apos;body&apos;, &apos;text-align: center; width: 100px;&apos;)
+var len = sheet.rules.length
+st.deleteRule(len - 1)
+</code></pre><p>这种写法, 样式添加在外联样式中</p>
+<h3 id="link"><a href="#link" class="headerlink" title="link"></a>link</h3><ul>
+<li>修改已有的外联样式路径</li>
+</ul>
+<p>假设html中有如下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/css/style.css"</span> <span class="attr">id</span>=<span class="string">"css"</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> cssLink = <span class="built_in">document</span>.getElementById(<span class="string">'css'</span>)</div><div class="line">cssLink.href = <span class="string">'/css/another.css'</span></div><div class="line"></div><div class="line"><span class="comment">// 或使用下的方法</span></div><div class="line"><span class="comment">// var cssLink = document.getElementsByTagName('link')[0]</span></div><div class="line"><span class="comment">// cssLink.setAttribute('href', '/css/another.css')</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>加载新的外联样式</p>
+<p>  var link = document.createElement(‘link’)<br>  // link.setAttribute(‘type’, ‘text/css’) // 可以不写<br>  link.setAttribute(‘rel’, ‘stylesheet’)<br>  link.setAttribute(‘href’, ‘/path/style.css’)</p>
+<p>  document.body.appendChild(link) // 谁当父节点可以看具体需求</p>
+</li>
+</ul>
+<p>另外, 动态加载新的脚本也同理</p>
+<pre><code>var script = document.createElement(&apos;script&apos;)
+// script.setAttribute(&apos;type&apos;, &apos;text/javascipt&apos;) 可以不写
+script.setAttribute(&apos;src&apos;, &apos;/path/script.js&apos;)
 
+document.body.appendChild(script)
+</code></pre>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-10-16-EdgeHTML-the-new-web-rendering-engine/" data-id="cixe6g6re0002t3phwenxi60q" class="article-share-link" data-share="baidu" data-title="Edge浏览器">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-12-31-change-style-with-js/" data-id="cixe6g6rt0007t3ph8k9nqkr5" class="article-share-link" data-share="baidu" data-title="js修改样式方法总结">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-10-16-EdgeHTML-the-new-web-rendering-engine/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2016-12-31-change-style-with-js/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Browser/">Browser</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascipt/">Javascipt</a></li></ul>
 
     </footer>
   </div>
@@ -120,19 +156,19 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-10-21-git-cherry-pick/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017-01-01-new-years-day/" id="article-nav-newer" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          Git Cherry-Pick
+          元旦
         
       </div>
     </a>
   
   
-    <a href="/2016-10-12-unfreeze-frozen-object-in-javascript/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016-12-30-table-with-fixed-column/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Javascript对象解冻</div>
+      <div class="article-nav-title">绘制表格</div>
     </a>
   
 </nav>
@@ -143,7 +179,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-10-16-EdgeHTML-the-new-web-rendering-engine/" data-title="Edge浏览器" data-url="https://levy9527.github.io/2016-10-16-EdgeHTML-the-new-web-rendering-engine/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016-12-31-change-style-with-js/" data-title="js修改样式方法总结" data-url="https://levy9527.github.io/2016-12-31-change-style-with-js/"></div>
   </section>
 
 </section>

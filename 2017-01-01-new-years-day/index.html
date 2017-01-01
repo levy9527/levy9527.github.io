@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Edge浏览器 | levy</title>
+  <title>元旦 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="微软出了Edge浏览器, 但我一直不知道其内核是啥. 是完全不同于IE的全新内核呢, 还是基于Webkit的内核?">
+  <meta name="description" content="今天是元旦, 也就是2017年1月1日. 一年过去了, 回顾一下2016, 做个总结吧.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Edge浏览器">
-<meta property="og:url" content="https://levy9527.github.io/2016-10-16-EdgeHTML-the-new-web-rendering-engine/index.html">
+<meta property="og:title" content="元旦">
+<meta property="og:url" content="https://levy9527.github.io/2017-01-01-new-years-day/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="微软出了Edge浏览器, 但我一直不知道其内核是啥. 是完全不同于IE的全新内核呢, 还是基于Webkit的内核?">
-<meta property="og:updated_time" content="2016-11-09T08:54:26.000Z">
+<meta property="og:description" content="今天是元旦, 也就是2017年1月1日. 一年过去了, 回顾一下2016, 做个总结吧.">
+<meta property="og:updated_time" content="2017-01-01T04:44:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Edge浏览器">
-<meta name="twitter:description" content="微软出了Edge浏览器, 但我一直不知道其内核是啥. 是完全不同于IE的全新内核呢, 还是基于Webkit的内核?">
+<meta name="twitter:title" content="元旦">
+<meta name="twitter:description" content="今天是元旦, 也就是2017年1月1日. 一年过去了, 回顾一下2016, 做个总结吧.">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -63,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-EdgeHTML-the-new-web-rendering-engine" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-new-years-day" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-10-15T17:03:32.000Z" itemprop="datePublished" class="article-date">2016-10-16</time>
+    <time datetime="2017-01-01T03:25:37.000Z" itemprop="datePublished" class="article-date">2017-01-01</time>
     
   </div>
   <div class="article-inner">
@@ -74,44 +74,70 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-10-16-EdgeHTML-the-new-web-rendering-engine/">Edge浏览器</a>
+    <a itemprop="name" class="article-title" href="/2017-01-01-new-years-day/">元旦</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>微软出了Edge浏览器, 但我一直不知道其内核是啥. 是完全不同于IE的全新内核呢, 还是基于Webkit的内核?</p>
+        <p>今天是元旦, 也就是2017年1月1日. 一年过去了, 回顾一下2016, 做个总结吧.</p>
 <a id="more"></a>
-<p>以下引用段落摘自官方博客</p>
-<blockquote>
-<p>As detailed in Jacob Rossi’s <a href="http://www.smashingmagazine.com/2015/01/26/inside-microsofts-new-rendering-engine-project-spartan/" target="_blank" rel="external">article for Smashing Magazine</a>,the new engine began as a fork of MSHTML.dll but has since diverged very quickly. By making this split, we were able to keep the major subsystem investments made over the last several years, while allowing us to remove document modes and other legacy IE behaviors from the new engine</p>
-</blockquote>
-<p>则可知, Edge浏览器使用的是EdgeHTML内核, 它是从 MSHTML(也即Trident) fork 而来，删掉了几乎所有的 IE 私有特性.</p>
-<blockquote>
-<p>A clean break also necessitates a new user-agent string to ensure that no IE-specific code was being sent:<br><code>Mozilla/5.0 (Windows NT 10.0; &lt;64-bit tags&gt;) AppleWebKit/&lt;WebKit Rev&gt; (KHTML, like Gecko) Chrome/&lt;Chrome Rev&gt; Safari/&lt;WebKit Rev&gt; Edge/&lt;EdgeHTML Rev&gt;.&lt;Windows Build&gt;</code></p>
-</blockquote>
-<p>另外需要注意的是, Edge浏览器使用了新的用户代理字符串, 前面一大段跟Safari一样, 但这是为了不让服务端发送IE特定的内容, 并非浏览器真的是基于Webkit内核. 从这里也可看出, user-agent其实是很不靠谱的东西, 带有”欺骗”的味道, 要使用user-agent来作判断时, 请三思而后行</p>
-<p>因此由上可知, Edge浏览器使用的是新内核EdgeHTML, 它是基于IE内核MSHTML(Trident)的, 但跟Webkit内核却没有任何关系</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://www.zhihu.com/question/29985708" target="_blank" rel="external">知乎 如何评价Edge</a></li>
-<li><a href="https://blogs.windows.com/msedgedev/2015/02/26/a-break-from-the-past-the-birth-of-microsofts-new-web-rendering-engine/" target="_blank" rel="external">windwos blog a-break-from-the-past-the-birth-of-microsofts-new-web-rendering-engine</a></li>
-<li><a href="https://msdn.microsoft.com/library/hh869301" target="_blank" rel="external">windows doc new user-agent string</a></li>
+<h2 id="1月"><a href="#1月" class="headerlink" title="1月"></a>1月</h2><p>去年的元旦, 首次接触React. 到今天为止, 算是正式使用React一周年了. 当时我还在微信朋友圈里发了张截图, React的版本是v0.14.5</p>
+<p>那时的我前端方面非常稚嫩, 对于React, 只会在一个render方法里写全部的JSX, 相当于用写传统静态页面的方式去写React. 关键是当时CSS也弱, 静态页面也画不好, 常常抓耳挠腮, 加班加点, 非常捉急.</p>
+<h2 id="2月"><a href="#2月" class="headerlink" title="2月"></a>2月</h2><ul>
+<li><p>2.4<br>那天是列丰年饭, 替阿玛敬了舒老师三杯白酒, 再加上后面又喝了几本, 晚上做汽车回家的时候, 胸闷气短, 想吐又吐不出, 难受得要命. 从此吸取教训, 坐车前绝不喝白酒</p>
+</li>
+<li><p>2.9<br>因为回老家, commit后忘记push, oschina上的坚持了36天提交记录由此中断. 那时我给自己一个承诺, 从那天起, 不间断地push, 给自己一个365.</p>
+</li>
+<li><p>2.21<br>Javascript DOM编程艺术的示例代码全部敲完, 最后的综合例子我用新的技术实现, 这标志着我写静态页面的能力有所提高, 而且学会了使用自动化工具</p>
+</li>
+</ul>
+<h2 id="3月"><a href="#3月" class="headerlink" title="3月"></a>3月</h2><ul>
+<li><p>3.1<br>flex布局入门, 不久后同事跳槽, 项目中只有我一个前端. 接下来的日子我更加努力, 提高自己, 独当一面.</p>
+</li>
+<li><p>3.9<br>李世石对战AlphaGo, 俗称围棋界的”人机大战”. 作为曾经的”围棋少年”, 这么重要的比赛我当然不能错过. 为了看完整的比赛, 我中午叫了外卖, 加吃边看, 同时也放弃了午休. 等到1点半开工的时候, 我离开自己的座位, 跑到一个无人看得到的角落, 偷偷地看, 哈哈, 非常刺激.</p>
+</li>
+<li><p>3.12<br>答应帮小师妹写几个纯静态页面, 他们社团要用, 也想是检验一下自己写页面的能力</p>
+</li>
+<li><p>3.23<br>在迪迪在带领下, 开始做第一个外包. 是基于微信公众号的h5页面, 涉及api的调用. </p>
+</li>
+</ul>
+<p>此时我已能胜任工作, 因此有余力来做外包. 不过前面小师妹的页面还没完结, 需要调整, 因此有时我一天要搞三个项目, 十分劳累, 不过却学到不少, 同时也对自己的能力更有信心</p>
+<h2 id="6月"><a href="#6月" class="headerlink" title="6月"></a>6月</h2><ul>
+<li>6.8<br>十年魔兽, 终出电影. 虽然没有我最喜欢的阿尔塞斯, 但我仍然非常捧场. 6.8号看了00:05分的首映, 当天下午再看一场IMAX版, 为票房献出了自己的绵薄之力</li>
+</ul>
+<h2 id="8月"><a href="#8月" class="headerlink" title="8月"></a>8月</h2><ul>
+<li><p>8.7<br>开始使用Hexo + Github Pages写博客</p>
+</li>
+<li><p>8.16<br>于列丰离职, 开始去恒拓开源上班</p>
+</li>
+</ul>
+<h2 id="11月"><a href="#11月" class="headerlink" title="11月"></a>11月</h2><ul>
+<li><p>11.15<br>在Steam上购买Don’t Starve(饥荒), 开始了Mac的游戏之旅. 原谅我, 之前买Mac时说的”这台电脑绝不玩游戏”已成谎言</p>
+</li>
+<li><p>11.22<br>在同性交友网站上, 第一次与外国友人协作. 这是个与饥荒有关的项目. 由此看来, 玩游戏也不是没有好处, 至少让我在Github上更活跃了</p>
+</li>
+<li><p>11.25<br>因为没等下一趟车, 车厢已很多人的情况下, 还要强行上地铁, 而且双肩书包只背了一肩, 这样我一手拿早餐, 一手扶书包, 手机就没拿在手里了. 这样作死的后果是, 手机丢了. 珠江新城上的车, 体育西路下的车, 我只坐了一个站, 手机就被偷了. 从此跟iPhone6 Plus说再见, 把599的魅蓝 Note3捧在手心里</p>
+</li>
+</ul>
+<h2 id="12月"><a href="#12月" class="headerlink" title="12月"></a>12月</h2><ul>
+<li>12.9<br>因长智齿引起的发炎, 疼得我无心工作, 无力说话, 无心睡眠. 本来一觉到天亮的, 结果半夜4点被疼醒, 这种经历只有体验过的人才懂. 我是怕了, 从此以后, 我不敢吃辛辣, 不敢熬夜了.</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-10-16-EdgeHTML-the-new-web-rendering-engine/" data-id="cixe6g6re0002t3phwenxi60q" class="article-share-link" data-share="baidu" data-title="Edge浏览器">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-01-01-new-years-day/" data-id="cixe6g6tx001tt3phnuw6z9xf" class="article-share-link" data-share="baidu" data-title="元旦">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-10-16-EdgeHTML-the-new-web-rendering-engine/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2017-01-01-new-years-day/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Browser/">Browser</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂/">杂</a></li></ul>
 
     </footer>
   </div>
@@ -120,19 +146,10 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-10-21-git-cherry-pick/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          Git Cherry-Pick
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016-10-12-unfreeze-frozen-object-in-javascript/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016-12-31-change-style-with-js/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Javascript对象解冻</div>
+      <div class="article-nav-title">js修改样式方法总结</div>
     </a>
   
 </nav>
@@ -143,7 +160,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-10-16-EdgeHTML-the-new-web-rendering-engine/" data-title="Edge浏览器" data-url="https://levy9527.github.io/2016-10-16-EdgeHTML-the-new-web-rendering-engine/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-01-new-years-day/" data-title="元旦" data-url="https://levy9527.github.io/2017-01-01-new-years-day/"></div>
   </section>
 
 </section>
