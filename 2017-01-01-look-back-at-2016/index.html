@@ -4,34 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>CSS让文字变细 | levy</title>
+  <title>回顾2016 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="影响文字的粗细的其实有三个因素:
-
-font-weight
-font-family
--webkit-font-smoothing">
+  <meta name="description" content="今天就是2017年1月1日, 一年过去了, 回顾一下2016, 做个总结吧.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS让文字变细">
-<meta property="og:url" content="https://levy9527.github.io/2016-09-30-css-make-font-weight-lighter/index.html">
+<meta property="og:title" content="回顾2016">
+<meta property="og:url" content="https://levy9527.github.io/2017-01-01-look-back-at-2016/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="影响文字的粗细的其实有三个因素:
-
-font-weight
-font-family
--webkit-font-smoothing">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-30/27949527.jpg">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-30/47191887.jpg">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-30/79542802.jpg">
-<meta property="og:updated_time" content="2016-10-02T06:43:45.000Z">
+<meta property="og:description" content="今天就是2017年1月1日, 一年过去了, 回顾一下2016, 做个总结吧.">
+<meta property="og:updated_time" content="2017-01-04T15:58:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS让文字变细">
-<meta name="twitter:description" content="影响文字的粗细的其实有三个因素:
-
-font-weight
-font-family
--webkit-font-smoothing">
-<meta name="twitter:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-30/27949527.jpg">
+<meta name="twitter:title" content="回顾2016">
+<meta name="twitter:description" content="今天就是2017年1月1日, 一年过去了, 回顾一下2016, 做个总结吧.">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -79,9 +63,9 @@ font-family
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-css-make-font-weight-lighter" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-look-back-at-2016" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-09-30T08:29:19.000Z" itemprop="datePublished" class="article-date">2016-09-30</time>
+    <time datetime="2017-01-01T03:25:37.000Z" itemprop="datePublished" class="article-date">2017-01-01</time>
     
   </div>
   <div class="article-inner">
@@ -90,49 +74,70 @@ font-family
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-09-30-css-make-font-weight-lighter/">CSS让文字变细</a>
+    <a itemprop="name" class="article-title" href="/2017-01-01-look-back-at-2016/">回顾2016</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>影响文字的粗细的其实有三个因素:</p>
-<ul>
-<li>font-weight</li>
-<li>font-family</li>
-<li>-webkit-font-smoothing</li>
-</ul>
+        <p>今天就是2017年1月1日, 一年过去了, 回顾一下2016, 做个总结吧.</p>
 <a id="more"></a>
-<p>要理解CSS能通过font-weight设置字体的粗细, 首先要明白CSS字体的基本设定. 以字体<em>Times</em>字体为例,  <em>Times</em>实际是一个字体系列, 它由多种字体变形组合而成, 包括 <em>TimesRegular</em>, <em>TimesBold</em>, <em>TimesItalic</em>等. 每种变形都是一种具体的字体风格(font face). </p>
-<p>当font-weight变小时, 浏览器会在指定字体系列中, 找到更细的字体变种. 因而如果使用的字体系列中, 只有一种变种, 则无论font-weight怎么变化, 字体的粗细都不会有变化的 </p>
-<p>因此文字的粗细还跟font-family有关</p>
-<p>但就算设置了以上两项, 我在Mac的Chrome浏览网页时, 还是觉得文字有点”粗”. 这种”粗”用专业的话来说就是, “字体存在半个像素的锯齿，浏览器渲染的时却直接显示一个像素”, 则此时需要对文字进行”抗锯齿处理”. 也即设置为<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-webkit-font-smoothing</span>: <span class="selector-tag">antialiased</span>;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>注意到这是个带-webkit前缀的属性, 因此Firefox/IE以及基于IE改造的国产浏览器是没有效果的</p>
-</blockquote>
-<p>下面是在Mac下同样的网页在不同浏览器打开的效果</p>
-<p><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-30/27949527.jpg" alt="Chrome"><br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-30/47191887.jpg" alt="Safari"><br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-30/79542802.jpg" alt="Firefox"></p>
-<blockquote>
-<p>结论: Chrome最细, Safari次之, Firefox最粗</p>
-</blockquote>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="http://www.iconfont.cn/help/iconuse.html" target="_blank" rel="external">http://www.iconfont.cn/help/iconuse.html</a></li>
+<h2 id="1月"><a href="#1月" class="headerlink" title="1月"></a>1月</h2><p>去年的元旦, 首次接触React. 到今天为止, 算是正式使用React一周年了. 当时我还在微信朋友圈里发了张截图, React的版本是v0.14.5</p>
+<p>那时的我前端方面非常稚嫩, 对于React, 只会在一个render方法里写全部的JSX, 相当于用写传统静态页面的方式去写React. 关键是当时CSS也弱, 静态页面也画不好, 常常抓耳挠腮, 加班加点, 非常捉急.</p>
+<h2 id="2月"><a href="#2月" class="headerlink" title="2月"></a>2月</h2><ul>
+<li><p>2.4<br>那天是列丰年饭, 替阿玛敬了舒老师三杯白酒, 再加上后面又喝了几本, 晚上做汽车回家的时候, 胸闷气短, 想吐又吐不出, 难受得要命. 从此吸取教训, 坐车前绝不喝白酒</p>
+</li>
+<li><p>2.9<br>因为回老家, commit后忘记push, oschina上的坚持了36天提交记录由此中断. 那时我给自己一个承诺, 从那天起, 不间断地push, 给自己一个365.</p>
+</li>
+<li><p>2.21<br>Javascript DOM编程艺术的示例代码全部敲完, 最后的综合例子我用新的技术实现, 这标志着我写静态页面的能力有所提高, 而且学会了使用自动化工具</p>
+</li>
+</ul>
+<h2 id="3月"><a href="#3月" class="headerlink" title="3月"></a>3月</h2><ul>
+<li><p>3.1<br>flex布局入门, 不久后同事跳槽, 项目中只有我一个前端. 接下来的日子我更加努力, 提高自己, 独当一面.</p>
+</li>
+<li><p>3.9<br>李世石对战AlphaGo, 俗称围棋界的”人机大战”. 作为曾经的”围棋少年”, 这么重要的比赛我当然不能错过. 为了看完整的比赛, 我中午叫了外卖, 加吃边看, 同时也放弃了午休. 等到1点半开工的时候, 我离开自己的座位, 跑到一个无人看得到的角落, 偷偷地看, 哈哈, 非常刺激.</p>
+</li>
+<li><p>3.12<br>答应帮小师妹写几个纯静态页面, 他们社团要用, 也想是检验一下自己写页面的能力</p>
+</li>
+<li><p>3.23<br>在迪迪在带领下, 开始做第一个外包. 是基于微信公众号的h5页面, 涉及api的调用. </p>
+</li>
+</ul>
+<p>此时我已能胜任工作, 因此有余力来做外包. 不过前面小师妹的页面还没完结, 需要调整, 因此有时我一天要搞三个项目, 十分劳累, 不过却学到不少, 同时也对自己的能力更有信心</p>
+<h2 id="6月"><a href="#6月" class="headerlink" title="6月"></a>6月</h2><ul>
+<li>6.8<br>十年魔兽, 终出电影. 虽然没有我最喜欢的阿尔塞斯, 但我仍然非常捧场. 6.8号看了00:05分的首映, 当天下午再看一场IMAX版, 为票房献出了自己的绵薄之力</li>
+</ul>
+<h2 id="8月"><a href="#8月" class="headerlink" title="8月"></a>8月</h2><ul>
+<li><p>8.7<br>开始使用Hexo + Github Pages写博客</p>
+</li>
+<li><p>8.16<br>于列丰离职, 开始去恒拓开源上班</p>
+</li>
+</ul>
+<h2 id="11月"><a href="#11月" class="headerlink" title="11月"></a>11月</h2><ul>
+<li><p>11.15<br>在Steam上购买Don’t Starve(饥荒), 开始了Mac的游戏之旅. 原谅我, 之前买Mac时说的”这台电脑绝不玩游戏”已成谎言</p>
+</li>
+<li><p>11.22<br>在同性交友网站上, 第一次与外国友人协作. 这是个与饥荒有关的项目. 由此看来, 玩游戏也不是没有好处, 至少让我在Github上更活跃了</p>
+</li>
+<li><p>11.25<br>因为没等下一趟车, 车厢已很多人的情况下, 还要强行上地铁, 而且双肩书包只背了一肩, 这样我一手拿早餐, 一手扶书包, 手机就没拿在手里了. 这样作死的后果是, 手机丢了. 珠江新城上的车, 体育西路下的车, 我只坐了一个站, 手机就被偷了. 从此跟iPhone6 Plus说再见, 把599的魅蓝 Note3捧在手心里</p>
+</li>
+</ul>
+<h2 id="12月"><a href="#12月" class="headerlink" title="12月"></a>12月</h2><ul>
+<li>12.9<br>因长智齿引起的发炎, 疼得我无心工作, 无力说话, 无心睡眠. 本来一觉到天亮的, 结果半夜4点被疼醒, 这种经历只有体验过的人才懂. 我是怕了, 从此以后, 我不敢吃辛辣, 不敢熬夜了.</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-30-css-make-font-weight-lighter/" data-id="cixj4vitq000ekmphwgywwhu4" class="article-share-link" data-share="baidu" data-title="CSS让文字变细">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-01-01-look-back-at-2016/" data-id="cixj4viv4001jkmph8v4apej1" class="article-share-link" data-share="baidu" data-title="回顾2016">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-09-30-css-make-font-weight-lighter/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2017-01-01-look-back-at-2016/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂/">杂</a></li></ul>
 
     </footer>
   </div>
@@ -141,19 +146,10 @@ font-family
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-10-01-go-home-on-national-day/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          国庆回家记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016-09-25-parasyte/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017-01-01-new-years-day/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">寄生兽</div>
+      <div class="article-nav-title">元旦</div>
     </a>
   
 </nav>
@@ -164,7 +160,7 @@ font-family
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-30-css-make-font-weight-lighter/" data-title="CSS让文字变细" data-url="https://levy9527.github.io/2016-09-30-css-make-font-weight-lighter/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-01-look-back-at-2016/" data-title="回顾2016" data-url="https://levy9527.github.io/2017-01-01-look-back-at-2016/"></div>
   </section>
 
 </section>
