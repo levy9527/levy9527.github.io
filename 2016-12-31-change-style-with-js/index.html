@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://levy9527.github.io/2016-12-31-change-style-with-js/index.html">
 <meta property="og:site_name" content="levy">
 <meta property="og:description" content="如题">
-<meta property="og:updated_time" content="2017-01-04T11:13:19.000Z">
+<meta property="og:updated_time" content="2017-01-06T08:19:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS修改样式方法总结">
 <meta name="twitter:description" content="如题">
@@ -84,38 +84,31 @@
         <p>如题</p>
 <a id="more"></a>
 <h2 id="元素属性"><a href="#元素属性" class="headerlink" title="元素属性"></a>元素属性</h2><h3 id="类名"><a href="#类名" class="headerlink" title="类名"></a>类名</h3><ul>
-<li><p>className</p>
-<p>  var ele = document.getElementById(‘id’) // 后面的代码都用这个ele变量<br>  ele.className = ‘one-class’<br>  // ele.setAttribute(‘class’, ‘another-class’)</p>
-</li>
+<li>className</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementById(<span class="string">'id'</span>) <span class="comment">// 后面的代码都用这个ele变量</span></div><div class="line">ele.className = <span class="string">'one-class'</span></div><div class="line"><span class="comment">// ele.setAttribute('class', 'another-class')</span></div></pre></td></tr></table></figure>
 <p>这种方法比较简陋, 不推荐使用</p>
 <ul>
-<li><p>classList</p>
-<p>  var classList = ele.classList<br>  classList.add(‘active’) // 添加一个类<br>  classList.remove(‘active’) // 删除一个类<br>  classList.toggle(‘active’) // 切换一个类<br>  classList.forEach(class =&gt; console.log(class)) // 遍历</p>
-</li>
+<li>classList</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> classList = ele.classList</div><div class="line">classList.add(<span class="string">'active'</span>) <span class="comment">// 添加一个类</span></div><div class="line">classList.remove(<span class="string">'active'</span>) <span class="comment">// 删除一个类</span></div><div class="line">classList.toggle(<span class="string">'active'</span>) <span class="comment">// 切换一个类</span></div><div class="line">classList.forEach(<span class="class"><span class="keyword">class</span> </span>=&gt; <span class="built_in">console</span>.log(<span class="class"><span class="keyword">class</span>)) // 遍历</span></div></pre></td></tr></table></figure>
 <p>classList内置操作类名的方法, 非常适用动态添加/删除类名, 推荐使用</p>
 <h3 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h3><ul>
-<li><p>style.cssText</p>
-<p>  ele.style.cssText = ‘width: 100px; height: 100px;’<br>  ele.style.cssText = ‘-webkit-transform: translateY(50px)’ // 前面的width/height设置丢失了, 并且-webkit前缀无效</p>
-</li>
+<li>style.cssText</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ele.style.cssText = <span class="string">'width: 100px; height: 100px;'</span></div><div class="line">ele.style.cssText = <span class="string">'-webkit-transform: translateY(50px)'</span> <span class="comment">// 前面的width/height设置丢失了, 并且-webkit前缀无效</span></div></pre></td></tr></table></figure>
 <p>就像在写css一样, 缺点是这样写会覆盖之前所有的内联样式, 因此只想修改一个css属性时, 推荐使用下面的方法</p>
 <ul>
-<li><p>style.<code>${attribute}</code> </p>
-<p>  ele.style.position = ‘relative’<br>  ele.style.left = ‘100px’ // position属性仍在</p>
-</li>
+<li>style.<code>${attribute}</code> </li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ele.style.position = <span class="string">'relative'</span></div><div class="line">ele.style.left = <span class="string">'100px'</span> <span class="comment">// position属性仍在</span></div></pre></td></tr></table></figure>
 <p>注意这种写法每次赋值都会触发reflow, 对渲染性能会造成很大的负面影响, 因此不可滥用, 能用classList解决的就不要用style</p>
 <!--
 另外, 从结果来看, 内联样式的写法是无法对浏览器兼容的. 固然在书写的时候
 好像有标准的,显示的是标准的. 没有时才显示带前缀的. 有待测试
 -->
-<h2 id="样式表"><a href="#样式表" class="headerlink" title="样式表"></a>样式表</h2><h3 id="styleSheets"><a href="#styleSheets" class="headerlink" title="styleSheets"></a>styleSheets</h3><pre><code>var sheet = document.styleSheets[0]
-st.addRule(&apos;body&apos;, &apos;text-align: center; width: 100px;&apos;)
-var len = sheet.rules.length
-st.deleteRule(len - 1)
-</code></pre><p>这种写法, 样式添加在外联样式中</p>
+<h2 id="样式表"><a href="#样式表" class="headerlink" title="样式表"></a>样式表</h2><h3 id="styleSheets"><a href="#styleSheets" class="headerlink" title="styleSheets"></a>styleSheets</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sheet = <span class="built_in">document</span>.styleSheets[<span class="number">0</span>]</div><div class="line">st.addRule(<span class="string">'body'</span>, <span class="string">'text-align: center; width: 100px;'</span>)</div><div class="line"><span class="keyword">var</span> len = sheet.rules.length</div><div class="line">st.deleteRule(len - <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<p>这种写法, 样式添加在外联样式中</p>
 <h3 id="link"><a href="#link" class="headerlink" title="link"></a>link</h3><ul>
 <li>修改已有的外联样式路径</li>
 </ul>
@@ -123,18 +116,12 @@ st.deleteRule(len - 1)
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/css/style.css"</span> <span class="attr">id</span>=<span class="string">"css"</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> cssLink = <span class="built_in">document</span>.getElementById(<span class="string">'css'</span>)</div><div class="line">cssLink.href = <span class="string">'/css/another.css'</span></div><div class="line"></div><div class="line"><span class="comment">// 或使用下的方法</span></div><div class="line"><span class="comment">// var cssLink = document.getElementsByTagName('link')[0]</span></div><div class="line"><span class="comment">// cssLink.setAttribute('href', '/css/another.css')</span></div></pre></td></tr></table></figure>
 <ul>
-<li><p>加载新的外联样式</p>
-<p>  var link = document.createElement(‘link’)<br>  // link.setAttribute(‘type’, ‘text/css’) // 可以不写<br>  link.setAttribute(‘rel’, ‘stylesheet’)<br>  link.setAttribute(‘href’, ‘/path/style.css’)</p>
-<p>  document.body.appendChild(link) // 谁当父节点可以看具体需求</p>
-</li>
+<li>加载新的外联样式</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">'link'</span>)</div><div class="line"><span class="comment">// link.setAttribute('type', 'text/css') // 可以不写</span></div><div class="line">link.setAttribute(<span class="string">'rel'</span>, <span class="string">'stylesheet'</span>)</div><div class="line">link.setAttribute(<span class="string">'href'</span>, <span class="string">'/path/style.css'</span>)</div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.appendChild(link) <span class="comment">// 谁当父节点可以看具体需求</span></div></pre></td></tr></table></figure>
 <p>另外, 动态加载新的脚本也同理</p>
-<pre><code>var script = document.createElement(&apos;script&apos;)
-// script.setAttribute(&apos;type&apos;, &apos;text/javascipt&apos;) 可以不写
-script.setAttribute(&apos;src&apos;, &apos;/path/script.js&apos;)
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>)</div><div class="line"><span class="comment">// script.setAttribute('type', 'text/javascipt') 可以不写</span></div><div class="line">script.setAttribute(<span class="string">'src'</span>, <span class="string">'/path/script.js'</span>)</div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.appendChild(script)</div></pre></td></tr></table></figure>
 
-document.body.appendChild(script)
-</code></pre>
       
     </div>
     <footer class="article-footer">
