@@ -4,21 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>iOS初体验 | levy</title>
+  <title>更新对React Router的History的认识 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App
-然而事实证明, 没那么简单…">
+  <meta name="description" content="React Router提供的三种History, 之前认识得比较肤浅, 只是从字面上去比较, 经过实践后, 有了新的认识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS初体验">
-<meta property="og:url" content="https://levy9527.github.io/2016-09-13-start-dev-ios-app/index.html">
+<meta property="og:title" content="更新对React Router的History的认识">
+<meta property="og:url" content="https://levy9527.github.io/2017-01-09-update-knowledge-of-react-router-history/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App
-然而事实证明, 没那么简单…">
-<meta property="og:updated_time" content="2016-09-18T07:54:40.000Z">
+<meta property="og:description" content="React Router提供的三种History, 之前认识得比较肤浅, 只是从字面上去比较, 经过实践后, 有了新的认识">
+<meta property="og:updated_time" content="2017-01-09T14:55:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS初体验">
-<meta name="twitter:description" content="对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App
-然而事实证明, 没那么简单…">
+<meta name="twitter:title" content="更新对React Router的History的认识">
+<meta name="twitter:description" content="React Router提供的三种History, 之前认识得比较肤浅, 只是从字面上去比较, 经过实践后, 有了新的认识">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -66,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-start-dev-ios-app" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-update-knowledge-of-react-router-history" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-09-13T10:24:12.000Z" itemprop="datePublished" class="article-date">2016-09-13</time>
+    <time datetime="2017-01-09T07:10:39.000Z" itemprop="datePublished" class="article-date">2017-01-09</time>
     
   </div>
   <div class="article-inner">
@@ -77,49 +74,59 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-09-13-start-dev-ios-app/">iOS初体验</a>
+    <a itemprop="name" class="article-title" href="/2017-01-09-update-knowledge-of-react-router-history/">更新对React Router的History的认识</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App</p>
-<p>然而事实证明, 没那么简单…</p>
+        <p>React Router提供的三种History, 之前认识得比较肤浅, 只是从字面上去比较, 经过实践后, 有了新的认识</p>
 <a id="more"></a>
-<h2 id="搜索教程"><a href="#搜索教程" class="headerlink" title="搜索教程"></a>搜索教程</h2><p>有了想法后, 就行动起来</p>
-<p>一开始是打算下载书来看的, iPhone开发实战/深入浅出iPhone开发. 但这些书都是2012年以前的, 用的是Object-C. 语言倒是无所谓, 但当我发现里面Xcode的视图/按钮都跟我电脑上有较大出入时, 我就果断放弃了.</p>
-<p>于是按照学习React的套路, 看<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html#//apple_ref/doc/uid/TP40015214-CH2-SW1" target="_blank" rel="external">官方入门教程</a>. 教程里使用Swift, 工具也不会过时, 并且每个章节还有源码可以下载, 非常方便.</p>
-<h2 id="动手实践"><a href="#动手实践" class="headerlink" title="动手实践"></a>动手实践</h2><p>我直接跳过Swift里的基本介绍, 原因是我是来体验iOS的开发流程的, app从0到1的过程明显与网页从0到1的过程有巨大的区别, 这些是更重要的东西, 语言的差异反倒是次; 另外介绍也太长了, 时间有限, 可以后面再看.</p>
-<p>然后我就发现:</p>
+<h2 id="browserHistory"><a href="#browserHistory" class="headerlink" title="browserHistory"></a>browserHistory</h2><p>browserHistory是文档重点推荐的: 它提供了更干净的url, 同时也是借助了History API来操作浏览器历史.</p>
+<p>借助History API操作浏览器历史意味着什么呢? 这就意味着, 每次改变路由, 浏览器上的地址会改变, 也即<code>window.location</code>会改变, 同时<code>window.history</code>也会改变</p>
+<p>此时的<code>this.props.router.goBack()</code> 相当于<code>window.history.back()</code>, 而浏览器的后退按钮及移动端的硬件返回也是调用了<code>window.history.back()</code>, </p>
+<p>则在浏览器上, 可以前进/后退按钮来跳转至下一个/上一个路由, 这与用户平时访问网页的体验一致, 的确值得推荐</p>
+<p>不过它有个缺点, 就是它开发出来的应用, 需要配置服务器</p>
+<p>这就意味着, 使用browserHistory编译出来的静态文件, 必须通过http服务器才能访问, 本地直接通过file协议是无法正常访问的. 这是个注意点</p>
+<p>这一点, 对于普通web应用来说, 无关紧要, 因为服务机上的静态资源一般都会有个服务器(如Ngnix)来提供的, 但对Hybrid应用就是不是了. 如果想把静态文件放到手机里, 直接在手机里打开, browserHistory编译的文件是会报错的.</p>
+<p>因此, 如果需要编译出来的文件在本地打开, 则不能使用browserHistory</p>
+<p>下面给出http服务器的生产示例配置, 以Nginx为例</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">location / &#123;</div><div class="line">  root   /Users/levy/repo/git/demo/dist; <span class="comment"># 静态资源目录</span></div><div class="line">  index  index.html;</div><div class="line">  try_files <span class="variable">$uri</span> /index.html; <span class="comment"># 总是返回index.html, 因为是单页应用</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>它还有个缺点, IE8/IE9不支持局部刷新, 而下面两种则可以</p>
+</blockquote>
+<h2 id="createMemoryHistory"><a href="#createMemoryHistory" class="headerlink" title="createMemoryHistory"></a>createMemoryHistory</h2><p>createMemoryHistory编译出来的静态文件, 可以本地打开, 不过它把路由历史放到内存里, 不会修改浏览器历史, 也不会改变浏览器地址</p>
+<p><code>window.location</code>的<code>pathname</code>始终不变则意味着, 假如首页点击后显示详情页, 无法把详情页的地址分享出去, 因为浏览器的地址仍然是首页的地址</p>
+<p>同时, 页面上必须提供返回按钮, 因为浏览器的返回已不可靠. 前进后退必须通过react-router的api来实现 </p>
+<h2 id="hashHistory"><a href="#hashHistory" class="headerlink" title="hashHistory"></a>hashHistory</h2><p>hashHistory具有以上两者的优点: 编译文件可以本地打开; 每一个路由都有单独的url, 可以使用浏览器的前进/后退按钮</p>
+<p>它的缺点是, url”不干净”, 带着一串hash值. 如<code>example.com/#/somepath?_k=kfeu3k</code>, <code>#/somepath?_k=kfeu3k</code>就是<code>window.location.hash</code>.<br>以上面的示例为说明, 它路由改变时, <code>window.location.pathname</code>始终是不变的, 变的是hash值:</p>
 <ul>
-<li>iOS使用storyboard, 先有UI界面, 再来写代码, 并且是事件驱动(教程里说的), 感觉的确不一样. 如果是写html, 你根本不知道页面长什么样, 纯靠经验由自己脑补; 感觉脑补不出来了, 就要去看一下浏览器, 再回来写; 用java写界面, 也是先有代码再有UI的, 比较苦逼</li>
-<li>模拟器感觉很好玩, 安装过的应用都在上面(我打开后, 能看到之前RN安装的应用), 跑起来也快</li>
-<li>Xcode对git的支持做得非常好. 先建一个项目, 获得允许后, 它就会为这个项目建立对应的git仓库. 因为Mac自带git的, 所以不用担心本地没有git的问题. 从这点我就觉得, iOS开发天生就亲近git</li>
-<li>Xcode视图太多了, 各种窗口/视图, 我都快眼花缭乱了, 我觉得我需要一本Xcode入门指南😂</li>
+<li>如果下一个路由与当前路由不同, 则<code>#</code>后面的的部分全部改变</li>
+<li>如果下一个路由与当前路由相同, 则<code>=</code>后面的部分改变</li>
 </ul>
-<h2 id="编译报错"><a href="#编译报错" class="headerlink" title="编译报错"></a>编译报错</h2><p>到了<a href="https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson5.html#//apple_ref/doc/uid/TP40015214-CH19-SW1" target="_blank" rel="external">官方教程第六章</a>, 我遇到了难题,  这句话编译不通过, 下载官方源码打开后, Xcode同样报错.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">button.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">RatingControl</span>.ratingButtonTapped(<span class="number">_</span>:)), forControlEvents: .<span class="type">TouchDown</span>)</div></pre></td></tr></table></figure>
-<p>多方求证, 找到原因: <code>#selector</code>是swift2.2的新语法. 命令行下, 执行<code>swift</code>, 进入swift的REPL, 看到我的swift版本为2.1.1, 所以上面的语句报错了(REPL退出的命令为<code>: quit</code>)</p>
-<p>很明显, 我需要升级swift, 则我需要升级Xcode到7.3或以上(我现在是7.2), 它里面自带swift2.2或以上. </p>
-<p>但Xcode7.3, 需要操作系统升级到10.11(EI Captitan)或以上, 而我现在是10.10.5. </p>
-<p>也就是说, 为了一句代码, 我就要升级操作系统, WTF? 心里一万只草泥马奔腾而过…</p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>其实这个报错已经跟把App安装到iPhone里没有关系了–我把一个打开后只显示”Hello World”的App安装到iPhone里, 那也是达到我最初的目的呀.</p>
-<p>还好这里报错了, 让我及时止步. 最后, 我成功App安装到自己的手机里了, 详情看后文: <a href="/2016-09-18-launch-your-app-on-a-device/">iOS真机测试</a></p>
+<p>也就是说, 除了前进/后退, 用户先一次点击同一个链接, 浏览器的url都是不同的</p>
+<h2 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h2><p>文档上说, 服务端渲染就要使用browserHistory, hashHistory是做不到的. 可是, 我实验了一下, 并非如此啊, 服务端渲染根本与使用哪种历史没关系啊, 只是一定要有个nodejs服务器而已, 这里可能是个疑问点</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>最后在实际项目中, 我使用的是createMemoryHistory.</p>
+<p>场景是这样的: 对方用与我们完全不同的技术栈开发了一个app, 现在是要在其首页加一个icon, 点击后跳到我们的首页. 因为对方会把我们的首页资源放到手机里, 在本地打开, 并非通过http协议来访问, 所以不能用browserHistory. </p>
+<p>那么, 为什么不使用hashHistory呢?</p>
+<p>毕竟我们的页面是属于 “外来页面”, 对方要求在我们的页面里, 无论跳转了几个页面, 只要想返回, 都能返回到他们的首页.</p>
+<p>考虑到我们的页面上已有返回按钮, 再添加一个按钮, 不好看, 而且还要考虑硬件返回的情况, 另外就是, 该app不会有分享链接的功能. 综上考虑, 我就选择了createMemoryHistory. 因为此时路由的改变记录是在内存的, 不会改变浏览器历史, 因此在我们的页面里, 无论嵌套有多深, <code>history.back()</code>返回的都是对方的首页. 而手机的硬件返回调用的是<code>history.back()</code>, 则对方直接操作手机就可以达到目的了, 我们也不需要在页面中多添加一个返回按钮</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#browserhistory" target="_blank" rel="external">react-router histories</a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-13-start-dev-ios-app/" data-id="cixvhy1d2002fqyrrnuo3xbzu" class="article-share-link" data-share="baidu" data-title="iOS初体验">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-01-09-update-knowledge-of-react-router-history/" data-id="cixvhy1dc002qqyrrj5ofvyh7" class="article-share-link" data-share="baidu" data-title="更新对React Router的History的认识">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-09-13-start-dev-ios-app/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2017-01-09-update-knowledge-of-react-router-history/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
 
     </footer>
   </div>
@@ -128,19 +135,19 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-09-15-movie-open-course-in-youku/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017-01-12-css3-multi-column-layout-module/" id="article-nav-newer" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          电影公嗨课
+          css3多列布局
         
       </div>
     </a>
   
   
-    <a href="/2016-09-09-design-confusion-comes-from-links-in-blog/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017-01-01-look-back-at-2016/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">纠结于博客中的链接样式</div>
+      <div class="article-nav-title">回顾2016</div>
     </a>
   
 </nav>
@@ -151,7 +158,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-13-start-dev-ios-app/" data-title="iOS初体验" data-url="https://levy9527.github.io/2016-09-13-start-dev-ios-app/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-09-update-knowledge-of-react-router-history/" data-title="更新对React Router的History的认识" data-url="https://levy9527.github.io/2017-01-09-update-knowledge-of-react-router-history/"></div>
   </section>
 
 </section>
