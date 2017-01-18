@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://levy9527.github.io/2016-12-02-how-to-disable-browser-go-back-with-javascript/index.html">
 <meta property="og:site_name" content="levy">
 <meta property="og:description" content="浏览器默认的历史记录, 有时不能符合场景需求. 比如说, 场景要求后退到某个页面后, 不能再后退. 最初的想法是删除浏览器历史, 那么, 可以做到吗?">
-<meta property="og:updated_time" content="2016-12-02T03:08:45.000Z">
+<meta property="og:updated_time" content="2017-01-17T10:25:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS禁止浏览器后退">
 <meta name="twitter:description" content="浏览器默认的历史记录, 有时不能符合场景需求. 比如说, 场景要求后退到某个页面后, 不能再后退. 最初的想法是删除浏览器历史, 那么, 可以做到吗?">
@@ -88,10 +88,17 @@
 <p>怎么回事? 查看W3C文档</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">interface History &#123;</div><div class="line">  readonly attribute long length; </div><div class="line">  readonly attribute any state;</div><div class="line">  void go(optional long delta);</div><div class="line">  void back();</div><div class="line">  void forward();</div><div class="line">  void pushState(any data, DOMString title, optional DOMString? url = null);</div><div class="line">  void replaceState(any data, DOMString title, optional DOMString? url = null);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>history.length的长度是只读的; 从文档也可知, 并未提供删除浏览器历史记录的接口, 因此, 思路应该变一下</p>
-<h2 id="location-replace"><a href="#location-replace" class="headerlink" title="location.replace"></a>location.replace</h2><p>浏览器新打开一个页面, history.length就是1(因此就算能修改history的length属性,也不应该修改为0的),再打开别的页面, 或通过location.href跳转页面,则history.length就会大于1, 此时浏览器的后退按钮就会变得可点击, 移动端也可实现硬件返回.</p>
-<p>如果要禁止返回, 则可以让history.length始终为1, 使用location.replace(url)是可以做到的, 因为该方法不会增加history.length. 这种方法可以有效的阻止移动端的硬件返回, 缺点是完全舍弃了浏览器历史记录</p>
+<h2 id="history-length"><a href="#history-length" class="headerlink" title="history.length"></a>history.length</h2><p>如果要禁止返回, 则必须让history.length始终为1</p>
+<p>但是浏览器打开一个新的空白标签, history.length就是1, 再访问一个页面时, 就变为2了(因此正常网页下, history的length属性, 最少为2), 此时浏览器的后退按钮就会变得可点击, 移动端也可实现硬件返回.</p>
+<p>如果想创建一个history.length为1的页面, 目前想到的是两种方法:</p>
+<ul>
+<li>通过window.open()创建一个页面</li>
+<li>把某页面设置为浏览器的主页</li>
+</ul>
+<h2 id="location-replace"><a href="#location-replace" class="headerlink" title="location.replace"></a>location.replace</h2><p>使用上面的方法创建了页面了, 可以使用location.replace()方法跳转页面, 这样history.length是不会增加的</p>
+<p>这种方法可以有效的阻止移动端的硬件返回, 缺点是完全舍弃了浏览器历史记录</p>
 <h2 id="自己管理历史记录"><a href="#自己管理历史记录" class="headerlink" title="自己管理历史记录"></a>自己管理历史记录</h2><p>由于location.replace()的不足, 需要自己定义一个数组, 记录访问过的url, 再对外提供接口, 模拟History接口, 提供forward(), back()等方法, 以便在应用内前进/后退.</p>
-<p>需要注意的是, 如果H5应用的全部跳转都是使用location.replace(), 则浏览器的按钮返回/移动端的硬件返回都是无效的, 因此需要在H5页面内呈现返回按钮. </p>
+<p>另外, 注意在H5页面内呈现返回按钮</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://www.w3.org/TR/2014/REC-html5-20141028/browsers.html#history-1" target="_blank" rel="external">W3C history interface</a></li>
 <li><a href="http://caniuse.com/#search=history" target="_blank" rel="external">Can I Use history</a></li>
@@ -103,7 +110,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-12-02-how-to-disable-browser-go-back-with-javascript/" data-id="cixvhy1bs001eqyrrg50n1fo1" class="article-share-link" data-share="baidu" data-title="JS禁止浏览器后退">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-12-02-how-to-disable-browser-go-back-with-javascript/" data-id="ciy2iwdjm001fxlrrqndv2r2r" class="article-share-link" data-share="baidu" data-title="JS禁止浏览器后退">分享到</a>
       
 
       
@@ -156,7 +163,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/">Game</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/">Game</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -165,7 +172,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
