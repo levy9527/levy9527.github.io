@@ -4,21 +4,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>iOS初体验 | levy</title>
+  <title>Javasript的 MIME type | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App
-然而事实证明, 没那么简单…">
+  <meta name="description" content="以前只知道text/javascript, 后来逐渐接触application/javascript, application/x-javascript
+感觉有点凌乱了, 于是想搞清楚它们的关系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS初体验">
-<meta property="og:url" content="https://levy9527.github.io/2016-09-13-start-dev-ios-app/index.html">
+<meta property="og:title" content="Javasript的 MIME type">
+<meta property="og:url" content="https://levy9527.github.io/2017-01-23-mime-type-of-javascript/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App
-然而事实证明, 没那么简单…">
-<meta property="og:updated_time" content="2016-09-18T07:54:40.000Z">
+<meta property="og:description" content="以前只知道text/javascript, 后来逐渐接触application/javascript, application/x-javascript
+感觉有点凌乱了, 于是想搞清楚它们的关系">
+<meta property="og:updated_time" content="2017-01-23T08:56:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS初体验">
-<meta name="twitter:description" content="对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App
-然而事实证明, 没那么简单…">
+<meta name="twitter:title" content="Javasript的 MIME type">
+<meta name="twitter:description" content="以前只知道text/javascript, 后来逐渐接触application/javascript, application/x-javascript
+感觉有点凌乱了, 于是想搞清楚它们的关系">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -66,9 +66,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-start-dev-ios-app" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-mime-type-of-javascript" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-09-13T10:24:12.000Z" itemprop="datePublished" class="article-date">2016-09-13</time>
+    <time datetime="2017-01-23T07:40:43.000Z" itemprop="datePublished" class="article-date">2017-01-23</time>
     
   </div>
   <div class="article-inner">
@@ -77,49 +77,67 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-09-13-start-dev-ios-app/">iOS初体验</a>
+    <a itemprop="name" class="article-title" href="/2017-01-23-mime-type-of-javascript/">Javasript的 MIME type</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App</p>
-<p>然而事实证明, 没那么简单…</p>
+        <p>以前只知道<code>text/javascript</code>, 后来逐渐接触<code>application/javascript</code>, <code>application/x-javascript</code></p>
+<p>感觉有点凌乱了, 于是想搞清楚它们的关系</p>
 <a id="more"></a>
-<h2 id="搜索教程"><a href="#搜索教程" class="headerlink" title="搜索教程"></a>搜索教程</h2><p>有了想法后, 就行动起来</p>
-<p>一开始是打算下载书来看的, iPhone开发实战/深入浅出iPhone开发. 但这些书都是2012年以前的, 用的是Object-C. 语言倒是无所谓, 但当我发现里面Xcode的视图/按钮都跟我电脑上有较大出入时, 我就果断放弃了.</p>
-<p>于是按照学习React的套路, 看<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html#//apple_ref/doc/uid/TP40015214-CH2-SW1" target="_blank" rel="external">官方入门教程</a>. 教程里使用Swift, 工具也不会过时, 并且每个章节还有源码可以下载, 非常方便.</p>
-<h2 id="动手实践"><a href="#动手实践" class="headerlink" title="动手实践"></a>动手实践</h2><p>我直接跳过Swift里的基本介绍, 原因是我是来体验iOS的开发流程的, app从0到1的过程明显与网页从0到1的过程有巨大的区别, 这些是更重要的东西, 语言的差异反倒是次; 另外介绍也太长了, 时间有限, 可以后面再看.</p>
-<p>然后我就发现:</p>
+<h2 id="MIME-type"><a href="#MIME-type" class="headerlink" title="MIME type"></a>MIME type</h2><p>首先要搞清楚MIME, 英文全称为<a href="http://www.w3school.com.cn/media/media_mimeref.asp" target="_blank" rel="external">Multipurpose Internet Mail Extensions</a>, 是描述消息内容类型的因特网标准。</p>
+<p>这个解释好像有点难懂, 没关系, 知道<code>MIME type</code>是干嘛的就好了: <a href="https://mimesniff.spec.whatwg.org/#mime-type" target="_blank" rel="external">The MIME type of a resource is a technical hint about the use and format of that resource</a>, 也就是说根据<code>MIME type</code>, Web程序就知道某个资源的用途并知道应该如何解析它.</p>
+<p>虽然<code>MIME type</code>好像有点拗口, 但也有好处, 那就是可以与CSS的 <code>media type</code> 区分开来</p>
+<h2 id="javascript的-MIME-type"><a href="#javascript的-MIME-type" class="headerlink" title="javascript的 MIME type"></a>javascript的 MIME type</h2><p><a href="https://html.spec.whatwg.org/multipage/scripting.html#scriptingLanguages" target="_blank" rel="external">html规范</a>定义的<code>MIME type</code> 如下:</p>
 <ul>
-<li>iOS使用storyboard, 先有UI界面, 再来写代码, 并且是事件驱动(教程里说的), 感觉的确不一样. 如果是写html, 你根本不知道页面长什么样, 纯靠经验由自己脑补; 感觉脑补不出来了, 就要去看一下浏览器, 再回来写; 用java写界面, 也是先有代码再有UI的, 比较苦逼</li>
-<li>模拟器感觉很好玩, 安装过的应用都在上面(我打开后, 能看到之前RN安装的应用), 跑起来也快</li>
-<li>Xcode对git的支持做得非常好. 先建一个项目, 获得允许后, 它就会为这个项目建立对应的git仓库. 因为Mac自带git的, 所以不用担心本地没有git的问题. 从这点我就觉得, iOS开发天生就亲近git</li>
-<li>Xcode视图太多了, 各种窗口/视图, 我都快眼花缭乱了, 我觉得我需要一本Xcode入门指南😂</li>
+<li>application/ecmascript</li>
+<li>application/javascript</li>
+<li>application/x-ecmascript</li>
+<li>application/x-javascript</li>
+<li>text/ecmascript</li>
+<li>text/javascript</li>
+<li>text/javascript1.0</li>
+<li>text/javascript1.1</li>
+<li>text/javascript1.2</li>
+<li>text/javascript1.3</li>
+<li>text/javascript1.4</li>
+<li>text/javascript1.5</li>
+<li>text/jscript</li>
+<li>text/livescript</li>
+<li>text/x-ecmascript</li>
+<li>text/x-javascript</li>
 </ul>
-<h2 id="编译报错"><a href="#编译报错" class="headerlink" title="编译报错"></a>编译报错</h2><p>到了<a href="https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson5.html#//apple_ref/doc/uid/TP40015214-CH19-SW1" target="_blank" rel="external">官方教程第六章</a>, 我遇到了难题,  这句话编译不通过, 下载官方源码打开后, Xcode同样报错.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">button.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">RatingControl</span>.ratingButtonTapped(<span class="number">_</span>:)), forControlEvents: .<span class="type">TouchDown</span>)</div></pre></td></tr></table></figure>
-<p>多方求证, 找到原因: <code>#selector</code>是swift2.2的新语法. 命令行下, 执行<code>swift</code>, 进入swift的REPL, 看到我的swift版本为2.1.1, 所以上面的语句报错了(REPL退出的命令为<code>: quit</code>)</p>
-<p>很明显, 我需要升级swift, 则我需要升级Xcode到7.3或以上(我现在是7.2), 它里面自带swift2.2或以上. </p>
-<p>但Xcode7.3, 需要操作系统升级到10.11(EI Captitan)或以上, 而我现在是10.10.5. </p>
-<p>也就是说, 为了一句代码, 我就要升级操作系统, WTF? 心里一万只草泥马奔腾而过…</p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>其实这个报错已经跟把App安装到iPhone里没有关系了–我把一个打开后只显示”Hello World”的App安装到iPhone里, 那也是达到我最初的目的呀.</p>
-<p>还好这里报错了, 让我及时止步. 最后, 我成功App安装到自己的手机里了, 详情看后文: <a href="/2016-09-18-launch-your-app-on-a-device/">iOS真机测试</a></p>
+<p>这么多, 是不是头都大了.</p>
+<p>冷静一下, 再看这篇<a href="https://html.spec.whatwg.org/multipage/indices.html#mime-types-2" target="_blank" rel="external">文章</a>, 这里对每个类型都有简单的说明</p>
+<p>细心看下来, 发现这么多类型中, 除了<code>text/javascript</code>, 其余全是”历史遗留类型”. 也就是现在用的话, 都是用<code>text/javascript</code>的</p>
+<h2 id="scipt标签不写type"><a href="#scipt标签不写type" class="headerlink" title="scipt标签不写type"></a>scipt标签不写type</h2><p>如果html里script标签不写type, <code>MIME type</code> 会是<code>text/javascript</code>吗?</p>
+<p>MDN文档指出, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script" target="_blank" rel="external">script不写type则把script当作Javasript</a>. 但这点并没有回答上面的问题</p>
+<p>于是我自己利用Nginx作测试, 最终得出结论:</p>
+<p>是的, script的默认type是<code>text/javasript</code>, 查看Response Headers, 可见<code>Content-Type:text/javascript</code></p>
+<p>但这里还有几个前提:</p>
+<ol>
+<li>页面不是通过file协议本地打开的</li>
+<li>服务器的MIME type配置没对覆盖此值</li>
+</ol>
+<p>第二点怎么理解呢? 以Nginx为例, 如果修改<code>mime.types</code>文件如下所示:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">types &#123;</div><div class="line">  application/javascript js;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>则查看Response Headers, 可见<code>Content-Type:application/javascript</code></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-13-start-dev-ios-app/" data-id="ciy9vz4yq002tgmrrlco6vucq" class="article-share-link" data-share="baidu" data-title="iOS初体验">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-01-23-mime-type-of-javascript/" data-id="ciy9vz4xp0024gmrratjfdan8" class="article-share-link" data-share="baidu" data-title="Javasript的 MIME type">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-09-13-start-dev-ios-app/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2017-01-23-mime-type-of-javascript/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
 
     </footer>
   </div>
@@ -128,19 +146,10 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-09-15-movie-open-course-in-youku/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          电影公嗨课
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016-09-09-design-confusion-comes-from-links-in-blog/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017-01-23-inline-or-internal/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">纠结于博客中的链接样式</div>
+      <div class="article-nav-title">inline是指内联还是页内</div>
     </a>
   
 </nav>
@@ -151,7 +160,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-13-start-dev-ios-app/" data-title="iOS初体验" data-url="https://levy9527.github.io/2016-09-13-start-dev-ios-app/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-23-mime-type-of-javascript/" data-title="Javasript的 MIME type" data-url="https://levy9527.github.io/2017-01-23-mime-type-of-javascript/"></div>
   </section>
 
 </section>

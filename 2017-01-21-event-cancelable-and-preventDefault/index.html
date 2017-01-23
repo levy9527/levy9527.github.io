@@ -4,21 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>iOS初体验 | levy</title>
+  <title>event.preventDefault出错 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App
-然而事实证明, 没那么简单…">
+  <meta name="description" content="使用mui开发移动端h5页面时, 发现Chrome的控制台不断飘红, 原来是event.preventDefault报错了.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS初体验">
-<meta property="og:url" content="https://levy9527.github.io/2016-09-13-start-dev-ios-app/index.html">
+<meta property="og:title" content="event.preventDefault出错">
+<meta property="og:url" content="https://levy9527.github.io/2017-01-21-event-cancelable-and-preventDefault/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App
-然而事实证明, 没那么简单…">
-<meta property="og:updated_time" content="2016-09-18T07:54:40.000Z">
+<meta property="og:description" content="使用mui开发移动端h5页面时, 发现Chrome的控制台不断飘红, 原来是event.preventDefault报错了.">
+<meta property="og:updated_time" content="2017-01-21T05:28:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS初体验">
-<meta name="twitter:description" content="对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App
-然而事实证明, 没那么简单…">
+<meta name="twitter:title" content="event.preventDefault出错">
+<meta name="twitter:description" content="使用mui开发移动端h5页面时, 发现Chrome的控制台不断飘红, 原来是event.preventDefault报错了.">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -66,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-start-dev-ios-app" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-event-cancelable-and-preventDefault" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-09-13T10:24:12.000Z" itemprop="datePublished" class="article-date">2016-09-13</time>
+    <time datetime="2017-01-21T05:28:54.000Z" itemprop="datePublished" class="article-date">2017-01-21</time>
     
   </div>
   <div class="article-inner">
@@ -77,49 +74,45 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-09-13-start-dev-ios-app/">iOS初体验</a>
+    <a itemprop="name" class="article-title" href="/2017-01-21-event-cancelable-and-preventDefault/">event.preventDefault出错</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App</p>
-<p>然而事实证明, 没那么简单…</p>
+        <p>使用mui开发移动端h5页面时, 发现Chrome的控制台不断飘红, 原来是event.preventDefault报错了.</p>
 <a id="more"></a>
-<h2 id="搜索教程"><a href="#搜索教程" class="headerlink" title="搜索教程"></a>搜索教程</h2><p>有了想法后, 就行动起来</p>
-<p>一开始是打算下载书来看的, iPhone开发实战/深入浅出iPhone开发. 但这些书都是2012年以前的, 用的是Object-C. 语言倒是无所谓, 但当我发现里面Xcode的视图/按钮都跟我电脑上有较大出入时, 我就果断放弃了.</p>
-<p>于是按照学习React的套路, 看<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html#//apple_ref/doc/uid/TP40015214-CH2-SW1" target="_blank" rel="external">官方入门教程</a>. 教程里使用Swift, 工具也不会过时, 并且每个章节还有源码可以下载, 非常方便.</p>
-<h2 id="动手实践"><a href="#动手实践" class="headerlink" title="动手实践"></a>动手实践</h2><p>我直接跳过Swift里的基本介绍, 原因是我是来体验iOS的开发流程的, app从0到1的过程明显与网页从0到1的过程有巨大的区别, 这些是更重要的东西, 语言的差异反倒是次; 另外介绍也太长了, 时间有限, 可以后面再看.</p>
-<p>然后我就发现:</p>
-<ul>
-<li>iOS使用storyboard, 先有UI界面, 再来写代码, 并且是事件驱动(教程里说的), 感觉的确不一样. 如果是写html, 你根本不知道页面长什么样, 纯靠经验由自己脑补; 感觉脑补不出来了, 就要去看一下浏览器, 再回来写; 用java写界面, 也是先有代码再有UI的, 比较苦逼</li>
-<li>模拟器感觉很好玩, 安装过的应用都在上面(我打开后, 能看到之前RN安装的应用), 跑起来也快</li>
-<li>Xcode对git的支持做得非常好. 先建一个项目, 获得允许后, 它就会为这个项目建立对应的git仓库. 因为Mac自带git的, 所以不用担心本地没有git的问题. 从这点我就觉得, iOS开发天生就亲近git</li>
-<li>Xcode视图太多了, 各种窗口/视图, 我都快眼花缭乱了, 我觉得我需要一本Xcode入门指南😂</li>
-</ul>
-<h2 id="编译报错"><a href="#编译报错" class="headerlink" title="编译报错"></a>编译报错</h2><p>到了<a href="https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson5.html#//apple_ref/doc/uid/TP40015214-CH19-SW1" target="_blank" rel="external">官方教程第六章</a>, 我遇到了难题,  这句话编译不通过, 下载官方源码打开后, Xcode同样报错.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">button.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">RatingControl</span>.ratingButtonTapped(<span class="number">_</span>:)), forControlEvents: .<span class="type">TouchDown</span>)</div></pre></td></tr></table></figure>
-<p>多方求证, 找到原因: <code>#selector</code>是swift2.2的新语法. 命令行下, 执行<code>swift</code>, 进入swift的REPL, 看到我的swift版本为2.1.1, 所以上面的语句报错了(REPL退出的命令为<code>: quit</code>)</p>
-<p>很明显, 我需要升级swift, 则我需要升级Xcode到7.3或以上(我现在是7.2), 它里面自带swift2.2或以上. </p>
-<p>但Xcode7.3, 需要操作系统升级到10.11(EI Captitan)或以上, 而我现在是10.10.5. </p>
-<p>也就是说, 为了一句代码, 我就要升级操作系统, WTF? 心里一万只草泥马奔腾而过…</p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>其实这个报错已经跟把App安装到iPhone里没有关系了–我把一个打开后只显示”Hello World”的App安装到iPhone里, 那也是达到我最初的目的呀.</p>
-<p>还好这里报错了, 让我及时止步. 最后, 我成功App安装到自己的手机里了, 详情看后文: <a href="/2016-09-18-launch-your-app-on-a-device/">iOS真机测试</a></p>
+<p>出错代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这里的event 代表 touchstart事件</span></div><div class="line">event.preventDefault()</div></pre></td></tr></table></figure>
+<p>报错如下:</p>
+<blockquote>
+<p>Unable to preventDefault inside passive event listener due to target being treated as passive. See <a href="https://www.chromestatus.com/features/5093566007214080" target="_blank" rel="external">https://www.chromestatus.com/features/5093566007214080</a></p>
+</blockquote>
+<p>链接中的内容如下:</p>
+<blockquote>
+<p>AddEventListenerOptions defaults passive to false. We propose sometimes defaulting this to true in some “document level” scenarios. Specifically if an event listener is added to the document, body, or window and is a scroll blocking (touchstart, touchmove) listener it will be have its default to be true.</p>
+<p>If the value is explicitly provided in the AddEventListenerOptions it will continue having the value specified by the page.</p>
+<p>This is behind a flag starting in Chrome 54.</p>
+</blockquote>
+<p>把文章翻译成更直白点就是, event有一个cancelable属性, 只有当该属性为true时, 才能调用preventDefault方法. 由Chrome54开始, touchstart, touchmove事件的cancelable为false, 故不能调用preventDefault方法</p>
+<p>注意到, 这是Chrome才有的特性, 比如在Firefox, touchstart事件的cancelable仍为true, 因此上面的错误在Firefox50是不会有的.</p>
+<p>这也是浏览器的差异. 以后要阻止事件的默认行为, 应该这样写了:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event.cancelable &amp;&amp; event.preventDefault()</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-13-start-dev-ios-app/" data-id="ciy9vz4yq002tgmrrlco6vucq" class="article-share-link" data-share="baidu" data-title="iOS初体验">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-01-21-event-cancelable-and-preventDefault/" data-id="ciy9vz4wh001bgmrrpmhgnvkh" class="article-share-link" data-share="baidu" data-title="event.preventDefault出错">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-09-13-start-dev-ios-app/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2017-01-21-event-cancelable-and-preventDefault/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
 
     </footer>
   </div>
@@ -128,19 +121,19 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-09-15-movie-open-course-in-youku/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017-01-23-inline-or-internal/" id="article-nav-newer" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          电影公嗨课
+          inline是指内联还是页内
         
       </div>
     </a>
   
   
-    <a href="/2016-09-09-design-confusion-comes-from-links-in-blog/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017-01-18-light-up-contribution-graph-on-oschina/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">纠结于博客中的链接样式</div>
+      <div class="article-nav-title">点亮码云的贡献图</div>
     </a>
   
 </nav>
@@ -151,7 +144,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-13-start-dev-ios-app/" data-title="iOS初体验" data-url="https://levy9527.github.io/2016-09-13-start-dev-ios-app/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-21-event-cancelable-and-preventDefault/" data-title="event.preventDefault出错" data-url="https://levy9527.github.io/2017-01-21-event-cancelable-and-preventDefault/"></div>
   </section>
 
 </section>
