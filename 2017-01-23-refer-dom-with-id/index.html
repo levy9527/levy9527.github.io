@@ -4,18 +4,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>event.preventDefault出错 | levy</title>
+  <title>直接使用id引用DOM元素 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用mui开发移动端h5页面时, 发现Chrome的控制台不断飘红, 原来是event.preventDefault报错了.">
+  <meta name="description" content="无意中再次发现, 某元素赋予了id属性后, js可以直接通过id来获取该元素. 
+这是怎么回事? 既然有这种事, 那么还要document.getElementById干嘛?">
 <meta property="og:type" content="article">
-<meta property="og:title" content="event.preventDefault出错">
-<meta property="og:url" content="https://levy9527.github.io/2017-01-21-event-cancelable-and-preventDefault/index.html">
+<meta property="og:title" content="直接使用id引用DOM元素">
+<meta property="og:url" content="https://levy9527.github.io/2017-01-23-refer-dom-with-id/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="使用mui开发移动端h5页面时, 发现Chrome的控制台不断飘红, 原来是event.preventDefault报错了.">
-<meta property="og:updated_time" content="2017-01-21T05:28:54.000Z">
+<meta property="og:description" content="无意中再次发现, 某元素赋予了id属性后, js可以直接通过id来获取该元素. 
+这是怎么回事? 既然有这种事, 那么还要document.getElementById干嘛?">
+<meta property="og:updated_time" content="2017-01-25T04:36:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="event.preventDefault出错">
-<meta name="twitter:description" content="使用mui开发移动端h5页面时, 发现Chrome的控制台不断飘红, 原来是event.preventDefault报错了.">
+<meta name="twitter:title" content="直接使用id引用DOM元素">
+<meta name="twitter:description" content="无意中再次发现, 某元素赋予了id属性后, js可以直接通过id来获取该元素. 
+这是怎么回事? 既然有这种事, 那么还要document.getElementById干嘛?">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -63,9 +66,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-event-cancelable-and-preventDefault" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-refer-dom-with-id" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2017-01-21T05:28:54.000Z" itemprop="datePublished" class="article-date">2017-01-21</time>
+    <time datetime="2017-01-23T13:00:18.000Z" itemprop="datePublished" class="article-date">2017-01-23</time>
     
   </div>
   <div class="article-inner">
@@ -74,41 +77,34 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2017-01-21-event-cancelable-and-preventDefault/">event.preventDefault出错</a>
+    <a itemprop="name" class="article-title" href="/2017-01-23-refer-dom-with-id/">直接使用id引用DOM元素</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用mui开发移动端h5页面时, 发现Chrome的控制台不断飘红, 原来是event.preventDefault报错了.</p>
+        <p>无意中再次发现, 某元素赋予了id属性后, js可以直接通过id来获取该元素. </p>
+<p>这是怎么回事? 既然有这种事, 那么还要<code>document.getElementById</code>干嘛?</p>
 <a id="more"></a>
-<p>出错代码:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这里的event 代表 touchstart事件</span></div><div class="line">event.preventDefault()</div></pre></td></tr></table></figure>
-<p>报错如下:</p>
-<blockquote>
-<p>Unable to preventDefault inside passive event listener due to target being treated as passive. See <a href="https://www.chromestatus.com/features/5093566007214080" target="_blank" rel="external">https://www.chromestatus.com/features/5093566007214080</a></p>
-</blockquote>
-<p>链接中的内容如下:</p>
-<blockquote>
-<p>AddEventListenerOptions defaults passive to false. We propose sometimes defaulting this to true in some “document level” scenarios. Specifically if an event listener is added to the document, body, or window and is a scroll blocking (touchstart, touchmove) listener it will be have its default to be true.</p>
-<p>If the value is explicitly provided in the AddEventListenerOptions it will continue having the value specified by the page.</p>
-<p>This is behind a flag starting in Chrome 54.</p>
-</blockquote>
-<p>把文章翻译成更直白点就是, event有一个cancelable属性, 只有当该属性为true时, 才能调用preventDefault方法. 由Chrome54开始, touchstart, touchmove事件的cancelable为false, 故不能调用preventDefault方法</p>
-<p>注意到, 这是Chrome才有的特性, 比如在Firefox, touchstart事件的cancelable仍为true, 因此上面的错误在Firefox50是不会有的.</p>
-<p>这也是浏览器的差异. 以后要阻止事件的默认行为, 应该这样写了:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event.cancelable &amp;&amp; event.preventDefault()</div></pre></td></tr></table></figure>
+<p>根据stackoverflow的<a href="http://stackoverflow.com/questions/3434278/do-dom-tree-elements-with-ids-become-global-variables?noredirect=1&amp;lq=1" target="_blank" rel="external">这个回答</a>, 当对某元素设置id属性<code>id=someId</code>时, window对象会增加同名属性, 可以通过<code>window[someId]</code>或<code>window.someId</code>引用该元素</p>
+<p>且不论这样处理有着什么样的故事, 回答已提到, 这件事情已经变成html的<a href="https://www.w3.org/TR/html5/browsers.html#named-access-on-the-window-object" target="_blank" rel="external">规范</a></p>
+<p>那么, 既然可以这样做, 我们还需要使用<code>document.getElementById</code>这个方法吗</p>
+<p>答案是需要.</p>
+<p>因为经过测试, 我发现如果页面上出现与id同名的变量, 则该变量代表的就是js的变量值, 而不指向html中的元素. </p>
+<p>另外还有一些特殊情况, 下面是测试代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>use id to select element<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> foo = <span class="string">'foo'</span></div><div class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">section</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>覆盖失败<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"window"</span>&gt;</span>window<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"document"</span>&gt;</span>document<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">section</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用id引用<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"foo"</span>&gt;</span>id: foo<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"bar"</span>&gt;</span>id: bar<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"two-word"</span>&gt;</span>id: two-word<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">section</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用name引用<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"#"</span> <span class="attr">name</span>=<span class="string">"form"</span>&gt;</span>表单<span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">"img"</span> <span class="attr">name</span>=<span class="string">"img"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">section</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>可在控制台测试变量<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"result"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>two-word的引用需要使用: window['two-word']<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> bar = <span class="string">'bar'</span></div><div class="line">    result.textContent = <span class="string">'foo is '</span> + foo + <span class="string">', bar is '</span> + bar</div><div class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><a href="http://git.oschina.net/levy9527/practice/blob/master/js_practice/id.html?dir=0&amp;filepath=js_practice%2Fid.html&amp;oid=5ef0b7954b1f843a7a1fa15efa0e95dcb2e14c73&amp;sha=3e51adf040afbb60a94f5a4f529237bfa527debf" target="_blank" rel="external">源码在这里</a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-01-21-event-cancelable-and-preventDefault/" data-id="ciydzitue001aswrrb7sjge7s" class="article-share-link" data-share="baidu" data-title="event.preventDefault出错">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-01-23-refer-dom-with-id/" data-id="ciydzitwb002nswrr0why1m6n" class="article-share-link" data-share="baidu" data-title="直接使用id引用DOM元素">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2017-01-21-event-cancelable-and-preventDefault/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2017-01-23-refer-dom-with-id/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -121,19 +117,19 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2017-01-23-inline-or-internal/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017-01-25-tldr/" id="article-nav-newer" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          inline是指内联还是页内
+          TL;DR --- 太长不看
         
       </div>
     </a>
   
   
-    <a href="/2017-01-18-light-up-contribution-graph-on-oschina/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017-01-23-mime-type-of-javascript/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">点亮码云的贡献图</div>
+      <div class="article-nav-title">Javasript的 MIME type</div>
     </a>
   
 </nav>
@@ -144,7 +140,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-21-event-cancelable-and-preventDefault/" data-title="event.preventDefault出错" data-url="https://levy9527.github.io/2017-01-21-event-cancelable-and-preventDefault/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-23-refer-dom-with-id/" data-title="直接使用id引用DOM元素" data-url="https://levy9527.github.io/2017-01-23-refer-dom-with-id/"></div>
   </section>
 
 </section>
