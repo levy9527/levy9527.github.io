@@ -4,20 +4,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>React Native真机运行 | levy</title>
+  <title>一些静态页面开发经验 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="根据之前iOS真机测试的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏">
+  <meta name="description" content="最近在开发官网, 本来是说好只是在PC端的展示的, 但我太天真了, 就信了, 后来果然又说要适配移动端, 于是又喜闻乐见地改来改去.
+之前也没怎么做过PC端网页, 在不断与UI撕逼的过程中, 总结经验如下:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React Native真机运行">
-<meta property="og:url" content="https://levy9527.github.io/2016-09-20-react-native-build-for-production/index.html">
+<meta property="og:title" content="一些静态页面开发经验">
+<meta property="og:url" content="https://levy9527.github.io/2017-05-16-some-experience-in-static-site-developing/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="根据之前iOS真机测试的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-21/7904124.jpg">
-<meta property="og:updated_time" content="2016-09-26T03:37:30.000Z">
+<meta property="og:description" content="最近在开发官网, 本来是说好只是在PC端的展示的, 但我太天真了, 就信了, 后来果然又说要适配移动端, 于是又喜闻乐见地改来改去.
+之前也没怎么做过PC端网页, 在不断与UI撕逼的过程中, 总结经验如下:">
+<meta property="og:updated_time" content="2017-06-01T02:53:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React Native真机运行">
-<meta name="twitter:description" content="根据之前iOS真机测试的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏">
-<meta name="twitter:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-21/7904124.jpg">
+<meta name="twitter:title" content="一些静态页面开发经验">
+<meta name="twitter:description" content="最近在开发官网, 本来是说好只是在PC端的展示的, 但我太天真了, 就信了, 后来果然又说要适配移动端, 于是又喜闻乐见地改来改去.
+之前也没怎么做过PC端网页, 在不断与UI撕逼的过程中, 总结经验如下:">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -65,9 +66,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-react-native-build-for-production" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-some-experience-in-static-site-developing" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-09-20T09:23:27.000Z" itemprop="datePublished" class="article-date">2016-09-20</time>
+    <time datetime="2017-05-16T06:11:21.000Z" itemprop="datePublished" class="article-date">2017-05-16</time>
     
   </div>
   <div class="article-inner">
@@ -76,35 +77,46 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-09-20-react-native-build-for-production/">React Native真机运行</a>
+    <a itemprop="name" class="article-title" href="/2017-05-16-some-experience-in-static-site-developing/">一些静态页面开发经验</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>根据之前<a href="/2016-09-18-launch-your-app-on-a-device/">iOS真机测试</a>的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-21/7904124.jpg" alt="WTF?"></p>
+        <p>最近在开发官网, 本来是说好只是在PC端的展示的, 但我太天真了, 就信了, 后来果然又说要适配移动端, 于是又喜闻乐见地改来改去.</p>
+<p>之前也没怎么做过PC端网页, 在不断与UI撕逼的过程中, 总结经验如下:</p>
 <a id="more"></a>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>下面给出的是最简单的解决方案, 只适用于个人测试, 如果要发布到App Store, 还要做<a href="https://facebook.github.io/react-native/docs/running-on-device-ios.html" target="_blank" rel="external">额外的设置</a></p>
-<p>找到<code>AppDelegate.m</code></p>
-<p>把下面的代码注释掉:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jsCodeLocation = [NSURL URLWithString:@&quot;http://localhost:8081/index.ios.bundle?platform=ios&amp;dev=true&quot;];</div></pre></td></tr></table></figure>
-<p>把下面的代码注释打开<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// jsCodeLocation = [[NSBundle mainBundle] URLForResource:@&quot;main&quot; withExtension:@&quot;jsbundle&quot;];</div></pre></td></tr></table></figure></p>
-<p>重新安装即可</p>
+<ol>
+<li><p>移动优先. 就算说好是PC端的静态页面, 也要以移动端布局优先, 再通过媒体查询来适配PC端(你自己想想, 坐地铁, 等电梯, 躺床上的时候, 你是想打开电脑还是想玩手机? 如果一个网页在手机里打开惨不忍睹, 你会不会想, 这什么垃圾网页?)</p>
+</li>
+<li><p>图片的文件夹最好叫<code>images</code>. 举个例子, ps切图是指定输出目录为<code>src</code>, 则切出的图片一定会放在<code>src</code>目录下的<code>images</code>文件夹里的, 如果<code>src</code>目录没有<code>images</code>文件夹, ps就会新建一个. 因此, 如果<code>src</code>目录下存放图片的文件夹不叫<code>images</code>, 则你还要切完图后再移动图片, 比较麻烦.</p>
+</li>
+<li><p>图片. png才可以无背景色即透明的, jpg不可以. 切图时, 去掉纹理层, 保留蒙版层(让图片颜色变灰淡), 这样切出来的图片体积最小, 在格式上, 导出的图片jpg比png更小. 导出的图片可以使用ImageOptim压缩一下</p>
+</li>
+<li><p>Safari是垃圾浏览器(哼哼, 虽然我用Mac, 但我还是要这样说. 我用Chrome, UI用Safari, 结果UI经常对我说, 你这网页有bug😂) 简单来说, 相比Chrome, Safari渲染页面的方式要”笨”一些.</p>
+</li>
+<li><p>video 最通用的格式为mp4, IE9+适用. 使用前可以用HandBrake先压缩一下, 如果缩放视频, 有个方法是先设置<code>position: absolute</code>, 然后再指定宽度或高度(只指定一个, 因为视频不允许变形的), 但因为Safari比较”笨”, 需要设置<code>top</code>属性, 而设置了<code>top</code>, 又可能造成溢出, 需要设置<code>margin: auto</code>, 则最终代码如下:</p>
+</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">video</span> &#123;</div><div class="line">  <span class="attribute">position</span>: absolute; <span class="comment">/*注意父元素position: relative*/</span></div><div class="line">	<span class="attribute">top</span>: <span class="number">0</span>; <span class="comment">/*兼容Safari*/</span> </div><div class="line">	<span class="attribute">bottom</span>: <span class="number">0</span>; </div><div class="line">	<span class="attribute">width</span>: <span class="number">100%</span>; <span class="comment">/*铺满父元素*/</span></div><div class="line">	<span class="attribute">margin</span>: auto; <span class="comment">/*设置top/bottom后, margin: auto可以让视频不溢出父元素*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>另外, video 设置<code>loop</code>循环播放时, Chrome控制台可以看到, Chrome不断地发送请求, 而别的浏览器却不会, 难道Chrome有bug? 不, 肯定是因为你设置了”开启控制台时禁用缓存选项”, 详情请看<a href="http://stackoverflow.com/questions/13883569/chrome-re-downloads-video-every-loop" target="_blank" rel="external">stackoverflow的问答</a></p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-20-react-native-build-for-production/" data-id="cj3dts6tv0035llrrrjxdjkf0" class="article-share-link" data-share="baidu" data-title="React Native真机运行">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-05-16-some-experience-in-static-site-developing/" data-id="cj3dts6tp002zllrrphlgg2rk" class="article-share-link" data-share="baidu" data-title="一些静态页面开发经验">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-09-20-react-native-build-for-production/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2017-05-16-some-experience-in-static-site-developing/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
 
     </footer>
   </div>
@@ -113,19 +125,10 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-09-22-type-emoji-on-mac/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          Mac使用输入法打出特殊字符
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016-09-20-add-app-icon-to-ios-app/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017-03-24-black-magic-js-atob-with-utf8/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">为iOS应用添加icon</div>
+      <div class="article-nav-title">js黑魔法之使用atob解码utf-8字符</div>
     </a>
   
 </nav>
@@ -136,7 +139,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-20-react-native-build-for-production/" data-title="React Native真机运行" data-url="https://levy9527.github.io/2016-09-20-react-native-build-for-production/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017-05-16-some-experience-in-static-site-developing/" data-title="一些静态页面开发经验" data-url="https://levy9527.github.io/2017-05-16-some-experience-in-static-site-developing/"></div>
   </section>
 
 </section>

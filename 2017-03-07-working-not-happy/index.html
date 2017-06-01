@@ -4,20 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>React Native真机运行 | levy</title>
+  <title>工作得不开心 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="根据之前iOS真机测试的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏">
+  <meta name="description" content="为什么不开心? 因为我觉得工作状态下降了, 工作效率也降低了, 甚至失去了最初的激情, 因为重心跑偏了…">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React Native真机运行">
-<meta property="og:url" content="https://levy9527.github.io/2016-09-20-react-native-build-for-production/index.html">
+<meta property="og:title" content="工作得不开心">
+<meta property="og:url" content="https://levy9527.github.io/2017-03-07-working-not-happy/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="根据之前iOS真机测试的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-21/7904124.jpg">
-<meta property="og:updated_time" content="2016-09-26T03:37:30.000Z">
+<meta property="og:description" content="为什么不开心? 因为我觉得工作状态下降了, 工作效率也降低了, 甚至失去了最初的激情, 因为重心跑偏了…">
+<meta property="og:updated_time" content="2017-06-01T02:37:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React Native真机运行">
-<meta name="twitter:description" content="根据之前iOS真机测试的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏">
-<meta name="twitter:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-21/7904124.jpg">
+<meta name="twitter:title" content="工作得不开心">
+<meta name="twitter:description" content="为什么不开心? 因为我觉得工作状态下降了, 工作效率也降低了, 甚至失去了最初的激情, 因为重心跑偏了…">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -65,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-react-native-build-for-production" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-working-not-happy" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-09-20T09:23:27.000Z" itemprop="datePublished" class="article-date">2016-09-20</time>
+    <time datetime="2017-03-07T13:43:14.000Z" itemprop="datePublished" class="article-date">2017-03-07</time>
     
   </div>
   <div class="article-inner">
@@ -76,35 +74,40 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-09-20-react-native-build-for-production/">React Native真机运行</a>
+    <a itemprop="name" class="article-title" href="/2017-03-07-working-not-happy/">工作得不开心</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>根据之前<a href="/2016-09-18-launch-your-app-on-a-device/">iOS真机测试</a>的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-21/7904124.jpg" alt="WTF?"></p>
+        <p>为什么不开心? 因为我觉得工作状态下降了, 工作效率也降低了, 甚至失去了最初的激情, 因为重心跑偏了…</p>
 <a id="more"></a>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>下面给出的是最简单的解决方案, 只适用于个人测试, 如果要发布到App Store, 还要做<a href="https://facebook.github.io/react-native/docs/running-on-device-ios.html" target="_blank" rel="external">额外的设置</a></p>
-<p>找到<code>AppDelegate.m</code></p>
-<p>把下面的代码注释掉:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jsCodeLocation = [NSURL URLWithString:@&quot;http://localhost:8081/index.ios.bundle?platform=ios&amp;dev=true&quot;];</div></pre></td></tr></table></figure>
-<p>把下面的代码注释打开<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// jsCodeLocation = [[NSBundle mainBundle] URLForResource:@&quot;main&quot; withExtension:@&quot;jsbundle&quot;];</div></pre></td></tr></table></figure></p>
-<p>重新安装即可</p>
+<p>我读<code>软技能: 代码之外的生存之道</code>, 发现有几段话非常适合来描述我现在的状态.</p>
+<blockquote>
+<p>作为一位专业人士，你必须不断改善和提高自己的工作品质。你或许不能一直达到自己期望的工作品质，但随着时间的推<br>移，持之以恒地坚持下去，你终究会达到自己设定的标准。许多软件开发人员犯的一个巨大错误就是，当无法达到标准时，他<br>们不是完善自己、迎接挑战，而是降低标准。</p>
+</blockquote>
+<p>我在工作中的表现比较消极, 一直在降低自己的标准. 没有全局思维, 没有预先与UI做好沟通, 与开发做好约定, 只看到自己的工作, 只是走一步看一步.</p>
+<blockquote>
+<p>新鲜感消退之后，现实就会浮现。无论你是接手一个新项目还是学习一项新技能，你最终都会到达这种状态:你兴趣索然，<br>积极性低，进展异常缓慢，或者看起来毫无进展。</p>
+<p>最终，你会身心俱疲。你可以尝试否认或者掩盖这个事实，但是最终你还是知道，你再也不会为这份工作、这个项目、这项<br>任务感到兴奋不已。你觉得自己无比倦怠。</p>
+</blockquote>
+<p>现在用的框架并不喜欢, 因而写起来很不爽. 我现在觉得, 工具不需要多牛逼, 关键是要自己能喜欢, 自己用得顺手, 就比如CSS预处理器, 我就是不喜欢Less, 最好是Stylus, Sass也行, 反正就不喜欢Less</p>
+<p>唉, 发了一下牢骚. 总之, 写代码方面还是要严格要求自己的, 另外还要学会工程性的方法, 加强沟通协作, 注意这里是指提前沟通, 而不是只是遇到问题才沟通.</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-20-react-native-build-for-production/" data-id="cj3dts6tv0035llrrrjxdjkf0" class="article-share-link" data-share="baidu" data-title="React Native真机运行">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-03-07-working-not-happy/" data-id="cj3dts6uw003xllrrh6smrn6q" class="article-share-link" data-share="baidu" data-title="工作得不开心">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-09-20-react-native-build-for-production/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2017-03-07-working-not-happy/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂/">杂</a></li></ul>
 
     </footer>
   </div>
@@ -113,19 +116,19 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-09-22-type-emoji-on-mac/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017-03-10-kindergarten-killer/" id="article-nav-newer" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          Mac使用输入法打出特殊字符
+          幼稚园杀手
         
       </div>
     </a>
   
   
-    <a href="/2016-09-20-add-app-icon-to-ios-app/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017-03-05-reading-project/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">为iOS应用添加icon</div>
+      <div class="article-nav-title">阅读计划</div>
     </a>
   
 </nav>
@@ -136,7 +139,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-20-react-native-build-for-production/" data-title="React Native真机运行" data-url="https://levy9527.github.io/2016-09-20-react-native-build-for-production/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017-03-07-working-not-happy/" data-title="工作得不开心" data-url="https://levy9527.github.io/2017-03-07-working-not-happy/"></div>
   </section>
 
 </section>
