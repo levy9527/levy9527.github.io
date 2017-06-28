@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://levy9527.github.io/2016-12-30-table-with-fixed-column/index.html">
 <meta property="og:site_name" content="levy">
 <meta property="og:description" content="之前做页面都没有画表格的经历, 最近工作中有接触到, 刚好补了一下这方面的知识">
-<meta property="og:updated_time" content="2017-01-26T06:13:41.000Z">
+<meta property="og:updated_time" content="2017-06-28T10:13:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="绘制表格">
 <meta name="twitter:description" content="之前做页面都没有画表格的经历, 最近工作中有接触到, 刚好补了一下这方面的知识">
@@ -152,7 +152,7 @@
 -->
 <p>实践表明, 这种方案并不完善, 因为以下两种情况:</p>
 <ul>
-<li>表格行过多<br>表格有很多行时, 表格的高度超过视窗, 则垂直滚动的需求. 但因固定表格<code>position</code>为<code>fixed</code>, 无论怎么滚动, 固定表格后面的行都是看不见的, 因此还需要监听body的滚动事件, 动态修改固定表格的垂直偏移</li>
+<li>表格行过多<br>表格有很多行时, 表格的高度超过视窗, 则需要垂直滚动才能看到下面的内容. 但因固定表格<code>position</code>为<code>fixed</code>, 无论怎么滚动, 固定表格下面的行都是看不见的, 因此还需要监听body的滚动事件, 动态修改固定表格的垂直偏移</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> top = scrollTable.offsetTop</div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.onscroll = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> y = <span class="built_in">window</span>.scrollY</div><div class="line">  fixedTable.style.top = top - y + <span class="string">'px'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
@@ -166,7 +166,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-12-30-table-with-fixed-column/" data-id="cj3rav9qy003gdvrrfzz60mh4" class="article-share-link" data-share="baidu" data-title="绘制表格">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-12-30-table-with-fixed-column/" data-id="cj3oh9d8m003elxrr35poyxcr" class="article-share-link" data-share="baidu" data-title="绘制表格">分享到</a>
       
 
       
