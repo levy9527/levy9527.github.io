@@ -4,21 +4,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>设置全局.gitignore | levy</title>
+  <title>js预览及上传图片 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="每新建一个项目就要手动添加一个.gitignore文件, 有没有感觉很麻烦呢? 
-有的话, 就来设置全局性的.gitignore文件吧">
+  <meta name="description" content="使用浏览器File API, 即可读取本地图片, 
+使用FileReader即可预览图片, 
+使用FormData以及XMLHttpRequest对象即可上传图片">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设置全局.gitignore">
-<meta property="og:url" content="https://levy9527.github.io/2016-10-28-git-global-ignore/index.html">
+<meta property="og:title" content="js预览及上传图片">
+<meta property="og:url" content="https://levy9527.github.io/2017-10-18-preview_upload_image/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="每新建一个项目就要手动添加一个.gitignore文件, 有没有感觉很麻烦呢? 
-有的话, 就来设置全局性的.gitignore文件吧">
-<meta property="og:updated_time" content="2016-10-29T15:25:13.000Z">
+<meta property="og:description" content="使用浏览器File API, 即可读取本地图片, 
+使用FileReader即可预览图片, 
+使用FormData以及XMLHttpRequest对象即可上传图片">
+<meta property="og:updated_time" content="2017-10-18T14:38:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设置全局.gitignore">
-<meta name="twitter:description" content="每新建一个项目就要手动添加一个.gitignore文件, 有没有感觉很麻烦呢? 
-有的话, 就来设置全局性的.gitignore文件吧">
+<meta name="twitter:title" content="js预览及上传图片">
+<meta name="twitter:description" content="使用浏览器File API, 即可读取本地图片, 
+使用FileReader即可预览图片, 
+使用FormData以及XMLHttpRequest对象即可上传图片">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -66,9 +69,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-git-global-ignore" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-preview_upload_image" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-10-28T10:13:04.000Z" itemprop="datePublished" class="article-date">2016-10-28</time>
+    <time datetime="2017-10-18T13:12:44.000Z" itemprop="datePublished" class="article-date">2017-10-18</time>
     
   </div>
   <div class="article-inner">
@@ -77,45 +80,49 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-10-28-git-global-ignore/">设置全局.gitignore</a>
+    <a itemprop="name" class="article-title" href="/2017-10-18-preview_upload_image/">js预览及上传图片</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>每新建一个项目就要手动添加一个.gitignore文件, 有没有感觉很麻烦呢? </p>
-<p>有的话, 就来设置全局性的.gitignore文件吧</p>
+        <p>使用浏览器File API, 即可读取本地图片, </p>
+<p>使用FileReader即可预览图片, </p>
+<p>使用FormData以及XMLHttpRequest对象即可上传图片</p>
 <a id="more"></a>
-<h2 id="core-excludesfile"><a href="#core-excludesfile" class="headerlink" title="core.excludesfile"></a>core.excludesfile</h2><p>要用到以下命令</p>
-<pre><code>git config --global core.excludesfile ~/.gitignore_global
-</code></pre><p>推荐放到home目录下, 名字为<code>.gitignore_global</code>, 至于里面的内容, 跟普通的.gitignore一样</p>
-<p>只要有这个文件存在, 当前用户新建git项目时, 就不需要再建立.gitignore文件啦</p>
-<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>GitHub上有一个项目叫<a href="https://github.com/github/gitignore" target="_blank" rel="external">gitignore</a>, 收集了常见的.gitignore文件, 可以好好利用</p>
-<p>目前我的开发环境是NodeJs的, 工具会用到Webstorm以及Vim, 因此我clone了该项目后, 执行了以下命令</p>
-<pre><code>cat Node.gitignore Global/Vim.gitignore Global/JetBrains.gitignore &gt; ~/.gitignore_global
-git config --global core.excludesfile ~/.gitignore_global
-</code></pre><blockquote>
-<p>注意, 执行命令前, 一定要先看清楚这些.gitignore文件里写的都是啥<br>我就被坑了, 因为里面有忽略tags文件, 结果Hexo生成的tags文件夹添加不了版本控制了😓</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://help.github.com/articles/ignoring-files/" target="_blank" rel="external">github ignoring-files</a></li>
-<li><a href="https://github.com/github/gitignore" target="_blank" rel="external">github gitignore repo</a></li>
-</ul>
-</blockquote>
+<h2 id="选择图片"><a href="#选择图片" class="headerlink" title="选择图片"></a>选择图片</h2><p>首先要有个input</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"input"</span>&gt;</span>选择图片<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"input"</span> <span class="attr">hidden</span> <span class="attr">accept</span>=<span class="string">"image/png, image/jpeg, image/gif, image/jpg"</span> <span class="attr">onchange</span>=<span class="string">"onSelectFile"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>其中<code>multiple</code>可以多选, PC端(需要按<code>shift</code>键), 及IOS是没问题的, 但安卓机普遍仍然是单选的.</p>
+<p><code>accept</code> 限定了所选文件的类型, 上面的写法表示只能选择图片. 当然也可以使用<code>accept=&quot;image/*&quot;</code>, 不过这种写法有可能会让文件选择框出现的慢一点</p>
+<p>然后可以在<code>onSelectFile</code>回调中获取<code>FileList</code>对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">onSelectFile (e) &#123;</div><div class="line">  <span class="built_in">console</span>.log(e.target.files)</div><div class="line">  <span class="comment">// FileList 类似结构如下</span></div><div class="line">  <span class="comment">// &#123;0: File, length: 1&#125;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>要注意的是<code>FileList</code>是个对象, 虽然有<code>length</code>属性, 但不是数组, 不能使用forEach等方法来遍历</p>
+<p>一个文件, 就<code>files[0]</code>来获取; 多个文件的话, 老老实实用for循环就好了</p>
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData()</div><div class="line"></div><div class="line"><span class="comment">// file 为从FileList获取的File对象</span></div><div class="line">formData.append(<span class="string">'file'</span>, file)</div><div class="line"></div><div class="line"><span class="comment">// 兼容性 IE7+</span></div><div class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</div><div class="line">xhr.open(<span class="string">"post"</span>, uploadUrl, <span class="literal">true</span>)</div><div class="line">xhr.send(formData)</div><div class="line">xhr.onload = () =&gt; &#123;</div><div class="line">  <span class="comment">// upload success</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的写法是一个请求上传一张图片, 如果多张图片, for循环就好了. </p>
+<p>但多张图片的话, 如何知道何时全部上传成功?</p>
+<p>一个笨方法是使用定时器, 定时检查已上传成功的图片数量是否与已选择的图片数量相等, 如果相等, 说明全部上传成功.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> int = setInterval(() =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.uploadedList.length == <span class="keyword">this</span>.fileList.length) &#123;</div><div class="line">    <span class="keyword">this</span>.$vux.loading.hide()</div><div class="line">    clearInterval(int)</div><div class="line">  &#125;</div><div class="line">&#125;, <span class="number">300</span>)</div></pre></td></tr></table></figure>
+<p>如果想知道上传进度, 可以监听<code>XMLHttpRequest.upload</code>属性的<code>progress</code>方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">xhr.upload.onprogress = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (event.lengthComputable) &#123;</div><div class="line">    <span class="keyword">var</span> percentComplete = <span class="built_in">Math</span>.round(event.loaded * <span class="number">100</span> / event.total)</div><div class="line">    <span class="comment">// 输出的是百分比</span></div><div class="line">    <span class="built_in">console</span>.log(percentComplete)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="文件预览"><a href="#文件预览" class="headerlink" title="文件预览"></a>文件预览</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader(),</div><div class="line">  file = files[index]</div><div class="line"></div><div class="line">  reader.readAsDataURL(file)</div><div class="line">  reader.onload = (e) =&gt; &#123;</div><div class="line">   <span class="comment">// e.target.result 就是读取的base64形式的图片地址, 可以放到img的src属性中, 即可在本地见面查看所选的图片</span></div><div class="line">   <span class="comment">// &lt;img src="$&#123;e.target.result&#125;"/&gt;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Using_files_from_web_applications" target="_blank" rel="external">MDN</a></p>
+<p><a href="http://www.zhangxinxu.com/wordpress/2015/11/html-input-type-file/" target="_blank" rel="external">zhangxinxu</a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-10-28-git-global-ignore/" data-id="cj7uat7dp001v3frrhw6vjszd" class="article-share-link" data-share="baidu" data-title="设置全局.gitignore">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-10-18-preview_upload_image/" data-id="cj8x598t40000l3rrwjky4l5w" class="article-share-link" data-share="baidu" data-title="js预览及上传图片">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-10-28-git-global-ignore/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2017-10-18-preview_upload_image/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
 
     </footer>
   </div>
@@ -124,19 +131,10 @@ git config --global core.excludesfile ~/.gitignore_global
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-10-29-deploy-hexo-with-your-own-script/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          自己编写Hexo发布脚本
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016-10-26-the-problem-of-host-your-blog-with-github-pages/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017-05-16-some-experience-in-static-site-developing/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Github Pages的问题</div>
+      <div class="article-nav-title">一些静态页面开发经验</div>
     </a>
   
 </nav>
@@ -147,7 +145,7 @@ git config --global core.excludesfile ~/.gitignore_global
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-10-28-git-global-ignore/" data-title="设置全局.gitignore" data-url="https://levy9527.github.io/2016-10-28-git-global-ignore/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017-10-18-preview_upload_image/" data-title="js预览及上传图片" data-url="https://levy9527.github.io/2017-10-18-preview_upload_image/"></div>
   </section>
 
 </section>
