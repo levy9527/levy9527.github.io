@@ -16,7 +16,7 @@
 <meta property="og:description" content="使用浏览器File API, 即可读取本地图片, 
 使用FileReader即可预览图片, 
 使用FormData以及XMLHttpRequest对象即可上传图片">
-<meta property="og:updated_time" content="2017-10-18T14:38:59.000Z">
+<meta property="og:updated_time" content="2017-10-24T04:00:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js预览及上传图片">
 <meta name="twitter:description" content="使用浏览器File API, 即可读取本地图片, 
@@ -92,13 +92,14 @@
 <p>使用FormData以及XMLHttpRequest对象即可上传图片</p>
 <a id="more"></a>
 <h2 id="选择图片"><a href="#选择图片" class="headerlink" title="选择图片"></a>选择图片</h2><p>首先要有个input</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"input"</span>&gt;</span>选择图片<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"input"</span> <span class="attr">hidden</span> <span class="attr">accept</span>=<span class="string">"image/png, image/jpeg, image/gif, image/jpg"</span> <span class="attr">onchange</span>=<span class="string">"onSelectFile"</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"input"</span>&gt;</span>选择图片<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"input"</span> <span class="attr">hidden</span> <span class="attr">accept</span>=<span class="string">"image/png, image/jpeg, image/gif, image/jpg"</span> <span class="attr">onchange</span>=<span class="string">"onSelectFile(this.files)"</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>其中<code>multiple</code>可以多选, PC端(需要按<code>shift</code>键), 及IOS是没问题的, 但安卓机普遍仍然是单选的.</p>
 <p><code>accept</code> 限定了所选文件的类型, 上面的写法表示只能选择图片. 当然也可以使用<code>accept=&quot;image/*&quot;</code>, 不过这种写法有可能会让文件选择框出现的慢一点</p>
 <p>然后可以在<code>onSelectFile</code>回调中获取<code>FileList</code>对象</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">onSelectFile (e) &#123;</div><div class="line">  <span class="built_in">console</span>.log(e.target.files)</div><div class="line">  <span class="comment">// FileList 类似结构如下</span></div><div class="line">  <span class="comment">// &#123;0: File, length: 1&#125;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">onSelectFile (files) &#123;</div><div class="line">  <span class="built_in">console</span>.log(files)</div><div class="line">  <span class="comment">// FileList 类似结构如下</span></div><div class="line">  <span class="comment">// &#123;0: File, length: 1&#125;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>要注意的是<code>FileList</code>是个对象, 虽然有<code>length</code>属性, 但不是数组, 不能使用forEach等方法来遍历</p>
 <p>一个文件, 就<code>files[0]</code>来获取; 多个文件的话, 老老实实用for循环就好了</p>
+<p>另外, 还可以选择文件夹,<br><code>&lt;input type=&quot;file&quot; directory webkitdirectory/&gt;</code><br>不过只在谷歌及火狐有效</p>
 <h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData()</div><div class="line"></div><div class="line"><span class="comment">// file 为从FileList获取的File对象</span></div><div class="line">formData.append(<span class="string">'file'</span>, file)</div><div class="line"></div><div class="line"><span class="comment">// 兼容性 IE7+</span></div><div class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</div><div class="line">xhr.open(<span class="string">"post"</span>, uploadUrl, <span class="literal">true</span>)</div><div class="line">xhr.send(formData)</div><div class="line">xhr.onload = () =&gt; &#123;</div><div class="line">  <span class="comment">// upload success</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>上面的写法是一个请求上传一张图片, 如果多张图片, for循环就好了. </p>
 <p>但多张图片的话, 如何知道何时全部上传成功?</p>
@@ -114,7 +115,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-10-18-preview_upload_image/" data-id="cj8x598t40000l3rrwjky4l5w" class="article-share-link" data-share="baidu" data-title="js预览及上传图片">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-10-18-preview_upload_image/" data-id="cjbqj0vga003ga7rr33p2im5i" class="article-share-link" data-share="baidu" data-title="js预览及上传图片">分享到</a>
       
 
       
@@ -130,6 +131,15 @@
     
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
+  
+    <a href="/2017-12-28-http2/" id="article-nav-newer" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          学习HTTP/2
+        
+      </div>
+    </a>
   
   
     <a href="/2017-05-16-some-experience-in-static-site-developing/" id="article-nav-older" class="article-nav-link-wrap">
@@ -158,7 +168,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">6</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/">Game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -167,7 +177,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
