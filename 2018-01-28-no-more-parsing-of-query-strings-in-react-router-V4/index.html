@@ -4,21 +4,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用defer或async加载脚本 | levy</title>
+  <title>react-router-v4不再支持query持久化 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了">
+  <meta name="description" content="当我在书写以下代码时， 发现跳到app-detail页面后 this.props.location.query对象里有id, isEdit属性， 但url上并没有带query参数
+1234567this.props.dispatch(routerRedux.push(&amp;#123;  pathname: &apos;/app-detail&apos;,  query: &amp;#123;    id: row.id,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用defer或async加载脚本">
-<meta property="og:url" content="https://levy9527.github.io/2017-01-25-script-defer-and-async/index.html">
+<meta property="og:title" content="react-router-v4不再支持query持久化">
+<meta property="og:url" content="https://levy9527.github.io/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/17-1-25/1033457-file_1485332573837_2818.png">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/17-1-26/34762322-file_1485402740766_108a9.png">
-<meta property="og:updated_time" content="2017-01-27T14:07:43.000Z">
+<meta property="og:description" content="当我在书写以下代码时， 发现跳到app-detail页面后 this.props.location.query对象里有id, isEdit属性， 但url上并没有带query参数
+1234567this.props.dispatch(routerRedux.push(&amp;#123;  pathname: &apos;/app-detail&apos;,  query: &amp;#123;    id: row.id,">
+<meta property="og:updated_time" content="2018-01-28T14:44:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用defer或async加载脚本">
-<meta name="twitter:description" content="使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了">
-<meta name="twitter:image" content="http://oc9l6hs7x.bkt.clouddn.com/17-1-25/1033457-file_1485332573837_2818.png">
+<meta name="twitter:title" content="react-router-v4不再支持query持久化">
+<meta name="twitter:description" content="当我在书写以下代码时， 发现跳到app-detail页面后 this.props.location.query对象里有id, isEdit属性， 但url上并没有带query参数
+1234567this.props.dispatch(routerRedux.push(&amp;#123;  pathname: &apos;/app-detail&apos;,  query: &amp;#123;    id: row.id,">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -66,9 +66,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-script-defer-and-async" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-no-more-parsing-of-query-strings-in-react-router-V4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2017-01-25T08:11:14.000Z" itemprop="datePublished" class="article-date">2017-01-25</time>
+    <time datetime="2018-01-28T12:51:25.000Z" itemprop="datePublished" class="article-date">2018-01-28</time>
     
   </div>
   <div class="article-inner">
@@ -77,63 +77,47 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2017-01-25-script-defer-and-async/">使用defer或async加载脚本</a>
+    <a itemprop="name" class="article-title" href="/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/">react-router-v4不再支持query持久化</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了</p>
+        <p>当我在书写以下代码时， 发现跳到<code>app-detail</code>页面后 <code>this.props.location.query</code>对象里有<code>id</code>, <code>isEdit</code>属性， 但url上并没有带query参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.props.dispatch(routerRedux.push(&#123;</div><div class="line">  pathname: <span class="string">'/app-detail'</span>,</div><div class="line">  query: &#123;</div><div class="line">    id: row.id,</div><div class="line">    isEdit</div><div class="line">  &#125;</div><div class="line">&#125;))</div></pre></td></tr></table></figure>
+<p>究竟是怎么回事？</p>
 <a id="more"></a>
-<h2 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h2><p><img src="http://oc9l6hs7x.bkt.clouddn.com/17-1-25/1033457-file_1485332573837_2818.png" alt="defer兼容性"></p>
-<p>IE6~9可以用, 但有点小问题; IE10+, 移动端放心用</p>
-<blockquote>
-<p>IE6~9的小问题: 使用defer后的script标签的执行顺序得不到保证<br>如果类库间相互依赖, 如需要先加载jQuery再加载jQuery-ui, 则IE6~9不能使用defer</p>
-</blockquote>
-<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p><img src="http://oc9l6hs7x.bkt.clouddn.com/17-1-26/34762322-file_1485402740766_108a9.png" alt="async兼容性"></p>
-<p>IE10+, 移动端放心用</p>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ul>
-<li>执行顺序</li>
-</ul>
-<p>defer是有顺序保证的, 两个script标签都有defer属性, 则先执行第一个, 再执行第二个</p>
-<p>async是无顺序保证的, 两个script标签都有async属性, 则哪个先加载完成就先执行哪个</p>
-<ul>
-<li>执行时机</li>
-</ul>
-<p>defer在html解析完成后, DOMContentLoaded之前执行js</p>
-<p>async在加载完js后就会执行, 最迟也必须在window.onload事件之前</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li><p>defer与async都只对外链js有效, 即只对含有src属性的script标签有效</p>
-</li>
-<li><p>如果同时script标签同时有defer与async属性, 则以aysnc为准; 当浏览器不支持async时, 再回退使用defer属性, 这相当于是一个兼容措施</p>
-</li>
-</ul>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
-<li><p>对于不依赖DOM构建完成, 并且与首页渲染无关的脚本, 可以使用aysnc; 考虑兼容IE6~9的话, 可以使用async+defer来做fallback</p>
-</li>
-<li><p>对于依赖DOM构建完成的脚本, 可以使用defer, 不过要注意IE6~9不能保证顺序的bug</p>
-</li>
-<li><p>如果页面是由js类库(如React)构建的, 则最好让相关构建页面的js成为<code>inline sciprt</code>, 内嵌到html中, 减少网络请求等待的时间</p>
-</li>
-<li><p>最后, 如果考虑兼容IE9的话, script标签还是放在body底部更妥😑</p>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/h5bp/lazyweb-requests/issues/42" target="_blank" rel="external">defer-issue</a><br><a href="https://webkit.org/blog/1395/running-scripts-in-webkit/" target="_blank" rel="external">running-scripts-in-webkit</a><br><a href="https://www.w3.org/TR/html5/scripting-1.html#attr-script-async" target="_blank" rel="external">script-with-defer-and-async</a><br><a href="https://developers.google.com/speed/docs/insights/BlockingJS" target="_blank" rel="external">inlining-JavaScript-if-use-framework-to-construct-the-page</a></p>
+<h2 id="前因后果"><a href="#前因后果" class="headerlink" title="前因后果"></a>前因后果</h2><p><code>react-router-redux</code>从<code>5.x</code>版本开始，变成<code>react-router</code>的一部分，代码库都转移至<code>react-router</code>去了， 它只支持<code>react-router 4.x</code>。 </p>
+<p>而<code>react-router 4.x</code> 的API变化很大， 其中就有一项， 不再支持<code>qeury string</code>。</p>
+<p>具体可见后面的issue，这里涉及到设计理念的问题，不是文本讨论的重点。</p>
+<p>这里要意识到的问题是， 前文的代码虽然设置的query，在<code>/app-detail</code>路由对应的组件也的确可以通过<code>this.props.location.query</code>来获取， 但<code>query</code>的值并没有反应到url上，也即query值是放在内存里的，状态是非持久的，一刷新页面，<code>query</code>的值就没有了，这样经不起刷新的页面是不可靠的。</p>
+<p>所以必须想个办法解决它。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="match-params"><a href="#match-params" class="headerlink" title="match.params"></a>match.params</h3><p>修改路由配置，使用<code>match.params</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.props.dispatch(routerRedux.push(&#123;</div><div class="line">  pathname: <span class="string">`/app-detail/<span class="subst">$&#123;row.id&#125;</span>/<span class="subst">$&#123;isEdit&#125;</span>`</span>,</div><div class="line">  query: &#123;</div><div class="line">    <span class="comment">// id: row.id,</span></div><div class="line">    <span class="comment">// isEdit</span></div><div class="line">  &#125;</div><div class="line">&#125;))</div></pre></td></tr></table></figure>
+<p>这样可以从<code>this.props.match.params</code>对象中拿到的<code>id</code>, <code>isEdit</code>， 要注意的是变量类型为字符串。</p>
+<p>这是最简单的解决方案，优点是不用引第三方库，缺点是每次添加参数都需要修改路由配置，参数顺序还不能写错; 如果参数一多，就会麻烦且容易出错</p>
+<h3 id="location-search-引入querystring解析库"><a href="#location-search-引入querystring解析库" class="headerlink" title="location.search + 引入querystring解析库"></a>location.search + 引入querystring解析库</h3><p>前文的代码改写成</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.props.dispatch(routerRedux.push(&#123;</div><div class="line">  pathname: <span class="string">'/app-detail'</span>,</div><div class="line">  search: <span class="string">`id=<span class="subst">$&#123;row.id&#125;</span>&amp;isEdit=<span class="subst">$&#123;isEdit&#125;</span>`</span> <span class="comment">// 这里不需要写问号？</span></div><div class="line">&#125;))</div></pre></td></tr></table></figure>
+<p>在需要使用search的时候</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> querystring <span class="keyword">from</span> <span class="string">'any-query-string-lib-you-want'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> &#123;id, isEdit&#125; = querystring.parse(<span class="keyword">this</span>.props.location.search)</div></pre></td></tr></table></figure>
+<p>这样的优点是，不需要修改路由规则，参数再多也不用担心顺序的问题，缺点当然是，要引入第三方库。 </p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/ReactTraining/react-router/issues/4410" target="_blank" rel="external">react-router issues</a></p>
+<p><a href="https://github.com/reactjs/react-router-redux" target="_blank" rel="external">react-router-redux</a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-01-25-script-defer-and-async/" data-id="cjee19ylk0030nnrreqf63zf4" class="article-share-link" data-share="baidu" data-title="使用defer或async加载脚本">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/" data-id="cjee19yl9002cnnrrbo22tnpl" class="article-share-link" data-share="baidu" data-title="react-router-v4不再支持query持久化">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2017-01-25-script-defer-and-async/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
 
     </footer>
   </div>
@@ -142,19 +126,19 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2017-03-05-reading-project/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018-01-29-nginx-config-http-redirect-301-and-302/" id="article-nav-newer" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          阅读计划
+          Nginx配置重定向 301还是302?
         
       </div>
     </a>
   
   
-    <a href="/2017-01-25-tldr/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018-01-06-js-prototype-class-and-instance/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">TL;DR --- 太长不看</div>
+      <div class="article-nav-title">js原型</div>
     </a>
   
 </nav>
@@ -165,7 +149,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-25-script-defer-and-async/" data-title="使用defer或async加载脚本" data-url="https://levy9527.github.io/2017-01-25-script-defer-and-async/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/" data-title="react-router-v4不再支持query持久化" data-url="https://levy9527.github.io/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/"></div>
   </section>
 
 </section>

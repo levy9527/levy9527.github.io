@@ -4,21 +4,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用defer或async加载脚本 | levy</title>
+  <title>js原型 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了">
+  <meta name="description" content="理解类, 实例, 原型
+区分prototype与__proto__
+用代码实现: new, Object.create">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用defer或async加载脚本">
-<meta property="og:url" content="https://levy9527.github.io/2017-01-25-script-defer-and-async/index.html">
+<meta property="og:title" content="js原型">
+<meta property="og:url" content="https://levy9527.github.io/2018-01-06-js-prototype-class-and-instance/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/17-1-25/1033457-file_1485332573837_2818.png">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/17-1-26/34762322-file_1485402740766_108a9.png">
-<meta property="og:updated_time" content="2017-01-27T14:07:43.000Z">
+<meta property="og:description" content="理解类, 实例, 原型
+区分prototype与__proto__
+用代码实现: new, Object.create">
+<meta property="og:updated_time" content="2018-03-05T09:43:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用defer或async加载脚本">
-<meta name="twitter:description" content="使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了">
-<meta name="twitter:image" content="http://oc9l6hs7x.bkt.clouddn.com/17-1-25/1033457-file_1485332573837_2818.png">
+<meta name="twitter:title" content="js原型">
+<meta name="twitter:description" content="理解类, 实例, 原型
+区分prototype与__proto__
+用代码实现: new, Object.create">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -66,9 +69,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-script-defer-and-async" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-js-prototype-class-and-instance" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2017-01-25T08:11:14.000Z" itemprop="datePublished" class="article-date">2017-01-25</time>
+    <time datetime="2018-01-06T06:30:35.000Z" itemprop="datePublished" class="article-date">2018-01-06</time>
     
   </div>
   <div class="article-inner">
@@ -77,63 +80,77 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2017-01-25-script-defer-and-async/">使用defer或async加载脚本</a>
+    <a itemprop="name" class="article-title" href="/2018-01-06-js-prototype-class-and-instance/">js原型</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了</p>
+        <!--理解类, 子类, 实例, 并用ES5与ES6两种写法实现-->
+<p>理解类, 实例, 原型</p>
+<p>区分<code>prototype</code>与<code>__proto__</code></p>
+<p>用代码实现: <code>new</code>, <code>Object.create</code></p>
+<!--**属性检索过程**-->
 <a id="more"></a>
-<h2 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h2><p><img src="http://oc9l6hs7x.bkt.clouddn.com/17-1-25/1033457-file_1485332573837_2818.png" alt="defer兼容性"></p>
-<p>IE6~9可以用, 但有点小问题; IE10+, 移动端放心用</p>
-<blockquote>
-<p>IE6~9的小问题: 使用defer后的script标签的执行顺序得不到保证<br>如果类库间相互依赖, 如需要先加载jQuery再加载jQuery-ui, 则IE6~9不能使用defer</p>
-</blockquote>
-<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p><img src="http://oc9l6hs7x.bkt.clouddn.com/17-1-26/34762322-file_1485402740766_108a9.png" alt="async兼容性"></p>
-<p>IE10+, 移动端放心用</p>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ul>
-<li>执行顺序</li>
-</ul>
-<p>defer是有顺序保证的, 两个script标签都有defer属性, 则先执行第一个, 再执行第二个</p>
-<p>async是无顺序保证的, 两个script标签都有async属性, 则哪个先加载完成就先执行哪个</p>
-<ul>
-<li>执行时机</li>
-</ul>
-<p>defer在html解析完成后, DOMContentLoaded之前执行js</p>
-<p>async在加载完js后就会执行, 最迟也必须在window.onload事件之前</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li><p>defer与async都只对外链js有效, 即只对含有src属性的script标签有效</p>
+<h2 id="类与实例"><a href="#类与实例" class="headerlink" title="类与实例"></a>类与实例</h2><p>定义构造函数就是定义的是对象的”类”, 调用构造函数生成的对象就是”实例”</p>
+<h3 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h3><p>现有类定义如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>创建实例可以有以下方式:</p>
+<p>1.<code>new</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(<span class="string">'levy'</span>)</div></pre></td></tr></table></figure>
+<p>2.<code>Object.create</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p = <span class="built_in">Object</span>.create(Person.prototype)</div><div class="line">p.name = <span class="string">'levy'</span></div></pre></td></tr></table></figure>
+<p>3.<code>__proto__</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p = &#123;<span class="string">'__proto__'</span>: Person.prototype, name: <span class="string">'levy'</span>&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>解析:</p>
+<p>除了<code>null</code>(<code>undefined</code>不是对象)/<code>Object.prototype</code>, js每一个对象都有一个原型, 对象从原型继承属性与方法</p>
+<p>对象对应的构造函数的<code>prototype</code>属性, 就是对象的原型</p>
+<p>而大多数浏览器的 ES5 实现之中，每一个对象都有<code>__proto__</code>属性，指向其原型, 所以用代码来表示就是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123;&#125;</div><div class="line"></div><div class="line">obj.__proto__ == <span class="built_in">Object</span>.prototype</div></pre></td></tr></table></figure>
+<p>所以上面第3个代码片断是最本质(当然不是最优)的表示方式</p>
+<p>总结: <strong><code>__proto__</code>是对象的属性, <code>prototype</code>是构造函数的属性</strong></p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>任何js函数都可以做构造函数, 并且都拥有<code>prototype属性</code>(除了调用<code>Function.bind</code>返回的函数), 因为使用<code>new</code>调用构造函数时, 构造函数的<code>prototype</code>属性会作为新对象的原型</p>
+<p>构造函数的<code>prototype</code>属性是个对象, 它预设了一个不可枚举的<code>constructor</code>属性, 它指向构造函数, 即:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"></div><div class="line">F.prototype.constructor == F</div></pre></td></tr></table></figure>
+<h3 id="模拟实现new和Object-create"><a href="#模拟实现new和Object-create" class="headerlink" title="模拟实现new和Object.create"></a>模拟实现<code>new</code>和<code>Object.create</code></h3><p><code>Object.create</code>可以看成是屏蔽了<code>new</code>关键字的实现, 可以自己模拟一下实现:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span>(<span class="params">parent</span>) </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">F</span> = (<span class="params"></span>) </span>&#123;&#125;</div><div class="line">  F.prototype = parent</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> F()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果更暴力一点, 还可以这样: </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span>(<span class="params">parent</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;<span class="string">'__proto__'</span>: parent&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>new</code> 调用的原理是:</p>
+<ol>
+<li>创建一个新对象, 其原型为构造函数的<code>prototype</code>属性</li>
+<li>把这个对象作为this值, 传相应的参数调用构造函数, 构造函数就可以用this初始化对象属性值</li>
+<li>返回这个新创建的对象 </li>
+</ol>
+<p>所以可以自己写个<code>New</code>函数来模拟<code>new</code>的实现: </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 模拟实现表达式 new fn(x)</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">New</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> o = &#123;<span class="string">'__proto__'</span>: fn.prototype&#125;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    fn.apply(o, <span class="built_in">arguments</span>)</div><div class="line">    <span class="keyword">return</span> o</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 最终表达式</span></div><div class="line">New(fn)(x)</div></pre></td></tr></table></figure>
+<p>当然上述实现很粗糙, 因为:</p>
+<ol>
+<li><p><code>new</code> 后面的构造函数, 如果不需要参数的话, 构造函数不需要带括号, 即可以这样<code>new fn</code></p>
 </li>
-<li><p>如果同时script标签同时有defer与async属性, 则以aysnc为准; 当浏览器不支持async时, 再回退使用defer属性, 这相当于是一个兼容措施</p>
+<li><p>构造函数一般不返回值, 返回的不是对象值也将会被忽略, 但如果构造函数确实返回了一个对象, 则该对象作为<code>new</code>表达式的返回值, 而不是调用构造函数后新建并初始化了的对象</p>
 </li>
-</ul>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
-<li><p>对于不依赖DOM构建完成, 并且与首页渲染无关的脚本, 可以使用aysnc; 考虑兼容IE6~9的话, 可以使用async+defer来做fallback</p>
-</li>
-<li><p>对于依赖DOM构建完成的脚本, 可以使用defer, 不过要注意IE6~9不能保证顺序的bug</p>
-</li>
-<li><p>如果页面是由js类库(如React)构建的, 则最好让相关构建页面的js成为<code>inline sciprt</code>, 内嵌到html中, 减少网络请求等待的时间</p>
-</li>
-<li><p>最后, 如果考虑兼容IE9的话, script标签还是放在body底部更妥😑</p>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/h5bp/lazyweb-requests/issues/42" target="_blank" rel="external">defer-issue</a><br><a href="https://webkit.org/blog/1395/running-scripts-in-webkit/" target="_blank" rel="external">running-scripts-in-webkit</a><br><a href="https://www.w3.org/TR/html5/scripting-1.html#attr-script-async" target="_blank" rel="external">script-with-defer-and-async</a><br><a href="https://developers.google.com/speed/docs/insights/BlockingJS" target="_blank" rel="external">inlining-JavaScript-if-use-framework-to-construct-the-page</a></p>
+</ol>
+<p>总结: <strong>把原理性的文字改造成代码, 是一种很好的学习方式</strong></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>JavaScript权威指南(第六版)</p>
+<p>ES6入门</p>
+<p><a href="http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html" target="_blank" rel="external">http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html</a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-01-25-script-defer-and-async/" data-id="cjee19ylk0030nnrreqf63zf4" class="article-share-link" data-share="baidu" data-title="使用defer或async加载脚本">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-01-06-js-prototype-class-and-instance/" data-id="cjee1j8x20000xbrrghp6upbz" class="article-share-link" data-share="baidu" data-title="js原型">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2017-01-25-script-defer-and-async/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2018-01-06-js-prototype-class-and-instance/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
 
     </footer>
   </div>
@@ -142,19 +159,19 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2017-03-05-reading-project/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/" id="article-nav-newer" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          阅读计划
+          react-router-v4不再支持query持久化
         
       </div>
     </a>
   
   
-    <a href="/2017-01-25-tldr/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017-12-28-http2/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">TL;DR --- 太长不看</div>
+      <div class="article-nav-title">学习HTTP/2</div>
     </a>
   
 </nav>
@@ -165,7 +182,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-25-script-defer-and-async/" data-title="使用defer或async加载脚本" data-url="https://levy9527.github.io/2017-01-25-script-defer-and-async/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018-01-06-js-prototype-class-and-instance/" data-title="js原型" data-url="https://levy9527.github.io/2018-01-06-js-prototype-class-and-instance/"></div>
   </section>
 
 </section>

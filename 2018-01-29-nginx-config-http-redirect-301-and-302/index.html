@@ -4,21 +4,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用defer或async加载脚本 | levy</title>
+  <title>Nginx配置重定向 301还是302? | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了">
+  <meta name="description" content="先说结论： 
+如果是个人网站，或网站用途只是开发测试，改动的可能性比较大，建议使用302
+如果是生产环境，或改动的可能性比较小，建议使用301">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用defer或async加载脚本">
-<meta property="og:url" content="https://levy9527.github.io/2017-01-25-script-defer-and-async/index.html">
+<meta property="og:title" content="Nginx配置重定向 301还是302?">
+<meta property="og:url" content="https://levy9527.github.io/2018-01-29-nginx-config-http-redirect-301-and-302/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/17-1-25/1033457-file_1485332573837_2818.png">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/17-1-26/34762322-file_1485402740766_108a9.png">
-<meta property="og:updated_time" content="2017-01-27T14:07:43.000Z">
+<meta property="og:description" content="先说结论： 
+如果是个人网站，或网站用途只是开发测试，改动的可能性比较大，建议使用302
+如果是生产环境，或改动的可能性比较小，建议使用301">
+<meta property="og:updated_time" content="2018-01-29T09:31:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用defer或async加载脚本">
-<meta name="twitter:description" content="使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了">
-<meta name="twitter:image" content="http://oc9l6hs7x.bkt.clouddn.com/17-1-25/1033457-file_1485332573837_2818.png">
+<meta name="twitter:title" content="Nginx配置重定向 301还是302?">
+<meta name="twitter:description" content="先说结论： 
+如果是个人网站，或网站用途只是开发测试，改动的可能性比较大，建议使用302
+如果是生产环境，或改动的可能性比较小，建议使用301">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -66,9 +69,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-script-defer-and-async" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-nginx-config-http-redirect-301-and-302" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2017-01-25T08:11:14.000Z" itemprop="datePublished" class="article-date">2017-01-25</time>
+    <time datetime="2018-01-29T07:32:36.000Z" itemprop="datePublished" class="article-date">2018-01-29</time>
     
   </div>
   <div class="article-inner">
@@ -77,63 +80,53 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2017-01-25-script-defer-and-async/">使用defer或async加载脚本</a>
+    <a itemprop="name" class="article-title" href="/2018-01-29-nginx-config-http-redirect-301-and-302/">Nginx配置重定向 301还是302?</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了</p>
+        <p>先说结论： </p>
+<p>如果是个人网站，或网站用途只是开发测试，改动的可能性比较大，建议使用<code>302</code></p>
+<p>如果是生产环境，或改动的可能性比较小，建议使用<code>301</code></p>
 <a id="more"></a>
-<h2 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h2><p><img src="http://oc9l6hs7x.bkt.clouddn.com/17-1-25/1033457-file_1485332573837_2818.png" alt="defer兼容性"></p>
-<p>IE6~9可以用, 但有点小问题; IE10+, 移动端放心用</p>
-<blockquote>
-<p>IE6~9的小问题: 使用defer后的script标签的执行顺序得不到保证<br>如果类库间相互依赖, 如需要先加载jQuery再加载jQuery-ui, 则IE6~9不能使用defer</p>
-</blockquote>
-<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p><img src="http://oc9l6hs7x.bkt.clouddn.com/17-1-26/34762322-file_1485402740766_108a9.png" alt="async兼容性"></p>
-<p>IE10+, 移动端放心用</p>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ul>
-<li>执行顺序</li>
-</ul>
-<p>defer是有顺序保证的, 两个script标签都有defer属性, 则先执行第一个, 再执行第二个</p>
-<p>async是无顺序保证的, 两个script标签都有async属性, 则哪个先加载完成就先执行哪个</p>
-<ul>
-<li>执行时机</li>
-</ul>
-<p>defer在html解析完成后, DOMContentLoaded之前执行js</p>
-<p>async在加载完js后就会执行, 最迟也必须在window.onload事件之前</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li><p>defer与async都只对外链js有效, 即只对含有src属性的script标签有效</p>
-</li>
-<li><p>如果同时script标签同时有defer与async属性, 则以aysnc为准; 当浏览器不支持async时, 再回退使用defer属性, 这相当于是一个兼容措施</p>
-</li>
-</ul>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
-<li><p>对于不依赖DOM构建完成, 并且与首页渲染无关的脚本, 可以使用aysnc; 考虑兼容IE6~9的话, 可以使用async+defer来做fallback</p>
-</li>
-<li><p>对于依赖DOM构建完成的脚本, 可以使用defer, 不过要注意IE6~9不能保证顺序的bug</p>
-</li>
-<li><p>如果页面是由js类库(如React)构建的, 则最好让相关构建页面的js成为<code>inline sciprt</code>, 内嵌到html中, 减少网络请求等待的时间</p>
-</li>
-<li><p>最后, 如果考虑兼容IE9的话, script标签还是放在body底部更妥😑</p>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/h5bp/lazyweb-requests/issues/42" target="_blank" rel="external">defer-issue</a><br><a href="https://webkit.org/blog/1395/running-scripts-in-webkit/" target="_blank" rel="external">running-scripts-in-webkit</a><br><a href="https://www.w3.org/TR/html5/scripting-1.html#attr-script-async" target="_blank" rel="external">script-with-defer-and-async</a><br><a href="https://developers.google.com/speed/docs/insights/BlockingJS" target="_blank" rel="external">inlining-JavaScript-if-use-framework-to-construct-the-page</a></p>
+<h2 id="状态码含义"><a href="#状态码含义" class="headerlink" title="状态码含义"></a>状态码含义</h2><p>首先要明白两个状态码的含义：</p>
+<p><strong>301 Moved Permanently</strong></p>
+<p><strong>302 Moved Temporarily</strong></p>
+<p>浏览器会缓存<code>301</code>的请求，不会缓存<code>302</code>的</p>
+<h2 id="实际影响"><a href="#实际影响" class="headerlink" title="实际影响"></a>实际影响</h2><p>以下面nginx配置为例:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line"> listen 80;</div><div class="line"> location / &#123;</div><div class="line">	<span class="built_in">return</span> 301 https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述配置，会把用http协议访问站点的请求，重定向为用https协议来访问</p>
+<p>用Chrome浏览器作实验，假设在地址栏输入<code>levy.ren</code>, 则浏览器最终访问的是<code>https://levy.ren</code></p>
+<p>因为<code>levy.ren</code>是个人站点，可能不久后提供的内容有所变化，注释掉了上述重定向配置， 取消对http协议的重定向</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line"> listen 80;</div><div class="line"> location / &#123;</div><div class="line">	<span class="comment">#return 301 https://$host$request_uri;</span></div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后重启nginx</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx <span class="_">-s</span> reload</div></pre></td></tr></table></figure>
+<p>再次使用自己电脑上的Chrome访问，地址栏输入<code>levy.ren</code>, 发现浏览器仍然访问<code>https://levy.ren</code></p>
+<p>打开开发者工具，开启禁用缓存选项，再一次输入<code>levy.ren</code>, 还是使用https协议， 这就是因为浏览器对<code>301</code>状态码的响应，进行了缓存，给个人开发者带来了苦恼</p>
+<h2 id="清除301缓存"><a href="#清除301缓存" class="headerlink" title="清除301缓存"></a>清除301缓存</h2><p>以Chrome为例:</p>
+<ol>
+<li>关于谷歌</li>
+<li>更多工具</li>
+<li>清除浏览器数据</li>
+<li>勾选 <strong>浏览器记录</strong> 及 <strong>缓存的图片和文件</strong></li>
+</ol>
+<p>重新访问站点即可！</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-01-25-script-defer-and-async/" data-id="cjee19ylk0030nnrreqf63zf4" class="article-share-link" data-share="baidu" data-title="使用defer或async加载脚本">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-01-29-nginx-config-http-redirect-301-and-302/" data-id="cjee19yl80029nnrr6lyfa76w" class="article-share-link" data-share="baidu" data-title="Nginx配置重定向 301还是302?">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2017-01-25-script-defer-and-async/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2018-01-29-nginx-config-http-redirect-301-and-302/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
 
     </footer>
   </div>
@@ -142,19 +135,10 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2017-03-05-reading-project/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          阅读计划
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017-01-25-tldr/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">TL;DR --- 太长不看</div>
+      <div class="article-nav-title">react-router-v4不再支持query持久化</div>
     </a>
   
 </nav>
@@ -165,7 +149,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-25-script-defer-and-async/" data-title="使用defer或async加载脚本" data-url="https://levy9527.github.io/2017-01-25-script-defer-and-async/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018-01-29-nginx-config-http-redirect-301-and-302/" data-title="Nginx配置重定向 301还是302?" data-url="https://levy9527.github.io/2018-01-29-nginx-config-http-redirect-301-and-302/"></div>
   </section>
 
 </section>
