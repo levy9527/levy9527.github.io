@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://levy9527.github.io/2018-04-18-import-html-with-ajax-and-shadow-dom/index.html">
 <meta property="og:site_name" content="levy">
 <meta property="og:description" content="在一个html中，想引入另一个html，最简单的方法是使用iframe, 但iframe的难点在于高度固定，很难根据文档高度自适应高度。 本文另辟蹊径，使用 AJAX 及 Shadow DOM 来解决这个难题">
-<meta property="og:updated_time" content="2018-04-21T05:38:01.000Z">
+<meta property="og:updated_time" content="2018-04-21T06:07:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 AJAX 与 Shadow DOM 引入 html">
 <meta name="twitter:description" content="在一个html中，想引入另一个html，最简单的方法是使用iframe, 但iframe的难点在于高度固定，很难根据文档高度自适应高度。 本文另辟蹊径，使用 AJAX 及 Shadow DOM 来解决这个难题">
@@ -154,8 +154,9 @@
 <p>如果不想折腾，又不想给钱，就得截图然后保存到本地，也即本地需要一个文件夹存放图片，导出的html图片引用是相对路径。</p>
 <p>有人会想到马克飞象，它既可以截图/复制图片，又可以只导出一个html文件，图片是作为Base64形式内嵌其中的，看起来很炫酷，实则一不能让浏览器缓存图片，二让html变得臃肿无比，并不推荐</p>
 <p>最终，不想花钱又不想再折腾的我们，选择的做法是跟.docx一样，导出html后，本地有一个图片文件夹，html里图片的路径是相对路径</p>
-<p>那么，这样问题就来了：</p>
-<p>在<strong>A</strong>站点，使用AJAX获取到<strong>B</strong>站点的文档后，此时只拿到了html，其本质还是内存里的字符串，并没有拿到样式表/图片等资源，使用<code>innerHTML</code>把内容添加到主文档之后，才会去获取样式表/图片等资源;  而因为B站点的html对资源的引用是相对路径，则把html添加到A站点的主文档后，html已经作为主文档的一部分，此时html资源请求路径是相对A站点的路径，而并非B站点的路径，所以会报404，资源找不到！</p>
+<p>另外， 仍然建议使用Mac/Linux机器进行上述操作，因为Windows的目录符与是<code>\</code>, 而URL的目录符其实是<code>/</code></p>
+<p>那么，问题就来了：</p>
+<p>在<strong>A</strong>站点，使用AJAX获取到<strong>B</strong>站点的文档后，此时只拿到了html，其本质还是内存里的字符串，并没有拿到样式表/图片等资源，只有使用<code>innerHTML</code>把内容添加到主文档之后，才会去获取样式表/图片等资源;  而因为B站点的html对资源的引用是相对路径，则把html添加到A站点的主文档后，html已经作为主文档的一部分，此时html资源请求路径是相对A站点的路径，而并非B站点的路径，所以会报404，资源找不到！</p>
 <p>所以，在使用AJAX获取到B站点的html字符串后，还要使用正则式对字符串进行处理一下，这让我想起了一本经典书籍&lt;<em>Master</em> <em>Regular</em> <em>Expression</em>&gt;, 果然基本功很重要啊～</p>
 
       
