@@ -64,6 +64,198 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-import-html-with-ajax-and-shadow-dom" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2018-04-18T13:35:47.000Z" itemprop="datePublished" class="article-date">2018-04-18</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2018-04-18-import-html-with-ajax-and-shadow-dom/">使用 AJAX 与 Shadow DOM 引入 html</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在一个html中，想引入另一个html，最简单的方法是使用iframe, 但iframe的难点在于高度固定，很难根据文档高度自适应高度。 本文另辟蹊径，使用 AJAX 及 Shadow DOM 来解决这个难题</p>
+        
+          <p class="article-more-link">
+            <a href="/2018-04-18-import-html-with-ajax-and-shadow-dom/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2018-04-18-import-html-with-ajax-and-shadow-dom/" data-id="cjg8yodv2002d1vrrj2uxt737" class="article-share-link" data-share="baidu" data-title="使用 AJAX 与 Shadow DOM 引入 html">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2018-04-18-import-html-with-ajax-and-shadow-dom/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-nginx-config-http-redirect-301-and-302" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2018-01-29T07:32:36.000Z" itemprop="datePublished" class="article-date">2018-01-29</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2018-01-29-nginx-config-http-redirect-301-and-302/">Nginx配置重定向 301还是302?</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先说结论： </p>
+<p>如果是个人网站，或网站用途只是开发测试，改动的可能性比较大，建议使用<code>302</code></p>
+<p>如果是生产环境，或改动的可能性比较小，建议使用<code>301</code></p>
+        
+          <p class="article-more-link">
+            <a href="/2018-01-29-nginx-config-http-redirect-301-and-302/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2018-01-29-nginx-config-http-redirect-301-and-302/" data-id="cjg8yodvq003i1vrr8bzglb0w" class="article-share-link" data-share="baidu" data-title="Nginx配置重定向 301还是302?">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2018-01-29-nginx-config-http-redirect-301-and-302/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-no-more-parsing-of-query-strings-in-react-router-V4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2018-01-28T12:51:25.000Z" itemprop="datePublished" class="article-date">2018-01-28</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/">react-router-v4不再支持query持久化</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当我在书写以下代码时， 发现跳到<code>app-detail</code>页面后 <code>this.props.location.query</code>对象里有<code>id</code>, <code>isEdit</code>属性， 但url上并没有带query参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.props.dispatch(routerRedux.push(&#123;</div><div class="line">  pathname: <span class="string">'/app-detail'</span>,</div><div class="line">  query: &#123;</div><div class="line">    id: row.id,</div><div class="line">    isEdit</div><div class="line">  &#125;</div><div class="line">&#125;))</div></pre></td></tr></table></figure>
+<p>究竟是怎么回事？</p>
+        
+          <p class="article-more-link">
+            <a href="/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/" data-id="cjg8yodvh00331vrrnmsb6fac" class="article-share-link" data-share="baidu" data-title="react-router-v4不再支持query持久化">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-js-prototype-class-and-instance" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2018-01-06T06:30:35.000Z" itemprop="datePublished" class="article-date">2018-01-06</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2018-01-06-js-prototype-class-and-instance/">js原型</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!--理解类, 子类, 实例, 并用ES5与ES6两种写法实现-->
+<p>理解类, 实例, 原型</p>
+<p>区分<code>prototype</code>与<code>__proto__</code></p>
+<p>用代码实现: <code>new</code>, <code>Object.create</code></p>
+<!--**属性检索过程**-->
+        
+          <p class="article-more-link">
+            <a href="/2018-01-06-js-prototype-class-and-instance/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2018-01-06-js-prototype-class-and-instance/" data-id="cjg8yodv4002h1vrrbxz69aa9" class="article-share-link" data-share="baidu" data-title="js原型">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2018-01-06-js-prototype-class-and-instance/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-http2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <time datetime="2017-12-28T13:36:46.000Z" itemprop="datePublished" class="article-date">2017-12-28</time>
@@ -82,7 +274,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Web基础"><a href="#Web基础" class="headerlink" title="Web基础"></a>Web基础</h2>
+        <p>2015 HTTP/2已成为正式标准, 与HTTP/1.x相比, 它的API与HTTP/1.x完全兼容, 更关注Web性能: 浏览器与站点之间只建一条链接, 多路复用, 头部压缩, 资源有优先级, SSL加密, 服务端推送.</p>
+<p>Nginx已经支持持HTTP/2, 可以用Nginx来搭建一个基于HTTP/2的静态站点</p>
         
           <p class="article-more-link">
             <a href="/2017-12-28-http2/#more">阅读全文</a>
@@ -92,7 +285,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-12-28-http2/" data-id="cjbqj0vfq002la7rr5a8ntgnh" class="article-share-link" data-share="baidu" data-title="学习HTTP/2">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-12-28-http2/" data-id="cjg8yodv3002f1vrr73bkbry7" class="article-share-link" data-share="baidu" data-title="学习HTTP/2">分享到</a>
       
 
       
@@ -140,7 +333,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-10-18-preview_upload_image/" data-id="cjbqj0vga003ga7rr33p2im5i" class="article-share-link" data-share="baidu" data-title="js预览及上传图片">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-10-18-preview_upload_image/" data-id="cjg8yodvk003a1vrrrxhgep2w" class="article-share-link" data-share="baidu" data-title="js预览及上传图片">分享到</a>
       
 
       
@@ -177,7 +370,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近在开发官网, 本来是说好只是在PC端的展示的, 但我太天真了, 就信了, 后来果然又说要适配移动端, 于是又喜闻乐见地改来改去.</p>
-<p>之前也没怎么做过PC端网页, 在不断与UI撕逼的过程中, 总结经验如下:</p>
+<p>之前也没怎么做过PC端静态网页, 在不断与UI撕逼的过程中, 总结经验如下:</p>
         
           <p class="article-more-link">
             <a href="/2017-05-16-some-experience-in-static-site-developing/#more">阅读全文</a>
@@ -187,7 +380,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-05-16-some-experience-in-static-site-developing/" data-id="cjbqj0vgl003va7rrbh4r43tj" class="article-share-link" data-share="baidu" data-title="一些静态页面开发经验">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-05-16-some-experience-in-static-site-developing/" data-id="cjg8yodxk00431vrrbl6gupek" class="article-share-link" data-share="baidu" data-title="一些静态页面开发经验">分享到</a>
       
 
       
@@ -233,7 +426,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-03-24-black-magic-js-atob-with-utf8/" data-id="cjbqj0vep0016a7rrg9nj0odn" class="article-share-link" data-share="baidu" data-title="js黑魔法之使用atob解码utf-8字符">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-03-24-black-magic-js-atob-with-utf8/" data-id="cjg8yodu200111vrrzozk0n6d" class="article-share-link" data-share="baidu" data-title="js黑魔法之使用atob解码utf-8字符">分享到</a>
       
 
       
@@ -281,7 +474,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-03-11-a-guide-quickly-through-icey/" data-id="cjbqj0veo0013a7rrwmhzs16a" class="article-share-link" data-share="baidu" data-title="ICEY快速通关攻略">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-03-11-a-guide-quickly-through-icey/" data-id="cjg8yodtz000v1vrr2vil06z4" class="article-share-link" data-share="baidu" data-title="ICEY快速通关攻略">分享到</a>
       
 
       
@@ -335,7 +528,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-03-10-kindergarten-killer/" data-id="cjbqj0vfr002na7rr1g41wz7v" class="article-share-link" data-share="baidu" data-title="幼稚园杀手">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-03-10-kindergarten-killer/" data-id="cjg8yodv4002k1vrrtp5bgzi0" class="article-share-link" data-share="baidu" data-title="幼稚园杀手">分享到</a>
       
 
       
@@ -353,193 +546,9 @@
 
 
   
-    <article id="post-working-not-happy" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <time datetime="2017-03-07T13:43:14.000Z" itemprop="datePublished" class="article-date">2017-03-07</time>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <a itemprop="name" class="article-title" href="/2017-03-07-working-not-happy/">工作得不开心</a>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>为什么不开心? 因为我觉得工作状态下降了, 工作效率也降低了, 甚至失去了最初的激情, 因为重心跑偏了…</p>
-        
-          <p class="article-more-link">
-            <a href="/2017-03-07-working-not-happy/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://levy9527.github.io/2017-03-07-working-not-happy/" data-id="cjbqj0vgz004ka7rrqnyij1ax" class="article-share-link" data-share="baidu" data-title="工作得不开心">分享到</a>
-      
-
-      
-        <a href="https://levy9527.github.io/2017-03-07-working-not-happy/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂/">杂</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-reading-project" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <time datetime="2017-03-05T12:15:27.000Z" itemprop="datePublished" class="article-date">2017-03-05</time>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <a itemprop="name" class="article-title" href="/2017-03-05-reading-project/">阅读计划</a>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>从三月份起, 我决定实施一个阅读计划, 每个星期一本书, 到2017年底, 我至少要阅读40本书</p>
-        
-          <p class="article-more-link">
-            <a href="/2017-03-05-reading-project/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://levy9527.github.io/2017-03-05-reading-project/" data-id="cjbqj0vgh003pa7rr8dokwzrm" class="article-share-link" data-share="baidu" data-title="阅读计划">分享到</a>
-      
-
-      
-        <a href="https://levy9527.github.io/2017-03-05-reading-project/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂/">杂</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-script-defer-and-async" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <time datetime="2017-01-25T08:11:14.000Z" itemprop="datePublished" class="article-date">2017-01-25</time>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <a itemprop="name" class="article-title" href="/2017-01-25-script-defer-and-async/">使用defer或async加载脚本</a>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用script的defer或async属性, 加载外部脚本的script标签就可以不用放在body的底部了</p>
-        
-          <p class="article-more-link">
-            <a href="/2017-01-25-script-defer-and-async/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://levy9527.github.io/2017-01-25-script-defer-and-async/" data-id="cjbqj0vgf003na7rrqn068rf6" class="article-share-link" data-share="baidu" data-title="使用defer或async加载脚本">分享到</a>
-      
-
-      
-        <a href="https://levy9527.github.io/2017-01-25-script-defer-and-async/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-tldr" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <time datetime="2017-01-25T04:05:59.000Z" itemprop="datePublished" class="article-date">2017-01-25</time>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <a itemprop="name" class="article-title" href="/2017-01-25-tldr/">TL;DR --- 太长不看</a>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>看谷歌开发者文档, 发现经常出现<code>TL;DR</code>, 不明白啥意思.</p>
-<p>Google了一下后, 才发现原来是”太长不看”的意思, 然后该词后面就会列出文章的概要</p>
-<p>一直以后”太长不看”出自百度贴吧, 原来它是外来词😂</p>
-<p>参考资料: </p>
-<p><a href="http://www.internetslang.com/TLDR-meaning-definition.asp" target="_blank" rel="external">internetslang</a><br><a href="https://en.wiktionary.org/wiki/tl;dr#English" target="_blank" rel="external">wiktionary</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://levy9527.github.io/2017-01-25-tldr/" data-id="cjbqj0vgt0046a7rrvl81927p" class="article-share-link" data-share="baidu" data-title="TL;DR --- 太长不看">分享到</a>
-      
-
-      
-        <a href="https://levy9527.github.io/2017-01-25-tldr/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂/">杂</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
     </nav>
   
 
@@ -553,7 +562,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/">Game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/">Game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -562,7 +571,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -609,7 +618,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 levy<br>
+      &copy; 2018 levy<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/levy9527/landscape-plus" target="_blank">Landscape-plus</a>

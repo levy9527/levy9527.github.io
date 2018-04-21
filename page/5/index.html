@@ -64,6 +64,196 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-css-filter" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-09-23T08:32:58.000Z" itemprop="datePublished" class="article-date">2016-09-23</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-09-23-css-filter/">CSS3滤镜--从乔任梁的百度百科说起</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前看到大家都在讨论乔任梁的死, 我不知道他是谁, 因此<a href="http://baike.baidu.com/link?url=kKcHS3cYcO6TZuDATDSjajfKF3IuO9OH-f9jr_PepAn_quhh3XcaA9gdp9mpVwixNOvdaFf3a5kKJsgb5-9fUK">百度百科</a>了一下</p>
+<p>我注意到为表示悼念, 百度百科界面是灰色的, 连图片也是. 但审查元素的时候, 可以发现图片原本是彩色的, 这么说来一定是被CSS处理后才显示为灰的. </p>
+<p>究竟是怎么回事呢, 最终我找到了如下代码:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  filter: grayscale(100%);</div><div class="line">  -webkit-filter: grayscale(100%);</div><div class="line">  -moz-filter: grayscale(100%);</div><div class="line">  -ms-filter: grayscale(100%);</div><div class="line">  -o-filter: grayscale(100%);</div><div class="line">  filter: url(data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter i…0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale);</div><div class="line">  filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);</div><div class="line">  filter: gray;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>把它注释掉, 页面就还原成彩色的了. <code>filter</code>就是今天的主角, CSS3滤镜</p>
+        
+          <p class="article-more-link">
+            <a href="/2016-09-23-css-filter/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-09-23-css-filter/" data-id="cjg8yodua00191vrrmtor409n" class="article-share-link" data-share="baidu" data-title="CSS3滤镜--从乔任梁的百度百科说起">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2016-09-23-css-filter/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-type-emoji-on-mac" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-09-22T09:29:15.000Z" itemprop="datePublished" class="article-date">2016-09-22</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-09-22-type-emoji-on-mac/">Mac使用输入法打出特殊字符</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文说的特殊字符, 主要是指emoji. 微信聊天时常用到的表情😂就是emoji. </p>
+<p>iPhone默认的中文输入法输入”苹果”时, 候选词里会出现🍅, 那么Mac要如何才能做到呢?</p>
+        
+          <p class="article-more-link">
+            <a href="/2016-09-22-type-emoji-on-mac/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-09-22-type-emoji-on-mac/" data-id="cjg8yodxs004b1vrrookzv2hw" class="article-share-link" data-share="baidu" data-title="Mac使用输入法打出特殊字符">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2016-09-22-type-emoji-on-mac/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-react-native-build-for-production" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-09-20T09:23:27.000Z" itemprop="datePublished" class="article-date">2016-09-20</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-09-20-react-native-build-for-production/">React Native真机运行</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>根据之前<a href="/2016-09-18-launch-your-app-on-a-device/">iOS真机测试</a>的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-21/7904124.jpg" alt="WTF?"></p>
+        
+          <p class="article-more-link">
+            <a href="/2016-09-20-react-native-build-for-production/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-09-20-react-native-build-for-production/" data-id="cjg8yodvn003e1vrrragece6v" class="article-share-link" data-share="baidu" data-title="React Native真机运行">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2016-09-20-react-native-build-for-production/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-add-app-icon-to-ios-app" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-09-20T08:09:45.000Z" itemprop="datePublished" class="article-date">2016-09-20</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-09-20-add-app-icon-to-ios-app/">为iOS应用添加icon</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前有讲到<a href="/2016-09-18-launch-your-app-on-a-device/">iOS真机测试</a>, 那时的app是没有icon的, 它是这样子的<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/25548879.jpg"  style="display:inline"></p>
+<p>本文将讲解如何为iOS的app添加桌面icon, 它将变成这样子<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/39908727.jpg"  style="display:inline"></p>
+        
+          <p class="article-more-link">
+            <a href="/2016-09-20-add-app-icon-to-ios-app/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-09-20-add-app-icon-to-ios-app/" data-id="cjg8yodu1000z1vrr4vohz1ai" class="article-share-link" data-share="baidu" data-title="为iOS应用添加icon">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2016-09-20-add-app-icon-to-ios-app/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-get-sick-at-mid-autumn-festival" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <time datetime="2016-09-19T07:22:59.000Z" itemprop="datePublished" class="article-date">2016-09-19</time>
@@ -95,7 +285,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-19-get-sick-at-mid-autumn-festival/" data-id="cjbqj0vfi0027a7rrwx1wgyze" class="article-share-link" data-share="baidu" data-title="中秋发烧记">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-09-19-get-sick-at-mid-autumn-festival/" data-id="cjg8yoduo001q1vrr7600vi85" class="article-share-link" data-share="baidu" data-title="中秋发烧记">分享到</a>
       
 
       
@@ -142,7 +332,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-18-launch-your-ios-app-on-a-device/" data-id="cjbqj0vfu002sa7rrrvhzvc3i" class="article-share-link" data-share="baidu" data-title="iOS真机测试">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-09-18-launch-your-ios-app-on-a-device/" data-id="cjg8yodv8002q1vrrfw7xpjub" class="article-share-link" data-share="baidu" data-title="iOS真机测试">分享到</a>
       
 
       
@@ -192,7 +382,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-15-movie-open-course-in-youku/" data-id="cjbqj0vg20034a7rrj47rqye6" class="article-share-link" data-share="baidu" data-title="电影公嗨课">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-09-15-movie-open-course-in-youku/" data-id="cjg8yodvf00301vrrol33k94j" class="article-share-link" data-share="baidu" data-title="电影公嗨课">分享到</a>
       
 
       
@@ -239,7 +429,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-13-start-dev-ios-app/" data-id="cjbqj0vgq0040a7rreviv4lvp" class="article-share-link" data-share="baidu" data-title="iOS初体验">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-09-13-start-dev-ios-app/" data-id="cjg8yodxn00451vrrd8aas1n6" class="article-share-link" data-share="baidu" data-title="iOS初体验">分享到</a>
       
 
       
@@ -285,7 +475,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-09-design-confusion-comes-from-links-in-blog/" data-id="cjbqj0vf6001sa7rr0el9ftqc" class="article-share-link" data-share="baidu" data-title="纠结于博客中的链接样式">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-09-09-design-confusion-comes-from-links-in-blog/" data-id="cjg8yodup001s1vrr1wyxbbrw" class="article-share-link" data-share="baidu" data-title="纠结于博客中的链接样式">分享到</a>
       
 
       
@@ -332,7 +522,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-08-search-alphago-in-github/" data-id="cjbqj0vgm003ya7rrtgtua8qr" class="article-share-link" data-share="baidu" data-title="在GitHub搜索AlphaGo">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-09-08-search-alphago-in-github/" data-id="cjg8yodvr003m1vrrnjqwks3b" class="article-share-link" data-share="baidu" data-title="在GitHub搜索AlphaGo">分享到</a>
       
 
       
@@ -350,201 +540,9 @@
 
 
   
-    <article id="post-learn-react-context" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <time datetime="2016-09-07T10:10:37.000Z" itemprop="datePublished" class="article-date">2016-09-07</time>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <a itemprop="name" class="article-title" href="/2016-09-07-learn-react-context/">认识React Context</a>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>React Context的概念, 前两天学习React Router时再次接触到</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> React.createClass(&#123;</div><div class="line"></div><div class="line">  <span class="comment">// ask for `router` from context</span></div><div class="line">  contextTypes: &#123;</div><div class="line">    router: React.PropTypes.object</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">// ...</span></div><div class="line"></div><div class="line">  handleSubmit(event) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    <span class="keyword">this</span>.context.router.push(path)</div><div class="line">  &#125;,</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>于是决定要搞明白这是个什么东东</p>
-        
-          <p class="article-more-link">
-            <a href="/2016-09-07-learn-react-context/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://levy9527.github.io/2016-09-07-learn-react-context/" data-id="cjbqj0vfv002ua7rrp3lkym93" class="article-share-link" data-share="baidu" data-title="认识React Context">分享到</a>
-      
-
-      
-        <a href="https://levy9527.github.io/2016-09-07-learn-react-context/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-learn-react-router" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <time datetime="2016-09-06T10:13:36.000Z" itemprop="datePublished" class="article-date">2016-09-06</time>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <a itemprop="name" class="article-title" href="/2016-09-06-learn-react-router/">React Router 入门</a>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这两天在学react-router, 之前有了解过, 但没有系统地学, 觉得比较简单, 会用就行. 但当昨天知道react-router结合webpack可以做到按需加载时(<a href="https://github.com/reactjs/react-router/tree/master/examples/auth-with-shared-root">点击查看例子</a>), 顿时来了兴趣, 于是就跟着<a href="https://github.com/reactjs/react-router-tutorial">react-router-tutorial</a>上的教程敲了一遍(<a href="http://git.oschina.net/levy9527/react">代码在这里</a>, 还是有不少收获的, 下面我将说明我教程中较重要的点.</p>
-        
-          <p class="article-more-link">
-            <a href="/2016-09-06-learn-react-router/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://levy9527.github.io/2016-09-06-learn-react-router/" data-id="cjbqj0vfy002ya7rra6nn67ox" class="article-share-link" data-share="baidu" data-title="React Router 入门">分享到</a>
-      
-
-      
-        <a href="https://levy9527.github.io/2016-09-06-learn-react-router/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-css-make-up-for-omissions-of-user-interface" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <time datetime="2016-09-05T13:48:50.000Z" itemprop="datePublished" class="article-date">2016-09-05</time>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <a itemprop="name" class="article-title" href="/2016-09-05-css-make-up-for-omissions-of-user-interface/">CSS拾遗之用户界面样式</a>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="zoom"><a href="#zoom" class="headerlink" title="zoom"></a>zoom</h2><p><code>zoom</code>属性可以缩放元素, 它可以有三种值:</p>
-<ul>
-<li><code>百分比</code> - 根据百分比缩放</li>
-<li><code>数值</code> - 会转化成百分比 如 1 =&gt; 100%, 1.5 =&gt; 150%</li>
-<li><code>normal</code> - 即<code>zoom: 1</code></li>
-</ul>
-<p>以前偶尔有看到别人网站的css有这样的设置<code>zoom: 1</code>, 不明白是干嘛的. 现在我明白了, 但看来根本用不上, 为什么这样说呢?</p>
-        
-          <p class="article-more-link">
-            <a href="/2016-09-05-css-make-up-for-omissions-of-user-interface/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://levy9527.github.io/2016-09-05-css-make-up-for-omissions-of-user-interface/" data-id="cjbqj0vf2001na7rrys1vdwfk" class="article-share-link" data-share="baidu" data-title="CSS拾遗之用户界面样式">分享到</a>
-      
-
-      
-        <a href="https://levy9527.github.io/2016-09-05-css-make-up-for-omissions-of-user-interface/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-css-make-up-for-omissions-in-the-definitive-guide" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <time datetime="2016-09-04T08:19:35.000Z" itemprop="datePublished" class="article-date">2016-09-04</time>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <a itemprop="name" class="article-title" href="/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/">CSS权威指南拾遗</a>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近发现有些CSS知识是很基础的, 而<strong>CSS权威指南</strong>也有讲到的, 但我却遗漏掉了, 今天就做个补习, 把这些知识捡回来.</p>
-        
-          <p class="article-more-link">
-            <a href="/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://levy9527.github.io/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/" data-id="cjbqj0vex001ia7rrzhuhknnj" class="article-share-link" data-share="baidu" data-title="CSS权威指南拾遗">分享到</a>
-      
-
-      
-        <a href="https://levy9527.github.io/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+      <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
     </nav>
   
 
@@ -558,7 +556,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/">Game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/">Game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -567,7 +565,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -614,7 +612,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 levy<br>
+      &copy; 2018 levy<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/levy9527/landscape-plus" target="_blank">Landscape-plus</a>
