@@ -4,21 +4,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Javasript的 MIME type | levy</title>
+  <title>面试官的面试套路 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="以前只知道text/javascript, 后来逐渐接触application/javascript, application/x-javascript
-感觉有点凌乱了, 于是想搞清楚它们的关系">
+  <meta name="description" content="适用于求职者的面试套路网上一大把，作为面试官如何去筛选候选人网上也有各种文章。
+本文从另一个角度切入，关注的是：作为面试官，面对心仪的候选人时，如何在面试过程中增加拿下候选人的可能性，提高求职者成为你的同事的机率。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javasript的 MIME type">
-<meta property="og:url" content="https://levy9527.github.io/2017-01-23-mime-type-of-javascript/index.html">
+<meta property="og:title" content="面试官的面试套路">
+<meta property="og:url" content="https://levy9527.github.io/2018-04-21-strategy-of-interview-as-a-interviewer/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="以前只知道text/javascript, 后来逐渐接触application/javascript, application/x-javascript
-感觉有点凌乱了, 于是想搞清楚它们的关系">
-<meta property="og:updated_time" content="2017-12-28T13:29:02.000Z">
+<meta property="og:description" content="适用于求职者的面试套路网上一大把，作为面试官如何去筛选候选人网上也有各种文章。
+本文从另一个角度切入，关注的是：作为面试官，面对心仪的候选人时，如何在面试过程中增加拿下候选人的可能性，提高求职者成为你的同事的机率。">
+<meta property="og:updated_time" content="2018-04-22T15:27:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javasript的 MIME type">
-<meta name="twitter:description" content="以前只知道text/javascript, 后来逐渐接触application/javascript, application/x-javascript
-感觉有点凌乱了, 于是想搞清楚它们的关系">
+<meta name="twitter:title" content="面试官的面试套路">
+<meta name="twitter:description" content="适用于求职者的面试套路网上一大把，作为面试官如何去筛选候选人网上也有各种文章。
+本文从另一个角度切入，关注的是：作为面试官，面对心仪的候选人时，如何在面试过程中增加拿下候选人的可能性，提高求职者成为你的同事的机率。">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -66,9 +66,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-mime-type-of-javascript" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-strategy-of-interview-as-a-interviewer" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2017-01-23T07:40:43.000Z" itemprop="datePublished" class="article-date">2017-01-23</time>
+    <time datetime="2018-04-21T07:58:20.000Z" itemprop="datePublished" class="article-date">2018-04-21</time>
     
   </div>
   <div class="article-inner">
@@ -77,67 +77,76 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2017-01-23-mime-type-of-javascript/">Javasript的 MIME type</a>
+    <a itemprop="name" class="article-title" href="/2018-04-21-strategy-of-interview-as-a-interviewer/">面试官的面试套路</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>以前只知道<code>text/javascript</code>, 后来逐渐接触<code>application/javascript</code>, <code>application/x-javascript</code></p>
-<p>感觉有点凌乱了, 于是想搞清楚它们的关系</p>
+        <p>适用于求职者的面试套路网上一大把，作为面试官如何去筛选候选人网上也有各种文章。</p>
+<p>本文从另一个角度切入，关注的是：作为面试官，面对心仪的候选人时，如何在面试过程中增加拿下候选人的可能性，提高求职者成为你的同事的机率。</p>
 <a id="more"></a>
-<h2 id="MIME-type"><a href="#MIME-type" class="headerlink" title="MIME type"></a>MIME type</h2><p>首先要搞清楚MIME, 英文全称为<a href="http://www.w3school.com.cn/media/media_mimeref.asp" target="_blank" rel="external">Multipurpose Internet Mail Extensions</a>, 是描述消息内容类型的因特网标准。</p>
-<p>这个解释好像有点难懂, 没关系, 知道<code>MIME type</code>是干嘛的就好了: <a href="https://mimesniff.spec.whatwg.org/#mime-type" target="_blank" rel="external">The MIME type of a resource is a technical hint about the use and format of that resource</a>, 也就是说根据<code>MIME type</code>, Web程序就知道某个资源的用途并知道应该如何解析它.</p>
-<p>虽然<code>MIME type</code>好像有点拗口, 但也有好处, 那就是可以与CSS的 <code>media type</code> 区分开来</p>
-<h2 id="javascript的-MIME-type"><a href="#javascript的-MIME-type" class="headerlink" title="javascript的 MIME type"></a>javascript的 MIME type</h2><p><a href="https://html.spec.whatwg.org/multipage/scripting.html#scriptingLanguages" target="_blank" rel="external">html规范</a>定义的<code>MIME type</code> 如下:</p>
-<ul>
-<li>application/ecmascript</li>
-<li>application/javascript</li>
-<li>application/x-ecmascript</li>
-<li>application/x-javascript</li>
-<li>text/ecmascript</li>
-<li>text/javascript</li>
-<li>text/javascript1.0</li>
-<li>text/javascript1.1</li>
-<li>text/javascript1.2</li>
-<li>text/javascript1.3</li>
-<li>text/javascript1.4</li>
-<li>text/javascript1.5</li>
-<li>text/jscript</li>
-<li>text/livescript</li>
-<li>text/x-ecmascript</li>
-<li>text/x-javascript</li>
-</ul>
-<p>这么多, 是不是头都大了.</p>
-<p>冷静一下, 再看这篇<a href="https://html.spec.whatwg.org/multipage/indices.html#mime-types-2" target="_blank" rel="external">文章</a>, 这里对每个类型都有简单的说明</p>
-<p>细心看下来, 发现这么多类型中, 除了<code>text/javascript</code>, 其余全是”历史遗留类型”. 也就是现在用的话, 都是用<code>text/javascript</code>的</p>
-<h2 id="scipt标签不写type"><a href="#scipt标签不写type" class="headerlink" title="scipt标签不写type"></a>scipt标签不写type</h2><p>如果html里script标签不写type, <code>MIME type</code> 会是<code>text/javascript</code>吗?</p>
-<p>MDN文档指出, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script" target="_blank" rel="external">script不写type则把script当作Javasript</a>. 但这点并没有回答上面的问题</p>
-<p>于是我自己利用Nginx作测试, 最终得出结论:</p>
-<p>是的, script的默认type是<code>text/javasript</code>, 查看Response Headers, 可见<code>Content-Type:text/javascript</code></p>
-<p>但这里还有几个前提:</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>上上个星期，老大跟我说，我觉得那个很不错的某某某，给他发了offer后，考虑了一下，还是不来了。我一时语塞。三月份以来，看了数十份简历，面了十几人，这是我觉得最优秀的一个，年轻又有潜力，我特别中意，我以为他来是理所当然的事情，结果却没想到是这样的结局，心中难免有些遗憾。</p>
+<p>老大安慰我说，没事嘛，下次再做好点。这说明你面试能力还不够，要像我一样，把人面完了，那人就很想来了。</p>
+<p>说的不错，这点我也是很服气，要多向老大学习，于是我反思一波，便有了此文。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>其实上述问题的本质是：如何在简短的面试过程中，扩大求职者的求职意愿</p>
+<p>可以从以下三点着手：</p>
 <ol>
-<li>页面不是通过file协议本地打开的</li>
-<li>服务器的MIME type配置没对覆盖此值</li>
+<li>搞清楚双方的市场情况</li>
+<li>挖掘对方的需求</li>
+<li>展示你所在公司的价值</li>
 </ol>
-<p>第二点怎么理解呢? 以Nginx为例, 如果修改<code>mime.types</code>文件如下所示:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">types &#123;</div><div class="line">  application/javascript js;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>则查看Response Headers, 可见<code>Content-Type:application/javascript</code></p>
+<h3 id="市场形势"><a href="#市场形势" class="headerlink" title="市场形势"></a>市场形势</h3><p>首先要明白的一点，优秀的人才很抢手，因为受市场欢迎，所以他的选择很多，他并不是一定要来你这家公司的。也即面试官在筛选求职者的同时，求职者也在筛选公司，你们是处于互相筛选的状态。</p>
+<p>而面试过程中，求职者对公司的印象很大程度是受面试官影响的，所以面试官在面试中的表现相当重要。</p>
+<h3 id="挖掘需求"><a href="#挖掘需求" class="headerlink" title="挖掘需求"></a>挖掘需求</h3><p>技术人的需求，其实很简单：</p>
+<ol>
+<li>钱给到位了，这是对自己劳动成果的尊重</li>
+<li>有足够的成长空间，可以持续获得能力的提升</li>
+</ol>
+<p>以上是最核心的两点，也是最普遍的，更具体更个性化的需求，需要在面试过程中去挖掘。如何去沟通表达，提问与倾听，那是另一个话题了，不在文本讨论范围之内。</p>
+<h3 id="展示价值"><a href="#展示价值" class="headerlink" title="展示价值"></a>展示价值</h3><p>明确了需求，后面当然是要满足需求。</p>
+<p>展示价值的目的是为了让对方更了解你的公司，你的团队，让其明白，其想要的在这里都可以得到满足</p>
+<p>我认为以下几点是必须展示的：</p>
+<ol>
+<li>正在做什么</li>
+<li>目标是什么</li>
+<li>团队文化是怎样的</li>
+</ol>
+<p>前面两点也是对面试官本人提出了要求，你自己是否知道自己在做什么，目标是什么，目前处于哪一个阶段。你对现在的工作是充满激情，保持信心，还是浑浑噩噩，得过且过，这些内容在表达的过程中，都会影响到求职者。</p>
+<p>而第三点团队文化，更是关键之处，你的价值观，人文素养，人格魅力，将在这里展现，必须慎重对待</p>
+<p>其实本质还是自我提升，成为更好的人，把更优秀的人留在你的身边</p>
+<h2 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h2><p>下面分享一些我在面试时会提及的一些点，作为例子，仅供参考</p>
+<h3 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h3><p>你的英语能力如何？</p>
+<p>英语是连接世界的语言，其重要性不言而喻。加之计算机学科的源头是西方世界，所以为了拿到最新的资料，必须拥有阅读英语的能力。一般而言，最新的东西出现在社区/论坛，之后再有英文文档，再有中文翻译，最后才有中文视频。所以说只有英语过关了，才能掌握最前沿的技术，走在大众的前面。</p>
+<h3 id="翻墙"><a href="#翻墙" class="headerlink" title="翻墙"></a>翻墙</h3><p>翻墙意味着两件事：</p>
+<ol>
+<li>花钱/折腾</li>
+<li>可以用谷歌</li>
+</ol>
+<p>第一点，愿意为工具花钱，这是愿意投资自己的表现。或者不花钱，自己折腾，说明动手能力强。前者是花钱买时间，后者是省钱花时间。我会更认可前者，钱没了可以再赚，时间一去就不复返了; 再者不必什么事情都要自己做，花点钱买个服务，省心省力。</p>
+<p>第二点，有谷歌，意味着可以得到更靠谱的答案，获取一手的技术信息。无论做什么事，信息源很重要。不翻墙，不能用谷歌，只会用百度，你只能得到二手的信息，只能走在时代的后面。</p>
+<h3 id="加班"><a href="#加班" class="headerlink" title="加班"></a>加班</h3><p>你对加班怎么看？ </p>
+<p>我对加班保持中性态度。如果赶项目，可以理解。互联网竞争激烈，更快的产品发布，更能赢得市场。 如果是长期加班，甚至无意义的加班，及时中止，因为一没有时间学习与思考，二会对身体造成巨大伤害。如果是因为工作效率低下，那么首要任务是提高自己的能力，提升工作效率。</p>
+<h3 id="技术之争"><a href="#技术之争" class="headerlink" title="技术之争"></a>技术之争</h3><p>你如何看待技术之争，圈内存在的技术鄙视链？</p>
+<p>技术圈的门阀之争，存在已久。“PHP是世界上最好的语言”, 这句话你一定很熟悉。做技术的人，往往会把自己跟自己擅长/喜欢的技术捆绑，因为从某种程度上来说你选择的技术是你价值观的一部分；当别人批评你选择的技术时，就像在否定你的价值观。但其实把自己跟工具捆绑，侧面反映的是你对特定工具的依赖，对真正的高手来说，工具只是工具，谈不上价值观与信仰。另外，谈技术一定要先谈场景，忽略场景，只为了技术而使用技术，那是耍流氓。</p>
+<h3 id="特别的编码经历"><a href="#特别的编码经历" class="headerlink" title="特别的编码经历"></a>特别的编码经历</h3><p>你是否有特别的编码经历？</p>
+<p>2016年我突发奇想，我要在码云(oschina)持续一年每天不间断地提交代码，点亮个人git贡献图。最终我做到了，一共持续了<a href="http://levy.work/2017-01-18-light-up-contribution-graph-on-oschina/" target="_blank" rel="external">367天</a>。这其实并不能说明我代码写得多牛逼，也不是说我有多么能坚持，而是说，我如果真的想做成一件事，我就会想办法去做到。</p>
+<h3 id="自我驱动"><a href="#自我驱动" class="headerlink" title="自我驱动"></a>自我驱动</h3><p>你的自我驱动根源是什么？人可以一时在管理下在约束下做好一件事，但要想在一生中热爱一个事业，做成一件长期的事，必须要有内在的驱动力，而这只能靠自己寻找。成为更好的人，去看更美的风景，这是驱使我不断前行的内因。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-01-23-mime-type-of-javascript/" data-id="cjgaysytq00270hrrajvg81ti" class="article-share-link" data-share="baidu" data-title="Javasript的 MIME type">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-04-21-strategy-of-interview-as-a-interviewer/" data-id="cjgaysyu900370hrrg990fvtg" class="article-share-link" data-share="baidu" data-title="面试官的面试套路">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2017-01-23-mime-type-of-javascript/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2018-04-21-strategy-of-interview-as-a-interviewer/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂/">杂</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
 
     </footer>
   </div>
@@ -146,19 +155,10 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2017-01-23-refer-dom-with-id/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          直接使用id引用DOM元素
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017-01-21-event-cancelable-and-preventDefault/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018-04-18-import-html-with-ajax-and-shadow-dom/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">event.preventDefault出错</div>
+      <div class="article-nav-title">使用 AJAX 与 Shadow DOM 引入 html</div>
     </a>
   
 </nav>
@@ -169,7 +169,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-23-mime-type-of-javascript/" data-title="Javasript的 MIME type" data-url="https://levy9527.github.io/2017-01-23-mime-type-of-javascript/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018-04-21-strategy-of-interview-as-a-interviewer/" data-title="面试官的面试套路" data-url="https://levy9527.github.io/2018-04-21-strategy-of-interview-as-a-interviewer/"></div>
   </section>
 
 </section>
