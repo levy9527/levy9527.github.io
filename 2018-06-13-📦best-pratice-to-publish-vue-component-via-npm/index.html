@@ -20,7 +20,7 @@
 
 在npm上发布一个包
 将vue组件打包">
-<meta property="og:updated_time" content="2018-06-18T05:54:47.000Z">
+<meta property="og:updated_time" content="2018-06-19T07:28:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="📦vue组件发布npm最佳实践">
 <meta name="twitter:description" content="我们经常使用组件，二次封装或创造组件，在团队内部使用; 可当我们想通过npm分享组件时，却没了之前的得心应手，本文旨在帮助大家在可以更轻松地发布组件
@@ -140,7 +140,7 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">"main": "dist/el-data-table.js",</div><div class="line">"unpkg": "dist/el-data-table.min.js",</div><div class="line">"module": "dist/el-data-table.esm.js"</div></pre></td></tr></table></figure>
 <p><code>scripts</code> 为了防止出现发包前忘记构建的乌龙事件，定义一下发布前的脚本, 这样每次执行<code>npm publish</code>前都会先执行<code>npm run build</code></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">"prepublishOnly": "npm run build"</div></pre></td></tr></table></figure>
-<p><code>engines</code> 可以告诉用户运行你的包对NodeJs版本的要求，这是非常重要的，不然你使用了NodJs新版本特性，却没有定义该字段，导致低版本NodeJs用户运行报错，让人摸不着头脑。</p>
+<p><code>engines</code> 可以告诉用户运行你的包对NodeJs版本的要求，这是非常重要的，不然你使用了NodeJs新版本特性，却没有定义该字段，导致低版本NodeJs用户运行报错，让人摸不着头脑。</p>
 <h3 id="定义依赖"><a href="#定义依赖" class="headerlink" title="定义依赖"></a>定义依赖</h3><p>当你开发一个项目时，比如一个静态网站或一个单面应用，<strong>dependencies</strong>和<strong>devDependencies</strong>并没有太多区别，因为你<code>npm install</code> 或 <code>yarn</code>时，这些依赖都会下载下来，因为你是在开发。</p>
 <p>但对于发布到npm的包则不同：</p>
 <p><strong>dependencies</strong> 是运行你的包必须安装的依赖，即当用户<code>yarn add my-awesome-package</code>时，这些依赖也会下载。</p>
