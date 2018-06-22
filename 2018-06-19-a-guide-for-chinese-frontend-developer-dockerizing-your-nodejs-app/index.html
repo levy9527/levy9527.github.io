@@ -6,16 +6,16 @@
   
   <title>🐠从零开始Docker化你的Node.js应用 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景给你一台新买的服务器(CentOS)，相关账户及密码，一个基于Node.js开发的web应用源码包(zip)，要求你在新机器上使用Docker的方式把应用部署起来。作为一个前端开发，此时的你，并没有搞清楚什么是容器/镜像，也没记住几个相关的Linux命令，该怎么办？本文将帮助你摆脱困境">
+  <meta name="description" content="背景给你一台新买的服务器(CentOS)，相关账户及密码，一个基于Node.js开发的web应用源码包(zip)，要求你在新机器上使用Docker的方式把应用部署起来。此时的你，并没有搞清楚什么是容器/镜像，也没记住几个相关的Linux命令，该怎么办？本文将帮助你摆脱困境">
 <meta property="og:type" content="article">
 <meta property="og:title" content="🐠从零开始Docker化你的Node.js应用">
 <meta property="og:url" content="https://levy9527.github.io/2018-06-19-a-guide-for-chinese-frontend-developer-dockerizing-your-nodejs-app/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="背景给你一台新买的服务器(CentOS)，相关账户及密码，一个基于Node.js开发的web应用源码包(zip)，要求你在新机器上使用Docker的方式把应用部署起来。作为一个前端开发，此时的你，并没有搞清楚什么是容器/镜像，也没记住几个相关的Linux命令，该怎么办？本文将帮助你摆脱困境">
-<meta property="og:updated_time" content="2018-06-20T11:16:52.000Z">
+<meta property="og:description" content="背景给你一台新买的服务器(CentOS)，相关账户及密码，一个基于Node.js开发的web应用源码包(zip)，要求你在新机器上使用Docker的方式把应用部署起来。此时的你，并没有搞清楚什么是容器/镜像，也没记住几个相关的Linux命令，该怎么办？本文将帮助你摆脱困境">
+<meta property="og:updated_time" content="2018-06-22T07:22:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🐠从零开始Docker化你的Node.js应用">
-<meta name="twitter:description" content="背景给你一台新买的服务器(CentOS)，相关账户及密码，一个基于Node.js开发的web应用源码包(zip)，要求你在新机器上使用Docker的方式把应用部署起来。作为一个前端开发，此时的你，并没有搞清楚什么是容器/镜像，也没记住几个相关的Linux命令，该怎么办？本文将帮助你摆脱困境">
+<meta name="twitter:description" content="背景给你一台新买的服务器(CentOS)，相关账户及密码，一个基于Node.js开发的web应用源码包(zip)，要求你在新机器上使用Docker的方式把应用部署起来。此时的你，并没有搞清楚什么是容器/镜像，也没记住几个相关的Linux命令，该怎么办？本文将帮助你摆脱困境">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -81,7 +81,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>给你一台新买的服务器(CentOS)，相关账户及密码，一个基于Node.js开发的web应用源码包(zip)，要求你在新机器上使用Docker的方式把应用部署起来。作为一个前端开发，此时的你，并没有搞清楚什么是容器/镜像，也没记住几个相关的Linux命令，该怎么办？本文将帮助你摆脱困境</p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>给你一台新买的服务器(CentOS)，相关账户及密码，一个基于Node.js开发的web应用源码包(zip)，要求你在新机器上使用Docker的方式把应用部署起来。此时的你，并没有搞清楚什么是容器/镜像，也没记住几个相关的Linux命令，该怎么办？本文将帮助你摆脱困境</p>
 <a id="more"></a>
 <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>为达到最终目的，先来梳理一波流程：</p>
 <ol>
@@ -96,7 +96,10 @@
 <li>执行脚本，检查部署情况</li>
 </ol>
 <p>下面将详细描述如何操作</p>
-<h3 id="scp传输"><a href="#scp传输" class="headerlink" title="scp传输"></a>scp传输</h3><p>假设: </p>
+<blockquote>
+<p>文中服务器操作系统为CentOS 7，如果你的服务器不相符，操作细节可能会略有不同，需要另行查阅相关资料</p>
+</blockquote>
+<h3 id="rsync传输"><a href="#rsync传输" class="headerlink" title="rsync传输"></a>rsync传输</h3><p>假设: </p>
 <ul>
 <li>服务器地址为<code>${ip}</code></li>
 <li>帐户为<code>${user}</code></li>
@@ -105,9 +108,9 @@
 <li>zip包放到服务器的目录为<code>${path}</code></li>
 </ul>
 <p>则在本机源码包同级目录下，使用<code>scp</code>命令，把zip包传输至服务器的示例如下</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scp ./<span class="variable">$&#123;zip&#125;</span> <span class="variable">$&#123;user&#125;</span>@<span class="variable">$&#123;ip&#125;</span>:<span class="variable">$&#123;path&#125;</span></div><div class="line"></div><div class="line"><span class="comment"># 后面会提示输入密码$&#123;pass&#125;</span></div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rsync -avzP ./<span class="variable">$&#123;zip&#125;</span> <span class="variable">$&#123;user&#125;</span>@<span class="variable">$&#123;ip&#125;</span>:<span class="variable">$&#123;path&#125;</span></div><div class="line"></div><div class="line"><span class="comment"># 后面会提示输入密码</span></div></pre></td></tr></table></figure>
 <h3 id="ssh登录"><a href="#ssh登录" class="headerlink" title="ssh登录"></a>ssh登录</h3><p>承接上文，ssh登录服务器示例如下</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh <span class="variable">$&#123;user&#125;</span>@<span class="variable">$&#123;ip&#125;</span></div><div class="line"></div><div class="line"><span class="comment"># 后面会提示输入密码$&#123;pass&#125;</span></div><div class="line"><span class="comment"># 第一次登录会提示保存ssh信息，输入yes即可</span></div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh <span class="variable">$&#123;user&#125;</span>@<span class="variable">$&#123;ip&#125;</span></div><div class="line"></div><div class="line"><span class="comment"># 后面会提示输入密码</span></div><div class="line"><span class="comment"># 第一次登录会提示保存ssh信息，输入yes即可</span></div></pre></td></tr></table></figure>
 <p>如果不想每次都输入地址/帐户/密码，可以写一个简单的自动登录脚本<code>ssh.sh</code></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建文件</span></div><div class="line">touch ssh.sh</div><div class="line"><span class="comment"># 赋予脚本可执行权力</span></div><div class="line">chmod +x ssh.sh</div></pre></td></tr></table></figure>
 <p><code>ssh.sh</code>内容如下，记得把<code>${pass}</code>, <code>${user}</code>,<code>${ip}</code>替换为真实数据</p>
@@ -232,9 +235,9 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">RUN yarn config <span class="built_in">set</span> registry https://registry.npm.taobao.org \</div><div class="line">    &amp;&amp; yarn global install bower \</div><div class="line">    &amp;&amp; bower i --allow-root \</div><div class="line">    yarn</div></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://nodejs.org/en/docs/guides/nodejs-docker-webapp" target="_blank" rel="external">https://nodejs.org/en/docs/guides/nodejs-docker-webapp</a></li>
-<li><a href="https://github.com/nodejs/docker-node/blob/master/README.md#image-variants" target="_blank" rel="external">https://github.com/nodejs/docker-node/blob/master/README.md#image-variants</a></li>
-<li><a href="https://docker_practice.gitee.io/introduction/" target="_blank" rel="external">Docker从入门到实践</a></li>
+<li><a href="https://github.com/nodejs/docker-node/blob/master/README.md#image-variants" target="_blank" rel="external">https://github.com/nodejs/docker-node/blob/master/README.md#image-variants</a> </li>
 <li><a href="https://github.com/waylybaye/HyperApp-Guide/blob/master/zh/centos-upgrade-docker.md" target="_blank" rel="external">https://github.com/waylybaye/HyperApp-Guide/blob/master/zh/centos-upgrade-docker.md</a></li>
+<li><a href="https://docs.docker.com/v1.11/engine/reference/commandline/cli/" target="_blank" rel="external">Docker命令查询</a></li>
 </ul>
 
       
