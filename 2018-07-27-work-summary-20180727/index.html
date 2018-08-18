@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>2018-7-27 工作总结 | levy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="官网开发新尝试，OSS对接，《金字塔原理》人人应读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-7-27 工作总结">
+<meta property="og:url" content="https://levy9527.github.io/2018-07-27-work-summary-20180727/index.html">
+<meta property="og:site_name" content="levy">
+<meta property="og:description" content="官网开发新尝试，OSS对接，《金字塔原理》人人应读">
+<meta property="og:updated_time" content="2018-08-18T05:52:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018-7-27 工作总结">
+<meta name="twitter:description" content="官网开发新尝试，OSS对接，《金字塔原理》人人应读">
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      
+          <h1 id="logo-wrap">
+            <a href="/" id="logo">CODE THE WEB</a>
+          </h1>
+      
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about.html">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="Search"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="javascript:;" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" class="search-form-input st-default-search-input" placeholder="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-work-summary-20180727" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2018-07-26T16:00:00.000Z" itemprop="datePublished" class="article-date">2018-07-27</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2018-07-27-work-summary-20180727/">2018-7-27 工作总结</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>官网开发新尝试，OSS对接，《金字塔原理》人人应读</p>
+<a id="more"></a>
+<h2 id="工作内容"><a href="#工作内容" class="headerlink" title="工作内容"></a>工作内容</h2><h3 id="官网建模与开发，输出开发文档"><a href="#官网建模与开发，输出开发文档" class="headerlink" title="官网建模与开发，输出开发文档"></a>官网建模与开发，输出开发文档</h3><p>成果：UI设计的全部页面结构上已完成</p>
+<p>待完善：</p>
+<ol>
+<li>文字/图片全是占位符，待填充。</li>
+<li>yapi的json数据可能运营人员看不懂，json的确不适合当配置，因为没有注释，而且键值对都必须双引号，很麻烦，所以会期可能会换个数据配置方式</li>
+</ol>
+<h3 id="el-data-table-storybook完善"><a href="#el-data-table-storybook完善" class="headerlink" title="el-data-table storybook完善"></a>el-data-table storybook完善</h3><p>成果：示例数据取自真实业务场景，接上https的easy-mock接口，可以在github pages上显示</p>
+<p>待完善：在storybook中通过<code>formatter</code>把图片url变成真正的图片在table中显示</p>
+<h3 id="七牛云资源管理对接"><a href="#七牛云资源管理对接" class="headerlink" title="七牛云资源管理对接"></a>七牛云资源管理对接</h3><p>成果：上传，下载，查询完成，但由于七牛云不支持跨域，部署麻烦，已放弃，转向阿里OSS。但在pms项目中留下相关代码，以备不时之需</p>
+<h3 id="阿里OSS资源管理对接"><a href="#阿里OSS资源管理对接" class="headerlink" title="阿里OSS资源管理对接"></a>阿里OSS资源管理对接</h3><p>成果：选择bucket, 上传，下载，过滤查询完成，已在pms生产部署使用</p>
+<p>待完善：</p>
+<ol>
+<li>下载没有loading</li>
+<li>不支持多文件上传</li>
+<li>并未合并在dev分支，所以pms项目dev分支时点击<strong>资源中心</strong>菜单会报404</li>
+</ol>
+<h3 id="百得利前端开发排期"><a href="#百得利前端开发排期" class="headerlink" title="百得利前端开发排期"></a>百得利前端开发排期</h3><p>成果：</p>
+<ol>
+<li>客户端，员工端，总部端，门店端前端项目初始化完成</li>
+<li>客户端，listars已在使用vant-ui开发</li>
+<li>总部端，已初步安排开发内容</li>
+</ol>
+<p>待完善：</p>
+<ol>
+<li>总部端部分需求不明确，需要讨论清楚</li>
+<li>门店端工作待安排</li>
+<li>员工端工作待安排</li>
+</ol>
+<h3 id="实习生指导"><a href="#实习生指导" class="headerlink" title="实习生指导"></a>实习生指导</h3><p>成果：</p>
+<ol>
+<li>已能在github pages部署静态内容</li>
+<li>了解HTTP协议基本知识，包括<code>headers</code>, <code>status code</code></li>
+<li>了解RESTful API基础知识</li>
+<li>了解Chrome Dev Tools 相关开发调试操作</li>
+</ol>
+<p>计划：</p>
+<p>下周安排进入百得利项目，来一场真正的实战演习。这一次，不允许miffy手把手教，必须自己走完原型，mock，api的完整流程</p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><h3 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h3><p>官网在做<code>dtyunxi.com</code>就有在思考了，把整体拆分成结构与是内容，结构是很容易出来的，并且不常改动; 而内容经常是开发的时候还没有，开发好后才陆续输出完，并且会频繁改动。</p>
+<p>对于前端开发而言，最痛苦的是就是，因为一个错别字，一个标点符号，要打开IDE/编辑器，改动代码，重新构建，上线部署。</p>
+<p>所以这一次，开始尝试新的模式，把结构与数据分离出来，数据放在yapi上，包括文字/图片，再加上CI，在结构不变的情况下，需要做一些内容的改动时，就不需要前端人员介入了。</p>
+<p>纵然目前而言，yapi的使用对非开发人员不够友好，但我认为思路方向是对的，踏出了第一步，后面的路会更好走。</p>
+<h3 id="storybook"><a href="#storybook" class="headerlink" title="storybook"></a>storybook</h3><p>多亏了布隆，storybook能在项目中真正玩起来。这个说起来得反思一波。刚到云徒的时候，就知道这玩意儿了，放在TODOLIST里，一直被挤了下去。在做组件脚手架的时候，有机会引进的，因为赶时间，想先用styleguide作为文档，然后再补上storybook作为demo及二次开发工具，结果就没有然后了。我一直说，没时间，真的没时间吗？上两周都有一天的时间去看《人月神话》，这不是时间？这从某种程度上来说，我还是蛮拖延的。或者说，一方面是团队建设，一方面是个人成长，也许我该对重要程度及优先级重新排下序。</p>
+<h3 id="ali-oss"><a href="#ali-oss" class="headerlink" title="ali-oss"></a>ali-oss</h3><p>上周开始v神就一直催我对接oss。我先对接了七牛云，发现有不方便的地方，就转向了阿里云。结果公司没买阿里云，我只能光看开发文档，动不了手。</p>
+<p>我说，进度阻塞呀。v神说，等下我来买。结果我一转身，v神不见了，可能去忙别的事了。又等了半小时，我坐立难安。要不我自己买一个得了。虽然这理应是公司出钱的，但我不想阻塞。我常跟大家说，要推进事情的发展，不能被动等待，现在我被阻塞了，我不能推进，我岂不是打自己脸了。再说了，2018我给自己立的一个目标就是，破除小农思想，自己先出点钱怎么了？想清楚后，我不再犹豫，开通了阿里云OSS，把上传，下载，查询对接成功了。这算是一个小小的心理突破：你懂的意思吧，skr～</p>
+<h3 id="金字塔原理"><a href="#金字塔原理" class="headerlink" title="金字塔原理"></a>金字塔原理</h3><p>看完《人月神话》后，我下个读书目标是掌握并实践《金字塔原理》，因为我发现，我写作及工作实践多了以后，思维方式是潜意识地往里面的内容靠拢的，只是我是潜意识，而这本书早已总结并实践多年。一方面，这再一次肯定了我一个观点，“大道相通”，另一方面，我要把我的潜意识的能力，变成表层能感知的能力。</p>
+<p>说实话，这本书有点难啃，因为要思考，下班回来挺累了，还要强行思考，看得也慢，我有点想放弃了。有一个声音说，“先看点技术类的吧，这个可以后面再看”。我差点就同意了。后来在指导实习生的过程中，却使我改变了想法。</p>
+<p>我跟zzHoliday说，你去了解一下HTTP协议，知道头部，方法，还有状态码即可。结果他搜集了一大波书，包括HTTP权威指南，TCP/IP网络详解等等。这其实是走入误区了，想知道的太多，反而啥也学不会。于是我告诉他，目前而言，找一本书，先了解部分，用于实践当中，即可，不用一步到位。</p>
+<p>那么，反过来看我自身，其实是我有点觉得《金字塔原理》看得慢，每天学得不够多，其实这是有点急功近利的心态了。想想耗子哥话，给自己3～5年时间，每天进步一点点，时间观放长远，脚踏实地往前走即可。而且我平时也说，要注重知识的完整性，开始看了一本书，就要完整地看完，岂可中途放弃。所以这本书，我会坚持读下去💪</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2018-07-27-work-summary-20180727/" data-id="cjkz0b5gx0056dffyjyl5z82m" class="article-share-link" data-share="baidu" data-title="2018-7-27 工作总结">分享到</a>
+      
+
+      
+        <a href="https://levy9527.github.io/2018-07-27-work-summary-20180727/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/">work</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+<!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
+  
+    <a href="/2018-08-12-work-summary-20180812/" id="article-nav-newer" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          2018-8-12 工作总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018-07-20-work-summary-20180720/" id="article-nav-older" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">2018-7-20 工作总结</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018-07-27-work-summary-20180727/" data-title="2018-7-27 工作总结" data-url="https://levy9527.github.io/2018-07-27-work-summary-20180727/"></div>
+  </section>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/">Game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nuxt/">Nuxt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/">work</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+          </li>
+        
+          <li>
+            <a href="http://coolshell.cn/" target="_blank">左耳朵耗子</a>
+          </li>
+        
+          <li>
+            <a href="http://www.barretlee.com/entry/" target="_blank">阿里郎小胡子哥</a>
+          </li>
+        
+          <li>
+            <a href="http://pinggod.com/" target="_blank">大漠弟子pinggod</a>
+          </li>
+        
+          <li>
+            <a href="http://ieclipse.cn/" target="_blank">Jamling(参考样式)</a>
+          </li>
+        
+          <li>
+            <a href="https://www.haomwei.com/" target="_blank">屠城(参考字体)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 levy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/levy9527/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about.html" class="mobile-nav-link">关于</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+	<a target="_blank" href="https://github.com/levy9527"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+
+<!-- 百度统计start -->
+
+    <script type="text/javascript">
+      var key = '7595a86aeed3cfd93d5621d3ec858dce';       
+      if(!key) 
+          key = '';
+          
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + key;
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+<!-- 百度统计end -->
+
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"levy9527github"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<!-- swiftype搜索 start -->
+
+<!-- swiftype搜索 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
