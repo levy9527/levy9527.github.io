@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>更新对React Router的History的认识 | levy</title>
+  <title>2018-08-26 工作总结 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="React Router提供的三种History, 之前认识得比较肤浅, 只是从字面上去比较, 经过实践后, 有了新的认识">
+  <meta name="description" content="我还是想多写点代码，但现实与意愿有矛盾; 另一方面我觉得我们现在的开发模式是“小作坊”式的，渴望转型为“工业级”的模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="更新对React Router的History的认识">
-<meta property="og:url" content="https://levy9527.github.io/2017-01-09-update-knowledge-of-react-router-history/index.html">
+<meta property="og:title" content="2018-08-26 工作总结">
+<meta property="og:url" content="https://levy9527.github.io/2018-08-26-work-summary-20180826/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="React Router提供的三种History, 之前认识得比较肤浅, 只是从字面上去比较, 经过实践后, 有了新的认识">
-<meta property="og:updated_time" content="2017-01-09T14:55:16.000Z">
+<meta property="og:description" content="我还是想多写点代码，但现实与意愿有矛盾; 另一方面我觉得我们现在的开发模式是“小作坊”式的，渴望转型为“工业级”的模式">
+<meta property="og:updated_time" content="2018-08-26T12:26:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="更新对React Router的History的认识">
-<meta name="twitter:description" content="React Router提供的三种History, 之前认识得比较肤浅, 只是从字面上去比较, 经过实践后, 有了新的认识">
+<meta name="twitter:title" content="2018-08-26 工作总结">
+<meta name="twitter:description" content="我还是想多写点代码，但现实与意愿有矛盾; 另一方面我觉得我们现在的开发模式是“小作坊”式的，渴望转型为“工业级”的模式">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -63,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-update-knowledge-of-react-router-history" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-work-summary-20180826" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2017-01-09T07:10:39.000Z" itemprop="datePublished" class="article-date">2017-01-09</time>
+    <time datetime="2018-08-25T16:00:00.000Z" itemprop="datePublished" class="article-date">2018-08-26</time>
     
   </div>
   <div class="article-inner">
@@ -74,59 +74,60 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2017-01-09-update-knowledge-of-react-router-history/">更新对React Router的History的认识</a>
+    <a itemprop="name" class="article-title" href="/2018-08-26-work-summary-20180826/">2018-08-26 工作总结</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>React Router提供的三种History, 之前认识得比较肤浅, 只是从字面上去比较, 经过实践后, 有了新的认识</p>
+        <p>我还是想多写点代码，但现实与意愿有矛盾; 另一方面我觉得我们现在的开发模式是“小作坊”式的，渴望转型为“工业级”的模式</p>
 <a id="more"></a>
-<h2 id="browserHistory"><a href="#browserHistory" class="headerlink" title="browserHistory"></a>browserHistory</h2><p>browserHistory是文档重点推荐的: 它提供了更干净的url, 同时也是借助了History API来操作浏览器历史.</p>
-<p>借助History API操作浏览器历史意味着什么呢? 这就意味着, 每次改变路由, 浏览器上的地址会改变, 也即<code>window.location</code>会改变, 同时<code>window.history</code>也会改变</p>
-<p>此时的<code>this.props.router.goBack()</code> 相当于<code>window.history.back()</code>, 而浏览器的后退按钮及移动端的硬件返回也是调用了<code>window.history.back()</code>, </p>
-<p>则在浏览器上, 可以前进/后退按钮来跳转至下一个/上一个路由, 这与用户平时访问网页的体验一致, 的确值得推荐</p>
-<p>不过它有个缺点, 就是它开发出来的应用, 需要配置服务器</p>
-<p>这就意味着, 使用browserHistory编译出来的静态文件, 必须通过http服务器才能访问, 本地直接通过file协议是无法正常访问的. 这是个注意点</p>
-<p>这一点, 对于普通web应用来说, 无关紧要, 因为服务机上的静态资源一般都会有个服务器(如Ngnix)来提供的, 但对Hybrid应用就是不是了. 如果想把静态文件放到手机里, 直接在手机里打开, browserHistory编译的文件是会报错的.</p>
-<p>因此, 如果需要编译出来的文件在本地打开, 则不能使用browserHistory</p>
-<p>下面给出http服务器的生产示例配置, 以Nginx为例</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">location / &#123;</div><div class="line">  root   /Users/levy/repo/git/demo/dist; <span class="comment"># 静态资源目录</span></div><div class="line">  index  index.html;</div><div class="line">  try_files <span class="variable">$uri</span> /index.html; <span class="comment"># 总是返回index.html, 因为是单页应用</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>它还有个缺点, IE8/IE9不支持局部刷新, 而下面两种则可以</p>
-</blockquote>
-<h2 id="createMemoryHistory"><a href="#createMemoryHistory" class="headerlink" title="createMemoryHistory"></a>createMemoryHistory</h2><p>createMemoryHistory编译出来的静态文件, 可以本地打开, 不过它把路由历史放到内存里, 不会修改浏览器历史, 也不会改变浏览器地址</p>
-<p><code>window.location</code>的<code>pathname</code>始终不变则意味着, 假如首页点击后显示详情页, 无法把详情页的地址分享出去, 因为浏览器的地址仍然是首页的地址</p>
-<p>同时, 页面上必须提供返回按钮, 因为浏览器的返回已不可靠. 前进后退必须通过react-router的api来实现 </p>
-<h2 id="hashHistory"><a href="#hashHistory" class="headerlink" title="hashHistory"></a>hashHistory</h2><p>hashHistory具有以上两者的优点: 编译文件可以本地打开; 每一个路由都有单独的url, 可以使用浏览器的前进/后退按钮</p>
-<p>它的缺点是, url”不干净”, 带着一串hash值. 如<code>example.com/#/somepath?_k=kfeu3k</code>, <code>#/somepath?_k=kfeu3k</code>就是<code>window.location.hash</code>.<br>以上面的示例为说明, 它路由改变时, <code>window.location.pathname</code>始终是不变的, 变的是hash值:</p>
-<ul>
-<li>如果下一个路由与当前路由不同, 则<code>#</code>后面的的部分全部改变</li>
-<li>如果下一个路由与当前路由相同, 则<code>=</code>后面的部分改变</li>
-</ul>
-<p>也就是说, 除了前进/后退, 用户先一次点击同一个链接, 浏览器的url都是不同的</p>
-<h2 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h2><p>文档上说, 服务端渲染就要使用browserHistory, hashHistory是做不到的. 可是, 我实验了一下, 并非如此啊, 服务端渲染根本与使用哪种历史没关系啊, 只是一定要有个nodejs服务器而已, 这里可能是个疑问点</p>
-<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>最后在实际项目中, 我使用的是createMemoryHistory.</p>
-<p>场景是这样的: 对方用与我们完全不同的技术栈开发了一个app, 现在是要在其首页加一个icon, 点击后跳到我们的首页. 因为对方会把我们的首页资源放到手机里, 在本地打开, 并非通过http协议来访问, 所以不能用browserHistory. </p>
-<p>那么, 为什么不使用hashHistory呢?</p>
-<p>毕竟我们的页面是属于 “外来页面”, 对方要求在我们的页面里, 无论跳转了几个页面, 只要想返回, 都能返回到他们的首页.</p>
-<p>考虑到我们的页面上已有返回按钮, 再添加一个按钮, 不好看, 而且还要考虑硬件返回的情况, 另外就是, 该app不会有分享链接的功能. 综上考虑, 我就选择了createMemoryHistory. 因为此时路由的改变记录是在内存的, 不会改变浏览器历史, 因此在我们的页面里, 无论嵌套有多深, <code>history.back()</code>返回的都是对方的首页. 而手机的硬件返回调用的是<code>history.back()</code>, 则对方直接操作手机就可以达到目的了, 我们也不需要在页面中多添加一个返回按钮</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#browserhistory" target="_blank" rel="external">react-router histories</a></p>
+<h2 id="工作内容"><a href="#工作内容" class="headerlink" title="工作内容"></a>工作内容</h2><ol>
+<li>阿里OCR对接，已实现js版的身份证，驾驶证，行驶证OCR识别</li>
+<li>支持8.16后的第一次小迭代上线</li>
+<li>打杂(筛选简历，面试，外部团队交流，开发内容分配，开发成果检验)</li>
+</ol>
+<h2 id="经历1-沉溺代码，不可自拔"><a href="#经历1-沉溺代码，不可自拔" class="headerlink" title="经历1: 沉溺代码，不可自拔"></a>经历1: 沉溺代码，不可自拔</h2><p>这周前两天对接OCR我很开心，终于可以沉溺代码，不可自拔。当然，我也踩了坑，走了弯路。</p>
+<p>背景是，客户开发经理只告诉我使用阿里云的OCR接口，给了我key与secret，其他啥也没说。</p>
+<p>那我就自己去找，结果发现，官网做得很垃圾，OCR的入口不好找。</p>
+<p>于是找到了云市场，发现里面有好多不同公司提供的接口，光是身份证识别就有好几家，我当时没多想，选了第一家，点了进去，准备直接上手撸。因为我看了接口调用说明，不同的接口统一走API网关，所以把key与secret拿到，按照文档使用同样的方法计算出签名，即可调用不同的接口。</p>
+<p>因为API文档里有在线调试功能，于是我先调试一波，结果发现使用客户给的key与secret调试失败，说我没有购买产品。WTF？这里一定有啥坑。我没多想，自己去了个0元体验OCR服务，可以调用几次，我再去在线调试，又成功了。怎么回事？后来注意到url的参数，我明白了，这个在线调试一定要使用购买服务的账号，登录后，从自己的阿里云控制台点进去才行，否则就算拿到key与secret，我也不可能成功的。md，这官网。</p>
+<p>那么，接下来的重点就是签名算法的实现了。结果文档里，只提供了后端语言的SDK及签名Demo，这就让我很捉急了。难道还要我翻译一下Java代码？折腾了一下，最后还是在Github找到了别人的示例，改造一波，调用成功了。(后来才发现，阿里云有提供Node.js版本SDK)</p>
+<p>OK，身份证对接成功，我接着对接驾驶证。这时就踩了大坑，因为我这次选择了一家深圳的公司提供的OCR驾驶证接口。这有啥区别吗？这里要说明一下阿里云的云市场提供的接口与公司的关系。</p>
+<p>阿里云的云市场其实是提供了一个API平台，里面会有不同的公司(也包括阿里云计算有限公司)入驻，在对外提供各自的开放接口。拿OCR驾驶证接口来说，深圳某家公司有提供，阿里云计算有限公司也有提供，这其实是两个不同的接口，当然它们都可以通过统一的签名认证，但你想调用成功，必须先购买具体某个公司的接口。</p>
+<p>所以问题就来了，客户说的，“阿里云的OCR接口”，这个“阿里云”到底是指“云市场”，还是指“阿里云计算有限公司”，并未清晰。这些也是后来才明白过来的，在对接的时候，没想到这一层，于是选了一家深圳公司提供的OCR驾驶证接口，调用500。当时已是晚上十点半，我看接口说明，24小时在线客服，于是打了电话过去，加了对方开发的钉钉，约好第二天一起调试了一波。第二天成功后，对方劝说我购买他公司的产品，因为比阿里云的更便宜实惠。这才点醒我不同公司不同API的关系。于是，我再找客户开发经理确认，才发现客户购买的API全是“阿里云计算有限公司”提供的，所以说，我花了大半天调试的API，其实是白费功夫了。。。</p>
+<p>虽然对接外部系统踩了坑，走了弯路，但从结果来看，最终还是完成了。我是喜欢这种探索，遇到障碍之后扫除障碍的感觉。编码的感觉，让我很充实。</p>
+<h2 id="经历2：项目进展让我焦头烂额"><a href="#经历2：项目进展让我焦头烂额" class="headerlink" title="经历2：项目进展让我焦头烂额"></a>经历2：项目进展让我焦头烂额</h2><p>调通OCR接口，两天过去了，再重新来看上线安排，发现根本完成不了啊。</p>
+<p>这里有几点比较关键：</p>
+<ol>
+<li>当初做计划，比较随意，并没有精细地去排</li>
+<li>我们的开发周期并不支持一周两次迭代</li>
+<li>我放眼全局的力度不够，前两天陷入局部细节当中去了</li>
+</ol>
+<p>所以，这周四上线到客户环境，预定早上部署的，到了下午才部署成功，而且还只是部署了两个端，并且还搞错了配置，出了很多问题。</p>
+<p>于是晚上的开总结会，专家们各种点评，各种指正，现场的感觉，当属少伯印象最深。</p>
+<p>那么，除出开发层面的问题不说，就工作方式而言，我的确有待改进。</p>
+<p>出于信誉，做出的计划，就必须地贯彻实施。所以如果不想再出现这种实现不了的情况，下次做计划时就得好好做。</p>
+<p>另一方面，我每天必须多花点时间去<strong>统筹兼顾</strong>，检验进度，<strong>掌控全局</strong>，及时调整步伐与方向。这一点，在魅族的时候做得还比较好，每天晚上我会让大家提交代码，发个版本，检查一波进度。所以当时魅族前端情况，都在掌握之中的。而这周的前两天沉迷代码，结果丢失了全局的视野。</p>
+<p>另外，我一直强调细腻的团队风格。注重细节，是我对代码的要求。但现在代码量太多了，太过追求细节，review的粒度太细，会让我花大量的时间，自己反而没啥时间了。所以，我应该学会<strong>抓大放小</strong>，抓住主要矛盾，有的时候，是可以睁一只眼闭一只眼的</p>
+<p>同时，让我很纠结的地方在于：我现在除了在做开发，同时又做测试，以及项目管理，我的精力很分散。我内心还是有安安静静编码的诉求，而且我很担心，这样下去，我会丢失竞争力，废了。。。</p>
+<p>再说回项目开发与管理，我认为我们现阶段的是“小作坊”式的，很简陋，做点小项目还好，问题不大，对于现在这种大型项目，想要快速推进的时候，做出来的功能很难闭环。或者这样说，每个人负责独立的模块，相安无事; 一旦后期想把各个模块拼接起来的时候，漏洞百出。样式，输入校验，用户体验，性能等方面的考虑就先不说，单说数据及功能的完整性就各种问题。虽然都是小问题，团队这么多人，一个人一个小问题，加起来，就让人焦头烂额了。</p>
+<p>有问题很正常，解决它就是了; 意识不够，也可以培养。但关键是，要怎么做？说是要有规范，有流程，但怎样的规范，怎样的流程，才能让我们摆脱“小作坊”式开发，走向先进，变成更专业，更有效率的“工业级”开发？这是接下来要思考的问题。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-01-09-update-knowledge-of-react-router-history/" data-id="cjlauj9lc004ly7pho269ag4l" class="article-share-link" data-share="baidu" data-title="更新对React Router的History的认识">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-08-26-work-summary-20180826/" data-id="cjlauj9m30058y7phwtg0x13d" class="article-share-link" data-share="baidu" data-title="2018-08-26 工作总结">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2017-01-09-update-knowledge-of-react-router-history/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2018-08-26-work-summary-20180826/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/">work</a></li></ul>
 
     </footer>
   </div>
@@ -135,19 +136,10 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2017-01-12-css3-multi-column-layout-module/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          css3多列布局
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017-01-01-look-back-at-2016/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018-08-19-work-summary-20180819/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">回顾2016</div>
+      <div class="article-nav-title">2018-8-19 工作总结</div>
     </a>
   
 </nav>
@@ -158,7 +150,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017-01-09-update-knowledge-of-react-router-history/" data-title="更新对React Router的History的认识" data-url="https://levy9527.github.io/2017-01-09-update-knowledge-of-react-router-history/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018-08-26-work-summary-20180826/" data-title="2018-08-26 工作总结" data-url="https://levy9527.github.io/2018-08-26-work-summary-20180826/"></div>
   </section>
 
 </section>
