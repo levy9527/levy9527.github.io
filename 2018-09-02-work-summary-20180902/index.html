@@ -4,27 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>CSS3滤镜--从乔任梁的百度百科说起 | levy</title>
+  <title>2018-09-02 总结 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="之前看到大家都在讨论乔任梁的死, 我不知道他是谁, 因此百度百科了一下
-我注意到为表示悼念, 百度百科界面是灰色的, 连图片也是. 但审查元素的时候, 可以发现图片原本是彩色的, 这么说来一定是被CSS处理后才显示为灰的. 
-究竟是怎么回事呢, 最终我找到了如下代码:
-12345678910body &amp;#123;  filter: grayscale(100%);  -webkit-filter:">
+  <meta name="description" content="8.30演示那一天，还在做新功能开发，演示前几分钟，还在发版本，这种经历不想再体验了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS3滤镜--从乔任梁的百度百科说起">
-<meta property="og:url" content="https://levy9527.github.io/2016-09-23-css-filter/index.html">
+<meta property="og:title" content="2018-09-02 总结">
+<meta property="og:url" content="https://levy9527.github.io/2018-09-02-work-summary-20180902/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="之前看到大家都在讨论乔任梁的死, 我不知道他是谁, 因此百度百科了一下
-我注意到为表示悼念, 百度百科界面是灰色的, 连图片也是. 但审查元素的时候, 可以发现图片原本是彩色的, 这么说来一定是被CSS处理后才显示为灰的. 
-究竟是怎么回事呢, 最终我找到了如下代码:
-12345678910body &amp;#123;  filter: grayscale(100%);  -webkit-filter:">
-<meta property="og:updated_time" content="2016-09-23T08:37:30.000Z">
+<meta property="og:description" content="8.30演示那一天，还在做新功能开发，演示前几分钟，还在发版本，这种经历不想再体验了。">
+<meta property="og:updated_time" content="2018-09-02T03:25:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS3滤镜--从乔任梁的百度百科说起">
-<meta name="twitter:description" content="之前看到大家都在讨论乔任梁的死, 我不知道他是谁, 因此百度百科了一下
-我注意到为表示悼念, 百度百科界面是灰色的, 连图片也是. 但审查元素的时候, 可以发现图片原本是彩色的, 这么说来一定是被CSS处理后才显示为灰的. 
-究竟是怎么回事呢, 最终我找到了如下代码:
-12345678910body &amp;#123;  filter: grayscale(100%);  -webkit-filter:">
+<meta name="twitter:title" content="2018-09-02 总结">
+<meta name="twitter:description" content="8.30演示那一天，还在做新功能开发，演示前几分钟，还在发版本，这种经历不想再体验了。">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -72,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-css-filter" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-work-summary-20180902" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-09-23T08:32:58.000Z" itemprop="datePublished" class="article-date">2016-09-23</time>
+    <time datetime="2018-09-01T16:00:00.000Z" itemprop="datePublished" class="article-date">2018-09-02</time>
     
   </div>
   <div class="article-inner">
@@ -83,69 +74,62 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-09-23-css-filter/">CSS3滤镜--从乔任梁的百度百科说起</a>
+    <a itemprop="name" class="article-title" href="/2018-09-02-work-summary-20180902/">2018-09-02 总结</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前看到大家都在讨论乔任梁的死, 我不知道他是谁, 因此<a href="http://baike.baidu.com/link?url=kKcHS3cYcO6TZuDATDSjajfKF3IuO9OH-f9jr_PepAn_quhh3XcaA9gdp9mpVwixNOvdaFf3a5kKJsgb5-9fUK" target="_blank" rel="external">百度百科</a>了一下</p>
-<p>我注意到为表示悼念, 百度百科界面是灰色的, 连图片也是. 但审查元素的时候, 可以发现图片原本是彩色的, 这么说来一定是被CSS处理后才显示为灰的. </p>
-<p>究竟是怎么回事呢, 最终我找到了如下代码:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  filter: grayscale(100%);</div><div class="line">  -webkit-filter: grayscale(100%);</div><div class="line">  -moz-filter: grayscale(100%);</div><div class="line">  -ms-filter: grayscale(100%);</div><div class="line">  -o-filter: grayscale(100%);</div><div class="line">  filter: url(data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter i…0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale);</div><div class="line">  filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);</div><div class="line">  filter: gray;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>把它注释掉, 页面就还原成彩色的了. <code>filter</code>就是今天的主角, CSS3滤镜</p>
+        <p>8.30演示那一天，还在做新功能开发，演示前几分钟，还在发版本，这种经历不想再体验了。</p>
 <a id="more"></a>
-<p>想直接看效果的, 可以看<a href="http://www.w3cplus.com/css3/ten-effects-with-css3-filter" target="_blank" rel="external">w3cPlus的文章</a>.</p>
-<p>不过该文章是2012的了, 因此我自己再实践了一遍, 代码在<a href="http://git.oschina.net/levy9527/practice/blob/master/css_practice/filter.html?dir=0&amp;filepath=css_practice%2Ffilter.html&amp;oid=01f873f38adc6a9f810a76cfecf74a38d26752a9&amp;sha=c9790d448a3587c9192ea4c38b2873e432d119b2" target="_blank" rel="external">码云</a>, 但不能在线预览.</p>
-<p>实践后的总结如下:</p>
-<ul>
-<li>grayscale 灰度</li>
-<li>sepia 褐色. 看起来就像老照片</li>
-<li>saturate 饱和度</li>
-<li>hue-rotate 色相旋转. 0~360deg, 超出后重新计算</li>
-<li>invert 反色. 看起来像相片底片, 50% 是分界线</li>
-<li>opacity 透明度. 这个特效跟<code>opacity</code>属性没差别, 建议直接使用<code>opacity</code></li>
-<li>brightness 亮度. 我不知道上限是多少. 我试过1000都有效果的</li>
-<li>contrast 对比度. 大于1才有意思</li>
-<li>blur 模糊. 0~100px, 注意调试效果的时候保护眼睛😁</li>
-<li>drop-shadow 阴影. 增加立体感, 用法同box-shadow(5px 5px 5px #ccc), 但效果有区别, box-shadow的阴影比较深/多, 可以二者同时使用</li>
-<li>url 这个不好用, 一般用于svg. 如果使用在线图片, 则遵循同源策略, 麻烦得很, 不建议使用.</li>
+<h2 id="工作内容"><a href="#工作内容" class="headerlink" title="工作内容"></a>工作内容</h2><ul>
+<li>8.30演示冲刺</li>
+<li>演示场景验证</li>
+<li>下周工作计划安排</li>
 </ul>
-<blockquote>
-<p>上面的大多数函数值为可以填数字或百分比, 数字会转换成百分比. 如0~1会转换成0~100%; 负值是无效的. </p>
-<p>少数函数值超过100%还是有效果的. 实践中多尝试吧.</p>
-</blockquote>
-<p>其实我在今年初的时候, 就有接触到<code>filter</code>了, 当时用到了<code>blur</code>特效. 不过当时是别人写的代码, 没深入研究. 因为那时我CSS还很菜😂 </p>
-<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><ul>
-<li>低版本的Chrome或Safari需要带-webkit前缀</li>
-<li>Firefox没有前缀的, 也即支持就支持, 不支持就是不支持, 因而前面百度的CSS是有些多余的. 当然它可能是通过autoprefixer处理的, 不是人手写的</li>
-<li>IE一直不支持filter. 它那自己的一套滤镜规则, 也叫filter. 一直都没有面向过IE开发, 我就没往这方面研究了</li>
-</ul>
-<p>经测试, 以下浏览器不带前缀是没问题的</p>
-<ul>
-<li>Chrome 53</li>
-<li>Safari 9</li>
-<li>Firefox 48</li>
-</ul>
-<p>更多详情可以点击<a href="http://caniuse.com/#feat=css-filters" target="_blank" rel="external">CanIUse</a></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://www.w3.org/TR/filter-effects-1/" target="_blank" rel="external">w3c-filter</a></li>
-</ul>
+<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><h3 id="关于演示"><a href="#关于演示" class="headerlink" title="关于演示"></a>关于演示</h3><p>之所以我们里程碑演示那么狼狈，是因为我们延期了，但又想再赶一赶，在最后一刻让演示看起来达到预期。</p>
+<p>所以，演示那一天，还不能保证测试环境的稳定性，还在代码里添加新功能，甚至在演示前几分钟还要发布一个版本。</p>
+<p>再去看代码，里面零散地写着<code>TODO</code>，写着”临时解决方案”，写着“为了8.30演示”; 而演示结束后，部分小伙伴松了一口气，下班的时候把电源也带了回去，想着明天好好休息一天——他们误以为8.30是星期五，“明天不用上班了”。</p>
+<p>如此疲于奔命，如此焦头烂额，似乎一切都只是为了演示。感觉很忙，但其实做得却很少。演示完后，似乎精神都空虚了。</p>
+<p>这不是训练有素的团队应有的样子。</p>
+<h3 id="关于延期"><a href="#关于延期" class="headerlink" title="关于延期"></a>关于延期</h3><p>其实我认为，延期就延期了，承认就是了。接收现实，承担责任，仅此而已。导致项目延期的因素有很多，好好反思，下次做得更好，没问题的。</p>
+<p>演示的时候，周老板也在。其实功能范围这么广，细节这么多，他一下子也看不过来，我看他在演示前半段一直是在打哈欠的; 演示内容这么多，再加上有他在场，客户们也并不会在界面上吹毛求疵。再者，BOSS真正关心的，是数据的完整性，用户购车流程的便捷性，还有就是使用MOBY商城后，如何与现有系统打通并维护，业务又如何开展，这些才是真实世界里需要考虑的事情。所以其实只要进度不是落后太多，在BOSS这个层面并不会太过追究的</p>
+<p>再进一步，就算是明显落后了，反映到BOSS那里去，他也不会为难。因为真正难缠的是小鬼，BOSS要的是解决方案。毕竟他这个层面，当然明白，事情并不会是一帆风顺的，遇到问题，是很正常的事，想办法解决就是了。打个比喻，说好的五点的飞机，延误两个小时，你能怎么办？还不是乖乖地等。所以这就回到了开头：项目延期了，我接受这个事实，承担后果，总结反思，下次做得更好，不再犯同样的错误。毕竟软件交付，交付的并不止是软件，还有用户体验。而软件每一次迭代都比上一次要好，也是属于用户体验的一种。</p>
+<p>所以，我认为我们应该稳扎稳打，而并不是看起来很拼命的样子，只是为了演示，导致整个团队都身心乏惫。我们是在跑马拉松，而不是短跑冲刺，长此以往，对我们是有害的。</p>
+<p>我不想我们沦落为普通的外包团队。</p>
+<h3 id="延期原因"><a href="#延期原因" class="headerlink" title="延期原因"></a>延期原因</h3><p>那么来分析一下导致项目延期的原因。除了外界不可控因素以外，导致我们延期的因素有以下几点：</p>
+<ol>
+<li>迭代周期过短。一周两个版本，根本不符合开发节奏 </li>
+<li>计划做得空泛。为了应付外界因素，一次就做一个里程碑的计划，自己做得费劲，实际又不按照计划来，因为这期间肯定是有变化的，而因为计划里内容太多，调整起来也费劲，于是便懒得调整，一切放心中，导致计划丢失了原本的意义。</li>
+<li>团队成员并不清楚短期目标。这跟第2点是密切相关的。因为计划空泛，只是应付外界，自己根本没用起来，所以需要根据情况，每天每人分配1~2/人天的任务，而各个任务之间可能并没有太多的相关性，导致成员也是盲人摸象，如果做好了当前任务，并不知道下一步要做啥</li>
+<li>没有验证场景。我们是要演示的时候，才根据功能来规划演示场景，这完全是本末倒置的。应该是先想好演示场景，再去划分功能模块，开发出一个闭环功能。</li>
+</ol>
+<h3 id="关于改变"><a href="#关于改变" class="headerlink" title="关于改变"></a>关于改变</h3><p>下一个里程碑，我们要稳扎稳打。正如多米哥所说，“慢就是快”，千万不要贪功冒进，我们要稳步前进。我们会做出以下改变：</p>
+<ol>
+<li>改变迭代周期：一周一次。</li>
+<li>改变排计划方式：先想好验证场景，划分好闭环功能，再与成员协商，分配短期任务。一次只排一个迭代的计划。</li>
+<li>先进的理论指导实践：敏捷开发。</li>
+</ol>
+<p>首先，我们要找回属于我们的开发节奏。所以第一步，是把迭代周期变为一周一次。<strong>范围，时间，成本，质量，四个维度，唯有质量是不可妥协的</strong>。一定要有这种意识，与外界据理力争。拿出“如果这个谈不拢，那就得另请高明”的魄力。</p>
+<p>再者，根据验证场景来划分功能，这样做出来的功能是闭环的，大家也清晰自己在做什么，更容易理清任务之间的逻辑关系，也方便自己去验证。</p>
+<p>一次排一周的计划，一方面每个人能知道今天做完了，明天要做啥，就不需要我每天盯着进度，生怕有人阻塞，需要我来调度：他们可自行调度。另一方面，一周的工作量排起来没那么费劲，又能灵活调整，可以从容应对后面的变化。</p>
+<p>脱离落后，解放生产力，需要先进的指导理论。现在我感觉是摸着石头过河，亟需一个引路人，一盏指明灯。我相信敏捷开发将是有力的理论武器。</p>
+<p>“敏捷到底是什么，敏捷实践起来很难”，虽然多米哥这样说，但我明白，这只是外国理论本土化的时候，遇到一些困难挫折罢了。不改变，永远停滞不前; 还不如去实践尝试一波，毕竟还有突破的可能，也许就能走个通天大道。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-23-css-filter/" data-id="cjlkao4xd0019usphm80ie98w" class="article-share-link" data-share="baidu" data-title="CSS3滤镜--从乔任梁的百度百科说起">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-09-02-work-summary-20180902/" data-id="cjlkao51j0055usphrkpcel58" class="article-share-link" data-share="baidu" data-title="2018-09-02 总结">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-09-23-css-filter/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2018-09-02-work-summary-20180902/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/">work</a></li></ul>
 
     </footer>
   </div>
@@ -154,19 +138,10 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-09-24-some-tools-problem-on-mac/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          Mac的一些软件问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016-09-22-type-emoji-on-mac/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018-08-28-some-tips-for-developing-mp-weixin-qq-com/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Mac使用输入法打出特殊字符</div>
+      <div class="article-nav-title">微信公众平台开发注意事项</div>
     </a>
   
 </nav>
@@ -177,7 +152,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-23-css-filter/" data-title="CSS3滤镜--从乔任梁的百度百科说起" data-url="https://levy9527.github.io/2016-09-23-css-filter/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018-09-02-work-summary-20180902/" data-title="2018-09-02 总结" data-url="https://levy9527.github.io/2018-09-02-work-summary-20180902/"></div>
   </section>
 
 </section>
