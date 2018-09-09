@@ -4,20 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>React Native真机运行 | levy</title>
+  <title>2018-09-09 总结 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="根据之前iOS真机测试的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏">
+  <meta name="description" content="这周四是一个小迭代的版本发布，更高质量的代码，却比以往更糟糕的发布。之后又发生了一些意料之外的事，有教训，也有惊喜。今天晚上一个人在CAMPUS 01呆到11点，想静下心来写总结，却发现记忆有些模糊了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React Native真机运行">
-<meta property="og:url" content="https://levy9527.github.io/2016-09-20-react-native-build-for-production/index.html">
+<meta property="og:title" content="2018-09-09 总结">
+<meta property="og:url" content="https://levy9527.github.io/2018-09-09-work-summary-20180909/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="根据之前iOS真机测试的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏">
-<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-21/7904124.jpg">
-<meta property="og:updated_time" content="2016-09-26T03:37:30.000Z">
+<meta property="og:description" content="这周四是一个小迭代的版本发布，更高质量的代码，却比以往更糟糕的发布。之后又发生了一些意料之外的事，有教训，也有惊喜。今天晚上一个人在CAMPUS 01呆到11点，想静下心来写总结，却发现记忆有些模糊了。">
+<meta property="og:updated_time" content="2018-09-09T16:51:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React Native真机运行">
-<meta name="twitter:description" content="根据之前iOS真机测试的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏">
-<meta name="twitter:image" content="http://oc9l6hs7x.bkt.clouddn.com/16-9-21/7904124.jpg">
+<meta name="twitter:title" content="2018-09-09 总结">
+<meta name="twitter:description" content="这周四是一个小迭代的版本发布，更高质量的代码，却比以往更糟糕的发布。之后又发生了一些意料之外的事，有教训，也有惊喜。今天晚上一个人在CAMPUS 01呆到11点，想静下心来写总结，却发现记忆有些模糊了。">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -65,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-react-native-build-for-production" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-work-summary-20180909" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-09-20T09:23:27.000Z" itemprop="datePublished" class="article-date">2016-09-20</time>
+    <time datetime="2018-09-09T15:20:33.000Z" itemprop="datePublished" class="article-date">2018-09-09</time>
     
   </div>
   <div class="article-inner">
@@ -76,35 +74,62 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-09-20-react-native-build-for-production/">React Native真机运行</a>
+    <a itemprop="name" class="article-title" href="/2018-09-09-work-summary-20180909/">2018-09-09 总结</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>根据之前<a href="/2016-09-18-launch-your-app-on-a-device/">iOS真机测试</a>的经验, 我把开发好的RN应用直接安装到自己的手机里, 兴冲冲的打开后, 居然红屏<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-21/7904124.jpg" alt="WTF?"></p>
+        <p>这周四是一个小迭代的版本发布，更高质量的代码，却比以往更糟糕的发布。之后又发生了一些意料之外的事，有教训，也有惊喜。今天晚上一个人在CAMPUS 01呆到11点，想静下心来写总结，却发现记忆有些模糊了。</p>
 <a id="more"></a>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>下面给出的是最简单的解决方案, 只适用于个人测试, 如果要发布到App Store, 还要做<a href="https://facebook.github.io/react-native/docs/running-on-device-ios.html" target="_blank" rel="external">额外的设置</a></p>
-<p>找到<code>AppDelegate.m</code></p>
-<p>把下面的代码注释掉:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jsCodeLocation = [NSURL URLWithString:@&quot;http://localhost:8081/index.ios.bundle?platform=ios&amp;dev=true&quot;];</div></pre></td></tr></table></figure>
-<p>把下面的代码注释打开<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// jsCodeLocation = [[NSBundle mainBundle] URLForResource:@&quot;main&quot; withExtension:@&quot;jsbundle&quot;];</div></pre></td></tr></table></figure></p>
-<p>重新安装即可</p>
+<p>这周有些事只能内化，我就长话短说</p>
+<h3 id="教训"><a href="#教训" class="headerlink" title="教训"></a>教训</h3><ol>
+<li>上线必须流程化，规范化，让每个人意识到上线的严肃性。不然，就会出现本周的这种情况，更高质量的代码，上线后，却有着更糟糕的表现。外人不看过程，只看结果。这样的结果，会导致外界不信任，质疑我们的研发能力<ul>
+<li>上线前夕，不要重构</li>
+<li>定个打tag时间，切个发布分支，此后不接受新的代码</li>
+<li>选定个合适的时间上线</li>
+<li>列个checklist，上线时必须严谨检查，是否按步骤全部执行</li>
+<li>上线后内测，确认无误后，再广而告知</li>
+</ul>
+</li>
+<li>信息处理及释放的能力，注意士气。每个人的抗压能力是不一样的，所以为了士气，有时是要自己承受阴暗面，向外界表达阳光面 </li>
+</ol>
+<h3 id="惊喜"><a href="#惊喜" class="headerlink" title="惊喜"></a>惊喜</h3><ol>
+<li><p>多米哥对理想团队的规划。</p>
+<p>多米哥一直都有着自己的价值理念，但只是独自践行。我不止一次对他说，应该推广起来。他说，推广很难，并不是每个人都愿意这样做。我说，其实你还是缺少一些魄力，遇到困难与阻力，就容易放弃。</p>
+<p>这周，多米哥突然写了一份关于理想团队的规划文档，叫我过去看看。里面的很多观念，与我不谋而合。他说，上面的东西还比较虚，要想办法落地，我们从小范围做起，最终能真正的推广起来!</p>
+<p>我非常惊喜，多米哥改变了。想想曾经在恒拓的时候，中午吃饭时间，独自一人默默撸代码的他，今日输出了这份文档，做出了要把理念落地的决定，打造出一支敏捷的团队，这不得不让人眼前一亮。</p>
+<p>他说，他曾认为他应该在一支由“明星程序员”组成的团队里干活。受了我的启发，觉得这不太现实。更实际的做法应该是，创造一个良好的环境，让一群普通人，凝聚在一起，形成一个战斗力十足的团队。我说，多米哥，我全力支持你。</p>
+<p>看来我还是能改变一些东西的。</p>
+</li>
+<li><p>米肥的进步。</p>
+<p>今晚看到米肥的总结</p>
+<ul>
+<li>她学会了遇到阻塞，找出原因，给出解决方案，推进事情的发展</li>
+<li>享受到了重构代码的乐趣</li>
+<li>意识到code review的重要性，准备践行起来</li>
+<li>意识到要跳出局限在自己圈子的思维，要有一个全局的思考</li>
+<li>做好本职工作，分担前线队友的压力，让他人少操心</li>
+</ul>
+<p>我说，感动。</p>
+<p>米肥成长了。似乎看到小妹妹长大了。不错不错，在这略带寒意的夜晚，温暖人心。</p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-20-react-native-build-for-production/" data-id="cjlv3jjto003wqkfycltg1zv2" class="article-share-link" data-share="baidu" data-title="React Native真机运行">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-09-09-work-summary-20180909/" data-id="cjlv3jjv4005mqkfyp6im9pru" class="article-share-link" data-share="baidu" data-title="2018-09-09 总结">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-09-20-react-native-build-for-production/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2018-09-09-work-summary-20180909/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/">work</a></li></ul>
 
     </footer>
   </div>
@@ -113,19 +138,10 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-09-22-type-emoji-on-mac/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          Mac使用输入法打出特殊字符
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016-09-20-add-app-icon-to-ios-app/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018-09-02-work-summary-20180902/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">为iOS应用添加icon</div>
+      <div class="article-nav-title">2018-09-02 总结</div>
     </a>
   
 </nav>
@@ -136,7 +152,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-20-react-native-build-for-production/" data-title="React Native真机运行" data-url="https://levy9527.github.io/2016-09-20-react-native-build-for-production/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018-09-09-work-summary-20180909/" data-title="2018-09-09 总结" data-url="https://levy9527.github.io/2018-09-09-work-summary-20180909/"></div>
   </section>
 
 </section>
