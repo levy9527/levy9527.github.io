@@ -4,21 +4,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>AJAX中出现OPTIONS请求 | levy</title>
+  <title>2018-09-016 总结 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景之前有一个项目使用Zepto来发送ajax请求, 查看Nginx日志或使用Chrome Dev Tools查看请求发送情况时, 会看到每次调后台API的请求之前, 都会发送一个OPTIONS请求, 无论API要求请求的方法是GET或POST. 
-为什么会发送这个OPTIONS请求? 可以去掉吗?">
+  <meta name="description" content="根据checklist，上线有条不紊，信心大增;  
+不知利害关系，被人套路，再次陷入被动局面;  
+再次从广州调来救兵，为项目交付作最后的冲刺。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AJAX中出现OPTIONS请求">
-<meta property="og:url" content="https://levy9527.github.io/2016-09-01-why-got-options-request-via-ajax/index.html">
+<meta property="og:title" content="2018-09-016 总结">
+<meta property="og:url" content="https://levy9527.github.io/2018-09-16-work-summary-20180916/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="背景之前有一个项目使用Zepto来发送ajax请求, 查看Nginx日志或使用Chrome Dev Tools查看请求发送情况时, 会看到每次调后台API的请求之前, 都会发送一个OPTIONS请求, 无论API要求请求的方法是GET或POST. 
-为什么会发送这个OPTIONS请求? 可以去掉吗?">
-<meta property="og:updated_time" content="2016-09-02T07:11:50.000Z">
+<meta property="og:description" content="根据checklist，上线有条不紊，信心大增;  
+不知利害关系，被人套路，再次陷入被动局面;  
+再次从广州调来救兵，为项目交付作最后的冲刺。">
+<meta property="og:updated_time" content="2018-09-30T15:28:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AJAX中出现OPTIONS请求">
-<meta name="twitter:description" content="背景之前有一个项目使用Zepto来发送ajax请求, 查看Nginx日志或使用Chrome Dev Tools查看请求发送情况时, 会看到每次调后台API的请求之前, 都会发送一个OPTIONS请求, 无论API要求请求的方法是GET或POST. 
-为什么会发送这个OPTIONS请求? 可以去掉吗?">
+<meta name="twitter:title" content="2018-09-016 总结">
+<meta name="twitter:description" content="根据checklist，上线有条不紊，信心大增;  
+不知利害关系，被人套路，再次陷入被动局面;  
+再次从广州调来救兵，为项目交付作最后的冲刺。">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -66,9 +69,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-why-got-options-request-via-ajax" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-work-summary-20180916" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-09-01T07:50:10.000Z" itemprop="datePublished" class="article-date">2016-09-01</time>
+    <time datetime="2018-09-15T16:00:00.000Z" itemprop="datePublished" class="article-date">2018-09-16</time>
     
   </div>
   <div class="article-inner">
@@ -77,53 +80,59 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-09-01-why-got-options-request-via-ajax/">AJAX中出现OPTIONS请求</a>
+    <a itemprop="name" class="article-title" href="/2018-09-16-work-summary-20180916/">2018-09-016 总结</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>之前有一个项目使用<code>Zepto</code>来发送<code>ajax</code>请求, 查看<code>Nginx</code>日志或使用<code>Chrome Dev Tools</code>查看请求发送情况时, 会看到每次调后台API的请求之前, 都会发送一个OPTIONS请求, 无论API要求请求的方法是GET或POST. </p>
-<p>为什么会发送这个OPTIONS请求? 可以去掉吗? </p>
+        <p>根据checklist，上线有条不紊，信心大增;  </p>
+<p>不知利害关系，被人套路，再次陷入被动局面;  </p>
+<p>再次从广州调来救兵，为项目交付作最后的冲刺。</p>
 <a id="more"></a>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>首先, 我在js代码里是没写要发送OPTIONS请求的, 后台API要的请求方法不是GET就是POST, 我只发送过这两种类型的请求.</p>
-<p>那么, 我就以为是<code>Zepto</code>搞的鬼, 于是去看它的源码. <code>Zepto</code>的源码模块化做得很好, 直接看里面的<code>ajax.js</code>文件就好了. 结果, 我发现一切正常啊, 并没有这种逻辑: <strong>发送GET/POST请求之前, 先发送一个OPTIONS请求</strong>. </p>
-<p>不是<code>Zepto</code>的问题, 那我只好使用搜索大法了. </p>
-<p><a href="http://stackoverflow.com/questions/1256593/why-am-i-getting-an-options-request-instead-of-a-get-request" target="_blank" rel="external">stackoverflow.com</a>一搜, 找到了一个相似的问题, 再根据回答找到<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#The_HTTP_request_headers" target="_blank" rel="external">MDN</a>的文档, 这才知道前因后果.</p>
-<h2 id="解惑"><a href="#解惑" class="headerlink" title="解惑"></a>解惑</h2><p>众所周知, ajax请求是由<code>XMLHttpRequest</code>对象实现的(IE10以下的浏览器不是), 而<code>XMLHttpRequest</code>会遵守同源策略(<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank" rel="external">same-origin policy</a>). 也即脚本只能访问相同协议/相同主机名/相同端口的资源, 如果要突破这个限制, 那就是所谓的跨域, 此时需要遵守CORS(<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">Cross-Origin Resource Sharing</a>)机制</p>
-<p>那么, 允许跨域, 不就是服务端(例如Nginx)设置<code>Access-Control-Allow-Origin: *</code>就可以了吗? 普通的请求才是这样子的, 除此之外, 还一种叫请求叫<code>preflighted request</code></p>
-<p><code>preflighted request</code>在发送真正的请求前, 会先发送一个方法为OPTIONS的预请求(<code>preflight request</code>), 用于试探服务端是否能接受真正的请求.</p>
-<p>那么, 什么情况下请求会变成<code>preflighted request</code>呢? 文档中指出的是:</p>
-<ol>
-<li>请求方法不是GET/HEAD/POST</li>
-<li>POST请求的<code>Content-Type</code>并非<code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, 或<code>text/plain</code></li>
-<li>请求设置了自定义的<code>header</code>字段</li>
+<p>这周其实更多的是非具体技术的思考</p>
+<h3 id="上线"><a href="#上线" class="headerlink" title="上线"></a>上线</h3><ol>
+<li>上线前建立checklist，上线时严谨按照步骤来，便不至于手忙脚乱，或因为疏忽而导致报错</li>
+<li>上线后先在新环境自测一下，检查数据正确性，把脏数据删除掉。</li>
 </ol>
-<p>举个例子, 如果POST请求要传输的数据为 XML文档, <code>Content-Type</code>为<code>application/xml</code>或<code>text/xml</code>, 则发送这个请求前会发送一个预请求</p>
-<p>有了上面的知识点, 再去看项目中ajax调用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">  type: option.type,</div><div class="line">  url: option.url, <span class="comment">// 具体url就不写了, 这里一定是跨域的</span></div><div class="line">  headers: &#123;</div><div class="line">    openId: user.openId</div><div class="line">  &#125;,</div><div class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="comment">// 省略代码...</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>可以看出, 跨域请求中设置了自定义的<code>header</code>字段, 所以该请求是<code>preflighted request</code>, 则请求前一定会发送一个OPTIONS作为预请求. </p>
-<p>所以说, 在项目中ajax对后台API的调用, OPTIONS请求是不可以去掉的, 除非后台接口不再需要在请求<code>header</code>中设置<code>openId</code></p>
-<p>哈哈, 明白了这个道理就好办啦, 后台同学再让我把这个请求去掉, 我就说”臣妾做不到啊”</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="http://stackoverflow.com/questions/1256593/why-am-i-getting-an-options-request-instead-of-a-get-request" target="_blank" rel="external">http://stackoverflow.com/questions/1256593/why-am-i-getting-an-options-request-instead-of-a-get-request</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS</a></li>
-</ol>
+<p>关于第2点，一开始下意识地会觉得，脏数据好麻烦。其实仔细思考下，也没那么难处理。只要理清思路，记得本次改动了哪些表，分析哪些表的数据会有问题，再做个检查即可。</p>
+<p>其实还是心态。静下心来，理性思考，就能把问题逐个击破。</p>
+<h3 id="套路"><a href="#套路" class="headerlink" title="套路"></a>套路</h3><p>上线后当晚，合作方召集大家来开会，对一下项目进度。对方项目经理发现本次一共里程碑三次迭代，第一个迭代及本次迭代都有延期未完成的内容，所以第三个迭代会很有风险。</p>
+<p>之后对方的高级架构师就说: 来评估一下, 把遗漏的内容全补上，再加上第三个迭代，工作量是多少。</p>
+<p>因为刚刚是在讨论项目进度，我们的确是有未及时完成的内容，所以要为延期的内容重新评估，也是很自然的事，所以我们就当场评估了，在这种非内部的会议上。</p>
+<p>评估完了，架构师说，一般评估都会有偏差，给你们加个buffer, 评估出来的工作量乘以1.3吧。我当时觉得，这人还挺体贴。。。</p>
+<p>最后，评估出了个下个迭代，也就是一周后，我们还有60人天的工作量。这怎么收场？</p>
+<p>架构师说，存在很大问题呀，需要把情况反映给客户。</p>
+<p>我一脸懵逼，什么鬼，他这是要闹哪样，把事情搞大，对他有什么好处？</p>
+<p>后来联系文哥，文哥说，把事情搞大，说明我们交付不好项目，就可以把我们换掉了。</p>
+<p>我说，项目二期不是板上钉钉的吗？</p>
+<p>文哥说，二期是一定的，一定会有他们，却不一定有我们，如果我们一期表现不OK，他们就有理由换一个合作方了。</p>
+<p>好慌。赶紧安排人手，从广州发来救兵，不然项目不能按时交付，我们就玩完了。</p>
+<p>还是太年轻了，没理其中的利害关系，今晚被套路了一把。</p>
+<p>所以说，需要培养嗅觉，提高敏锐度，下次有这种搞不清楚状况的场面，得先把事情拖一拖，及时反映一波，再作行动。</p>
+<h3 id="沟通"><a href="#沟通" class="headerlink" title="沟通"></a>沟通</h3><p>另外，我们的沟通其实还不够。</p>
+<p>需求跟研发的沟通，研发与客户的沟通。</p>
+<p>到了最后阶段，需求说，不是这样做的。研发说，按照原型做的呀。需求说：原型是错的!</p>
+<p>WTF? </p>
+<p>这样的协作方式是有问题的。得想办法，不能重蹈覆辙。</p>
+<p>跟客户的沟通也不OK。</p>
+<p>需要外部对接的系统，没有尽早找到客户，等到要开发的那一刻，才去找，然后才发现，有些事情不是想象中那样的，有些准备工作还没有做好，于是，只能等，进度只能延期了。</p>
+<p>外部系统，一定得重视，沟通等待成本太高，一定要尽早去做。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-01-why-got-options-request-via-ajax/" data-id="cjmplaqcg004tnwrr186ysdz8" class="article-share-link" data-share="baidu" data-title="AJAX中出现OPTIONS请求">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-09-16-work-summary-20180916/" data-id="cjmplaqcs005fnwrrhnal90dp" class="article-share-link" data-share="baidu" data-title="2018-09-016 总结">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-09-01-why-got-options-request-via-ajax/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2018-09-16-work-summary-20180916/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/">work</a></li></ul>
 
     </footer>
   </div>
@@ -132,19 +141,19 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018-09-30-work-summary-20180930/" id="article-nav-newer" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          CSS权威指南拾遗
+          2018-09-30 总结
         
       </div>
     </a>
   
   
-    <a href="/2016-08-31-debug-react-key-with-performance-tool/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018-09-09-work-summary-20180909/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">使用Perf工具研究React Key对渲染的影响</div>
+      <div class="article-nav-title">2018-09-09 总结</div>
     </a>
   
 </nav>
@@ -155,7 +164,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-09-01-why-got-options-request-via-ajax/" data-title="AJAX中出现OPTIONS请求" data-url="https://levy9527.github.io/2016-09-01-why-got-options-request-via-ajax/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018-09-16-work-summary-20180916/" data-title="2018-09-016 总结" data-url="https://levy9527.github.io/2018-09-16-work-summary-20180916/"></div>
   </section>
 
 </section>
