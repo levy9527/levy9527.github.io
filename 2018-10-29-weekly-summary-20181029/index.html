@@ -4,24 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>js预览及上传图片 | levy</title>
+  <title>2018-10-29 总结 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用浏览器File API, 即可读取本地图片, 
-使用FileReader即可预览图片, 
-使用FormData以及XMLHttpRequest对象即可上传图片">
+  <meta name="description" content="明天即将启航，再去北京">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js预览及上传图片">
-<meta property="og:url" content="https://levy9527.github.io/2017-10-18-preview_upload_image/index.html">
+<meta property="og:title" content="2018-10-29 总结">
+<meta property="og:url" content="https://levy9527.github.io/2018-10-29-weekly-summary-20181029/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="使用浏览器File API, 即可读取本地图片, 
-使用FileReader即可预览图片, 
-使用FormData以及XMLHttpRequest对象即可上传图片">
-<meta property="og:updated_time" content="2017-10-24T04:00:07.000Z">
+<meta property="og:description" content="明天即将启航，再去北京">
+<meta property="og:updated_time" content="2018-10-29T17:31:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js预览及上传图片">
-<meta name="twitter:description" content="使用浏览器File API, 即可读取本地图片, 
-使用FileReader即可预览图片, 
-使用FormData以及XMLHttpRequest对象即可上传图片">
+<meta name="twitter:title" content="2018-10-29 总结">
+<meta name="twitter:description" content="明天即将启航，再去北京">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -69,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-preview_upload_image" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-weekly-summary-20181029" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2017-10-18T13:12:44.000Z" itemprop="datePublished" class="article-date">2017-10-18</time>
+    <time datetime="2018-10-28T16:00:00.000Z" itemprop="datePublished" class="article-date">2018-10-29</time>
     
   </div>
   <div class="article-inner">
@@ -80,50 +74,78 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2017-10-18-preview_upload_image/">js预览及上传图片</a>
+    <a itemprop="name" class="article-title" href="/2018-10-29-weekly-summary-20181029/">2018-10-29 总结</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用浏览器File API, 即可读取本地图片, </p>
-<p>使用FileReader即可预览图片, </p>
-<p>使用FormData以及XMLHttpRequest对象即可上传图片</p>
+        <p>明天即将启航，再去北京</p>
 <a id="more"></a>
-<h2 id="选择图片"><a href="#选择图片" class="headerlink" title="选择图片"></a>选择图片</h2><p>首先要有个input</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"input"</span>&gt;</span>选择图片<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"input"</span> <span class="attr">hidden</span> <span class="attr">accept</span>=<span class="string">"image/png, image/jpeg, image/gif, image/jpg"</span> <span class="attr">onchange</span>=<span class="string">"onSelectFile(this.files)"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>其中<code>multiple</code>可以多选, PC端(需要按<code>shift</code>键), 及IOS是没问题的, 但安卓机普遍仍然是单选的.</p>
-<p><code>accept</code> 限定了所选文件的类型, 上面的写法表示只能选择图片. 当然也可以使用<code>accept=&quot;image/*&quot;</code>, 不过这种写法有可能会让文件选择框出现的慢一点</p>
-<p>然后可以在<code>onSelectFile</code>回调中获取<code>FileList</code>对象</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">onSelectFile (files) &#123;</div><div class="line">  <span class="built_in">console</span>.log(files)</div><div class="line">  <span class="comment">// FileList 类似结构如下</span></div><div class="line">  <span class="comment">// &#123;0: File, length: 1&#125;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>要注意的是<code>FileList</code>是个对象, 虽然有<code>length</code>属性, 但不是数组, 不能使用forEach等方法来遍历</p>
-<p>一个文件, 就<code>files[0]</code>来获取; 多个文件的话, 老老实实用for循环就好了</p>
-<p>另外, 还可以选择文件夹,<br><code>&lt;input type=&quot;file&quot; directory webkitdirectory/&gt;</code><br>不过只在谷歌及火狐有效</p>
-<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData()</div><div class="line"></div><div class="line"><span class="comment">// file 为从FileList获取的File对象</span></div><div class="line">formData.append(<span class="string">'file'</span>, file)</div><div class="line"></div><div class="line"><span class="comment">// 兼容性 IE7+</span></div><div class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</div><div class="line">xhr.open(<span class="string">"post"</span>, uploadUrl, <span class="literal">true</span>)</div><div class="line">xhr.send(formData)</div><div class="line">xhr.onload = () =&gt; &#123;</div><div class="line">  <span class="comment">// upload success</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面的写法是一个请求上传一张图片, 如果多张图片, for循环就好了. </p>
-<p>但多张图片的话, 如何知道何时全部上传成功?</p>
-<p>一个笨方法是使用定时器, 定时检查已上传成功的图片数量是否与已选择的图片数量相等, 如果相等, 说明全部上传成功.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> int = setInterval(() =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.uploadedList.length == <span class="keyword">this</span>.fileList.length) &#123;</div><div class="line">    <span class="keyword">this</span>.$vux.loading.hide()</div><div class="line">    clearInterval(int)</div><div class="line">  &#125;</div><div class="line">&#125;, <span class="number">300</span>)</div></pre></td></tr></table></figure>
-<p>如果想知道上传进度, 可以监听<code>XMLHttpRequest.upload</code>属性的<code>progress</code>方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">xhr.upload.onprogress = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (event.lengthComputable) &#123;</div><div class="line">    <span class="keyword">var</span> percentComplete = <span class="built_in">Math</span>.round(event.loaded * <span class="number">100</span> / event.total)</div><div class="line">    <span class="comment">// 输出的是百分比</span></div><div class="line">    <span class="built_in">console</span>.log(percentComplete)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="文件预览"><a href="#文件预览" class="headerlink" title="文件预览"></a>文件预览</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader(),</div><div class="line">  file = files[index]</div><div class="line"></div><div class="line">  reader.readAsDataURL(file)</div><div class="line">  reader.onload = (e) =&gt; &#123;</div><div class="line">   <span class="comment">// e.target.result 就是读取的base64形式的图片地址, 可以放到img的src属性中, 即可在本地见面查看所选的图片</span></div><div class="line">   <span class="comment">// &lt;img src="$&#123;e.target.result&#125;"/&gt;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Using_files_from_web_applications" target="_blank" rel="external">MDN</a></p>
-<p><a href="http://www.zhangxinxu.com/wordpress/2015/11/html-input-type-file/" target="_blank" rel="external">zhangxinxu</a></p>
+<h2 id="工作相关"><a href="#工作相关" class="headerlink" title="工作相关"></a>工作相关</h2><p>回来除了休息，主要做以下事情</p>
+<ol>
+<li>结合实践经验，出一份适合当前团队的前端笔试题，并建立题库</li>
+<li>实践耗子哥的练级攻略</li>
+<li>看完了Bob大叔《程序员职业素养》</li>
+<li>跟实习生们碰了个面，并给他们发了培训资料</li>
+</ol>
+<p>对于1，我升华的点在于：v神只是叫我出20道题，而我一是不想生搬硬套直接抄网上的，二是我觉得还有些看重的点只有20道并不能体现，于是我每一道都是结合实际，精心设计; 并出了不止20道题，留存起来，做为题库，以备不时之需。</p>
+<p>另外，我还组织前端同学一起来做下题目，并加讨论。在这个过程中，我意识到，这是一个做练习的过程，也是一个教学相长的过程。根据我的知识储备，为了节约时间，也为了简洁，我的思考逻辑表示如下：</p>
+<ol>
+<li>做习题 =&gt; 刻意练习，从新手到大师</li>
+<li>学生时代结束后，做题就少了;  国外的书一大特点就是有习题 =&gt; 没有习题，就自己创造习题 =&gt; 就像AlphaGo自己跟自己对弈</li>
+<li>教学相长 =&gt; 学习金字塔 =&gt; 教别人的学习效率最高</li>
+<li>一年前的我不会这样思考，今天的我会这样思考 =&gt; 其中的秘诀是什么，这种提升是否可以复制 =&gt; 让其他人也觉醒起来</li>
+</ol>
+<p>对于2，我已经意识到，每天必须抽出点时间用来学习，用于自我提升，所以必须每天坚持，就像2016年点亮oschina的贡献图一样。</p>
+<p>对于3，集合了Bob大叔40余年的编程经验，告诉我们真正专业的程序员应当具备什么样的态度，原则，采取什么样的行动。刚好是百得利一期实战过后，带着疑问来看，醍醐灌顶。这就像做完魅族去看《人月神话》一样，豁然开朗。重新审视这次项目经历，当初思想觉悟不够，有许多地方做得不妥当，归根结底是不够专业。这本书我会梳理出思维导图，跟大伙儿分享。</p>
+<p>对于4，我更愿意教内功心法，而不是招式。这点我跟耗子哥的想法是一致的：进入专业领域前，必须了解专业人员需要具备的素养;  素养不够，只能沦为码农。另外，我更愿意提供信息源，让他们自己去按图索骥，咀嚼消化，因为学习需要自我驱动，要学会自己“找食物”，而不是“等着喂”。</p>
+<h2 id="生活相关"><a href="#生活相关" class="headerlink" title="生活相关"></a>生活相关</h2><p>另外，回来之后，我开始下厨了，这几天在广州的晚上，我都没下楼，都是自己煮的。</p>
+<p>两个月前跟我讲这种事，我不会相信，毕业后我就没下过厨房; 但北京出差回来，我确实是这样改变了。</p>
+<p>要问我原因，我也答不上来。我当然可以很理性地找出几点理由，但我觉得那都是经过加工的，不是真实原因。我更认为这是一种冥冥中的自我驱动。</p>
+<p>以上帝视角来看，我，用着俊平的锅，胡栋的铲，给他们做早餐。这是一件很奇妙的事。</p>
+<p>奇妙的点在于：</p>
+<ol>
+<li>胡栋一个人住的时候是有做饭的，住一起后，我们幻想着胡栋做饭给我们吃，但从未变成现实。</li>
+<li>俊平在大家的印象中也是很努力的，跟”懒”是挂不上钩的，但把锅放在厨房后，从来没洗过。</li>
+<li>而我，一直都是出去吃，喜欢叫外卖的人，自己内心也从未觉得不下厨有什么不妥，因为我觉得柴米油盐锅碗瓢盆很麻烦，最终却成了下厨的先行者。</li>
+</ol>
+<p>想不通原因就不想，确认这个事实，然后享受，并从中琢磨些东西，以下是我的脑回路：</p>
+<ol>
+<li>与其寄期望于他人，不如自己行动起来，去带动别人</li>
+<li>十二道锋味 =&gt; 做一个会下厨的男人</li>
+<li>治大国如烹小鲜 =&gt; 老子一定是个厨艺高手 =&gt; 我更加认可老庄思想了</li>
+<li>关注厨房智慧，这也是生活智慧的一部分  </li>
+</ol>
+<hr>
+<h2 id="情绪波动"><a href="#情绪波动" class="headerlink" title="情绪波动"></a>情绪波动</h2><p>上面是自我提升的点，也是闪光点。</p>
+<p>一直以来，我都是以正能量的形象出现，解决问题，答疑解惑，排忧解难，充满理性，偶尔浮夸一把，调戏一下小女生，很洒脱的样子，似乎没有让我烦心的事。</p>
+<p>但其实，我也有弱点，我也有软肋，我也会困惑，也会紧张不安，也会焦虑不已，只不过一直都在忙着前进，大多时间睡一觉，就能把这些负面的东西压下去了。</p>
+<p>但今天，让我很无力的是，我今天做不到风平浪静了。我想今天下午就订机票，也有一部分这个原因，想让自己忙起来，在路上，就能把别的事情抛在脑后。</p>
+<p>但毕竟是明天的飞机，结果下午我坐立不安，根本无心编码。心不在焉把出差报销单填完，再帮实习生出个培训资料，已经是极限了。</p>
+<p>终究还是有人能够轻易左右我的情绪，让我起波澜。</p>
+<p>我感到乏力。</p>
+<p>情绪是不理性的，没办法用思考与逻辑去征服。</p>
+<p>以前在云徙的时候就表现过不理智的一面，就像个孩子一样。今天的我虽然表面看来寻常无事，但实际根本不在状态。虽然有进步，但还不够。这不是我想到的样子。</p>
+<p>所以下午早早回去。觉得提不起劲，很不在状态，而这也是晚上看《模仿游戏》落泪的一个原因。要是正常状态下，我会钦佩图灵的行为，为之感动，却也不至于因为同情，看他流泪而流泪。 其实是情绪共振，因而有相同的行为罢了。</p>
+<p>有个词叫不吐不快，以上心理活动，我闷在心理会发酵，会一直难受，这驱使我很真实地写出来。</p>
+<p>写到这里，心里舒畅多了。想起冷爱的经历，心里难受，就会写出来，他说，“这可能是具备作家潜力的一个特质”。哈哈，我初中的时候也是想当作家的，看来还有那么些道理。</p>
+<p>总而言之，心态要调整好，不然在公司却无心工作，那就很不专业了。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-10-18-preview_upload_image/" data-id="cjmplaqbl003knwrrazve83l3" class="article-share-link" data-share="baidu" data-title="js预览及上传图片">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-10-29-weekly-summary-20181029/" data-id="cjnynovgd0000x3phkn9cikgg" class="article-share-link" data-share="baidu" data-title="2018-10-29 总结">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2017-10-18-preview_upload_image/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2018-10-29-weekly-summary-20181029/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/">work</a></li></ul>
 
     </footer>
   </div>
@@ -132,19 +154,10 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2017-12-28-http2/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          学习HTTP/2
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017-05-16-some-experience-in-static-site-developing/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018-10-21-work-summary-20181021/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">一些静态页面开发经验</div>
+      <div class="article-nav-title">2018-10-21 反思</div>
     </a>
   
 </nav>
@@ -155,7 +168,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017-10-18-preview_upload_image/" data-title="js预览及上传图片" data-url="https://levy9527.github.io/2017-10-18-preview_upload_image/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018-10-29-weekly-summary-20181029/" data-title="2018-10-29 总结" data-url="https://levy9527.github.io/2018-10-29-weekly-summary-20181029/"></div>
   </section>
 
 </section>
