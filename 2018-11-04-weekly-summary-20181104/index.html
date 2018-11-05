@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>JS修改样式方法总结 | levy</title>
+  <title>2018-11-04 总结 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如题">
+  <meta name="description" content="这周工作逐渐转为在幕后了，是时候让小伙伴成长起来，去独当一面了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS修改样式方法总结">
-<meta property="og:url" content="https://levy9527.github.io/2016-12-31-change-style-with-js/index.html">
+<meta property="og:title" content="2018-11-04 总结">
+<meta property="og:url" content="https://levy9527.github.io/2018-11-04-weekly-summary-20181104/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="如题">
-<meta property="og:updated_time" content="2017-01-06T08:19:54.000Z">
+<meta property="og:description" content="这周工作逐渐转为在幕后了，是时候让小伙伴成长起来，去独当一面了">
+<meta property="og:updated_time" content="2018-11-04T14:55:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS修改样式方法总结">
-<meta name="twitter:description" content="如题">
+<meta name="twitter:title" content="2018-11-04 总结">
+<meta name="twitter:description" content="这周工作逐渐转为在幕后了，是时候让小伙伴成长起来，去独当一面了">
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
@@ -63,9 +63,9 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-change-style-with-js" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-weekly-summary-20181104" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <time datetime="2016-12-31T08:39:11.000Z" itemprop="datePublished" class="article-date">2016-12-31</time>
+    <time datetime="2018-11-04T14:03:43.000Z" itemprop="datePublished" class="article-date">2018-11-04</time>
     
   </div>
   <div class="article-inner">
@@ -74,67 +74,51 @@
       <header class="article-header">
         
   
-    <a itemprop="name" class="article-title" href="/2016-12-31-change-style-with-js/">JS修改样式方法总结</a>
+    <a itemprop="name" class="article-title" href="/2018-11-04-weekly-summary-20181104/">2018-11-04 总结</a>
   
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>如题</p>
+        <p>这周工作逐渐转为在幕后了，是时候让小伙伴成长起来，去独当一面了</p>
 <a id="more"></a>
-<h2 id="元素属性"><a href="#元素属性" class="headerlink" title="元素属性"></a>元素属性</h2><h3 id="类名"><a href="#类名" class="headerlink" title="类名"></a>类名</h3><ul>
-<li>className</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementById(<span class="string">'id'</span>) <span class="comment">// 后面的代码都用这个ele变量</span></div><div class="line">ele.className = <span class="string">'one-class'</span></div><div class="line"><span class="comment">// ele.setAttribute('class', 'another-class')</span></div></pre></td></tr></table></figure>
-<p>这种方法比较简陋, 不推荐使用</p>
-<ul>
-<li>classList</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> classList = ele.classList</div><div class="line">classList.add(<span class="string">'active'</span>) <span class="comment">// 添加一个类</span></div><div class="line">classList.remove(<span class="string">'active'</span>) <span class="comment">// 删除一个类</span></div><div class="line">classList.toggle(<span class="string">'active'</span>) <span class="comment">// 切换一个类</span></div><div class="line">classList.forEach(<span class="class"><span class="keyword">class</span> </span>=&gt; <span class="built_in">console</span>.log(<span class="class"><span class="keyword">class</span>)) // 遍历</span></div></pre></td></tr></table></figure>
-<p>classList内置操作类名的方法, 非常适用动态添加/删除类名, 推荐使用</p>
-<h3 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h3><ul>
-<li>style.cssText</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ele.style.cssText = <span class="string">'width: 100px; height: 100px;'</span></div><div class="line">ele.style.cssText = <span class="string">'-webkit-transform: translateY(50px)'</span> <span class="comment">// 前面的width/height设置丢失了, 并且-webkit前缀无效</span></div></pre></td></tr></table></figure>
-<p>就像在写css一样, 缺点是这样写会覆盖之前所有的内联样式, 因此只想修改一个css属性时, 推荐使用下面的方法</p>
-<ul>
-<li>style.<code>${attribute}</code> </li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ele.style.position = <span class="string">'relative'</span></div><div class="line">ele.style.left = <span class="string">'100px'</span> <span class="comment">// position属性仍在</span></div></pre></td></tr></table></figure>
-<p>注意这种写法每次赋值都会触发reflow, 对渲染性能会造成很大的负面影响, 因此不可滥用, 能用classList解决的就不要用style</p>
-<!--
-另外, 从结果来看, 内联样式的写法是无法对浏览器兼容的. 固然在书写的时候
-好像有标准的,显示的是标准的. 没有时才显示带前缀的. 有待测试
--->
-<h2 id="样式表"><a href="#样式表" class="headerlink" title="样式表"></a>样式表</h2><h3 id="styleSheets"><a href="#styleSheets" class="headerlink" title="styleSheets"></a>styleSheets</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sheet = <span class="built_in">document</span>.styleSheets[<span class="number">0</span>]</div><div class="line">st.addRule(<span class="string">'body'</span>, <span class="string">'text-align: center; width: 100px;'</span>)</div><div class="line"><span class="keyword">var</span> len = sheet.rules.length</div><div class="line">st.deleteRule(len - <span class="number">1</span>)</div></pre></td></tr></table></figure>
-<p>这种写法, 样式添加在外联样式中</p>
-<h3 id="link"><a href="#link" class="headerlink" title="link"></a>link</h3><ul>
-<li>修改已有的外联样式路径</li>
-</ul>
-<p>假设html中有如下代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/css/style.css"</span> <span class="attr">id</span>=<span class="string">"css"</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> cssLink = <span class="built_in">document</span>.getElementById(<span class="string">'css'</span>)</div><div class="line">cssLink.href = <span class="string">'/css/another.css'</span></div><div class="line"></div><div class="line"><span class="comment">// 或使用下的方法</span></div><div class="line"><span class="comment">// var cssLink = document.getElementsByTagName('link')[0]</span></div><div class="line"><span class="comment">// cssLink.setAttribute('href', '/css/another.css')</span></div></pre></td></tr></table></figure>
-<ul>
-<li>加载新的外联样式</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">'link'</span>)</div><div class="line"><span class="comment">// link.setAttribute('type', 'text/css') // 可以不写</span></div><div class="line">link.setAttribute(<span class="string">'rel'</span>, <span class="string">'stylesheet'</span>)</div><div class="line">link.setAttribute(<span class="string">'href'</span>, <span class="string">'/path/style.css'</span>)</div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.appendChild(link) <span class="comment">// 谁当父节点可以看具体需求</span></div></pre></td></tr></table></figure>
-<p>另外, 动态加载新的脚本也同理</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>)</div><div class="line"><span class="comment">// script.setAttribute('type', 'text/javascipt') 可以不写</span></div><div class="line">script.setAttribute(<span class="string">'src'</span>, <span class="string">'/path/script.js'</span>)</div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.appendChild(script)</div></pre></td></tr></table></figure>
+<p>这周发生的改变的是：</p>
+<ol>
+<li>开启反思模式，每天下班前一起“吾日三省吾身”。可以是反思，也可以是总结，或者是分享收获</li>
+<li>调研在线考试系统，目前选定使用优考试，作为培训考核，招聘选拔的工具，下周将小范围试用</li>
+</ol>
+<p>收获是：</p>
+<ol>
+<li>把《程序员职业素养》的思维导图画出来了</li>
+</ol>
+<p>另外，有两个小插曲。</p>
+<p>其一：</p>
+<p>这周XBO在奥迪门店给沃尔沃演示，我在场外护驾。我站在二楼，看到店里一楼员工一丝不苟地擦试着大堂里的车，车旁边就摆放着MOBY二维码，我突然在想，“大堂这么漂亮，车擦得也一干二净，如果扫这个二维码却报错了，这岂不是尴尬”？</p>
+<p>后来我又跟他们的商务leader聊了下，我说，“听说第一单的时候，出现了提交订单失败的情况啊？” 我知道他久经沙场，我其实是想八卦一下他当时是如何稳住场面，把这件给摆平的。</p>
+<p>结果他想表达的重点是，其实那一单还是情况最好的一单，后面的几单，各种问题，流程都走不下去。他语气很平和，就是在陈述事实，没有丝毫埋怨与责备。我感受到了他踏实做事的精神状态。</p>
+<p>言谈完毕，我再看一楼兢兢业业的身影，我突然感到羞愧。是我们交付的产品质量有缺陷，没把事情做好。大堂的整洁亮丽，更对比出系统的混乱与脆弱。</p>
+<p>我们要上线的，不是玩具，是要给用户使用的产品，这不是闹着玩的，在专业性上，我们有待提高啊。</p>
+<p>其二：</p>
+<p>演示时，我们在门店二楼的一个小办公室待命。在一张桌子上，我发现了一本书《The Effective Excecutive》, 这让我想到了《The Effective Java》我当时说，这样命名的书一般都值得一读。</p>
+<p>回去后我查了一下，原来这是世界管理大师的著作。他在这本书之前，还著有《目标管理》，堪称划时代的作品。现在之所以有管理学，其概念就是源于《目标管理》一书。</p>
+<p>我突然感到，这又是一个契机。似乎是冥冥中自有定数，要我看一看这两本书。</p>
+<p>这么说似乎有点玄乎，虽然我不信鬼神，但这是一种很奇妙的感觉，就像当初我看《解忧杂货店》，看《人月神话》，看《程序员职责素养》，这些都不在我本身书单里的， 但突然某个机缘巧合之时遇到，然后翻阅，最后收获良多。 </p>
+<p>所以我把这定义为“契机”：是时候打开新世界的大门了。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-12-31-change-style-with-js/" data-id="cjo3qh5mr00120tfy01it02jb" class="article-share-link" data-share="baidu" data-title="JS修改样式方法总结">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-11-04-weekly-summary-20181104/" data-id="cjo3qh5q800540tfyq5l1jpgm" class="article-share-link" data-share="baidu" data-title="2018-11-04 总结">分享到</a>
       
 
       
-        <a href="https://levy9527.github.io/2016-12-31-change-style-with-js/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://levy9527.github.io/2018-11-04-weekly-summary-20181104/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/">work</a></li></ul>
 
     </footer>
   </div>
@@ -143,19 +127,10 @@
 <nav id="article-nav">
 <!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
   
-    <a href="/2017-01-01-look-back-at-2016/" id="article-nav-newer" class="article-nav-link-wrap">
-	<strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          回顾2016
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016-12-30-table-with-fixed-column/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018-10-29-weekly-summary-20181029/" id="article-nav-older" class="article-nav-link-wrap">
 	<strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">绘制表格</div>
+      <div class="article-nav-title">2018-10-29 总结</div>
     </a>
   
 </nav>
@@ -166,7 +141,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016-12-31-change-style-with-js/" data-title="JS修改样式方法总结" data-url="https://levy9527.github.io/2016-12-31-change-style-with-js/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018-11-04-weekly-summary-20181104/" data-title="2018-11-04 总结" data-url="https://levy9527.github.io/2018-11-04-weekly-summary-20181104/"></div>
   </section>
 
 </section>
