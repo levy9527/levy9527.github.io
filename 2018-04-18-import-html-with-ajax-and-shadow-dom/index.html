@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://levy9527.github.io/2018-04-18-import-html-with-ajax-and-shadow-dom/index.html">
 <meta property="og:site_name" content="levy">
 <meta property="og:description" content="在一个html中，想引入另一个html，最简单的方法是使用iframe, 但iframe的难点在于高度固定，很难根据文档高度自适应高度。 本文另辟蹊径，使用 AJAX 及 Shadow DOM 来解决这个难题">
-<meta property="og:updated_time" content="2018-04-21T06:28:47.000Z">
+<meta property="og:updated_time" content="2019-01-27T05:56:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 AJAX 与 Shadow DOM 引入 html">
 <meta name="twitter:description" content="在一个html中，想引入另一个html，最简单的方法是使用iframe, 但iframe的难点在于高度固定，很难根据文档高度自适应高度。 本文另辟蹊径，使用 AJAX 及 Shadow DOM 来解决这个难题">
@@ -122,7 +122,7 @@
 <p>HTML element <link> is ignored in shadow tree.     </p>
 </blockquote>
 <p>好吧，想通过link来import HTML的想法泡汤了，只能使用最后的大招了</p>
-<h2 id="AJAX-Shadow-DOM"><a href="#AJAX-Shadow-DOM" class="headerlink" title="AJAX + Shadow DOM"></a>AJAX + Shadow DOM</h2><p>思路是：AJAX获取CROS的html，然后把html内容放到Shadow DOM中 </p>
+<h2 id="AJAX-Shadow-DOM"><a href="#AJAX-Shadow-DOM" class="headerlink" title="AJAX + Shadow DOM"></a>AJAX + Shadow DOM</h2><p>思路是：AJAX获取CORS的html，然后把html内容放到Shadow DOM中 </p>
 <p>直接上代码</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">mounted() &#123;</div><div class="line">	<span class="keyword">let</span> container = <span class="built_in">document</span>.querySelector(<span class="string">'#container'</span>)</div><div class="line">	<span class="keyword">let</span> shadowRoot = container</div><div class="line"></div><div class="line">	<span class="comment">// https://developers.google.com/web/fundamentals/web-components/shadowdom?hl=en#support</span></div><div class="line">	<span class="keyword">if</span> (!!HTMLElement.prototype.attachShadow)</div><div class="line">		shadowRoot = container.attachShadow(&#123;mode: <span class="string">'open'</span>&#125;)</div><div class="line"></div><div class="line">	<span class="keyword">this</span>.$axios.$get(<span class="keyword">this</span>.url,).then(resp =&gt; &#123;</div><div class="line">		<span class="comment">// FIXME 把前缀添加到link href, img src属性中, 因为目前他们都是相对路径。</span></div><div class="line">		<span class="comment">// 未做绝对路径的判断, 需要完善</span></div><div class="line">		<span class="keyword">let</span> prefix = <span class="keyword">this</span>.url.replace(<span class="regexp">/([a-zA-Z]+\.html)/</span>, <span class="string">''</span>)</div><div class="line"></div><div class="line">		<span class="keyword">let</span> newHtml = resp.replace(<span class="regexp">/(&lt;link href=")/g</span>, <span class="string">"$1"</span> + prefix)</div><div class="line">		newHtml = newHtml.replace(<span class="regexp">/(&lt;img src=")/g</span>, <span class="string">"$1"</span> + prefix)</div><div class="line">		shadowRoot.innerHTML = newHtml</div><div class="line">	&#125;)</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
 <p>思路不难，主要障碍在于另外两个问题：</p>
