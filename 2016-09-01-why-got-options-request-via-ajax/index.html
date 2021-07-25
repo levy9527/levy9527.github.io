@@ -87,12 +87,12 @@
       
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>之前有一个项目使用<code>Zepto</code>来发送<code>ajax</code>请求, 查看<code>Nginx</code>日志或使用<code>Chrome Dev Tools</code>查看请求发送情况时, 会看到每次调后台API的请求之前, 都会发送一个OPTIONS请求, 无论API要求请求的方法是GET或POST. </p>
 <p>为什么会发送这个OPTIONS请求? 可以去掉吗? </p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>首先, 我在js代码里是没写要发送OPTIONS请求的, 后台API要的请求方法不是GET就是POST, 我只发送过这两种类型的请求.</p>
 <p>那么, 我就以为是<code>Zepto</code>搞的鬼, 于是去看它的源码. <code>Zepto</code>的源码模块化做得很好, 直接看里面的<code>ajax.js</code>文件就好了. 结果, 我发现一切正常啊, 并没有这种逻辑: <strong>发送GET/POST请求之前, 先发送一个OPTIONS请求</strong>. </p>
 <p>不是<code>Zepto</code>的问题, 那我只好使用搜索大法了. </p>
-<p><a href="http://stackoverflow.com/questions/1256593/why-am-i-getting-an-options-request-instead-of-a-get-request" target="_blank" rel="noopener">stackoverflow.com</a>一搜, 找到了一个相似的问题, 再根据回答找到<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#The_HTTP_request_headers" target="_blank" rel="noopener">MDN</a>的文档, 这才知道前因后果.</p>
-<h2 id="解惑"><a href="#解惑" class="headerlink" title="解惑"></a>解惑</h2><p>众所周知, ajax请求是由<code>XMLHttpRequest</code>对象实现的(IE10以下的浏览器不是), 而<code>XMLHttpRequest</code>会遵守同源策略(<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">same-origin policy</a>). 也即脚本只能访问相同协议/相同主机名/相同端口的资源, 如果要突破这个限制, 那就是所谓的跨域, 此时需要遵守CORS(<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">Cross-Origin Resource Sharing</a>)机制</p>
+<p><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/1256593/why-am-i-getting-an-options-request-instead-of-a-get-request">stackoverflow.com</a>一搜, 找到了一个相似的问题, 再根据回答找到<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#The_HTTP_request_headers">MDN</a>的文档, 这才知道前因后果.</p>
+<h2 id="解惑"><a href="#解惑" class="headerlink" title="解惑"></a>解惑</h2><p>众所周知, ajax请求是由<code>XMLHttpRequest</code>对象实现的(IE10以下的浏览器不是), 而<code>XMLHttpRequest</code>会遵守同源策略(<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">same-origin policy</a>). 也即脚本只能访问相同协议/相同主机名/相同端口的资源, 如果要突破这个限制, 那就是所谓的跨域, 此时需要遵守CORS(<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">Cross-Origin Resource Sharing</a>)机制</p>
 <p>那么, 允许跨域, 不就是服务端(例如Nginx)设置<code>Access-Control-Allow-Origin: *</code>就可以了吗? 普通的请求才是这样子的, 除此之外, 还一种叫请求叫<code>preflighted request</code></p>
 <p><code>preflighted request</code>在发送真正的请求前, 会先发送一个方法为OPTIONS的预请求(<code>preflight request</code>), 用于试探服务端是否能接受真正的请求.</p>
 <p>那么, 什么情况下请求会变成<code>preflighted request</code>呢? 文档中指出的是:</p>
@@ -103,20 +103,20 @@
 </ol>
 <p>举个例子, 如果POST请求要传输的数据为 XML文档, <code>Content-Type</code>为<code>application/xml</code>或<code>text/xml</code>, 则发送这个请求前会发送一个预请求</p>
 <p>有了上面的知识点, 再去看项目中ajax调用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  type: option.type,</span><br><span class="line">  url: option.url, <span class="comment">// 具体url就不写了, 这里一定是跨域的</span></span><br><span class="line">  headers: &#123;</span><br><span class="line">    openId: user.openId</span><br><span class="line">  &#125;,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 省略代码...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  <span class="attr">type</span>: option.type,</span><br><span class="line">  <span class="attr">url</span>: option.url, <span class="comment">// 具体url就不写了, 这里一定是跨域的</span></span><br><span class="line">  <span class="attr">headers</span>: &#123;</span><br><span class="line">    <span class="attr">openId</span>: user.openId</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 省略代码...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>可以看出, 跨域请求中设置了自定义的<code>header</code>字段, 所以该请求是<code>preflighted request</code>, 则请求前一定会发送一个OPTIONS作为预请求. </p>
 <p>所以说, 在项目中ajax对后台API的调用, OPTIONS请求是不可以去掉的, 除非后台接口不再需要在请求<code>header</code>中设置<code>openId</code></p>
 <p>哈哈, 明白了这个道理就好办啦, 后台同学再让我把这个请求去掉, 我就说”臣妾做不到啊”</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="http://stackoverflow.com/questions/1256593/why-am-i-getting-an-options-request-instead-of-a-get-request" target="_blank" rel="noopener">http://stackoverflow.com/questions/1256593/why-am-i-getting-an-options-request-instead-of-a-get-request</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/1256593/why-am-i-getting-an-options-request-instead-of-a-get-request">http://stackoverflow.com/questions/1256593/why-am-i-getting-an-options-request-instead-of-a-get-request</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS</a></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-01-why-got-options-request-via-ajax/" data-id="ckrjcef57005o6hrrwgv7a80z" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-09-01-why-got-options-request-via-ajax/" data-id="ckrjddp9u005lvjrrg6qechfz" class="article-share-link">分享到</a>
       
 
       

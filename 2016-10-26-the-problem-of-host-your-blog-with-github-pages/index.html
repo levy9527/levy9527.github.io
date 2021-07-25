@@ -100,10 +100,10 @@
 <li>微信访问提示不安全</li>
 </ol>
 <p>尤其是第4点, 我不能接受, 因此我又折腾了一翻, 查找资料并动手实践, 看看有没解决办法</p>
-<a id="more"></a>
-<h2 id="百度爬虫被禁"><a href="#百度爬虫被禁" class="headerlink" title="百度爬虫被禁"></a>百度爬虫被禁</h2><p>可以用以下命令测试<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -A <span class="string">"Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)"</span> https://github.com</span><br></pre></td></tr></table></figure></p>
+<span id="more"></span>
+<h2 id="百度爬虫被禁"><a href="#百度爬虫被禁" class="headerlink" title="百度爬虫被禁"></a>百度爬虫被禁</h2><p>可以用以下命令测试<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -A <span class="string">&quot;Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)&quot;</span> https://github.com</span><br></pre></td></tr></table></figure></p>
 <p>百度爬虫被禁的结果就是, 百度一下是无法搜索到你的博客内容的</p>
-<p>但话说回来, 想让百度搜索到还真不容易, 以博文<a href="http://www.figotan.org/2016/04/06/how-to-choose-vcs-as-your-static-website-pages/" target="_blank" rel="noopener">这些年,我们知道的那些pages平台</a>为例(该博客是托管在Gitlab上的, 百度爬虫是可以访问的), 百度与谷歌的搜索结果如下:</p>
+<p>但话说回来, 想让百度搜索到还真不容易, 以博文<a target="_blank" rel="noopener" href="http://www.figotan.org/2016/04/06/how-to-choose-vcs-as-your-static-website-pages/">这些年,我们知道的那些pages平台</a>为例(该博客是托管在Gitlab上的, 百度爬虫是可以访问的), 百度与谷歌的搜索结果如下:</p>
 <p>百度的搜索结果, 首页里没有原博文, 有的只是二手内容(以推酷为例, 它里面的文章其实是爬虫去别人的网站抓取的)<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-10-26/79733895.jpg" alt="百度搜索结果"></p>
 <p>谷歌的搜索结果, 第一条就是<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-10-26/57788723.jpg" alt="谷歌搜索结果"></p>
 <p>所以说, 就算百度爬虫不被禁, 想让自己的博客被直接搜索到也并非易事, 就先不纠结了</p>
@@ -126,8 +126,7 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PING www.baidu.com (183.232.231.173): 56 data bytes</span><br><span class="line">64 bytes from 183.232.231.173: icmp_seq=0 ttl=57 time=8.017 ms</span><br><span class="line">64 bytes from 183.232.231.173: icmp_seq=1 ttl=57 time=18.729 ms</span><br><span class="line">64 bytes from 183.232.231.173: icmp_seq=2 ttl=57 time=8.605 ms</span><br><span class="line">64 bytes from 183.232.231.173: icmp_seq=3 ttl=57 time=18.766 ms</span><br><span class="line">64 bytes from 183.232.231.173: icmp_seq=4 ttl=57 time=14.039 ms</span><br><span class="line">64 bytes from 183.232.231.173: icmp_seq=5 ttl=57 time=9.764 ms</span><br><span class="line">^C</span><br><span class="line">--- www.baidu.com ping statistics ---</span><br><span class="line">6 packets transmitted, 6 packets received, 0.0% packet loss</span><br><span class="line">round-trip min/avg/max/stddev = 8.017/12.987/18.766/4.505 ms</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Github 的确有点慢</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PING levy9527.github.io (151.101.100.133): 56 data bytes</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=0 ttl=54 time=49.669 ms</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=1 ttl=54 time=45.325 ms</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=2 ttl=52 time=47.119 ms</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=3 ttl=54 time=58.865 ms</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=4 ttl=52 time=45.123 ms</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=5 ttl=52 time=47.915 ms</span><br><span class="line">^C</span><br><span class="line">--- levy9527.github.io ping statistics ---</span><br><span class="line">6 packets transmitted, 6 packets received, 0.0% packet loss</span><br><span class="line">round-trip min/avg/max/stddev = 45.123/49.003/58.865/4.673 ms</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PING levy9527.github.io (151.101.100.133): 56 data bytes</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=0 ttl=54 time=49.669 ms</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=1 ttl=54 time=45.325 ms</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=2 ttl=52 time=47.119 ms</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=3 ttl=54 time=58.865 ms</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=4 ttl=52 time=45.123 ms</span><br><span class="line">64 bytes from 151.101.100.133: icmp_seq=5 ttl=52 time=47.915 ms</span><br><span class="line">^C</span><br><span class="line">--- levy9527.github.io ping statistics ---</span><br><span class="line">6 packets transmitted, 6 packets received, 0.0% packet loss</span><br><span class="line">round-trip min/avg/max/stddev = 45.123/49.003/58.865/4.673 ms</span><br></pre></td></tr></table></figure></li>
 <li><p>Coding 比Github快很多</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PING levy9527.coding.me (45.249.246.131): 56 data bytes</span><br><span class="line">64 bytes from 45.249.246.131: icmp_seq=0 ttl=48 time=26.340 ms</span><br><span class="line">64 bytes from 45.249.246.131: icmp_seq=1 ttl=48 time=15.934 ms</span><br><span class="line">64 bytes from 45.249.246.131: icmp_seq=2 ttl=50 time=16.471 ms</span><br><span class="line">64 bytes from 45.249.246.131: icmp_seq=3 ttl=50 time=15.098 ms</span><br><span class="line">64 bytes from 45.249.246.131: icmp_seq=4 ttl=48 time=20.288 ms</span><br><span class="line">64 bytes from 45.249.246.131: icmp_seq=5 ttl=50 time=24.285 ms</span><br><span class="line">^C</span><br><span class="line">--- levy9527.coding.me ping statistics ---</span><br><span class="line">6 packets transmitted, 6 packets received, 0.0% packet loss</span><br><span class="line">round-trip min/avg/max/stddev = 15.098/19.736/26.340/4.306 ms</span><br></pre></td></tr></table></figure>
 </li>
@@ -147,31 +146,31 @@
 <ul>
 <li>Coding</li>
 </ul>
-<p>在微信里访问<a href="http://levy9527.coding.me/levy9527/" target="_blank" rel="noopener">http://levy9527.coding.me/levy9527/</a> 将得到大大的惊喜</p>
+<p>在微信里访问<a target="_blank" rel="noopener" href="http://levy9527.coding.me/levy9527/">http://levy9527.coding.me/levy9527/</a> 将得到大大的惊喜</p>
 <p><img src="http://oc9l6hs7x.bkt.clouddn.com/16-10-26/52613768.jpg" alt="微信访问Coding Pages原地址"></p>
 <p>访问原地址都不行, 还是直接被禁的那种. 所以说, 就算Coding的ping值令人满意, 我也不会考虑它的</p>
 <ul>
 <li>Gitlab</li>
 </ul>
-<p>直接访问 <a href="https://levy9527.gitlab.io" target="_blank" rel="noopener">https://levy9527.gitlab.io</a> 没问题, 换成自定义域名 <a href="http://levy.ren" target="_blank" rel="noopener">http://levy.ren</a> 就提示是否继续访问, 表现得跟Github一样</p>
+<p>直接访问 <a target="_blank" rel="noopener" href="https://levy9527.gitlab.io">https://levy9527.gitlab.io</a> 没问题, 换成自定义域名 <a target="_blank" rel="noopener" href="http://levy.ren">http://levy.ren</a> 就提示是否继续访问, 表现得跟Github一样</p>
 <p>但Gitlab是支持自定义域名https的, 我想, 把博客迁移到Gitlab, 再申请个https, 问题就解决了吧…</p>
 <h2 id="令人震惊的真相"><a href="#令人震惊的真相" class="headerlink" title="令人震惊的真相"></a>令人震惊的真相</h2><p>本文到这里应该是要结束了. 但期间我上了个厕所, 脑子里突然灵光一现, 想起了一件事.</p>
 <p>我有不止一个域名, 我也曾为域名申请过腾讯企业邮. 其中levy.ren不支持, levy.work支持. 那么, 微信里的访问提示是否跟域名有关呢?</p>
-<p>我试了一下, 果然如此. 我使用<a href="http://levy.work" target="_blank" rel="noopener">http://levy.work</a> 在微信里访问, 根本没问题好吗!😱</p>
+<p>我试了一下, 果然如此. 我使用<a target="_blank" rel="noopener" href="http://levy.work">http://levy.work</a> 在微信里访问, 根本没问题好吗!😱</p>
 <p>如果说换个域名就能解决微信提示不安全的问题, 那其实https也没啥必要了, 那我根本不用迁移博客啦😓</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/" target="_blank" rel="noopener">securing-your-github-pages-site-with-https</a></li>
-<li><a href="https://www.zhihu.com/question/30898326" target="_blank" rel="noopener">知乎-百度爬虫被禁</a></li>
-<li><a href="http://jerryzou.com/posts/feasibility-of-allowing-baiduSpider-for-Github-Pages/?utm_source=tuicool" target="_blank" rel="noopener">解决 Github Pages 禁止百度爬虫的方法与可行性分析</a></li>
-<li><a href="https://www.v2ex.com/t/306697?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">Github pages 不支持自定义域名 SSL，请问有什么好的替代</a></li>
-<li><a href="http://www.figotan.org/2016/04/06/how-to-choose-vcs-as-your-static-website-pages/" target="_blank" rel="noopener">这些年,我们知道的那些pages平台</a></li>
+<li><a target="_blank" rel="noopener" href="https://help.github.com/articles/securing-your-github-pages-site-with-https/">securing-your-github-pages-site-with-https</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/30898326">知乎-百度爬虫被禁</a></li>
+<li><a target="_blank" rel="noopener" href="http://jerryzou.com/posts/feasibility-of-allowing-baiduSpider-for-Github-Pages/?utm_source=tuicool">解决 Github Pages 禁止百度爬虫的方法与可行性分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.v2ex.com/t/306697?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">Github pages 不支持自定义域名 SSL，请问有什么好的替代</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.figotan.org/2016/04/06/how-to-choose-vcs-as-your-static-website-pages/">这些年,我们知道的那些pages平台</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-10-26-the-problem-of-host-your-blog-with-github-pages/" data-id="ckrjcef4g004k6hrr4f7ltbj7" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-10-26-the-problem-of-host-your-blog-with-github-pages/" data-id="ckrjddp9d004hvjrr702lfaye" class="article-share-link">分享到</a>
       
 
       

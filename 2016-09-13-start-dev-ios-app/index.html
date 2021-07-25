@@ -87,10 +87,10 @@
       
         <p>对于React-Native(以下简称RN), 我最大疑惑是, 如何把应用安装到自己的手机里? 因为RN最终还会编译成原生代码, 所以这个问题其实是如何安装自己开发的iOS应用. 因为RN的官网上语焉不详, 所以我想趁着有时间, 干脆玩下iOS原生开发, 在自己手机里装个简单的iOS App</p>
 <p>然而事实证明, 没那么简单…</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="搜索教程"><a href="#搜索教程" class="headerlink" title="搜索教程"></a>搜索教程</h2><p>有了想法后, 就行动起来</p>
 <p>一开始是打算下载书来看的, iPhone开发实战/深入浅出iPhone开发. 但这些书都是2012年以前的, 用的是Object-C. 语言倒是无所谓, 但当我发现里面Xcode的视图/按钮都跟我电脑上有较大出入时, 我就果断放弃了.</p>
-<p>于是按照学习React的套路, 看<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html#//apple_ref/doc/uid/TP40015214-CH2-SW1" target="_blank" rel="noopener">官方入门教程</a>. 教程里使用Swift, 工具也不会过时, 并且每个章节还有源码可以下载, 非常方便.</p>
+<p>于是按照学习React的套路, 看<a target="_blank" rel="noopener" href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html#//apple_ref/doc/uid/TP40015214-CH2-SW1">官方入门教程</a>. 教程里使用Swift, 工具也不会过时, 并且每个章节还有源码可以下载, 非常方便.</p>
 <h2 id="动手实践"><a href="#动手实践" class="headerlink" title="动手实践"></a>动手实践</h2><p>我直接跳过Swift里的基本介绍, 原因是我是来体验iOS的开发流程的, app从0到1的过程明显与网页从0到1的过程有巨大的区别, 这些是更重要的东西, 语言的差异反倒是次; 另外介绍也太长了, 时间有限, 可以后面再看.</p>
 <p>然后我就发现:</p>
 <ul>
@@ -99,8 +99,8 @@
 <li>Xcode对git的支持做得非常好. 先建一个项目, 获得允许后, 它就会为这个项目建立对应的git仓库. 因为Mac自带git的, 所以不用担心本地没有git的问题. 从这点我就觉得, iOS开发天生就亲近git</li>
 <li>Xcode视图太多了, 各种窗口/视图, 我都快眼花缭乱了, 我觉得我需要一本Xcode入门指南😂</li>
 </ul>
-<h2 id="编译报错"><a href="#编译报错" class="headerlink" title="编译报错"></a>编译报错</h2><p>到了<a href="https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson5.html#//apple_ref/doc/uid/TP40015214-CH19-SW1" target="_blank" rel="noopener">官方教程第六章</a>, 我遇到了难题,  这句话编译不通过, 下载官方源码打开后, Xcode同样报错.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">button.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">RatingControl</span>.ratingButtonTapped(<span class="number">_</span>:)), forControlEvents: .<span class="type">TouchDown</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="编译报错"><a href="#编译报错" class="headerlink" title="编译报错"></a>编译报错</h2><p>到了<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson5.html#//apple_ref/doc/uid/TP40015214-CH19-SW1">官方教程第六章</a>, 我遇到了难题,  这句话编译不通过, 下载官方源码打开后, Xcode同样报错.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">button.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">RatingControl</span>.ratingButtonTapped(<span class="keyword">_</span>:)), forControlEvents: .<span class="type">TouchDown</span>)</span><br></pre></td></tr></table></figure>
 <p>多方求证, 找到原因: <code>#selector</code>是swift2.2的新语法. 命令行下, 执行<code>swift</code>, 进入swift的REPL, 看到我的swift版本为2.1.1, 所以上面的语句报错了(REPL退出的命令为<code>: quit</code>)</p>
 <p>很明显, 我需要升级swift, 则我需要升级Xcode到7.3或以上(我现在是7.2), 它里面自带swift2.2或以上. </p>
 <p>但Xcode7.3, 需要操作系统升级到10.11(EI Captitan)或以上, 而我现在是10.10.5. </p>
@@ -112,7 +112,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-13-start-dev-ios-app/" data-id="ckrjcef4c004d6hrrsofnasvf" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-09-13-start-dev-ios-app/" data-id="ckrjddp99004avjrrecr3hk3f" class="article-share-link">分享到</a>
       
 
       

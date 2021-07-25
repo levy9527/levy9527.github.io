@@ -87,11 +87,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>浏览器默认的历史记录, 有时不能符合场景需求. 比如说, 场景要求后退到某个页面后, 不能再后退. 最初的想法是删除浏览器历史, 那么, 可以做到吗?</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="修改history-length"><a href="#修改history-length" class="headerlink" title="修改history.length"></a>修改history.length</h2><p>用浏览器打开网页, 浏览2个页面后, 打开控制台</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">history.length <span class="comment">// 输出为3</span></span><br><span class="line">history.length = <span class="number">0</span> <span class="comment">// 试图修改历史记录</span></span><br><span class="line">history.length <span class="comment">// 输出仍为3</span></span><br></pre></td></tr></table></figure>
 <p>怎么回事? 查看W3C文档</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">interface History &#123;</span><br><span class="line">  readonly attribute long length; </span><br><span class="line">  readonly attribute any state;</span><br><span class="line">  void go(optional long delta);</span><br><span class="line">  void back();</span><br><span class="line">  void forward();</span><br><span class="line">  void pushState(any data, DOMString title, optional DOMString? url = null);</span><br><span class="line">  void replaceState(any data, DOMString title, optional DOMString? url = null);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">interface History &#123;</span><br><span class="line">  readonly attribute long length; </span><br><span class="line">  readonly attribute any state;</span><br><span class="line">  void go(optional long delta);</span><br><span class="line">  void back();</span><br><span class="line">  void forward();</span><br><span class="line">  void pushState(any data, DOMString title, optional DOMString? url = null);</span><br><span class="line">  void replaceState(any data, DOMString title, optional DOMString? url = null);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>history.length的长度是只读的; 从文档也可知, 并未提供删除浏览器历史记录的接口, 因此, 思路应该变一下</p>
 <h2 id="history-length"><a href="#history-length" class="headerlink" title="history.length"></a>history.length</h2><p>如果要禁止返回, 则必须让history.length始终为1</p>
 <p>但是浏览器打开一个新的空白标签, history.length就是1, 再访问一个页面时, 就变为2了(因此正常网页下, history的length属性, 最少为2), 此时浏览器的后退按钮就会变得可点击, 移动端也可实现硬件返回.</p>
@@ -105,17 +105,17 @@
 <h2 id="自己管理历史记录"><a href="#自己管理历史记录" class="headerlink" title="自己管理历史记录"></a>自己管理历史记录</h2><p>由于location.replace()的不足, 需要自己定义一个数组, 记录访问过的url, 再对外提供接口, 模拟History接口, 提供forward(), back()等方法, 以便在应用内前进/后退.</p>
 <p>另外, 注意在H5页面内呈现返回按钮</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://www.w3.org/TR/2014/REC-html5-20141028/browsers.html#history-1" target="_blank" rel="noopener">W3C history interface</a></li>
-<li><a href="http://caniuse.com/#search=history" target="_blank" rel="noopener">Can I Use history</a></li>
-<li><a href="http://www.cnblogs.com/accordion/p/5699372.html" target="_blank" rel="noopener">History API与浏览器历史堆栈管理</a></li>
-<li><a href="http://stackoverflow.com/questions/28028297/js-window-history-delete-a-state" target="_blank" rel="noopener">stackoverflow high level control history</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3.org/TR/2014/REC-html5-20141028/browsers.html#history-1">W3C history interface</a></li>
+<li><a target="_blank" rel="noopener" href="http://caniuse.com/#search=history">Can I Use history</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/accordion/p/5699372.html">History API与浏览器历史堆栈管理</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/28028297/js-window-history-delete-a-state">stackoverflow high level control history</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-12-02-how-to-disable-browser-go-back-with-javascript/" data-id="ckrjcef30002f6hrr4j22y268" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-12-02-how-to-disable-browser-go-back-with-javascript/" data-id="ckrjddp8h002evjrr51ftgag8" class="article-share-link">分享到</a>
       
 
       

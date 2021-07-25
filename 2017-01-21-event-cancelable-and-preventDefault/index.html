@@ -86,12 +86,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>使用mui开发移动端h5页面时, 发现Chrome的控制台不断飘红, 原来是event.preventDefault报错了.</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>出错代码:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里的event 代表 touchstart事件</span></span><br><span class="line">event.preventDefault()</span><br></pre></td></tr></table></figure>
 <p>报错如下:</p>
 <blockquote>
-<p>Unable to preventDefault inside passive event listener due to target being treated as passive. See <a href="https://www.chromestatus.com/features/5093566007214080" target="_blank" rel="noopener">https://www.chromestatus.com/features/5093566007214080</a></p>
+<p>Unable to preventDefault inside passive event listener due to target being treated as passive. See <a target="_blank" rel="noopener" href="https://www.chromestatus.com/features/5093566007214080">https://www.chromestatus.com/features/5093566007214080</a></p>
 </blockquote>
 <p>链接中的内容如下:</p>
 <blockquote>
@@ -112,7 +112,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-01-21-event-cancelable-and-preventDefault/" data-id="ckrjcef2q001y6hrrcuif4cwt" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-01-21-event-cancelable-and-preventDefault/" data-id="ckrjddp89001uvjrr8jthhdkp" class="article-share-link">分享到</a>
       
 
       

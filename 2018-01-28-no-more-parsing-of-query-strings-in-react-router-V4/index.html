@@ -6,12 +6,12 @@
   
   <title>react-router-v4不再支持query持久化 | levy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="当我在书写以下代码时， 发现跳到app-detail页面后 this.props.location.query对象里有id, isEdit属性， 但url上并没有带query参数 1234567this.props.dispatch(routerRedux.push(&amp;#123;  pathname: &#39;&#x2F;app-detail&#39;,  query: &amp;#123;    id: row.id,">
+  <meta name="description" content="当我在书写以下代码时， 发现跳到app-detail页面后 this.props.location.query对象里有id, isEdit属性， 但url上并没有带query参数 1234567this.props.dispatch(routerRedux.push(&amp;#123;  pathname: &amp;#x27;&#x2F;app-detail&amp;#x27;,  query: &amp;#123;    id: r">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-router-v4不再支持query持久化">
 <meta property="og:url" content="https://levy9527.github.io/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/index.html">
 <meta property="og:site_name" content="levy">
-<meta property="og:description" content="当我在书写以下代码时， 发现跳到app-detail页面后 this.props.location.query对象里有id, isEdit属性， 但url上并没有带query参数 1234567this.props.dispatch(routerRedux.push(&amp;#123;  pathname: &#39;&#x2F;app-detail&#39;,  query: &amp;#123;    id: row.id,">
+<meta property="og:description" content="当我在书写以下代码时， 发现跳到app-detail页面后 this.props.location.query对象里有id, isEdit属性， 但url上并没有带query参数 1234567this.props.dispatch(routerRedux.push(&amp;#123;  pathname: &amp;#x27;&#x2F;app-detail&amp;#x27;,  query: &amp;#123;    id: r">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-01-28T12:51:25.000Z">
 <meta property="article:modified_time" content="2018-01-28T14:44:46.000Z">
@@ -86,31 +86,31 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>当我在书写以下代码时， 发现跳到<code>app-detail</code>页面后 <code>this.props.location.query</code>对象里有<code>id</code>, <code>isEdit</code>属性， 但url上并没有带query参数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.props.dispatch(routerRedux.push(&#123;</span><br><span class="line">  pathname: <span class="string">'/app-detail'</span>,</span><br><span class="line">  query: &#123;</span><br><span class="line">    id: row.id,</span><br><span class="line">    isEdit</span><br><span class="line">  &#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.props.dispatch(routerRedux.push(&#123;</span><br><span class="line">  <span class="attr">pathname</span>: <span class="string">&#x27;/app-detail&#x27;</span>,</span><br><span class="line">  <span class="attr">query</span>: &#123;</span><br><span class="line">    <span class="attr">id</span>: row.id,</span><br><span class="line">    isEdit</span><br><span class="line">  &#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
 <p>究竟是怎么回事？</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="前因后果"><a href="#前因后果" class="headerlink" title="前因后果"></a>前因后果</h2><p><code>react-router-redux</code>从<code>5.x</code>版本开始，变成<code>react-router</code>的一部分，代码库都转移至<code>react-router</code>去了， 它只支持<code>react-router 4.x</code>。 </p>
 <p>而<code>react-router 4.x</code> 的API变化很大， 其中就有一项， 不再支持<code>qeury string</code>。</p>
 <p>具体可见后面的issue，这里涉及到设计理念的问题，不是文本讨论的重点。</p>
 <p>这里要意识到的问题是， 前文的代码虽然设置的query，在<code>/app-detail</code>路由对应的组件也的确可以通过<code>this.props.location.query</code>来获取， 但<code>query</code>的值并没有反应到url上，也即query值是放在内存里的，状态是非持久的，一刷新页面，<code>query</code>的值就没有了，这样经不起刷新的页面是不可靠的。</p>
 <p>所以必须想个办法解决它。</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="match-params"><a href="#match-params" class="headerlink" title="match.params"></a>match.params</h3><p>修改路由配置，使用<code>match.params</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.props.dispatch(routerRedux.push(&#123;</span><br><span class="line">  pathname: <span class="string">`/app-detail/<span class="subst">$&#123;row.id&#125;</span>/<span class="subst">$&#123;isEdit&#125;</span>`</span>,</span><br><span class="line">  query: &#123;</span><br><span class="line">    <span class="comment">// id: row.id,</span></span><br><span class="line">    <span class="comment">// isEdit</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.props.dispatch(routerRedux.push(&#123;</span><br><span class="line">  <span class="attr">pathname</span>: <span class="string">`/app-detail/<span class="subst">$&#123;row.id&#125;</span>/<span class="subst">$&#123;isEdit&#125;</span>`</span>,</span><br><span class="line">  <span class="attr">query</span>: &#123;</span><br><span class="line">    <span class="comment">// id: row.id,</span></span><br><span class="line">    <span class="comment">// isEdit</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
 <p>这样可以从<code>this.props.match.params</code>对象中拿到的<code>id</code>, <code>isEdit</code>， 要注意的是变量类型为字符串。</p>
 <p>这是最简单的解决方案，优点是不用引第三方库，缺点是每次添加参数都需要修改路由配置，参数顺序还不能写错; 如果参数一多，就会麻烦且容易出错</p>
 <h3 id="location-search-引入querystring解析库"><a href="#location-search-引入querystring解析库" class="headerlink" title="location.search + 引入querystring解析库"></a>location.search + 引入querystring解析库</h3><p>前文的代码改写成</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.props.dispatch(routerRedux.push(&#123;</span><br><span class="line">  pathname: <span class="string">'/app-detail'</span>,</span><br><span class="line">  search: <span class="string">`id=<span class="subst">$&#123;row.id&#125;</span>&amp;isEdit=<span class="subst">$&#123;isEdit&#125;</span>`</span> <span class="comment">// 这里不需要写问号？</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.props.dispatch(routerRedux.push(&#123;</span><br><span class="line">  <span class="attr">pathname</span>: <span class="string">&#x27;/app-detail&#x27;</span>,</span><br><span class="line">  <span class="attr">search</span>: <span class="string">`id=<span class="subst">$&#123;row.id&#125;</span>&amp;isEdit=<span class="subst">$&#123;isEdit&#125;</span>`</span> <span class="comment">// 这里不需要写问号？</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
 <p>在需要使用search的时候</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> querystring <span class="keyword">from</span> <span class="string">'any-query-string-lib-you-want'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123;id, isEdit&#125; = querystring.parse(<span class="keyword">this</span>.props.location.search)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> querystring <span class="keyword">from</span> <span class="string">&#x27;any-query-string-lib-you-want&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123;id, isEdit&#125; = querystring.parse(<span class="built_in">this</span>.props.location.search)</span><br></pre></td></tr></table></figure>
 <p>这样的优点是，不需要修改路由规则，参数再多也不用担心顺序的问题，缺点当然是，要引入第三方库。 </p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/ReactTraining/react-router/issues/4410" target="_blank" rel="noopener">react-router issues</a></p>
-<p><a href="https://github.com/reactjs/react-router-redux" target="_blank" rel="noopener">react-router-redux</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://github.com/ReactTraining/react-router/issues/4410">react-router issues</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/reactjs/react-router-redux">react-router-redux</a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/" data-id="ckrjcef3p003j6hrrtlaorfid" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-01-28-no-more-parsing-of-query-strings-in-react-router-V4/" data-id="ckrjddp8w003gvjrr4ddcfm9d" class="article-share-link">分享到</a>
       
 
       

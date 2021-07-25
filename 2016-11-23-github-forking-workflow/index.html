@@ -86,11 +86,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在GitHub上发现心仪的项目, 想帮忙添砖加瓦, 搞点贡献, 应该怎么做呢? </p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="Fork"><a href="#Fork" class="headerlink" title="Fork"></a>Fork</h2><p>首先第一步,你需要点击星星旁边的<code>fork</code>按钮, 则属于你的公开仓库, 里面的代码与原仓库一样. 以下称原仓库为正式仓库.</p>
 <p>这里要说一个为啥要fork. 因为默认情况下, 你是没有正式仓库的写权限的. 也即, 你clone正式仓库后, 本地做的修改, 是无法push的, 会得到类似下面的信息:</p>
 <blockquote>
-<p>remote: Permission to xiangming/landscape-plus.git denied to levy9527.<br>fatal: unable to access ‘<a href="https://github.com/xiangming/landscape-plus.git/&#39;" target="_blank" rel="noopener">https://github.com/xiangming/landscape-plus.git/&#39;</a>: The requested URL returned error: 403</p>
+<p>remote: Permission to xiangming/landscape-plus.git denied to levy9527.<br>fatal: unable to access ‘<a target="_blank" rel="noopener" href="https://github.com/xiangming/landscape-plus.git/&#39;">https://github.com/xiangming/landscape-plus.git/&#39;</a>: The requested URL returned error: 403</p>
 </blockquote>
 <p>而你fork出来的仓库, 是属于你的, 你可以push. </p>
 <p>因此你应该clone你fork出来的仓库, 在本地作修改, 再把提交push到fork仓库</p>
@@ -112,7 +112,7 @@
 <ul>
 <li><code>git remote</code></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">origin</span><br><span class="line">xiangming</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">origin</span><br><span class="line">xiangming</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>如果<code>git remote</code>只有origin, 则需要先添加远程仓库, 格式如下:<br><code>git remote add remote_name remote_url</code></p>
 </blockquote>
@@ -123,7 +123,7 @@
 </li>
 </ul>
 <p>我运行上述命令时, 得到的如下信息:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: There is no merge to abort (MERGE_HEAD missing).</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: There is no merge to abort (MERGE_HEAD missing).</span><br></pre></td></tr></table></figure>
 <p>别担心, 这其实就冲突了, 放弃合并了</p>
 <blockquote>
 <p>这里最好使用fetch+merge, 而不是直接pull, 要不然冲突的话, 就麻烦了</p>
@@ -136,14 +136,14 @@
 <p><code>git reset HEAD --hard</code> </p>
 <p>还你一个干净的工作目录</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://github.com/oldratlee/translations/blob/master/git-workflows-and-tutorials/workflow-forking.md#%E5%BC%80%E5%8F%91%E8%80%85%E5%92%8C%E6%AD%A3%E5%BC%8F%E4%BB%93%E5%BA%93%E5%81%9A%E5%90%8C%E6%AD%A5" target="_blank" rel="noopener">workflow-forking</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/oldratlee/translations/blob/master/git-workflows-and-tutorials/workflow-forking.md#%E5%BC%80%E5%8F%91%E8%80%85%E5%92%8C%E6%AD%A3%E5%BC%8F%E4%BB%93%E5%BA%93%E5%81%9A%E5%90%8C%E6%AD%A5">workflow-forking</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-11-23-github-forking-workflow/" data-id="ckrjcef2x002a6hrrsni7afuk" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-11-23-github-forking-workflow/" data-id="ckrjddp8e0027vjrrg6ma5149" class="article-share-link">分享到</a>
       
 
       

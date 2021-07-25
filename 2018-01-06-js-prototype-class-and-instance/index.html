@@ -90,17 +90,17 @@
 <p>区分<code>prototype</code>与<code>__proto__</code></p>
 <p>用代码实现: <code>new</code>, <code>Object.create</code></p>
 <!--**属性检索过程**-->
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="类与实例"><a href="#类与实例" class="headerlink" title="类与实例"></a>类与实例</h2><p>定义构造函数就是定义的是对象的”类”, 调用构造函数生成的对象就是”实例”</p>
 <h3 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h3><p>现有类定义如下:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>创建实例可以有以下方式:</p>
 <p>1.<code>new</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(<span class="string">'levy'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(<span class="string">&#x27;levy&#x27;</span>) </span><br></pre></td></tr></table></figure>
 <p>2.<code>Object.create</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p = <span class="built_in">Object</span>.create(Person.prototype)</span><br><span class="line">p.name = <span class="string">'levy'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p = <span class="built_in">Object</span>.create(Person.prototype)</span><br><span class="line">p.name = <span class="string">&#x27;levy&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>3.<code>__proto__</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = &#123;<span class="string">'__proto__'</span>: Person.prototype, <span class="attr">name</span>: <span class="string">'levy'</span>&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = &#123;<span class="string">&#x27;__proto__&#x27;</span>: Person.prototype, <span class="attr">name</span>: <span class="string">&#x27;levy&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <p>解析:</p>
 <p>除了<code>null</code>(<code>undefined</code>不是对象)/<code>Object.prototype</code>, js每一个对象都有一个原型, 对象从原型继承属性与方法</p>
@@ -115,7 +115,7 @@
 <h3 id="模拟实现new和Object-create"><a href="#模拟实现new和Object-create" class="headerlink" title="模拟实现new和Object.create"></a>模拟实现<code>new</code>和<code>Object.create</code></h3><p><code>Object.create</code>可以看成是屏蔽了<code>new</code>关键字的实现, 可以自己模拟一下实现:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span>(<span class="params">parent</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">F</span> = (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  F.prototype = parent</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> F()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果更暴力一点, 还可以这样: </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span>(<span class="params">parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="string">'__proto__'</span>: parent&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span>(<span class="params">parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="string">&#x27;__proto__&#x27;</span>: parent&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>new</code> 调用的原理是:</p>
 <ol>
 <li>创建一个新对象, 其原型为构造函数的<code>prototype</code>属性</li>
@@ -123,7 +123,7 @@
 <li>返回这个新创建的对象 </li>
 </ol>
 <p>所以可以自己写个<code>New</code>函数来模拟<code>new</code>的实现: </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟实现表达式 new fn(x)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">New</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> o = &#123;<span class="string">'__proto__'</span>: fn.prototype&#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    fn.apply(o, <span class="built_in">arguments</span>)</span><br><span class="line">    <span class="keyword">return</span> o</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最终表达式</span></span><br><span class="line">New(fn)(x)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟实现表达式 new fn(x)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">New</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> o = &#123;<span class="string">&#x27;__proto__&#x27;</span>: fn.prototype&#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    fn.apply(o, <span class="built_in">arguments</span>)</span><br><span class="line">    <span class="keyword">return</span> o</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最终表达式</span></span><br><span class="line">New(fn)(x)</span><br></pre></td></tr></table></figure>
 <p>当然上述实现很粗糙, 因为:</p>
 <ol>
 <li><p><code>new</code> 后面的构造函数, 如果不需要参数的话, 构造函数不需要带括号, 即可以这样<code>new fn</code></p>
@@ -134,13 +134,13 @@
 <p>总结: <strong>把原理性的文字改造成代码, 是一种很好的学习方式</strong></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>JavaScript权威指南(第六版)</p>
 <p>ES6入门</p>
-<p><a href="http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html" target="_blank" rel="noopener">http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html</a></p>
+<p><a target="_blank" rel="noopener" href="http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html">http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html</a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2018-01-06-js-prototype-class-and-instance/" data-id="ckrjcef38002s6hrriam242x6" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-01-06-js-prototype-class-and-instance/" data-id="ckrjddp8k002ovjrr137d15nn" class="article-share-link">分享到</a>
       
 
       

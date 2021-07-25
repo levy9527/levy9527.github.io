@@ -92,38 +92,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前有讲到<a href="/2016-09-18-launch-your-app-on-a-device/">iOS真机测试</a>, 那时的app是没有icon的, 它是这样子的<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/25548879.jpg" style="display:inline"></p>
-<p>本文将讲解如何为iOS的app添加桌面icon, 它将变成这样子<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/39908727.jpg" style="display:inline"></p>
-<a id="more"></a>
+        <p>之前有讲到<a href="/2016-09-18-launch-your-app-on-a-device/">iOS真机测试</a>, 那时的app是没有icon的, 它是这样子的<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/25548879.jpg"  style="display:inline"></p>
+<p>本文将讲解如何为iOS的app添加桌面icon, 它将变成这样子<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/39908727.jpg"  style="display:inline"></p>
+<span id="more"></span>
 <h2 id="切图"><a href="#切图" class="headerlink" title="切图"></a>切图</h2><ol>
 <li>首先要有一张比例要大于等于180*180的图片, 使用photoshop打开</li>
-<li>快捷键cmd+option+i, 设置宽高为180*180, 另存为<a href="mailto:iconName@3x.png" target="_blank" rel="noopener">iconName@3x.png</a></li>
-<li>快捷键cmd+option+i, 设置宽高为120*120, 另存为<a href="mailto:iconName@2x.png" target="_blank" rel="noopener">iconName@2x.png</a></li>
+<li>快捷键cmd+option+i, 设置宽高为180*180, 另存为<a href="mailto:iconName@3x.png">iconName@3x.png</a></li>
+<li>快捷键cmd+option+i, 设置宽高为120*120, 另存为<a href="mailto:iconName@2x.png">iconName@2x.png</a></li>
 </ol>
 <blockquote>
 <p>图片后缀名一定要为png</p>
 </blockquote>
 <h2 id="Xcode设置"><a href="#Xcode设置" class="headerlink" title="Xcode设置"></a>Xcode设置</h2><ol>
 <li>在project navigator中, 选择项目</li>
-<li>在General面板中, 找到“App Icons and Launch Images”, 点击红圈标注的箭头<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/8399206.jpg" alt></li>
+<li>在General面板中, 找到“App Icons and Launch Images”, 点击红圈标注的箭头<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/8399206.jpg" alt=""></li>
 <li>在finder中把相应的图片放到对应的方框即可, 注意桌面icon是以60pt为基础单位的<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/36967888.jpg" alt="桌面icon是以60pt为基础单位"></li>
 </ol>
 <blockquote>
 <p>如果图片放上去后, 运行报错: <code>Error: The app icon set named “AppIcon” did not have any applicable content</code>, 说明图片比例不对, 单词<em>applicable</em> 就是不适当的意思</p>
 </blockquote>
 <hr>
-<p>如果切好的图片放在Image Set里, 如图所示<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/43208187.jpg" alt></p>
-<p>则需要按住shift键, 点击两个文件, 出现如下所示界面时, 才可以把图片放到方框里<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/59191323.jpg" alt></p>
+<p>如果切好的图片放在Image Set里, 如图所示<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/43208187.jpg" alt=""></p>
+<p>则需要按住shift键, 点击两个文件, 出现如下所示界面时, 才可以把图片放到方框里<br><img src="http://oc9l6hs7x.bkt.clouddn.com/16-9-20/59191323.jpg" alt=""></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW3" target="_blank" rel="noopener">apple-doc-add-app-icon</a></li>
-<li><a href="http://www.cnblogs.com/meteoric_cry/p/4213870.html" target="_blank" rel="noopener">@2x与@3x</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW3">apple-doc-add-app-icon</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/meteoric_cry/p/4213870.html">@2x与@3x</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-20-add-app-icon-to-ios-app/" data-id="ckrjcef2700136hrrmvo4fa62" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-09-20-add-app-icon-to-ios-app/" data-id="ckrjddp7u000zvjrr5p6s7oi8" class="article-share-link">分享到</a>
       
 
       

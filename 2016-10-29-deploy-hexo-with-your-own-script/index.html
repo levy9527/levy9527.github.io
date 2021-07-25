@@ -87,7 +87,7 @@
       
         <p><code>hexo g</code>会解析md文件, 生成html等静态文件, <code>hexo d</code>就可以发布静态文件, 这两个命令可以使用<code>hexo g --deploy</code>来代替</p>
 <p>但使用一段时间后, 我发现hexo自带的发布命令并不好用, 于是我自己写了个发布脚本</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="为什么不好用"><a href="#为什么不好用" class="headerlink" title="为什么不好用"></a>为什么不好用</h2><p><code>hexo g --deploy</code> 的流程是这样的: </p>
 <ol>
 <li>先把生成的静态资源放到public目录下(这是<code>hexo g</code>的作用)</li>
@@ -105,7 +105,7 @@
 <h2 id="自定义脚本"><a href="#自定义脚本" class="headerlink" title="自定义脚本"></a>自定义脚本</h2><p>根目录下执行以下命令新建deploy.sh文件</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch deploy.sh</span><br><span class="line">chmod +x deploy.sh</span><br></pre></td></tr></table></figure>
 <p>以下是脚本内容</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">msg=`git <span class="built_in">log</span> -1 --pretty=oneline | awk <span class="string">'&#123;print $2&#125;'</span>`</span><br><span class="line">hexo g</span><br><span class="line"><span class="built_in">cd</span> public</span><br><span class="line"><span class="comment">#rmdir * # 删除空文件夹, 已解析的md文件重命名时, 原来生成的文件夹会为空, 但其实git自动会忽略空文件夹的, 所以这句话并非必要</span></span><br><span class="line">git add .</span><br><span class="line">git commit -am <span class="variable">$msg</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">msg=`git <span class="built_in">log</span> -1 --pretty=oneline | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>`</span><br><span class="line">hexo g</span><br><span class="line"><span class="built_in">cd</span> public</span><br><span class="line"><span class="comment">#rmdir * # 删除空文件夹, 已解析的md文件重命名时, 原来生成的文件夹会为空, 但其实git自动会忽略空文件夹的, 所以这句话并非必要</span></span><br><span class="line">git add .</span><br><span class="line">git commit -am <span class="variable">$msg</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 <p>cd 到 public目录下, 执行以下命令</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -fr * </span><br><span class="line">git <span class="built_in">clone</span> your_git_repo_url . <span class="comment"># 别忘了后面的点</span></span><br></pre></td></tr></table></figure>
 <p>这样就可以在根目录下使用<code>./deploy.sh</code>命令来发布Hexo博客啦</p>
@@ -124,14 +124,14 @@
 <p>根目录下执行以下命令新建deploy.sh文件</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch deploy.sh</span><br><span class="line">chmod +x deploy.sh</span><br></pre></td></tr></table></figure>
 <p>以下是脚本内容</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">msg=`git <span class="built_in">log</span> -1 --pretty=oneline | awk <span class="string">'&#123;print $2&#125;'</span>`</span><br><span class="line">sed -i -e <span class="string">"s/msg: [^\]*/msg: <span class="variable">$msg</span>/"</span> _config.yml</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">msg=`git <span class="built_in">log</span> -1 --pretty=oneline | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>`</span><br><span class="line">sed -i -e <span class="string">&quot;s/msg: [^\]*/msg: <span class="variable">$msg</span>/&quot;</span> _config.yml</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 <p>发布时使用根目录下使用<code>./deploy.sh</code>命令即可</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-10-29-deploy-hexo-with-your-own-script/" data-id="ckrjcef2n001r6hrrb4rxz5d6" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-10-29-deploy-hexo-with-your-own-script/" data-id="ckrjddp87001nvjrrb1ln2p58" class="article-share-link">分享到</a>
       
 
       

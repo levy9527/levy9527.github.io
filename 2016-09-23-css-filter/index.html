@@ -85,14 +85,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前看到大家都在讨论乔任梁的死, 我不知道他是谁, 因此<a href="http://baike.baidu.com/link?url=kKcHS3cYcO6TZuDATDSjajfKF3IuO9OH-f9jr_PepAn_quhh3XcaA9gdp9mpVwixNOvdaFf3a5kKJsgb5-9fUK" target="_blank" rel="noopener">百度百科</a>了一下</p>
+        <p>之前看到大家都在讨论乔任梁的死, 我不知道他是谁, 因此<a target="_blank" rel="noopener" href="http://baike.baidu.com/link?url=kKcHS3cYcO6TZuDATDSjajfKF3IuO9OH-f9jr_PepAn_quhh3XcaA9gdp9mpVwixNOvdaFf3a5kKJsgb5-9fUK">百度百科</a>了一下</p>
 <p>我注意到为表示悼念, 百度百科界面是灰色的, 连图片也是. 但审查元素的时候, 可以发现图片原本是彩色的, 这么说来一定是被CSS处理后才显示为灰的. </p>
 <p>究竟是怎么回事呢, 最终我找到了如下代码:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">-webkit-filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">-moz-filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">-ms-filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">-o-filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">filter</span>: <span class="built_in">url</span>(data:image/svg+xml;utf8,&lt;svg xmlns=\<span class="string">'http://www.w3.org/2000/svg\'&gt;&lt;filter i…0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale);</span></span><br><span class="line"><span class="string">  filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);</span></span><br><span class="line"><span class="string">  filter: gray;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">  -webkit-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">  -moz-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">  -ms-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">  -o-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">filter</span>: <span class="built_in">url</span>(<span class="string">data:image/svg+xml;utf8,&lt;svg xmlns=\&#x27;http://www.w3.org/2000/svg\&#x27;&gt;&lt;filter i…0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\&#x27;/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale</span>);</span><br><span class="line">  <span class="attribute">filter</span>: progid:DXImageTransform.Microsoft.<span class="built_in">BasicImage</span>(grayscale=<span class="number">1</span>);</span><br><span class="line">  <span class="attribute">filter</span>: gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>把它注释掉, 页面就还原成彩色的了. <code>filter</code>就是今天的主角, CSS3滤镜</p>
-<a id="more"></a>
-<p>想直接看效果的, 可以看<a href="http://www.w3cplus.com/css3/ten-effects-with-css3-filter" target="_blank" rel="noopener">w3cPlus的文章</a>.</p>
-<p>不过该文章是2012的了, 因此我自己再实践了一遍, 代码在<a href="http://git.oschina.net/levy9527/practice/blob/master/css_practice/filter.html?dir=0&amp;filepath=css_practice%2Ffilter.html&amp;oid=01f873f38adc6a9f810a76cfecf74a38d26752a9&amp;sha=c9790d448a3587c9192ea4c38b2873e432d119b2" target="_blank" rel="noopener">码云</a>, 但不能在线预览.</p>
+<span id="more"></span>
+<p>想直接看效果的, 可以看<a target="_blank" rel="noopener" href="http://www.w3cplus.com/css3/ten-effects-with-css3-filter">w3cPlus的文章</a>.</p>
+<p>不过该文章是2012的了, 因此我自己再实践了一遍, 代码在<a target="_blank" rel="noopener" href="http://git.oschina.net/levy9527/practice/blob/master/css_practice/filter.html?dir=0&amp;filepath=css_practice%2Ffilter.html&amp;oid=01f873f38adc6a9f810a76cfecf74a38d26752a9&amp;sha=c9790d448a3587c9192ea4c38b2873e432d119b2">码云</a>, 但不能在线预览.</p>
 <p>实践后的总结如下:</p>
 <ul>
 <li>grayscale 灰度</li>
@@ -125,16 +125,16 @@
 <li>Safari 9</li>
 <li>Firefox 48</li>
 </ul>
-<p>更多详情可以点击<a href="http://caniuse.com/#feat=css-filters" target="_blank" rel="noopener">CanIUse</a></p>
+<p>更多详情可以点击<a target="_blank" rel="noopener" href="http://caniuse.com/#feat=css-filters">CanIUse</a></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://www.w3.org/TR/filter-effects-1/" target="_blank" rel="noopener">w3c-filter</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3.org/TR/filter-effects-1/">w3c-filter</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-23-css-filter/" data-id="ckrjcef2f001c6hrrs8jt51g1" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-09-23-css-filter/" data-id="ckrjddp800019vjrr9ini7vum" class="article-share-link">分享到</a>
       
 
       

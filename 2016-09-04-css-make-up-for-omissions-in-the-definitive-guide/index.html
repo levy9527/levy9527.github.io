@@ -86,7 +86,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近发现有些CSS知识是很基础的, 而<strong>CSS权威指南</strong>也有讲到的, 但我却遗漏掉了, 今天就做个补习, 把这些知识捡回来.</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="1-list-style"><a href="#1-list-style" class="headerlink" title="1.list-style"></a>1.list-style</h3><p>对于列表样式, 我以前只知道<code>list-style: none</code>把列表默认的圆点去掉. </p>
 <p>其实<code>list-style</code>是以下三个属性的简写:</p>
 <ul>
@@ -96,7 +96,7 @@
 </ul>
 <p><code>list-style-type</code>现在可以支持的值有很多, 我发现比较有意思的是, 它支持中国计数中的”天干”与”地支”, 它们的值分别是:<code>cjk-heavenly-stem</code>/<code>cjk-earthly-branch</code>. 经测试, Chrome/Safari/Firefox都可正常显示. </p>
 <p><code>list-style-image</code>可以指定图片来自定义列表标志. 通常, 可以用<code>list-style-type</code>来提供一个后路, 预防出现图片加载失败的情况.</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">list-style-image</span>: <span class="built_in">url</span>(//your-image.jpg);</span><br><span class="line">  <span class="attribute">list-style-type</span>: square;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">list-style-image</span>: <span class="built_in">url</span>(<span class="string">//your-image.jpg</span>);</span><br><span class="line">  <span class="attribute">list-style-type</span>: square;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>list-style-position</code> 用来确定标志是出现列表项内容之内还是之外. 默认值是<code>outside</code>. 此时如何使用大图片作为列表标志, 图片很可能看不见, 则需调整为<code>inside</code></p>
 <h3 id="2-缩进"><a href="#2-缩进" class="headerlink" title="2.缩进"></a>2.缩进</h3><p>由于规范中并未指出列表内容应该如何缩进, 因此不同的浏览器实现的方式不同.</p>
 <p>IE与Opera使用的是<code>margin</code></p>
@@ -140,7 +140,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/" data-id="ckrjcef2h001h6hrr8ichi7n4" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/" data-id="ckrjddp82001evjrr6i0t7ngj" class="article-share-link">分享到</a>
       
 
       

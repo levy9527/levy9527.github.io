@@ -98,19 +98,17 @@
 <li>Item2下的shell及Vim的颜色配置丢失</li>
 </ul>
 <p>所以说, 这给了我一个很好的教训: 升级前, 要做好系统备份. </p>
-<a id="more"></a>
+<span id="more"></span>
 <!-- 所以我又要重新折腾电脑配置-->
-<h2 id="vi命令报错"><a href="#vi命令报错" class="headerlink" title="vi命令报错"></a>vi命令报错</h2><p>vi命令时报下面的错<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Error detected <span class="keyword">while</span> processing /Users/levy/.vimrc:</span><br><span class="line">line   15:</span><br><span class="line">E185: Cannot find color scheme <span class="string">'Tomorrow'</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>Tomorrow</strong>皮肤是自定义的配色方案, 并非Vim默认的, 而系统更新后, 需要重新引入相关文件. 解决方案为:</p>
+<h2 id="vi命令报错"><a href="#vi命令报错" class="headerlink" title="vi命令报错"></a>vi命令报错</h2><p>vi命令时报下面的错<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Error detected <span class="keyword">while</span> processing /Users/levy/.vimrc:</span><br><span class="line">line   15:</span><br><span class="line">E185: Cannot find color scheme <span class="string">&#x27;Tomorrow&#x27;</span></span><br></pre></td></tr></table></figure><br><strong>Tomorrow</strong>皮肤是自定义的配色方案, 并非Vim默认的, 而系统更新后, 需要重新引入相关文件. 解决方案为:</p>
 <ul>
 <li>禁用<a href="#Rootless">Rootless</a></li>
-<li>执行以下命令:<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先进入皮肤文件所在目录</span></span><br><span class="line"><span class="built_in">cd</span> ~/theme/tomorrow-theme/vim/colors</span><br><span class="line">sudo cp *.vim /usr/share/vim/vim74/colors</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>注意vim的版本, macOS 10.12自带的是vim 7.4, 所以目录为vim74</p>
-<blockquote>
+<li>执行以下命令:<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先进入皮肤文件所在目录</span></span><br><span class="line"><span class="built_in">cd</span> ~/theme/tomorrow-theme/vim/colors</span><br><span class="line">sudo cp *.vim /usr/share/vim/vim74/colors </span><br></pre></td></tr></table></figure>
+注意vim的版本, macOS 10.12自带的是vim 7.4, 所以目录为vim74<blockquote>
 <p>当然也可以采取另一个解决方案, 就是修改~/.vimrc, 换一个系统默认支持的配色方案</p>
 </blockquote>
+</li>
+</ul>
 <h2 id="ll-命令失效"><a href="#ll-命令失效" class="headerlink" title="ll 命令失效"></a>ll 命令失效</h2><p>ll是自定义的命令, 我之前是写在/etc/bashrc里的, 系统更新后, /etc/bashrc里的设置被覆盖掉了, 因此该命令失效了. 我选择的解决方法为: </p>
 <ul>
 <li>禁用<a href="#Rootless">Rootless</a></li>
@@ -120,12 +118,12 @@
 <p>需要注意的是, Mac系统更新, /etc/bashrc会被覆盖, 但~/.bashrc是不会被修改的. 因此还可以通过修改~/.bashrc来解决问题, 这样系统再更新, 也不用做修改. 则这种方案的执行步骤如下:</p>
 <ul>
 <li>vi ~/.bashrc 自定义配置</li>
-<li>vi ~/.bash_profile 输入以下内容并保存<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if [ &quot;$&#123;BASH-no&#125;&quot; != &quot;no&quot; ]; then</span><br><span class="line">  [ -r ~/.bashrc ] &amp;&amp; . ~/.bashrc</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<li>vi ~/.bash_profile 输入以下内容并保存<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if [ &quot;$&#123;BASH-no&#125;&quot; != &quot;no&quot; ]; then</span><br><span class="line">  [ -r ~/.bashrc ] &amp;&amp; . ~/.bashrc</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>这种方案的缺点在于新建一个shell的速度变慢了(大概0.5秒吧, 还是在我自定义配置不多的情况下). 换句话说就是, 在Item2下, ⌘+T新开一个shell, 你不能立即输入命令, 你会明显得感到一个停顿, 之后才可以输入命令. 对于追求流畅的我而言, 这种方案我不能接受</p>
 </blockquote>
+</li>
+</ul>
 <h2 id="Rootless"><a href="#Rootless" class="headerlink" title="Rootless"></a><a name="Rootless">Rootless</a></h2><p>自OS X 10.11起系统引入了Rootless, 最直接的影响是, 许多系统文件sudo后仍然没有权限修改. 下面是禁用Rootless的方法:</p>
 <ul>
 <li>重新启动</li>
@@ -138,16 +136,16 @@
 <p>重新打开Rootless的命令为<code>csrutil enable</code></p>
 </blockquote>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="http://www.zhihu.com/question/31116473" target="_blank" rel="noopener">知乎 什么是Rootless</a></li>
-<li><a href="http://blog.csdn.net/fjh658/article/details/46535073" target="_blank" rel="noopener">CSDN Rootless关闭</a></li>
-<li><a href="https://support.apple.com/en-us/HT201314" target="_blank" rel="noopener">Apple doc 恢复模式</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.zhihu.com/question/31116473">知乎 什么是Rootless</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/fjh658/article/details/46535073">CSDN Rootless关闭</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.apple.com/en-us/HT201314">Apple doc 恢复模式</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-10-07-update-macos/" data-id="ckrjcef4q004x6hrr72dxslz3" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-10-07-update-macos/" data-id="ckrjddp9i004svjrr6ekxfqln" class="article-share-link">分享到</a>
       
 
       

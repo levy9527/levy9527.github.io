@@ -87,31 +87,31 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近两个月都在用Nuxt+ElementUI开发，被后端人员吐槽前端CI时间好久(其实也就一分多钟)，而后端只要半分钟。正好要开新项目，同时在github上也了解到Nuxt2会使用Webpack4，加快构建速度，于是抓住机会升级Nuxt2，在新项目中使用。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><p>为比较升级前后的时间，我先在旧项目<code>npm run build</code>一次，记录下时间，再卸载Nuxt，安装Nuxt2</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall nuxt</span><br><span class="line">npm install nuxt-edge</span><br></pre></td></tr></table></figure>
 <p>然后再根据升级指引修改配置，下面记录了一些遇到过的问题</p>
 <h4 id="nuxt-config-js"><a href="#nuxt-config-js" class="headerlink" title="nuxt.config.js"></a>nuxt.config.js</h4><ol>
 <li>删除<code>vendors</code>的配置</li>
-<li><code>context.isServer</code>/<code>context.isClient</code>分别修改为<code>process.client</code>/<code>process.server</code>, 不然会报这个错<a href="https://nuxtjs.cmty.io/nuxt/nuxt.js/issues/c6888" target="_blank" rel="noopener">Module build failed: TypeError: Cannot read property ‘eslint’ of undefined</a></li>
+<li><code>context.isServer</code>/<code>context.isClient</code>分别修改为<code>process.client</code>/<code>process.server</code>, 不然会报这个错<a target="_blank" rel="noopener" href="https://nuxtjs.cmty.io/nuxt/nuxt.js/issues/c6888">Module build failed: TypeError: Cannot read property ‘eslint’ of undefined</a></li>
 </ol>
 <h4 id="Vue-packages-version-mismatch"><a href="#Vue-packages-version-mismatch" class="headerlink" title="Vue packages version mismatch"></a>Vue packages version mismatch</h4><p>这是由于vue版本跟vue-server-renderer的版本不一致导致的。可能是<code>npm uninstall nuxt</code>没有把相关依赖删除干净导致的， 最粗暴的办法就是, 整个项目依赖删除，重新安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -fr node_modules</span><br><span class="line">npm i</span><br></pre></td></tr></table></figure>
-<h4 id="stylus报错"><a href="#stylus报错" class="headerlink" title="stylus报错"></a>stylus报错</h4><p>需要指定<code>stylus-loader</code>版本至少为<code>^3.0.2</code>，详情可以看<a href="https://nuxtjs.cmty.io/nuxt/nuxt.js/issues/c2385" target="_blank" rel="noopener">论坛讨论</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i stylus stylus-loader@3.0.2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -fr node_modules</span><br><span class="line">npm i</span><br></pre></td></tr></table></figure>
+<h4 id="stylus报错"><a href="#stylus报错" class="headerlink" title="stylus报错"></a>stylus报错</h4><p>需要指定<code>stylus-loader</code>版本至少为<code>^3.0.2</code>，详情可以看<a target="_blank" rel="noopener" href="https://nuxtjs.cmty.io/nuxt/nuxt.js/issues/c2385">论坛讨论</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i stylus stylus-loader@3.0.2</span><br></pre></td></tr></table></figure>
 <h4 id="样式错乱"><a href="#样式错乱" class="headerlink" title="样式错乱"></a>样式错乱</h4><p>解决上面的问题后，项目可以跑起来了，但发现样式不对。分析后发现，原来是样式加载顺序改变了。Nuxt的时候，是先加载UI框架的样式，再加载自定义样式; Nuxt2是反过来。由于二者的选择器权重是一样的，则哪个顺序更后样式规则就用哪个，因而出现覆盖样式不生效的问题。解决方法很简单，因为Nuxt项目大部分DOM元素都在<code>id</code>为<code>__nuxt</code>的元素下，因此在自己定义样式前，加个父选择器<code>#__nuxt</code>即可</p>
 <h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>在2015年初8G内存i5处理器的MBP上，编译时间前后对比：</p>
 <p>webpack 3.11： 39804ms + 8740ms = 48.544s</p>
 <p>webpack 4.8.1： 23169ms + 5533ms = 28.702s</p>
 <p>时间缩短了40%左右</p>
-<p>最后，广告一波自己封装<a href="https://github.com/levy9527/nuxt-element-dashboard" target="_blank" rel="noopener">nuxt-element脚手架</a>，已集成鉴权登录，用户信息获取，资源菜单获取等功能，里面有个DataTable组件，可快速开发CRUD后台管理系统。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://medium.com/nuxt/nuxt-2-is-coming-oh-yeah-212c1a9e1a67" target="_blank" rel="noopener">nuxt2升级指引</a></p>
+<p>最后，广告一波自己封装<a target="_blank" rel="noopener" href="https://github.com/levy9527/nuxt-element-dashboard">nuxt-element脚手架</a>，已集成鉴权登录，用户信息获取，资源菜单获取等功能，里面有个DataTable组件，可快速开发CRUD后台管理系统。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://medium.com/nuxt/nuxt-2-is-coming-oh-yeah-212c1a9e1a67">nuxt2升级指引</a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2018-05-09-upgrade-to-nuxt2/" data-id="ckrjcef4s00506hrryxe1f8gh" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-05-09-upgrade-to-nuxt2/" data-id="ckrjddp9j004uvjrre0w68dyx" class="article-share-link">分享到</a>
       
 
       

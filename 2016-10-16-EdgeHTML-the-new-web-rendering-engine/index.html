@@ -86,10 +86,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>微软出了Edge浏览器, 但我一直不知道其内核是啥. 是完全不同于IE的全新内核呢, 还是基于Webkit的内核?</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>以下引用段落摘自官方博客</p>
 <blockquote>
-<p>As detailed in Jacob Rossi’s <a href="http://www.smashingmagazine.com/2015/01/26/inside-microsofts-new-rendering-engine-project-spartan/" target="_blank" rel="noopener">article for Smashing Magazine</a>,the new engine began as a fork of MSHTML.dll but has since diverged very quickly. By making this split, we were able to keep the major subsystem investments made over the last several years, while allowing us to remove document modes and other legacy IE behaviors from the new engine</p>
+<p>As detailed in Jacob Rossi’s <a target="_blank" rel="noopener" href="http://www.smashingmagazine.com/2015/01/26/inside-microsofts-new-rendering-engine-project-spartan/">article for Smashing Magazine</a>,the new engine began as a fork of MSHTML.dll but has since diverged very quickly. By making this split, we were able to keep the major subsystem investments made over the last several years, while allowing us to remove document modes and other legacy IE behaviors from the new engine</p>
 </blockquote>
 <p>则可知, Edge浏览器使用的是EdgeHTML内核, 它是从 MSHTML(也即Trident) fork 而来，删掉了几乎所有的 IE 私有特性.</p>
 <blockquote>
@@ -98,16 +98,16 @@
 <p>另外需要注意的是, Edge浏览器使用了新的用户代理字符串, 前面一大段跟Safari一样, 但这是为了不让服务端发送IE特定的内容, 并非浏览器真的是基于Webkit内核. 从这里也可看出, user-agent其实是很不靠谱的东西, 带有”欺骗”的味道, 要使用user-agent来作判断时, 请三思而后行</p>
 <p>因此由上可知, Edge浏览器使用的是新内核EdgeHTML, 它是基于IE内核MSHTML(Trident)的, 但跟Webkit内核却没有任何关系</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://www.zhihu.com/question/29985708" target="_blank" rel="noopener">知乎 如何评价Edge</a></li>
-<li><a href="https://blogs.windows.com/msedgedev/2015/02/26/a-break-from-the-past-the-birth-of-microsofts-new-web-rendering-engine/" target="_blank" rel="noopener">windwos blog a-break-from-the-past-the-birth-of-microsofts-new-web-rendering-engine</a></li>
-<li><a href="https://msdn.microsoft.com/library/hh869301" target="_blank" rel="noopener">windows doc new user-agent string</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/29985708">知乎 如何评价Edge</a></li>
+<li><a target="_blank" rel="noopener" href="https://blogs.windows.com/msedgedev/2015/02/26/a-break-from-the-past-the-birth-of-microsofts-new-web-rendering-engine/">windwos blog a-break-from-the-past-the-birth-of-microsofts-new-web-rendering-engine</a></li>
+<li><a target="_blank" rel="noopener" href="https://msdn.microsoft.com/library/hh869301">windows doc new user-agent string</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2016-10-16-EdgeHTML-the-new-web-rendering-engine/" data-id="ckrjcef20000s6hrrha3dkags" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2016-10-16-EdgeHTML-the-new-web-rendering-engine/" data-id="ckrjddp7m000rvjrr1mk61xwv" class="article-share-link">分享到</a>
       
 
       

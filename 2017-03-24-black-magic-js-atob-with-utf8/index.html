@@ -86,10 +86,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>场景是这样的, 后台传来经过base64编码的字符串(原始字符串含有中文), 需要在前端进行解码, 但js中的atob解码方法不支持unicode字符集(btoa也是), 换言之, 中文被解码出来是会乱码的, 那怎么办呢? 此时就要用到今天介绍的黑魔法了.</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="黑魔法"><a href="#黑魔法" class="headerlink" title="黑魔法"></a>黑魔法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用utf-8字符集进行base64编码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">utoa</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">window</span>.btoa(<span class="built_in">unescape</span>(<span class="built_in">encodeURIComponent</span>(str)));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用utf-8字符集解析base64字符串 </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">atou</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">decodeURIComponent</span>(<span class="built_in">escape</span>(<span class="built_in">window</span>.atob(str)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>则我只需要调用<code>atou</code>函数, 即可解析后台传来的含有中文的base64编码字符串了</p>
-<h2 id="分析atou"><a href="#分析atou" class="headerlink" title="分析atou"></a>分析atou</h2><p>其实上述方法在<a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa" target="_blank" rel="noopener">MDN</a>中已有介绍, 但却没有讲明原理, 下面将分析要点</p>
+<h2 id="分析atou"><a href="#分析atou" class="headerlink" title="分析atou"></a>分析atou</h2><p>其实上述方法在<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN</a>中已有介绍, 但却没有讲明原理, 下面将分析要点</p>
 <p>先来分析<code>atou</code>函数</p>
 <p>其实该函数的关键是做了一个拉丁字符到utf-8字符的转换. </p>
 <p>为什么这么说呢? 因为atob函数使用的是拉丁字符集, 而decodeURIComponent使用的是utf-8字符集</p>
@@ -118,13 +118,13 @@
 </ol>
 <p>答案是可以的. 简单来说, encodeURI与encodeURIComponent的区别在于, 后者编码得彻底, 也即URI符号的编码粒度更细. 比如URI中常见的符号<code>=</code>, <code>encodeURI(&#39;=&#39;)</code>的结果是<code>=</code>, 而<code>encodeURIComponent(&#39;=&#39;)</code>的结果是<code>%3D</code>. encodeURI/decodeURI函数同样使用的是utf-8字符集, 所以粒度的不同并不影响结果.</p>
 <!--文本主要讨论的是js中的base64编码中utf-8字符的问题-->
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa" target="_blank" rel="noopener">MDN-btoa-usage</a><br><a href="http://ecmanaut.blogspot.jp/2006/07/encoding-decoding-utf8-in-javascript.html" target="_blank" rel="noopener">encoding-decoding-utf8-in-javascript</a><br><a href="http://monsur.hossa.in/2012/07/20/utf-8-in-javascript.html" target="_blank" rel="noopener">delve-into-encode_utf8-function</a><br><a href="http://www.cnblogs.com/DaoMuRen/p/5695030.html" target="_blank" rel="noopener">percent-encoding</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" target="_blank" rel="noopener">MDN-encodeURIComponent</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape" target="_blank" rel="noopener">MDN-escape</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN-btoa-usage</a><br><a target="_blank" rel="noopener" href="http://ecmanaut.blogspot.jp/2006/07/encoding-decoding-utf8-in-javascript.html">encoding-decoding-utf8-in-javascript</a><br><a target="_blank" rel="noopener" href="http://monsur.hossa.in/2012/07/20/utf-8-in-javascript.html">delve-into-encode_utf8-function</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/DaoMuRen/p/5695030.html">percent-encoding</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">MDN-encodeURIComponent</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape">MDN-escape</a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-03-24-black-magic-js-atob-with-utf8/" data-id="ckrjcef2c00176hrryrxynjzd" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-03-24-black-magic-js-atob-with-utf8/" data-id="ckrjddp7v0011vjrreq4v4oc5" class="article-share-link">分享到</a>
       
 
       

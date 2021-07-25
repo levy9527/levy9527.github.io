@@ -87,11 +87,11 @@
       
         <p>以前只知道<code>text/javascript</code>, 后来逐渐接触<code>application/javascript</code>, <code>application/x-javascript</code></p>
 <p>感觉有点凌乱了, 于是想搞清楚它们的关系</p>
-<a id="more"></a>
-<h2 id="MIME-type"><a href="#MIME-type" class="headerlink" title="MIME type"></a>MIME type</h2><p>首先要搞清楚MIME, 英文全称为<a href="http://www.w3school.com.cn/media/media_mimeref.asp" target="_blank" rel="noopener">Multipurpose Internet Mail Extensions</a>, 是描述消息内容类型的因特网标准。</p>
-<p>这个解释好像有点难懂, 没关系, 知道<code>MIME type</code>是干嘛的就好了: <a href="https://mimesniff.spec.whatwg.org/#mime-type" target="_blank" rel="noopener">The MIME type of a resource is a technical hint about the use and format of that resource</a>, 也就是说根据<code>MIME type</code>, Web程序就知道某个资源的用途并知道应该如何解析它.</p>
+<span id="more"></span>
+<h2 id="MIME-type"><a href="#MIME-type" class="headerlink" title="MIME type"></a>MIME type</h2><p>首先要搞清楚MIME, 英文全称为<a target="_blank" rel="noopener" href="http://www.w3school.com.cn/media/media_mimeref.asp">Multipurpose Internet Mail Extensions</a>, 是描述消息内容类型的因特网标准。</p>
+<p>这个解释好像有点难懂, 没关系, 知道<code>MIME type</code>是干嘛的就好了: <a target="_blank" rel="noopener" href="https://mimesniff.spec.whatwg.org/#mime-type">The MIME type of a resource is a technical hint about the use and format of that resource</a>, 也就是说根据<code>MIME type</code>, Web程序就知道某个资源的用途并知道应该如何解析它.</p>
 <p>虽然<code>MIME type</code>好像有点拗口, 但也有好处, 那就是可以与CSS的 <code>media type</code> 区分开来</p>
-<h2 id="javascript的-MIME-type"><a href="#javascript的-MIME-type" class="headerlink" title="javascript的 MIME type"></a>javascript的 MIME type</h2><p><a href="https://html.spec.whatwg.org/multipage/scripting.html#scriptingLanguages" target="_blank" rel="noopener">html规范</a>定义的<code>MIME type</code> 如下:</p>
+<h2 id="javascript的-MIME-type"><a href="#javascript的-MIME-type" class="headerlink" title="javascript的 MIME type"></a>javascript的 MIME type</h2><p><a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/scripting.html#scriptingLanguages">html规范</a>定义的<code>MIME type</code> 如下:</p>
 <ul>
 <li>application/ecmascript</li>
 <li>application/javascript</li>
@@ -111,10 +111,10 @@
 <li>text/x-javascript</li>
 </ul>
 <p>这么多, 是不是头都大了.</p>
-<p>冷静一下, 再看这篇<a href="https://html.spec.whatwg.org/multipage/indices.html#mime-types-2" target="_blank" rel="noopener">文章</a>, 这里对每个类型都有简单的说明</p>
+<p>冷静一下, 再看这篇<a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/indices.html#mime-types-2">文章</a>, 这里对每个类型都有简单的说明</p>
 <p>细心看下来, 发现这么多类型中, 除了<code>text/javascript</code>, 其余全是”历史遗留类型”. 也就是现在用的话, 都是用<code>text/javascript</code>的</p>
 <h2 id="scipt标签不写type"><a href="#scipt标签不写type" class="headerlink" title="scipt标签不写type"></a>scipt标签不写type</h2><p>如果html里script标签不写type, <code>MIME type</code> 会是<code>text/javascript</code>吗?</p>
-<p>MDN文档指出, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script" target="_blank" rel="noopener">script不写type则把script当作Javasript</a>. 但这点并没有回答上面的问题</p>
+<p>MDN文档指出, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script">script不写type则把script当作Javasript</a>. 但这点并没有回答上面的问题</p>
 <p>于是我自己利用Nginx作测试, 最终得出结论:</p>
 <p>是的, script的默认type是<code>text/javasript</code>, 查看Response Headers, 可见<code>Content-Type:text/javascript</code></p>
 <p>但这里还有几个前提:</p>
@@ -123,14 +123,14 @@
 <li>服务器的MIME type配置没对覆盖此值</li>
 </ol>
 <p>第二点怎么理解呢? 以Nginx为例, 如果修改<code>mime.types</code>文件如下所示:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">types &#123;</span><br><span class="line">  application/javascript js;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">types &#123;</span><br><span class="line">  application/javascript js;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>则查看Response Headers, 可见<code>Content-Type:application/javascript</code></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-01-23-mime-type-of-javascript/" data-id="ckrjcef3i00386hrredsf2z5l" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-01-23-mime-type-of-javascript/" data-id="ckrjddp8r0035vjrr07e7a5a5" class="article-share-link">分享到</a>
       
 
       

@@ -86,7 +86,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>React Router提供的三种History, 之前认识得比较肤浅, 只是从字面上去比较, 经过实践后, 有了新的认识</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="browserHistory"><a href="#browserHistory" class="headerlink" title="browserHistory"></a>browserHistory</h2><p>browserHistory是文档重点推荐的: 它提供了更干净的url, 同时也是借助了History API来操作浏览器历史.</p>
 <p>借助History API操作浏览器历史意味着什么呢? 这就意味着, 每次改变路由, 浏览器上的地址会改变, 也即<code>window.location</code>会改变, 同时<code>window.history</code>也会改变</p>
 <p>此时的<code>this.props.router.goBack()</code> 相当于<code>window.history.back()</code>, 而浏览器的后退按钮及移动端的硬件返回也是调用了<code>window.history.back()</code>, </p>
@@ -116,13 +116,13 @@
 <p>那么, 为什么不使用hashHistory呢?</p>
 <p>毕竟我们的页面是属于 “外来页面”, 对方要求在我们的页面里, 无论跳转了几个页面, 只要想返回, 都能返回到他们的首页.</p>
 <p>考虑到我们的页面上已有返回按钮, 再添加一个按钮, 不好看, 而且还要考虑硬件返回的情况, 另外就是, 该app不会有分享链接的功能. 综上考虑, 我就选择了createMemoryHistory. 因为此时路由的改变记录是在内存的, 不会改变浏览器历史, 因此在我们的页面里, 无论嵌套有多深, <code>history.back()</code>返回的都是对方的首页. 而手机的硬件返回调用的是<code>history.back()</code>, 则对方直接操作手机就可以达到目的了, 我们也不需要在页面中多添加一个返回按钮</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#browserhistory" target="_blank" rel="noopener">react-router histories</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#browserhistory">react-router histories</a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2017-01-09-update-knowledge-of-react-router-history/" data-id="ckrjcef4o004t6hrrgnti52b1" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2017-01-09-update-knowledge-of-react-router-history/" data-id="ckrjddp9h004qvjrr33dmgcvq" class="article-share-link">分享到</a>
       
 
       

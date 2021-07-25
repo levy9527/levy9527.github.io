@@ -91,7 +91,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本文概述了目前我们团队约定的Git工作流</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p><img src="https://user-gold-cdn.xitu.io/2018/6/12/163f1ea7cba94612?w=716&amp;h=842&amp;f=png&amp;s=147608" alt="dev合并到master触发CI，预发布，正式生产在prod分支">)</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/6/12/163f211d488a255b?w=534&amp;h=826&amp;f=jpeg&amp;s=41959" alt="下一次迭代功能，也即本次不上线，超前开发的功能，使用feature"></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意使用以下命令合并feature分支到dev分支</span></span><br><span class="line">git merge --no-ff</span><br></pre></td></tr></table></figure>
@@ -114,14 +114,14 @@
 <li>特殊情况一：在周三时，有开发人员接到一个新需求，该需求下个迭代上线。由于相关开发人员效率高，此时已经把本周功能开发完了，因此决定超前开发，则相关开发人员基于dev分支checkout一个feature-xxx的分支，不影响本次发布; 在下次迭代时再合并到dev分支, 合并完后删除该分支 </li>
 <li>特殊情况二：下周一在dev开发新功能时，发现上周五发布的版本有两个bug，需要紧急修复，权衡之后认为，有一个是当天必须修复的，另一个需要第二天才能上线，则第一个bug的分支为hotfix-${tag}-1, 第二个则为hotfix-${tag}-2。则相关人员基于prod checkout两个分支，进行修改验证后，合并到dev及prod分支， 然后让相关人员打tag,  发布生产，生产验证无误后，删除分支。</li>
 </ol>
-<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p>以上流程及图片参考了经典文章<a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">a-successful-git-branching-model</a>，图片有部分修改。网上大部分谈Git Workflow的文章，思想及内容都源自该文，尤其是其中的图片，一度被人称神。</p>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p>以上流程及图片参考了经典文章<a target="_blank" rel="noopener" href="https://nvie.com/posts/a-successful-git-branching-model/">a-successful-git-branching-model</a>，图片有部分修改。网上大部分谈Git Workflow的文章，思想及内容都源自该文，尤其是其中的图片，一度被人称神。</p>
 <p>其实该文有两点内容是与我们最佳实践不符的：</p>
 <ol>
 <li>dev 进行 nightly build. 之前我们也是如此，但这在接口联调阶段，会造成后端一push代码，就触发CI重新构建，导致接口不可用，所有前端都进入阻塞状态。而后端或测试人员在开发环境验证期间，前端一push代码，导致web应用不可用，所有验证阻塞。这极大的影响了开发/测试体验，甚至到了影响心情的地步，因此取消对dev的CI，只对master进行CI</li>
 <li>release的命名容易造成误解。在该文中，release其实是预发布分支，做上线前的验证用，但我们成员听上去，误认为是发布分支，专门做上线发布用。为取消分歧，根据现在团队的规模，决定用master作为稳定版，作为上线前的验证分支，而prod则作为真正的上线分支，并在上线前打个tag</li>
 </ol>
 <h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>tag遵循以下约定</p>
-<p>标签名：v版本号<a href="https://semver.org/" target="_blank" rel="noopener">(major.minor.patch)</a></p>
+<p>标签名：v版本号<a target="_blank" rel="noopener" href="https://semver.org/">(major.minor.patch)</a></p>
 <p>标题：项目名-日期</p>
 <p>内容分类：</p>
 <ul>
@@ -140,7 +140,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://levy9527.github.io/2018-06-12-git-workflow/" data-id="ckrjcef2w00286hrrbgqfoumg" class="article-share-link">分享到</a>
+        <a data-url="https://levy9527.github.io/2018-06-12-git-workflow/" data-id="ckrjddp8d0024vjrr179nh636" class="article-share-link">分享到</a>
       
 
       
