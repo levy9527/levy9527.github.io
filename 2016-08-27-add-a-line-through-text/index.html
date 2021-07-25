@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>给文字加一条中划线 | levy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言这周在学习结合React使用Redux,参考TodoMVC,做个类似的demo 在实现的过程中,发现了个之前没有注意到的CSS效果, text-decoration: line-through, 先来看效果图:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给文字加一条中划线">
+<meta property="og:url" content="https://levy9527.github.io/2016-08-27-add-a-line-through-text/index.html">
+<meta property="og:site_name" content="levy">
+<meta property="og:description" content="前言这周在学习结合React使用Redux,参考TodoMVC,做个类似的demo 在实现的过程中,发现了个之前没有注意到的CSS效果, text-decoration: line-through, 先来看效果图:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/before-line-through.png">
+<meta property="og:image" content="http://oc9l6hs7x.bkt.clouddn.com/after-line-through.png">
+<meta property="article:published_time" content="2016-08-27T06:37:32.000Z">
+<meta property="article:modified_time" content="2016-09-07T06:45:26.000Z">
+<meta property="article:author" content="levy">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://oc9l6hs7x.bkt.clouddn.com/before-line-through.png">
+  
+  <link rel="icon" href="/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      
+          <h1 id="logo-wrap">
+            <a href="/" id="logo">CODE THE WEB</a>
+          </h1>
+      
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about.html">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="Search"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="javascript:;" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" class="search-form-input st-default-search-input" placeholder="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-add-a-line-through-text" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-08-27T06:37:32.000Z" itemprop="datePublished" class="article-date">2016-08-27</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-08-27-add-a-line-through-text/">给文字加一条中划线</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这周在学习结合React使用Redux,参考<a href="http://todomvc.com/examples/react/#/" target="_blank" rel="noopener">TodoMVC</a>,做个类似的demo</p>
+<p>在实现的过程中,发现了个之前没有注意到的CSS效果, <code>text-decoration: line-through</code>, 先来看效果图:</p>
+<a id="more"></a>    
+<p>图1:</p>
+<p><img src="http://oc9l6hs7x.bkt.clouddn.com/before-line-through.png" alt="单选框未选中"></p>
+<p>图2:</p>
+<p><img src="http://oc9l6hs7x.bkt.clouddn.com/after-line-through.png" alt="单选框已选中"></p>
+<p>观察单选框选中后的文字样式, 它除了颜色有变化外, 还多了一条贯穿文字的中划线, 它就是使用 <code>text-decoration: line-through</code> 实现的. </p>
+<p>对此我为何会兴奋? 先来看看我以前的实现方式.</p>
+<h3 id="1-伪元素"><a href="#1-伪元素" class="headerlink" title="1.伪元素"></a>1.伪元素</h3><p>第一次做这种效果的时候, 我使用的是伪元素. 思路是: 当单选框选中时,给文字添加一个伪元素, 由伪元素来画这条中划线.</p>
+<p>假设文字的<code>class</code>是<code>.text</code>, 参考CSS代码如下:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.text</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.text</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种方式是纯CSS的实现, 缺点是要写的代码比较多(跟后面的实现方式相比)</p>
+<h3 id="2-strike-或-del-标签"><a href="#2-strike-或-del-标签" class="headerlink" title="2.strike 或 del 标签"></a>2.strike 或 del 标签</h3><p>使用<code>strike</code>或<code>del</code>标签即可为文本标记添加删除线(也即本文指的中划线)</p>
+<p>从规范上来说, <code>strike</code>标签已不被鼓励使用, 请使用<code>del</code>标签是来替代, 该标签已被所有的主流浏览器支持(IE6+, Firefox 2+, Chrome 1+ 等) </p>
+<p>这是我后面无意中浏览文档看到的. 结合React运用到实践的话, 思路应该是: 单选框选中时, 改变组件的<code>state</code>, 引起组件重新<code>render</code>; 而<code>render</code>里根据不同的<code>state</code>渲染不同的标签</p>
+<p>参考<code>JSX</code>代码如下:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">   <span class="keyword">const</span> text = <span class="keyword">this</span>.state.text;</span><br><span class="line">   <span class="keyword">return</span>(</span><br><span class="line">       &#123;</span><br><span class="line">         <span class="keyword">this</span>.state.checked ? </span><br><span class="line">             &lt;del&gt;&#123;text&#125;&lt;<span class="regexp">/del&gt; : </span></span><br><span class="line"><span class="regexp">             &lt;span&gt;&#123;text&#125;&lt;/</span>span&gt;</span><br><span class="line">       &#125;</span><br><span class="line">   )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是种纯Javscript的实现方式, 优点在于代码量少, 但缺点在于对DOM的操作较频繁. </p>
+<p>为什么这么说呢? 假设单选框未选中, 此时组件渲染出来的是<code>span</code>; 选中单选框后, 组件重新渲染, 此时React的Virtual DOM比较两次渲染的差异, 然后会在真实的DOM中选把<code>span</code>标签先删除掉, 再插入<code>del</code>标签. 因此, 每点击一下单选框, 就会操作两次DOM. </p>
+<h3 id="3-text-decoration-line-through"><a href="#3-text-decoration-line-through" class="headerlink" title="3.text-decoration: line-through"></a>3.text-decoration: line-through</h3><p><code>text-decoration</code> 是CSS2.1的就有的, 不用担心浏览器兼容性问题, 可以大胆的使用.</p>
+<p>现假设文本元素的<code>class</code>为<code>.text</code>, 单选框的下一个兄弟元素就是它, CSS参考代码如下:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type=radio]</span><span class="selector-pseudo">::checked</span> + <span class="selector-class">.text</span> &#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: line-through;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这也是纯CSS的实现方式, 这种实现方式结合了前面二者的优点: </p>
+<ol>
+<li>代码量少</li>
+<li>不需要操作DOM</li>
+</ol>
+<p>以后再遇到给文字添加中划线的需求, 请使用<code>text-decoration: line-through</code>吧!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-08-27-add-a-line-through-text/" data-id="ckrjcef2600116hrro8i25mj1" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+<!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
+  
+    <a href="/2016-08-31-debug-react-key-with-performance-tool/" id="article-nav-newer" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          使用Perf工具研究React Key对渲染的影响
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016-08-25-javascript-code-style/" id="article-nav-older" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Javascript Code Style</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/" rel="tag">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/" rel="tag">Game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/" rel="tag">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nuxt/" rel="tag">Nuxt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/" rel="tag">work</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%BD%E7%89%A9%E6%8E%A8%E8%8D%90/" rel="tag">好物推荐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82/" rel="tag">杂</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="https://www.yuque.com/femessage/" target="_blank">开源组织博客</a>
+          </li>
+        
+          <li>
+            <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+          </li>
+        
+          <li>
+            <a href="http://coolshell.cn/" target="_blank">左耳朵耗子</a>
+          </li>
+        
+          <li>
+            <a href="http://ieclipse.cn/" target="_blank">Jamling(参考样式)</a>
+          </li>
+        
+          <li>
+            <a href="https://www.haomwei.com/" target="_blank">屠城(参考字体)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 levy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/levy9527/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about.html" class="mobile-nav-link">关于</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+	<a target="_blank" href="https://github.com/levy9527"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+
+<!-- 百度统计start -->
+
+<!-- 百度统计end -->
+
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<!-- swiftype搜索 start -->
+
+<!-- swiftype搜索 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</div>
+</body>
+</html>

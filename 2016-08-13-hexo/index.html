@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo折腾记 | levy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近在使用Github Pages + Hexo搭建个人博客，玩了些新东西，也踩了一些坑，特此记录下经历与想法。 为什么使用Github Pages首先，Github　Pages　是免费的，虽然空间有限，只有1GB，但博客实质上只是一些静态文件(说白了就是Html+Js+Css)，1Gb其实足够写很多篇文章了。而且我觉得Github Pages的域名很Cool，username.Github.io">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo折腾记">
+<meta property="og:url" content="https://levy9527.github.io/2016-08-13-hexo/index.html">
+<meta property="og:site_name" content="levy">
+<meta property="og:description" content="最近在使用Github Pages + Hexo搭建个人博客，玩了些新东西，也踩了一些坑，特此记录下经历与想法。 为什么使用Github Pages首先，Github　Pages　是免费的，虽然空间有限，只有1GB，但博客实质上只是一些静态文件(说白了就是Html+Js+Css)，1Gb其实足够写很多篇文章了。而且我觉得Github Pages的域名很Cool，username.Github.io">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-08-13T07:39:09.000Z">
+<meta property="article:modified_time" content="2017-01-19T12:47:02.000Z">
+<meta property="article:author" content="levy">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+  
+  <link rel="icon" href="/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      
+          <h1 id="logo-wrap">
+            <a href="/" id="logo">CODE THE WEB</a>
+          </h1>
+      
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about.html">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="Search"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="javascript:;" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" class="search-form-input st-default-search-input" placeholder="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-08-13T07:39:09.000Z" itemprop="datePublished" class="article-date">2016-08-13</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-08-13-hexo/">Hexo折腾记</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在使用<code>Github Pages</code> + <code>Hexo</code>搭建个人博客，玩了些新东西，也踩了一些坑，特此记录下经历与想法。</p>
+<h2 id="为什么使用Github-Pages"><a href="#为什么使用Github-Pages" class="headerlink" title="为什么使用Github Pages"></a>为什么使用Github Pages</h2><p>首先，<code>Github　Pages</code>　是<strong>免费</strong>的，虽然空间有限，只有1GB，但博客实质上只是一些静态文件(说白了就是Html+Js+Css)，1Gb其实足够写很多篇文章了。而且我觉得<code>Github Pages</code>的域名很Cool，<code>username.Github.io</code>, 这种名字一般都是技术大牛或者知名的开源项目的才会有的域名，现在我也可以拥有，感觉自己吊吊哒😎</p>
+<a id="more"></a>
+<p><code>Github Pages</code>的创建很简单，直接上<a href="https://pages.github.com/" target="_blank" rel="noopener">Github Pages</a>官网，看着教程操作就好了。我选择的是<code>User Or Organization Site</code>这种类型。</p>
+<p>这种类型与<code>Project Pages</code>的一个区别在于: 前者必须通过<code>master</code>分支发布博客内容, 而且后者可以还可以通过<code>gh-pages</code>来发布,<a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/" target="_blank" rel="noopener">点击查看详情</a></p>
+<p>教程后面的<code>Commit/Push</code>的操作其实想说明这个原理:当你创建了属于自己的<code>Github Pages</code>类型的项目后，你在浏览器访问<code>yourname.github.io</code>的时候，Github会搜索项目中的<code>index.Html</code>，它其实就是博客的首页。</p>
+<h2 id="为什么使用Hexo"><a href="#为什么使用Hexo" class="headerlink" title="为什么使用Hexo"></a>为什么使用Hexo</h2><p>一开始是想用<code>Jekyll</code>的，不仅因为每一篇讲静态网站生成工具的文章，都会提到<code>Jekyll</code>；还因为它是Github官方指定的博客生成工具。不过后来同事推荐使用<code>Hexo</code>,他说<code>Jekyll</code>是三年前的产品了，有点落后了。对于这点，我现在是不赞同的。因为<code>Jekyll</code>在<code>Github</code>上的星星数量远远超过<code>Hexo</code>,贡献者众多，而且代码也在持续更新中。</p>
+<p>不过，我还是选择了<code>Hexo</code>。有两个原因吧：</p>
+<ol>
+<li>我感觉<code>Jekyll</code>有点复杂，第一次写博客，其实我只想简单点。</li>
+<li><code>Jekyll</code>是基于<code>Ruby</code>的，而<code>Hexo</code>是基于<code>Node</code>的。环境搭建都不是问题，但对于<code>Ruby</code>我一窍不通；而我本身做前端开发，对<code>Node</code>会更有亲近感，而且考虑以后要去看代码/改的代码，也方便一点。</li>
+</ol>
+<h2 id="Markdown工具的选择"><a href="#Markdown工具的选择" class="headerlink" title="Markdown工具的选择"></a>Markdown工具的选择</h2><p>有了<code>Hexo</code>,写博客其实就是写<code>Markdown</code>文档了。</p>
+<p>之前我是用<code>Cmd　Markdown</code>的，因为支持离线存储、云同步，也可以免费一键发布到网络上，更关键的是支持<code>Vim</code>模式，我一用就喜欢上了它。</p>
+<p>但<code>Cmd　Markdown</code>局限在于，它有自己的生态圈，它想我们把文档都发布到它的服务器上，如果要放在别的地方，需要手动导出<code>md</code>文件；如果文档要添加图片，还要成为会员(一年交99元人民币)才有权限；而且，如果它打开本地<code>md</code>文件(不是通过它新建的)，它导入后，也要做云同步，这是没必要的，我认为这是在浪费计算资源，不喜欢这一点。</p>
+<p>我最初的两篇文章是由<code>Cmd　Markdown</code>写成的，要把它发布到<code>GitHub Pages</code>上，我需要先导出<code>md</code>文件，再对一些文件做一些改动，因为<code>Hexo</code>解析<code>md</code>文件的规则跟<code>Cmd　Markdown</code>不一样。写好的文档还要重新编辑一下，这点我不能忍了，于是我寻找新的工具。</p>
+<p>Mac上流行的有两个<code>Mou</code>和<code>MacDown</code>。前者我几个月前就有下载过，但网络非常不给力，翻墙了还是经常下载到一半就失败了，于是这次我就选择了MacDown，感觉还行(本文就是用MacDown写的)，常用的快捷键都有，遗憾的是我没找到<code>Vim</code>插件，不知道是没有这个插件还是我搜索姿势不对，这个后面再研究；另外的它不足是没有目录视图，打开一个文件要重新去本地磁盘找，可能这个也是需要安装插件的吧。</p>
+<p>也有人推荐<code>Atom</code>，它有目录视图，甚至还有<code>Vim</code>插件(很早以前我想尝试用它来进行前端开发时，安装过几次<code>Vim</code>插件，但都失败了，就没放在心上了，因为我已经有<code>WebStorm</code>了)。不过，考虑到它是基于<code>Node</code>而不是<code>Objective-C</code>开发的，性能上消耗的比较厉害，就暂时不考虑，后面再尝试，反正我现在有<code>MacDown</code>，就先用着吧。</p>
+<h2 id="博客书写流程"><a href="#博客书写流程" class="headerlink" title="博客书写流程"></a>博客书写流程</h2><p>考虑到生成的静态页面是通过<code>git</code>推送在<a href="https://github.com/levy9527/levy9527.github.io" target="_blank" rel="noopener">Github</a>上的，是有版本控制了的；但是本地的<code>source code</code>却没有版本控制，如果以后换电脑或发生意外，数据丢失了，那就糟糕了。于是我把博客的源码放到<a href="https://git.oschina.net/levy9527/blog" target="_blank" rel="noopener">码云</a>托管。</p>
+<p>所以我的书写流程是这样的：</p>
+<ol>
+<li>命令行新建<code>md</code>文件： <code>hexo new xxx</code></li>
+<li>选择一个书写Markdown的工具打开新建的文件</li>
+<li>本地起个服务器，预览效果： <code>hexo s</code></li>
+<li>发布到<code>Github Pages</code>: <code>hexo d -g</code></li>
+<li>把源码提交到码云</li>
+</ol>
+<p>需要注意的是：第4步是由<code>Hexo</code>的<code>git</code>插件，应该使用的命令是<code>git push origin master -f</code>, 因为在发布后，原来<code>Github</code>上的<code>README.md</code>文件不见了，说明是本地仓库的代码覆盖掉了远程仓库的代码。</p>
+<h2 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h2><p>首先要明白，博客根目录有一个站点配置文件<code>_config.yml</code>,而<code>themes</code>目录下的每一个主题目录下也会有相应的主题配置文件<code>_config.yml</code>，因此自定义的配置是针对两个配置文件的，一开始我不知道这点，只修改博客根目录下的站点配置，结果发现有些设置怎么也不生效😂</p>
+<p>以<code>Hexo</code>默认的主题<code>landscape</code>为例，我先做了以下小改动:</p>
+<h3 id="1-修改基本信息"><a href="#1-修改基本信息" class="headerlink" title="1. 修改基本信息"></a>1. 修改基本信息</h3><p>编辑站点配置文件，修改<code>titile</code>、<code>description</code>、<code>author</code></p>
+<h3 id="2-语言汉化"><a href="#2-语言汉化" class="headerlink" title="2. 语言汉化"></a>2. 语言汉化</h3><p>这个涉及到两个文件。站点配置文件需要修改<code>language</code>字段，而该字段的值得去查看主题目录下的<code>languages</code>目录，看看对应的中文配置应该叫什么。<code>landscape</code>里有两个与汉化有关的文件：<code>zh-CN.yml</code>与<code>zh-TW.yml</code>，我当然选择了前者,则站点配置文件里<code>language</code>的值为<code>zh-CN</code>. 另一方面，还需要把博客首页的菜单给汉化，这个需要找到主题配置文件，修改<code>menu</code>配置的值</p>
+<h3 id="3-首页只显示文章部分内容"><a href="#3-首页只显示文章部分内容" class="headerlink" title="3. 首页只显示文章部分内容"></a>3. 首页只显示文章部分内容</h3><p>这个只需要在<code>md</code>文件里插入<code>&lt;!--More--&gt;</code>即可，此时首页只该语句上面的内容，后面的部分要文档详情才会显示出来。我审查过元素，发现<code>&lt;!--More--&gt;</code>后面的内容的确不在DOM里面，也即首页的文档长度得到了缩减，这就达到了加快首页渲染的速度。</p>
+<h3 id="4-favicon的制作及使用"><a href="#4-favicon的制作及使用" class="headerlink" title="4. favicon的制作及使用"></a>4. <code>favicon</code>的制作及使用</h3><p><code>favicon</code>的制作首先要有图片，这里我推荐两个APP:<strong>脸萌</strong>及<strong>MomentCam</strong></p>
+<p>前者制作的是卡通头像，可以直接拿来生成<code>favicon</code>，缺点是头像需要自己一点一点地拼凑，比较耗时;后者的优点在于可以直接选择手机里已有的照片，快速生成带服饰及场景的图片，缺点是几乎都是全身或半身照，生成的图片还需要再裁剪一下，否则生成的<code>favicon</code>根本看不出是什么鬼(毕竟<code>favicon</code>在浏览器上很小嘛，还是不要包含太多的内容)</p>
+<p>制作<code>favicon</code>的网站可以<a href="www.faviconico.org">选择这个</a>。尺寸我推荐至少64大小的，不然非常不清晰，至少在Chrome for Mac上是这样。而且就算是这么大了，放到收藏栏的时候，还是会模糊。因此我自己把尺寸搞成了128大小，这个主要是根据实践来调整吧，一开始我是看网上的文章说什么“一般做成16的就好了”。真做成这么小，结果图标简直就成了马赛克，完全不能看。对于<code>favicon</code>的更高级的设置，可以参考Github的网页源码,以及bing的网页源码(使用的是svg)</p>
+<p>至于生成的<code>favicon</code>放在何处，这个需要看使用的主题里的模板是怎么写的。我先找到<code>layout/_partial/head.ejs</code>文件，找到<code>favicon</code>相关的代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.favicon)&#123; %&gt;</span><br><span class="line">    &lt;link rel=<span class="string">"icon"</span> href=<span class="string">"&lt;%- theme.favicon %&gt;"</span>&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>上面的代码说明页面读取的是主题目录下的<code>favicon</code>，我把它修改成读取项目根目录下的<code>favicon</code>，并参考了微信网页版的html代码，做了些小改动</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.favicon)&#123; %&gt;</span><br><span class="line">    &lt;link rel=<span class="string">"shortcut icon"</span> href=<span class="string">"&lt;%- config.root %&gt;favicon.ico"</span> type=<span class="string">"image/x-icon"</span>&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>(ps:从上面的代码可以看出，<code>landscape</code>使用的是<code>ejs</code>模板，代码难看得要死，给我一种在<code>jsp</code>里写<code>java</code>代码的感觉，非常恶心，这多给了我一个换主题的理由)</p>
+<p>但事情并没有就这样结束。在此期间，我用过不止一个<code>favicon</code>,于是我很快就遇到了<code>favicon</code>缓存失效的问题。过程是，我先使用一个别的网站的<code>ico</code>文件，之后再使用自己制作的<code>ico</code>文件，但浏览器(Chrome for Mac)显示的是上一个<code>ico</code></p>
+<p>网上的解决方案打开<code>favicon</code>的地址，刷新后再打开网页即可，但我试了，根本无效；也有说强制刷新，我试下了<code>cmd + shift + R</code>，完全无用(我怀疑Mac下这个组合键根本不能与Windows的Ctrl+F5相比)；我再尝试清除浏览数据，也没有用(但这招在Chrome里对处理<code>DNS</code>缓存是有效的，无论是<code>CNAME</code>还是<code>A</code>，都可有效清空缓存，相关<code>DNS</code>信息可在地址栏里输入<code>about:dns</code>查看，这是一位运维大神告诉我的😁)</p>
+<p>这里最让我百思不得其解的是，上一个<code>ico</code>我使用的是别的网站的<code>icon</code>，而第二个是我自己制作的，放到<code>Github　Pages</code>上，所以说两个<code>ico</code>的路径根本不一样，这样Chrome也会缓存，难道它根本就没有去根据<code>html</code>里的内容去读取<code>icon</code>?</p>
+<p>好吧，<strong>缓存失效</strong>果然是计算机的两大难题之一，搞不懂Chrome对于<code>icon</code>的缓存方法，我只好拿出最后的武器，换一个浏览器打开，反正我Safari、Firefox、甚至IE都有。最后，我终于如愿以偿，看到了自己制作的<code>favicon</code></p>
+<h2 id="主题更换"><a href="#主题更换" class="headerlink" title="主题更换"></a>主题更换</h2><p>有了上面的自定义配置，博客已可以满足我的基本的需求。但可以优化的地方还有很多，其中最致命的一点就是，<code>landscape</code>主题默认从google的CDN里加载js/css文件，身为“墙内人士”，我的控制台一直出现<code>Uncaught ReferenceError: jQuery is not defined</code>，我想让页面取消这个报错，而又不想对<code>ejs</code>模板作大修改，便决定换一个更给力的主题，也方便以后安装插件。</p>
+<p><code>Hexo</code>官网上<a href="https://hexo.io/themes/" target="_blank" rel="noopener">Themes</a>页面有许多开源的主题，我一个个地找，推荐两个:<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">NexT</a>，<a href="https://github.com/xiangming/landscape-plus" target="_blank" rel="noopener">landscape-plus</a>.我主要是看以下几点：</p>
+<ol>
+<li>首先当然是看主题的布局、校色搭配等视觉效果是否令人满意啦</li>
+<li>官方文档是否完善，这点非常重要，如果没有文档，一般我都不会考虑。</li>
+<li>GitHub上星星数量，以及contributor数量，如果数量太少，很可能代码就不更新了</li>
+</ol>
+<p>就我个人而言，首页的布局我更喜欢<code>landscape</code>；归档页面我更喜欢<code>NexT</code>.我最终选择的是<code>landscape-plus</code>主题。</p>
+<p>但是后来我发现<code>landscape-plus</code>项目有一年没更新代码了，我只好自己<code>fork</code>了一个，结果我还是要面对<code>ejs</code>代码😂</p>
+<p>注意：<br>更换主题后，最好先<code>hexo clean</code>再重启server，不然很可能遇到<code>Hexo</code>的缓存，看到的是上一个主题；修改主题的模板、样式或js源码后，最好也<code>hexo clean</code>后再发布，否则很可能遇到这种情况：本地修改样式成功了，发布到Github，上面的样式还是未修前的。</p>
+<h2 id="添加图片"><a href="#添加图片" class="headerlink" title="添加图片"></a>添加图片</h2><p>要给博客添加图片,需要有服务器存储图片,这种服务器也即所谓的”图床”. 我使用的是<a href="https://www.qiniu.com/" target="_blank" rel="noopener">七牛云</a>,因为注册就可以免费使用,<a href="http://jingyan.baidu.com/article/495ba841092a5338b20ede5c.html" target="_blank" rel="noopener">相关教程</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-08-13-hexo/" data-id="ckrjcef33002i6hrreaj8bpxa" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blog/" rel="tag">Blog</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+<!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
+  
+    <a href="/2016-08-25-javascript-code-style/" id="article-nav-newer" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Javascript Code Style
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016-08-08-react-component-lifecyle-methods/" id="article-nav-older" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Component LifeCycle Methods</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/" rel="tag">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/" rel="tag">Game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/" rel="tag">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nuxt/" rel="tag">Nuxt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/" rel="tag">work</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%BD%E7%89%A9%E6%8E%A8%E8%8D%90/" rel="tag">好物推荐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82/" rel="tag">杂</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="https://www.yuque.com/femessage/" target="_blank">开源组织博客</a>
+          </li>
+        
+          <li>
+            <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+          </li>
+        
+          <li>
+            <a href="http://coolshell.cn/" target="_blank">左耳朵耗子</a>
+          </li>
+        
+          <li>
+            <a href="http://ieclipse.cn/" target="_blank">Jamling(参考样式)</a>
+          </li>
+        
+          <li>
+            <a href="https://www.haomwei.com/" target="_blank">屠城(参考字体)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 levy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/levy9527/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about.html" class="mobile-nav-link">关于</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+	<a target="_blank" href="https://github.com/levy9527"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+
+<!-- 百度统计start -->
+
+<!-- 百度统计end -->
+
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<!-- swiftype搜索 start -->
+
+<!-- swiftype搜索 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>levy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="思考，表达，练习，创造">
+<meta property="og:type" content="website">
+<meta property="og:title" content="levy">
+<meta property="og:url" content="https://levy9527.github.io/page/9/index.html">
+<meta property="og:site_name" content="levy">
+<meta property="og:description" content="思考，表达，练习，创造">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="levy">
+<meta name="twitter:card" content="summary">
+  
+  <link rel="icon" href="/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      
+          <h1 id="logo-wrap">
+            <a href="/" id="logo">CODE THE WEB</a>
+          </h1>
+      
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about.html">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="Search"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="javascript:;" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" class="search-form-input st-default-search-input" placeholder="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-learn-react-router" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-09-06T10:13:36.000Z" itemprop="datePublished" class="article-date">2016-09-06</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-09-06-learn-react-router/">React Router 入门</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这两天在学react-router, 之前有了解过, 但没有系统地学, 觉得比较简单, 会用就行. 但当昨天知道react-router结合webpack可以做到按需加载时(<a href="https://github.com/reactjs/react-router/tree/master/examples/auth-with-shared-root" target="_blank" rel="noopener">点击查看例子</a>), 顿时来了兴趣, 于是就跟着<a href="https://github.com/reactjs/react-router-tutorial" target="_blank" rel="noopener">react-router-tutorial</a>上的教程敲了一遍(<a href="http://git.oschina.net/levy9527/react" target="_blank" rel="noopener">代码在这里</a>, 还是有不少收获的, 下面我将说明我教程中较重要的点.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016-09-06-learn-react-router/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-09-06-learn-react-router/" data-id="ckrjcef3e00316hrrcxoif76h" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-css-make-up-for-omissions-of-user-interface" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-09-05T13:48:50.000Z" itemprop="datePublished" class="article-date">2016-09-05</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-09-05-css-make-up-for-omissions-of-user-interface/">CSS拾遗之用户界面样式</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="zoom"><a href="#zoom" class="headerlink" title="zoom"></a>zoom</h2><p><code>zoom</code>属性可以缩放元素, 它可以有三种值:</p>
+<ul>
+<li><code>百分比</code> - 根据百分比缩放</li>
+<li><code>数值</code> - 会转化成百分比 如 1 =&gt; 100%, 1.5 =&gt; 150%</li>
+<li><code>normal</code> - 即<code>zoom: 1</code></li>
+</ul>
+<p>以前偶尔有看到别人网站的css有这样的设置<code>zoom: 1</code>, 不明白是干嘛的. 现在我明白了, 但看来根本用不上, 为什么这样说呢?</p>
+        
+          <p class="article-more-link">
+            <a href="/2016-09-05-css-make-up-for-omissions-of-user-interface/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-09-05-css-make-up-for-omissions-of-user-interface/" data-id="ckrjcef2i001i6hrr4gljxmvt" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-css-make-up-for-omissions-in-the-definitive-guide" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-09-04T08:19:35.000Z" itemprop="datePublished" class="article-date">2016-09-04</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/">CSS权威指南拾遗</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近发现有些CSS知识是很基础的, 而<strong>CSS权威指南</strong>也有讲到的, 但我却遗漏掉了, 今天就做个补习, 把这些知识捡回来.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-09-04-css-make-up-for-omissions-in-the-definitive-guide/" data-id="ckrjcef2h001h6hrr8ichi7n4" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-why-got-options-request-via-ajax" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-09-01T07:50:10.000Z" itemprop="datePublished" class="article-date">2016-09-01</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-09-01-why-got-options-request-via-ajax/">AJAX中出现OPTIONS请求</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>之前有一个项目使用<code>Zepto</code>来发送<code>ajax</code>请求, 查看<code>Nginx</code>日志或使用<code>Chrome Dev Tools</code>查看请求发送情况时, 会看到每次调后台API的请求之前, 都会发送一个OPTIONS请求, 无论API要求请求的方法是GET或POST. </p>
+<p>为什么会发送这个OPTIONS请求? 可以去掉吗? </p>
+        
+          <p class="article-more-link">
+            <a href="/2016-09-01-why-got-options-request-via-ajax/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-09-01-why-got-options-request-via-ajax/" data-id="ckrjcef57005o6hrrwgv7a80z" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-debug-react-key-with-performance-tool" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-08-31T09:03:29.000Z" itemprop="datePublished" class="article-date">2016-08-31</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-08-31-debug-react-key-with-performance-tool/">使用Perf工具研究React Key对渲染的影响</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用React的开发版本时常会遇到这样的情况: </p>
+<p>渲染列表时, 不为数组的每一项设置key, 则控制台会警告</p>
+<blockquote>
+<p>Warning: Each child in an array or iterator should have a unique “key” prop.<br>Check the render method of Constructor.<br>See <a href="http://fb.me/react-warning-keys" target="_blank" rel="noopener">http://fb.me/react-warning-keys</a> for more information.</p>
+</blockquote>
+<p>我常看到有的代码为了消除警告, 把数组的下标(index)作为key, 那么这倒底是不是一种好的做法呢, 本文将一探究竟. </p>
+        
+          <p class="article-more-link">
+            <a href="/2016-08-31-debug-react-key-with-performance-tool/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-08-31-debug-react-key-with-performance-tool/" data-id="ckrjcef2m001p6hrrimjd28k8" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-add-a-line-through-text" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-08-27T06:37:32.000Z" itemprop="datePublished" class="article-date">2016-08-27</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-08-27-add-a-line-through-text/">给文字加一条中划线</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这周在学习结合React使用Redux,参考<a href="http://todomvc.com/examples/react/#/" target="_blank" rel="noopener">TodoMVC</a>,做个类似的demo</p>
+<p>在实现的过程中,发现了个之前没有注意到的CSS效果, <code>text-decoration: line-through</code>, 先来看效果图:</p>
+        
+          <p class="article-more-link">
+            <a href="/2016-08-27-add-a-line-through-text/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-08-27-add-a-line-through-text/" data-id="ckrjcef2600116hrro8i25mj1" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-javascript-code-style" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-08-25T12:29:26.000Z" itemprop="datePublished" class="article-date">2016-08-25</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-08-25-javascript-code-style/">Javascript Code Style</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>个人认为编码规范是很重要的,它可以达到提高代码质量,增强团队的开发协作的目的.</p>
+<p>作为强迫症患者,如果看到不符规范的代码,我会十分难受.</p>
+<p>以下规范主要根据书籍 <strong>Maintainable Javscript</strong> 翻译而来, 结合其他资料,根据个人喜好,有改动.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016-08-25-javascript-code-style/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-08-25-javascript-code-style/" data-id="ckrjcef37002p6hrrrvmchgwg" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-08-13T07:39:09.000Z" itemprop="datePublished" class="article-date">2016-08-13</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-08-13-hexo/">Hexo折腾记</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在使用<code>Github Pages</code> + <code>Hexo</code>搭建个人博客，玩了些新东西，也踩了一些坑，特此记录下经历与想法。</p>
+<h2 id="为什么使用Github-Pages"><a href="#为什么使用Github-Pages" class="headerlink" title="为什么使用Github Pages"></a>为什么使用Github Pages</h2><p>首先，<code>Github　Pages</code>　是<strong>免费</strong>的，虽然空间有限，只有1GB，但博客实质上只是一些静态文件(说白了就是Html+Js+Css)，1Gb其实足够写很多篇文章了。而且我觉得<code>Github Pages</code>的域名很Cool，<code>username.Github.io</code>, 这种名字一般都是技术大牛或者知名的开源项目的才会有的域名，现在我也可以拥有，感觉自己吊吊哒😎</p>
+        
+          <p class="article-more-link">
+            <a href="/2016-08-13-hexo/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-08-13-hexo/" data-id="ckrjcef33002i6hrreaj8bpxa" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blog/" rel="tag">Blog</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-react-component-lifecyle-methods" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-08-08T07:04:45.000Z" itemprop="datePublished" class="article-date">2016-08-08</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-08-08-react-component-lifecyle-methods/">Component LifeCycle Methods</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>React Component 常用生命周期函数： getInitialState -&gt; WillMount -&gt; render -&gt; DidMount -&gt; DidUpdate(WillReceiveProps)-&gt;WillUnMount</p>
+<p>挂载(mount)：React的特点是先生成Virtual DOM，再把这个Virtual DOM在真实的DOM上画出来，这个行为就叫挂载。只有挂载后，React元素才可以在真实的DOM(也即浏览器的doument)中找到。</p>
+        
+          <p class="article-more-link">
+            <a href="/2016-08-08-react-component-lifecyle-methods/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-08-08-react-component-lifecyle-methods/" data-id="ckrjcef3u003r6hrrnh83nkn9" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-practical-css" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-08-06T06:12:00.000Z" itemprop="datePublished" class="article-date">2016-08-06</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-08-06-practical-css/">CSS实践总结</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文总结了一些使用CSS的实践经验.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016-08-06-practical-css/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-08-06-practical-css/" data-id="ckrjcef3s003o6hrrc3wj6h89" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/8/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/">下一页</a>
+    </nav>
+  
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/" rel="tag">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/" rel="tag">Game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/" rel="tag">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nuxt/" rel="tag">Nuxt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/" rel="tag">work</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%BD%E7%89%A9%E6%8E%A8%E8%8D%90/" rel="tag">好物推荐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82/" rel="tag">杂</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="https://www.yuque.com/femessage/" target="_blank">开源组织博客</a>
+          </li>
+        
+          <li>
+            <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+          </li>
+        
+          <li>
+            <a href="http://coolshell.cn/" target="_blank">左耳朵耗子</a>
+          </li>
+        
+          <li>
+            <a href="http://ieclipse.cn/" target="_blank">Jamling(参考样式)</a>
+          </li>
+        
+          <li>
+            <a href="https://www.haomwei.com/" target="_blank">屠城(参考字体)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 levy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/levy9527/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about.html" class="mobile-nav-link">关于</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+	<a target="_blank" href="https://github.com/levy9527"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+
+<!-- 百度统计start -->
+
+<!-- 百度统计end -->
+
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<!-- swiftype搜索 start -->
+
+<!-- swiftype搜索 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</div>
+</body>
+</html>

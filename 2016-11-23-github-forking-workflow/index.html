@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>GitHub协作开发流程 | levy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在GitHub上发现心仪的项目, 想帮忙添砖加瓦, 搞点贡献, 应该怎么做呢?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitHub协作开发流程">
+<meta property="og:url" content="https://levy9527.github.io/2016-11-23-github-forking-workflow/index.html">
+<meta property="og:site_name" content="levy">
+<meta property="og:description" content="在GitHub上发现心仪的项目, 想帮忙添砖加瓦, 搞点贡献, 应该怎么做呢?">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-11-23T06:25:44.000Z">
+<meta property="article:modified_time" content="2018-03-05T09:50:23.000Z">
+<meta property="article:author" content="levy">
+<meta property="article:tag" content="GitHub">
+<meta name="twitter:card" content="summary">
+  
+  <link rel="icon" href="/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      
+          <h1 id="logo-wrap">
+            <a href="/" id="logo">CODE THE WEB</a>
+          </h1>
+      
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about.html">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="Search"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="javascript:;" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" class="search-form-input st-default-search-input" placeholder="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-github-forking-workflow" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <time datetime="2016-11-23T06:25:44.000Z" itemprop="datePublished" class="article-date">2016-11-23</time>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <a itemprop="name" class="article-title" href="/2016-11-23-github-forking-workflow/">GitHub协作开发流程</a>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在GitHub上发现心仪的项目, 想帮忙添砖加瓦, 搞点贡献, 应该怎么做呢? </p>
+<a id="more"></a>
+<h2 id="Fork"><a href="#Fork" class="headerlink" title="Fork"></a>Fork</h2><p>首先第一步,你需要点击星星旁边的<code>fork</code>按钮, 则属于你的公开仓库, 里面的代码与原仓库一样. 以下称原仓库为正式仓库.</p>
+<p>这里要说一个为啥要fork. 因为默认情况下, 你是没有正式仓库的写权限的. 也即, 你clone正式仓库后, 本地做的修改, 是无法push的, 会得到类似下面的信息:</p>
+<blockquote>
+<p>remote: Permission to xiangming/landscape-plus.git denied to levy9527.<br>fatal: unable to access ‘<a href="https://github.com/xiangming/landscape-plus.git/&#39;" target="_blank" rel="noopener">https://github.com/xiangming/landscape-plus.git/&#39;</a>: The requested URL returned error: 403</p>
+</blockquote>
+<p>而你fork出来的仓库, 是属于你的, 你可以push. </p>
+<p>因此你应该clone你fork出来的仓库, 在本地作修改, 再把提交push到fork仓库</p>
+<h2 id="Pull-request"><a href="#Pull-request" class="headerlink" title="Pull request"></a>Pull request</h2><p>假设公开仓库没有修改, 而你fork出来的仓库已经有了一些你的提交, 则你的仓库会有类似这样的提示:</p>
+<blockquote>
+<p>This branch is 1 commits ahead bluehexagons:master.</p>
+</blockquote>
+<p>这个时候可以点击右边的<code>Pull request</code>按钮, 提交一个合并代码的申请. </p>
+<p>如果项目原作者同意了, 把你提交的代码合并到了正式仓库, 则你fork的仓库提示会变成类似这样:</p>
+<blockquote>
+<p>This branch is even with bluehexagons:master.</p>
+</blockquote>
+<h2 id="Fetch-amp-Merge"><a href="#Fetch-amp-Merge" class="headerlink" title="Fetch &amp; Merge"></a>Fetch &amp; Merge</h2><p>实际上公开仓库在你fork之后, 经常也会有新的提交的, 则你fork的仓库提示会是类似这样:</p>
+<blockquote>
+<p>This branch is 67 commits ahead, 8 commits behind xiangming:master.</p>
+</blockquote>
+<p>你提交的部分可以通过<code>Pull request</code>让公开仓库同步你的代码, 那么公开仓库新增的代码如何同步到你fork的仓库呢? </p>
+<p>你需要在本地仓库(对应的origin为fork出来的仓库)作如下操作:</p>
+<ul>
+<li><code>git remote</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">origin</span><br><span class="line">xiangming</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果<code>git remote</code>只有origin, 则需要先添加远程仓库, 格式如下:<br><code>git remote add remote_name remote_url</code></p>
+</blockquote>
+<ul>
+<li><p><code>git fetch xiangming master</code> </p>
+</li>
+<li><p><code>git merge xiangming/master --abort</code> 如果有冲突,就放弃合并, 保持工作目录的干净</p>
+</li>
+</ul>
+<p>我运行上述命令时, 得到的如下信息:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: There is no merge to abort (MERGE_HEAD missing).</span><br></pre></td></tr></table></figure>
+<p>别担心, 这其实就冲突了, 放弃合并了</p>
+<blockquote>
+<p>这里最好使用fetch+merge, 而不是直接pull, 要不然冲突的话, 就麻烦了</p>
+</blockquote>
+<ul>
+<li><code>git push</code> </li>
+</ul>
+<p>合并完代码后, 再把代码推送到fork仓库, 这样就跟公开仓库同步了</p>
+<p>当然, 如果直接<code>git pull</code>合并代码时冲突了也不用怕, 最简单的方法是</p>
+<p><code>git reset HEAD --hard</code> </p>
+<p>还你一个干净的工作目录</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://github.com/oldratlee/translations/blob/master/git-workflows-and-tutorials/workflow-forking.md#%E5%BC%80%E5%8F%91%E8%80%85%E5%92%8C%E6%AD%A3%E5%BC%8F%E4%BB%93%E5%BA%93%E5%81%9A%E5%90%8C%E6%AD%A5" target="_blank" rel="noopener">workflow-forking</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://levy9527.github.io/2016-11-23-github-forking-workflow/" data-id="ckrjcef2x002a6hrrsni7afuk" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+<!--这里的原始的排序是相对首页顺序来说的, 即next是首页的next,但时间上来说是上一篇 -->
+  
+    <a href="/2016-11-26-where-is-my-iphone/" id="article-nav-newer" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          手机送人了
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016-11-09-browser-allow-file-access-from-files/" id="article-nav-older" class="article-nav-link-wrap">
+	<strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">突破浏览器本地文件限制</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/" rel="tag">Browser</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/" rel="tag">Game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/" rel="tag">Movie</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nuxt/" rel="tag">Nuxt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/" rel="tag">work</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%BD%E7%89%A9%E6%8E%A8%E8%8D%90/" rel="tag">好物推荐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82/" rel="tag">杂</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="https://www.yuque.com/femessage/" target="_blank">开源组织博客</a>
+          </li>
+        
+          <li>
+            <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+          </li>
+        
+          <li>
+            <a href="http://coolshell.cn/" target="_blank">左耳朵耗子</a>
+          </li>
+        
+          <li>
+            <a href="http://ieclipse.cn/" target="_blank">Jamling(参考样式)</a>
+          </li>
+        
+          <li>
+            <a href="https://www.haomwei.com/" target="_blank">屠城(参考字体)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 levy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/levy9527/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about.html" class="mobile-nav-link">关于</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+	<a target="_blank" href="https://github.com/levy9527"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+
+<!-- 百度统计start -->
+
+<!-- 百度统计end -->
+
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<!-- swiftype搜索 start -->
+
+<!-- swiftype搜索 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</div>
+</body>
+</html>
